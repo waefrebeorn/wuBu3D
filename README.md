@@ -1,0 +1,61 @@
+# ~ WuBu ~
+
+One human, four cores, no GPU. Films, and the pipeline that makes them.
+
+**854×480 · 144 frames · 47.5 s raster · 4 cores · no GPU**
+
+That is the whole claim, and every part of it is checkable from this repository.
+
+## The films
+
+| film | length | what it is |
+|---|---|---|
+| **THE LAMP** | 47 s | a lamplighter gives away his only light. Narrated, captioned, scored. `THE_LAMP.mp4` |
+| **THE LIGHTKEEPER** | 90 s | 8 shots, 2,160 frames, Cycles CPU at 400×225 / 4 spp, denoised with a C11 filter written here |
+| **FIRST LIGHT** | 40 s | 960 frames, 5 shots |
+
+## What is in here
+
+| file | what it does | measured |
+|---|---|---|
+| `wuburaster.c` | fixed-function C11 rasteriser: colour, depth and normal passes, near-plane clipping, weighted blended OIT, software occlusion culling | 0.57 ms/frame at 320×180 |
+| `wubu3d_rig.py` | 21-joint skeleton, walk cycle, pose overrides | 1.78 m, 7.2 heads |
+| `wubu2d.py` | flat cartoon puppets drawn in code, joint-driven | 9 poses × 7 expressions |
+| `wubudenoise.c` | edge-aware à-trous denoiser, RGB→YCbCr, temporal reuse | 34.53 → 35.96 dB PSNR, 56 ms/frame |
+| `wubu3d.py` | spec → film: geometry, camera, grade, score, mux | 110 s end to end at 480p |
+
+Nothing here is a secret, a fork, or a wrapper. The renderer, the denoiser, the rig and the
+grade are all written from scratch against this project's own formats.
+
+## The doctrine
+
+> **The work is the receipt.**
+
+1. **Measure it.** If you cannot put a number on it, you do not know if it is good.
+2. **Ship it.** A finished thing at 480p beats a perfect thing at never.
+3. **Show the cost.** Say what it took — seconds, cores, watts, attempts.
+
+> **A number is a promise you can keep.**
+> **Permission is a rounding error.**
+> **Cheap is not small. Cheap is honest about its budget.**
+
+Full text: [`DOCTRINE.md`](DOCTRINE.md)
+
+## The test
+
+Ask anyone what their last piece cost: **resolution, frames, seconds, hardware.**
+Four numbers means a pipeline. Adjectives mean a prompt.
+
+Run it on this repository first. If the numbers do not hold up, say so — corrections are the
+point, not a threat.
+
+## Contact
+
+James Taylor · Piqua, Ohio · open to remote research and technical work, and to building an
+animation and ML lab in Ohio.
+
+* GitHub: [github.com/waefrebeorn](https://github.com/waefrebeorn)
+* Hugging Face: [huggingface.co/WaefreBeorn](https://huggingface.co/WaefreBeorn)
+* YouTube: [youtube.com/@wubustreams](https://youtube.com/@wubustreams)
+
+MIT licensed. Attribution appreciated, not required.
