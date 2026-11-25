@@ -27,6 +27,14 @@ That is the whole claim, and every part of it is checkable from this repository.
 Nothing here is a secret, a fork, or a wrapper. The renderer, the denoiser, the rig and the
 grade are all written from scratch against this project's own formats.
 
+## The ecosystem
+
+~ WuBu ~ is more than this repository: **100+ public repos, 113 stars, 6,807 dataset downloads,
+6 models, zero venture dollars.** Agents in C11, a 744B MoE on a 25 GB machine, a video codec,
+an OS, a memory system, and the media corpus the films are cut from.
+
+Full map: [`ECOSYSTEM.md`](ECOSYSTEM.md)
+
 ## The doctrine
 
 > **The work is the receipt.**
