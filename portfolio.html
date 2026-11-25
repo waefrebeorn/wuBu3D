@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>~ WuBu ~ — James Taylor</title>
+<meta name="description" content="Independent animation pipeline built from scratch: renderer, denoiser, rig and grader, on CPU, measured.">
+<style>
+  :root{ --bg:#08090c; --ink:#f2ece2; --dim:#9a9384; --line:#1e2128; --hot:#f2c48c; }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  a{color:var(--ink);text-decoration:none;border-bottom:1px solid #3a3f4a}
+  a:hover{border-color:var(--hot);color:var(--hot)}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+  header{display:flex;justify-content:space-between;align-items:baseline;
+    padding:22px 0;border-bottom:1px solid var(--line);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+  header b{color:var(--ink);letter-spacing:.2em}
+  .hero{position:relative;margin:34px 0 8px;background:#000;border:1px solid var(--line)}
+  .hero video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+  .hero .cap{position:absolute;left:18px;bottom:14px;font-size:12px;letter-spacing:.16em;
+    text-transform:uppercase;color:#cbbfae;text-shadow:0 2px 12px #000}
+  h1{font-size:clamp(34px,6vw,68px);line-height:.98;letter-spacing:-.02em;margin:40px 0 12px;font-weight:800}
+  h1 span{color:var(--hot)}
+  .lede{font-size:clamp(17px,2.2vw,22px);color:#d8d1c4;max-width:44ch;margin:0 0 30px}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);
+    border:1px solid var(--line);margin:0 0 56px}
+  .stats div{background:var(--bg);padding:18px}
+  .stats b{display:block;font-size:26px;color:var(--hot);letter-spacing:-.01em}
+  .stats small{color:var(--dim);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+  h2{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);
+    margin:56px 0 18px;border-top:1px solid var(--line);padding-top:18px}
+  article{margin:0 0 34px;padding:0 0 34px;border-bottom:1px solid var(--line)}
+  article h3{margin:0 0 6px;font-size:22px;letter-spacing:-.01em}
+  article .meta{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
+  article p{margin:0 0 10px;color:#cfc8bb;max-width:70ch}
+  .kv{display:grid;grid-template-columns:120px 1fr;gap:6px 16px;font-size:14px;margin:14px 0 0}
+  .kv dt{color:var(--dim);letter-spacing:.08em;text-transform:uppercase;font-size:11px;padding-top:3px}
+  .kv dd{margin:0;color:#ded7c9}
+  footer{margin:64px 0 80px;color:var(--dim);font-size:14px}
+  footer a{margin-right:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header><b>~ WuBu ~</b><span>Piqua, Ohio · est. 2009</span></header>
+
+<section class="hero">
+  <video src="WUBU_REEL.mp4" poster="reel_poster.jpg" autoplay muted loop playsinline></video>
+  <div class="cap">62 s reel · cut from 480p–540p renders · every frame ran on four CPU cores</div>
+</section>
+
+<h1>Films made by one person, <span>on a box with no graphics card.</span></h1>
+<p class="lede">I write the renderer, the denoiser, the rig and the grade. Then I use them to make
+animation. Every claim on this page has a number attached, because that is the only way to tell
+work from a prompt.</p>
+
+<div class="stats">
+  <div><b>110 s</b><small>spec → finished 480p MP4</small></div>
+  <div><b>0.57 ms</b><small>per frame, software raster</small></div>
+  <div><b>56 ms</b><small>per frame à-trous denoise</small></div>
+  <div><b>4 cores</b><small>3.9 GB RAM, no GPU</small></div>
+</div>
+
+<h2>Case studies</h2>
+
+<article>
+  <h3>WuBu3D — a film compiler</h3>
+  <div class="meta">Engine · C11 + Python · 2026</div>
+  <p>A JSON spec compiles to a finished film: geometry, a 21-joint rig with a walk cycle, camera
+  keys, three raster passes, a compositor, a grader, a score and a mux. Two renderers read the same
+  spec — a Cycles path for delivery and my own C11 rasteriser for preview — so a look can be judged
+  in seconds instead of an hour.</p>
+  <dl class="kv">
+    <dt>Renderer</dt><dd><code>wuburaster.c</code>, ~330 lines, no dependencies: colour, depth and
+      normal passes, Gouraud shading, height fog, a lantern as a real point light</dd>
+    <dt>Rig</dt><dd><code>wubu3d_rig.py</code>: 21 joints, 1.78 m adult proportions, contact/pass walk
+      cycle, contact sheets verified against the render</dd>
+    <dt>Measured</dt><dd>854×480, 144 frames, 2 578 tris/frame: raster 47.5 s, composite 23 s,
+      grade 20 s, mux 5 s — <b>110 s to a finished MP4</b></dd>
+    <dt>What I cut</dt><dd>Blender's compositor (segfaulted on this build), and a 25-tap denoiser
+      that became a separable 10-tap for 6× the speed at equal PSNR</dd>
+  </dl>
+</article>
+
+<article>
+  <h3>THE LIGHTKEEPER</h3>
+  <div class="meta">Short film · 90 s · 8 shots · 2 160 frames</div>
+  <p>A keeper walks a plain at night and the light goes out behind him. Procedural geometry, a
+  silhouette-led character, a score written as an A–C–E motif that rises a fourth at the end.</p>
+  <dl class="kv">
+    <dt>Pipeline</dt><dd>Cycles CPU at 400×225 / 4 spp, 62 min for 2 160 frames, then my own à-trous
+      denoiser, then a NumPy grade (median de-firefly before bloom, S-curve, highlight rolloff)</dd>
+    <dt>Delivered</dt><dd>896×504, H.264, −16.9 LUFS master</dd>
+    <dt>What I cut</dt><dd>The Blender compositor entirely, after it crashed the render; bloom and
+      halation moved into Python where they can be inspected and iterated in seconds</dd>
+    <dt>Lesson</dt><dd>A procedural silhouette reads at 30 m and fails at 3 m — that constraint became
+      the film's staging grammar instead of a defect to hide</dd>
+  </dl>
+</article>
+
+<article>
+  <h3>A denoiser that fits in a C file</h3>
+  <div class="meta">Signal processing · C11 · benchmarked against ground truth</div>
+  <p>Path-traced frames at low sample counts are noisy. I wrote an edge-aware à-trous filter and
+  measured it against a 64-spp ground truth rather than trusting how it looked.</p>
+  <dl class="kv">
+    <dt>Result</dt><dd>8 spp noisy 34.53 dB → <b>35.96 dB</b> at σ=10 (PSNR, 480p); temporal mode
+      lifts a sequence from 25.92 to 35.91 dB</dd>
+    <dt>Speed</dt><dd>25 taps 1 604 ms/frame → separable 10 taps <b>247.9 ms</b> → with temporal
+      reuse <b>56.6 ms</b> (7.2 Mpix/s)</dd>
+    <dt>Honest gap</dt><dd>Intel OIDN reaches 38.11 dB but costs ~17 s/frame on this box; the
+      trade-off is stated rather than hidden</dd>
+  </dl>
+</article>
+
+<h2>Contact</h2>
+<footer>
+  <p>James Taylor · Piqua, Ohio · open to remote research and technical roles, and to grant-funded
+  work building an animation and ML lab in Ohio.</p>
+  <p><a href="https://github.com/waefrebeorn">github.com/waefrebeorn</a>
+     <a href="https://huggingface.co/WaefreBeorn">huggingface.co/WaefreBeorn</a>
+     <a href="https://youtube.com/@wubustreams">youtube.com/@wubustreams</a></p>
+  <p style="color:#6f6a5f;font-size:12px">WuBu3D, THE LIGHTKEEPER, FIRST LIGHT and the denoiser are
+  original work. No third-party models, no stock footage, no template.</p>
+</footer>
+
+</div>
+</body>
+</html>
