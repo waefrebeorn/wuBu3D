@@ -43,7 +43,11 @@ typedef struct { uint32_t a, b, c; } Tri;
 typedef struct {
     float cx, cy, cz, tx, ty, tz, fov, fog;
     float lx, ly, lz, li;
-    float sc_r, sc_g, sc_b, pad0;
+    float sc_r, sc_g, sc_b, ambient;
+    /* Movie Render Queue's temporal sample count, cheap version: each subframe is the
+       same scene at a subpixel offset (anti-aliasing) and a subframe time (motion blur).
+       Two floats buy both, because the caller averages the subframes. */
+    float jitter_x, jitter_y, pad1, pad2;
 } Frame;
 
 typedef struct { float vx, vy, vz; float sh[3]; float kd[3]; float n[3]; float a; uint8_t tag; } CVert;
@@ -285,8 +289,8 @@ static void raster_tri(Ctx *c, const CVert *A, const CVert *B, const CVert *C, i
     const CVert *p3[3] = { A, B, C };
     int32_t sx[3], sy[3]; float iz[3];
     for (int k = 0; k < 3; k++) {
-        sx[k] = (int32_t)lrintf(c->cx + c->focal * p3[k]->vx / p3[k]->vz);
-        sy[k] = (int32_t)lrintf(c->cy - c->focal * p3[k]->vy / p3[k]->vz);
+        sx[k] = (int32_t)lrintf(c->cx + c->fr.jitter_x + c->focal * p3[k]->vx / p3[k]->vz);
+        sy[k] = (int32_t)lrintf(c->cy + c->fr.jitter_y - c->focal * p3[k]->vy / p3[k]->vz);
         iz[k] = 1.0f / p3[k]->vz;
     }
     int32_t minx = sx[0], maxx = sx[0], miny = sy[0], maxy = sy[0];
@@ -488,7 +492,7 @@ int main(int argc, char **argv) {
 
         ctx.sb_minx = 1 << 30; ctx.sb_miny = 1 << 30; ctx.sb_maxx = -1; ctx.sb_maxy = -1;
         ctx.fr = fr;
-        g_amb = (fr.pad0 > 0.0f) ? fr.pad0 : 0.24f;
+        g_amb = (fr.ambient > 0.0f) ? fr.ambient : 0.24f;
         ctx.eye[0]=fr.cx; ctx.eye[1]=fr.cy; ctx.eye[2]=fr.cz;
         float tg[3] = {fr.tx,fr.ty,fr.tz};
         vsub(tg, ctx.eye, ctx.fwd); vnorm(ctx.fwd);
@@ -619,8 +623,8 @@ int main(int argc, char **argv) {
                     float near_z = fminf(in[0].vz, fminf(in[1].vz, in[2].vz));
                     float bx0 = 1e9f, bx1 = -1e9f, by0 = 1e9f, by1 = -1e9f;
                     for (int k = 0; k < 3; k++) {
-                        float sxk = ctx.cx + ctx.focal * in[k].vx / in[k].vz;
-                        float syk = ctx.cy - ctx.focal * in[k].vy / in[k].vz;
+                        float sxk = ctx.cx + fr.jitter_x + ctx.focal * in[k].vx / in[k].vz;
+                        float syk = ctx.cy + fr.jitter_y - ctx.focal * in[k].vy / in[k].vz;
                         if (sxk < bx0) bx0 = sxk; if (sxk > bx1) bx1 = sxk;
                         if (syk < by0) by0 = syk; if (syk > by1) by1 = syk;
                     }

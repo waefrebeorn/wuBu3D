@@ -23,6 +23,38 @@ python3 wubu3d.py qa       specs/x.json  # luma, motion, dead frames from the re
 python3 wubu3d.py still    specs/x.json --at 70   # one frame through the raster path, ~1 s
 ```
 
+## Temporal samples: anti-aliasing and motion blur
+
+Two keys, one mechanism, straight out of a film render queue:
+
+```json
+"accum": 4,        // subframes per output frame, 1..16
+"shutter": 0.5     // 180-degree shutter, fraction of a frame, 0..1
+```
+
+Each output frame renders `accum` subframes with a Halton(2,3) subpixel jitter (that is the
+anti-aliasing) spread across the shutter interval (that is the motion blur), and the composite
+averages them. Depth and normals come from the first subframe — averaging a depth buffer across
+a moving frame means nothing.
+
+Cost is linear in `accum`: 4 subframes is 4× the raster time and ~4× the composite. On the demo
+spec that is 17.7 → ~70 ms/frame, still seconds for a 144-frame film. Use `accum: 1` (the
+default) for blocking and `4`/`8` with `shutter: 0.5` for a delivery look. Motion blur only shows
+where the camera and the subject actually move relative to each other: with a `follow` camera the
+subject stays put and only the ground streaks.
+
+## Tone mapping
+
+```json
+"tonemap": "aces"   // default "srgb"
+```
+
+`srgb` applies the ACES fit to display-encoded values — fast, and what every earlier film here
+used. `aces` does what a film pipeline does: decode to linear, expose, apply the ACES fit, then
+encode for the display. The difference is visible the moment anything is bright: the encoded
+version clips the ground to flat white, the linear one rolls the highlights off and keeps the
+gradient. Unreal's colour pipeline takes the same order of operations, for the same reason.
+
 ## Vertical and captions
 
 `"preset": "vertical"` renders 720×1280 — the grade skips the 2.39:1 bars for portrait frames,

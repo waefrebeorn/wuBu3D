@@ -205,6 +205,27 @@ def _():
     assert (band > 200).sum() > 40, f"caption pixels missing ({(band > 200).sum()} bright)"
 
 
+@case("accum/shutter/tonemap validate, and out-of-range values are refused")
+def _():
+    ok = dict(GOOD, accum=4, shutter=0.5, tonemap="aces")
+    assert run(["validate", str(spec_file("acc_ok", ok))]).returncode == 0
+    bad = dict(GOOD, accum=99)
+    r = run(["validate", str(spec_file("acc_bad", bad))])
+    assert r.returncode == 2 and "accum" in r.stdout, r.stdout
+
+
+@case("a 2-frame render with 3 subframes writes 2 frames, not 6")
+def _():
+    spec = dict(GOOD, name="subframes", duration=2 / 24, fps=24, resolution=[96, 64],
+                samples=1, ssaa=1, accum=3, shutter=0.5,
+                cast=[{"name": "walker", "path": [[0, -2], [0, 2]], "walk": [0, 2]}],
+                shots=[{"in": 0, "out": 1, "cam": [0, -5, 1.6], "target": [0, 0, 1.0], "lens": 40}])
+    r = run(["raster", str(spec_file("subframes", spec))])
+    assert r.returncode == 0, r.stderr[-400:]
+    graded = list((ROOT / "out" / "subframes" / "graded").glob("f_*.png"))
+    assert len(graded) == 2, f"expected 2 output frames, got {len(graded)}"
+
+
 print(f"\n{len(PASS)} passed, {len(FAIL)} failed")
 if FAIL:
     for n, e in FAIL:

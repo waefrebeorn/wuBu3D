@@ -908,7 +908,7 @@ def _static_scene(spec):
              rng.uniform(0.8,2.2), rng.uniform(0.8,2.2), h, gc)
     return verts, tris
 
-def _frame_params(spec, f):
+def _frame_params(spec, f, jx=0.0, jy=0.0):
     shots = spec["shots"]; names = [c["name"] for c in spec["cast"]]
     sh = shots[0]
     for s_ in shots:
@@ -977,7 +977,7 @@ def _frame_params(spec, f):
         lx = ly = lz = 0.0
         return (*cam, *tgt, 2.0*math.degrees(math.atan(12.0/max(sh.get("lens", 40), 1e-3))),
                 spec.get("fog", 140.0), lx, ly, lz, 0.0, 1.0, 0.72, 0.36,
-                float(spec.get("ambient", 0.24)))
+                float(spec.get("ambient", 0.24)), jx, jy, 0.0, 0.0)
     subj = next((c for c in spec["cast"] if c["name"] == sh.get("follow")), spec["cast"][0])
     sp = _cast_at(subj, f)
     pth = subj["path"]
@@ -989,7 +989,18 @@ def _frame_params(spec, f):
         lx, ly, lz = _lantern(subj, f, yaw, sp)
     li = float((subj.get("lantern") or {}).get("intensity", subj.get("lantern_intensity", 0.95)))
     sr, sg, sb = (subj.get("lantern") or {}).get("color", (1.0, 0.72, 0.36))
-    return (*cam, *tgt, fov, spec.get("fog", 140.0), lx, ly, lz, li, sr, sg, sb, float(spec.get("ambient", 0.24)))
+    return (*cam, *tgt, fov, spec.get("fog", 140.0), lx, ly, lz, li, sr, sg, sb,
+            float(spec.get("ambient", 0.24)), jx, jy, 0.0, 0.0)
+
+def _halton(i: int, base: int) -> float:
+    """Halton sequence — the low-discrepancy jitter a temporal AA needs (UE uses Sobol)."""
+    f, r = 1.0, 0.0
+    while i > 0:
+        f /= base
+        r += f * (i % base)
+        i //= base
+    return r
+
 
 def build_raster_scene(spec, ssaa=1, f0=None, f1=None):
     """WB3D v3: per-frame geometry, optional supersampling"""
@@ -1001,11 +1012,25 @@ def build_raster_scene(spec, ssaa=1, f0=None, f1=None):
     a = int(rng[0]) if rng else (f0 if f0 is not None else 0)
     b = int(rng[1]) if rng else (f1 if f1 is not None else nf - 1)
     frames_to_do = list(range(max(0, a), min(nf - 1, b) + 1))
-    buf = bytearray(b"WB3D" + struct.pack("<3I", len(frames_to_do), w, h))
+    # Temporal samples: `accum` subframes per output frame. Subpixel jitter (Halton 2,3)
+    # buys anti-aliasing; `shutter` spreads those subframes across the shutter interval and
+    # buys motion blur. Both come from the same averaging in composite_passes, which is how
+    # Movie Render Queue's temporal sample count works — this is the poor man's version and
+    # it is exact, because our raster is cheap enough to render the subframes for real.
+    accum = max(1, int(spec.get("accum", 1)))
+    shutter = max(0.0, float(spec.get("shutter", 0.0)))
+    buf = bytearray(b"WB3D" + struct.pack("<3I", len(frames_to_do) * accum, w, h))
     for f in frames_to_do:
+      for k in range(accum):
+        t = f + (shutter * ((k + 0.5) / accum - 0.5) if accum > 1 else 0.0)
         verts = list(static_v); tris = list(static_t)
         for c in (spec.get("cast") or []):
-            figure_at(c, f, verts, tris)
+            figure_at(c, t, verts, tris)
+        if accum > 1:
+            jx = _halton(f * accum + k + 1, 2) - 0.5
+            jy = _halton(f * accum + k + 1, 3) - 0.5
+        else:
+            jx = jy = 0.0
         buf += struct.pack("<2I", len(verts), len(tris))
         g = spec.get("raster_gain", 1.15)
         # vertices past the static scene are the character; tag them so the rasteriser
@@ -1019,7 +1044,7 @@ def build_raster_scene(spec, ssaa=1, f0=None, f1=None):
                                tag, 0, 0, 0)
         for t in tris:
             buf += struct.pack("<3I", *t)
-        buf += struct.pack("<16f", *_frame_params(spec, f))
+        buf += struct.pack("<20f", *_frame_params(spec, f, jx, jy))
     return bytes(buf)
 
 
@@ -1092,7 +1117,7 @@ def _ao_screenspace(dep, nrm, cam, radius=0.35, rays=10, steps=5):
     return np.where(np.isfinite(dep) & (dep < 1e5), ao, 1.0)
 
 
-def composite_passes(spec, src_dir: Path, out_dir: Path, f0: int = 0) -> Path:
+def composite_passes(spec, src_dir: Path, out_dir: Path, f0: int = 0, accum: int = 1) -> Path:
     """colour + depth + normal -> shaded frame: screen-space AO, normal rim, haze"""
     import numpy as np
     from PIL import Image, ImageFilter
@@ -1102,10 +1127,21 @@ def composite_passes(spec, src_dir: Path, out_dir: Path, f0: int = 0) -> Path:
         raise SystemExit("no raster passes found")
     t0 = time.time()
     tw, th = spec["resolution"]
-    for cpath in cols:
+    accum = max(1, int(accum))
+    groups = {}
+    for i, c in enumerate(cols):
+        groups.setdefault(i // accum, []).append(c)
+    for gidx, group in sorted(groups.items()):
+        cpath = group[0]
         idx = cpath.stem.split("_")[-1]
-        im = Image.open(cpath).convert("RGB")
-        rgb = np.asarray(im, dtype=np.float32) / 255.0
+        # average the subframes in linear-ish space: this is where jittered anti-aliasing
+        # and shutter motion blur become pixels. Depth and normals come from the first
+        # subframe, because averaging a depth buffer across a moving frame is meaningless.
+        acc_rgb = None
+        for c_ in group:
+            a_ = np.asarray(Image.open(c_).convert("RGB"), dtype=np.float32) / 255.0
+            acc_rgb = a_ if acc_rgb is None else acc_rgb + a_
+        rgb = acc_rgb / float(len(group))
         h, w = rgb.shape[:2]
         import struct as _st
         def _read_bin(path, ch):
@@ -1161,8 +1197,9 @@ def composite_passes(spec, src_dir: Path, out_dir: Path, f0: int = 0) -> Path:
         out_img = Image.fromarray((np.clip(lit, 0, 1)*255).astype(np.uint8))
         if (w, h) != (tw, th):
             out_img = out_img.resize((tw, th), Image.LANCZOS)   # supersample resolve
-        out_img.save(out_dir / f"f_{int(idx) + f0:04d}.png")
-    print(f"[wubu3d] composited {len(cols)} frames (AO + rim + haze) in {time.time()-t0:.1f}s")
+        out_img.save(out_dir / f"f_{f0 + gidx:04d}.png")
+    print(f"[wubu3d] composited {len(groups)} frames from {len(cols)} subframe(s) "
+          f"(AO + rim + haze) in {time.time()-t0:.1f}s")
     return out_dir
 
 def raster(spec_path: Path) -> Path:
@@ -1192,7 +1229,8 @@ def raster(spec_path: Path) -> Path:
     print(f"[wubu3d] rasterised {spec['frames']} frames in {tim['raster']:.2f}s — "
           f"{err.strip().splitlines()[-1] if err.strip() else ''}")
     f0 = int(spec["range"][0]) if spec.get("range") else 0
-    t0 = time.time(); frames = composite_passes(spec, raw, comp, f0); tim["composite"] = time.time() - t0
+    accum = max(1, int(spec.get("accum", 1)))
+    t0 = time.time(); frames = composite_passes(spec, raw, comp, f0, accum); tim["composite"] = time.time() - t0
     t0 = time.time(); graded = grade(spec, frames, out); tim["grade"] = time.time() - t0
     t0 = time.time(); wav = score(spec, out); tim["score"] = time.time() - t0
     t0 = time.time(); mp4 = mux(spec, graded, wav, out); tim["mux"] = time.time() - t0
@@ -1226,7 +1264,7 @@ def still(spec_path: Path, frame: int = 0) -> Path:
     r = subprocess.run([str(RASTER_BIN), str(raw) + "/"], input=data, capture_output=True)
     if r.returncode != 0:
         raise SystemExit("raster failed: " + r.stderr.decode(errors="replace")[-400:])
-    frames = composite_passes(one, raw, comp, n)
+    frames = composite_passes(one, raw, comp, n, max(1, int(spec.get("accum", 1))))
     graded = grade(one, frames, out)
     # the graded directory keeps frames from earlier runs; take THIS frame, not the
     # first file that happens to sort first
@@ -1312,8 +1350,19 @@ def grade(spec: dict, src: Path, out: Path) -> Path:
 
         # ACES (Narkowicz) — a neutral tone map, so the grade below is doing the look
         expo = float(spec.get("exposure", 1.55))
-        x = np.clip(rgb * expo, 0, 1)
-        s = np.clip((x * (2.51 * x + 0.03)) / (x * (2.43 * x + 0.59) + 0.14), 0, 1)
+        if spec.get("tonemap") == "aces":
+            # Unreal's order of operations: the tone curve belongs in LINEAR light, then the
+            # display transform. Applied to sRGB-encoded values (the default here) the same
+            # ACES fit crushes highlights and shifts hue; in linear, highlights roll off
+            # instead of clipping, which is what makes a frame read as film rather than video.
+            lin = np.where(rgb <= 0.04045, rgb / 12.92, ((rgb + 0.055) / 1.055) ** 2.4)
+            x = np.clip(lin * expo, 0, None)
+            y = (x * (2.51 * x + 0.03)) / (x * (2.43 * x + 0.59) + 0.14)
+            s = np.where(y <= 0.0031308, y * 12.92, 1.055 * np.power(y, 1.0 / 2.4) - 0.055)
+            s = np.clip(s, 0, 1)
+        else:
+            x = np.clip(rgb * expo, 0, 1)
+            s = np.clip((x * (2.51 * x + 0.03)) / (x * (2.43 * x + 0.59) + 0.14), 0, 1)
 
         # split tone: cool shadows, warm highlights
         l = s.max(axis=2, keepdims=True)

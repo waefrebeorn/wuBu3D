@@ -24,7 +24,7 @@ KNOWN_TOP = [
     "name", "preset", "duration", "fps", "resolution", "samples", "denoise", "seed",
     "fog", "ssaa", "raster_gain", "range", "ground", "sky", "lights", "props", "cast",
     "shots", "titles", "fade", "dof", "sound", "exposure", "frames",
-    "ao", "ao_radius", "ao_rays", "ambient", "captions", "upscale",
+    "ao", "ao_radius", "ao_rays", "ambient", "captions", "accum", "shutter", "tonemap", "upscale",
 ]
 
 
@@ -190,6 +190,12 @@ def validate(raw: dict) -> tuple[list, list]:
                     err(f"captions[{i}].out", "must be greater than in")
         else:
             err("captions", "must be a list of {text, in, out} or {words: path}")
+    if raw.get("tonemap") is not None and raw["tonemap"] not in ("srgb", "aces"):
+        err("tonemap", "must be 'srgb' (tone curve on encoded values) or 'aces' (linear)")
+    if raw.get("accum") is not None and (not _is_int(raw["accum"]) or not (1 <= raw["accum"] <= 16)):
+        err("accum", "must be an integer 1..16 subframes per output frame")
+    if raw.get("shutter") is not None and not (0.0 <= _num(raw["shutter"]) <= 1.0):
+        err("shutter", "must be 0..1 of a frame time (0.5 is a 180-degree shutter)")
     if raw.get("ambient") is not None and not (0.0 <= _num(raw["ambient"]) <= 1.5):
         err("ambient", "must be 0..1.5 — the flat light floor every surface keeps in shadow")
     if raw.get("ao") is not None and raw["ao"] not in ("taps", "ssao"):
@@ -654,6 +660,12 @@ SCHEMA = {
             "cue": {"type": "number", "minimum": 0, "maximum": 5},
             "wind": {"type": "number", "minimum": 0, "maximum": 1}}},
         "exposure": {"type": "number", "minimum": 0.1, "maximum": 5.0},
+        "tonemap": {"enum": ["srgb", "aces"], "default": "srgb",
+                    "description": "aces applies the tone curve in linear light, like a film pipeline"},
+        "accum": {"type": "integer", "minimum": 1, "maximum": 16, "default": 1,
+                  "description": "temporal samples per output frame: jittered AA and shutter blur"},
+        "shutter": {"type": "number", "minimum": 0.0, "maximum": 1.0, "default": 0.0,
+                    "description": "shutter interval as a fraction of a frame (0.5 = 180 degrees)"},
         "ambient": {"type": "number", "minimum": 0.0, "maximum": 1.5, "default": 0.24,
                     "description": "flat light floor; keeps shadowed surfaces readable"},
         "captions": {
