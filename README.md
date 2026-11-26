@@ -23,6 +23,7 @@ That is the whole claim, and every part of it is checkable from this repository.
 | `wubu2d.py` | flat cartoon puppets drawn in code, joint-driven | 9 poses × 7 expressions |
 | `wubudenoise.c` | edge-aware à-trous denoiser, RGB→YCbCr, temporal reuse | 34.53 → 35.96 dB PSNR, 56 ms/frame |
 | `wubu3d.py` | spec → film: geometry, camera, grade, score, mux | 110 s end to end at 480p |
+| `wubu3d_spec.py` | the spec contract: schema, validation, resolve, cost estimate | 12 contract tests pass |
 
 Sources live in `src/`. Around them:
 
@@ -51,6 +52,26 @@ Blender 5.x is required for the Cycles path; the raster path runs on `gcc` and `
 
 Nothing here is a secret, a fork, or a wrapper. The renderer, the denoiser, the rig and the
 grade are all written from scratch against this project's own formats.
+
+## Driven by an agent, not a mouse
+
+The interface is a JSON file and a CLI with exit codes, because a process has to be able to
+tell a bad spec from a broken box. `schema` describes the file, `validate` names the exact
+field that is wrong, `plan` prices both render paths from measured receipts, and every
+delivery writes `out/<name>/receipt.json` — resolution, frames, per-stage seconds, triangle
+count, QA numbers and the MP4's sha256.
+
+```bash
+python3 src/wubu3d.py schema                       # the spec, as JSON Schema
+python3 src/wubu3d.py validate specs/demo_preview.json   # exit 2 + field paths if illegal
+python3 src/wubu3d.py plan     specs/demo_preview.json   # frames, shots, cost on both paths
+python3 src/wubu3d.py raster   specs/demo_preview.json   # a whole film in ~20 s, no Blender
+python3 src/wubu3d.py make     specs/probe_cycles.json   # Cycles delivery + receipt
+python3 src/wubu3d.py qa       specs/demo_preview.json   # lit? moving? dead frames?
+python3 tests/test_agent_cli.py                    # the contract, 12 cases, ~2 s
+```
+
+Full contract, exit codes and receipt schema: [`docs/AGENT_API.md`](docs/AGENT_API.md).
 
 ## The ecosystem
 
