@@ -1,0 +1,46 @@
+{
+ "name": "cap_probe",
+ "preset": "vertical",
+ "duration": 2.0,
+ "fps": 24,
+ "samples": 4,
+ "captions": {
+  "words": "assets/words_probe.json",
+  "size": 0.045,
+  "y": 0.7,
+  "stroke": true
+ },
+ "ambient": 0.3,
+ "cast": [
+  {
+   "name": "w",
+   "path": [
+    [
+     0,
+     -1
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "walk": [
+    0,
+    48
+   ]
+  }
+ ],
+ "shots": [
+  {
+   "in": 0,
+   "out": 47,
+   "follow": "w",
+   "cam_offset": [
+    1.8,
+    3.2,
+    1.5
+   ],
+   "lens": 40
+  }
+ ]
+}

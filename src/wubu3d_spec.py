@@ -24,7 +24,7 @@ KNOWN_TOP = [
     "name", "preset", "duration", "fps", "resolution", "samples", "denoise", "seed",
     "fog", "ssaa", "raster_gain", "range", "ground", "sky", "lights", "props", "cast",
     "shots", "titles", "fade", "dof", "sound", "exposure", "frames",
-    "ao", "ao_radius", "ao_rays", "captions", "upscale",
+    "ao", "ao_radius", "ao_rays", "ambient", "captions", "upscale",
 ]
 
 
@@ -170,8 +170,15 @@ def validate(raw: dict) -> tuple[list, list]:
     caps = raw.get("captions")
     if caps is not None:
         if isinstance(caps, dict):
-            if not isinstance(caps.get("words"), str):
+            wpath = caps.get("words")
+            if not isinstance(wpath, str):
                 err("captions", "a captions object needs 'words': a path to a words json")
+            elif wpath.startswith("/") or ".." in wpath or not wpath.endswith(".json"):
+                err("captions.words", "must be a .json path inside the project")
+            if "size" in caps and not (0 < _num(caps["size"]) <= 0.5):
+                err("captions.size", "must be 0..0.5 of frame height")
+            if "y" in caps and not (0 <= _num(caps["y"]) <= 1):
+                err("captions.y", "must be 0..1 of frame height")
         elif isinstance(caps, list):
             for i, c in enumerate(caps):
                 if not isinstance(c, dict) or not isinstance(c.get("text"), str):
@@ -183,6 +190,8 @@ def validate(raw: dict) -> tuple[list, list]:
                     err(f"captions[{i}].out", "must be greater than in")
         else:
             err("captions", "must be a list of {text, in, out} or {words: path}")
+    if raw.get("ambient") is not None and not (0.0 <= _num(raw["ambient"]) <= 1.5):
+        err("ambient", "must be 0..1.5 — the flat light floor every surface keeps in shadow")
     if raw.get("ao") is not None and raw["ao"] not in ("taps", "ssao"):
         err("ao", "must be 'taps' (default, cheap) or 'ssao' (raytraced, ~0.4 s/frame)")
     if raw.get("ao_radius") is not None and not (0.02 <= _num(raw["ao_radius"]) <= 8.0):
@@ -645,11 +654,21 @@ SCHEMA = {
             "cue": {"type": "number", "minimum": 0, "maximum": 5},
             "wind": {"type": "number", "minimum": 0, "maximum": 1}}},
         "exposure": {"type": "number", "minimum": 0.1, "maximum": 5.0},
+        "ambient": {"type": "number", "minimum": 0.0, "maximum": 1.5, "default": 0.24,
+                    "description": "flat light floor; keeps shadowed surfaces readable"},
+        "captions": {
+            "type": "object",
+            "properties": {
+                "words": {"type": "string", "description": "json list of {word, start, end}"},
+                "size": {"type": "number", "exclusiveMinimum": 0, "maximum": 0.5},
+                "y": {"type": "number", "minimum": 0, "maximum": 1},
+                "stroke": {"type": "boolean"},
+            },
+        },
         "ao": {"enum": ["taps", "ssao"], "default": "taps",
                "description": "ambient occlusion pass: fixed taps (cheap) or raytraced"},
         "ao_radius": {"type": "number", "minimum": 0.02, "maximum": 8.0, "default": 0.35},
         "ao_rays": {"type": "integer", "minimum": 1, "maximum": 32, "default": 10},
-        "captions": {"description": "word captions: [{text,in,out}] or {words: path to a words json}"},
     },
     "additionalProperties": True,
 }

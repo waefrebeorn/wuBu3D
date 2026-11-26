@@ -23,6 +23,28 @@ python3 wubu3d.py qa       specs/x.json  # luma, motion, dead frames from the re
 python3 wubu3d.py still    specs/x.json --at 70   # one frame through the raster path, ~1 s
 ```
 
+## Vertical and captions
+
+`"preset": "vertical"` renders 720×1280 — the grade skips the 2.39:1 bars for portrait frames,
+because cropping a vertical frame to cinema ratio throws away the picture the format exists for.
+
+Captions take either a list of `{text, in, out}` (seconds) or a pointer to a whisper-style words
+file, which is what the transcription tools already emit:
+
+```json
+"captions": {"words": "assets/words_probe.json", "size": 0.045, "y": 0.7, "stroke": true}
+```
+
+Words files are `[{"word": "hello", "start": 0.2, "end": 0.6}]`. One word at a time, centered,
+with a black outline (`stroke_width = size/16`). The path must stay inside the project.
+
+`"ambient"` (0..1.5, default 0.24) is the flat light floor: what a surface keeps when nothing
+lights it. It rides in the frame struct's spare float, so it costs the rasteriser nothing.
+
+**Frame timing is the frame number, not the loop index.** Titles, captions and fades are timed
+from the frame's own number, so a range render (`"range": [120, 180]`) or `still --at 150` shows
+the captions that belong at 6.25 s — not the ones from the top of the film.
+
 ## Meshes
 
 Real geometry comes in as OBJ. An agent that can model (or finds an asset) does not have to

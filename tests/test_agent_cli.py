@@ -185,6 +185,26 @@ def _():
     assert "props.meshes[0].obj" in r.stdout and "inside the project" in r.stdout, r.stdout
 
 
+@case("a caption renders at the right time in a still (frame-numbered, not loop index)")
+def _():
+    words = ROOT / "assets" / "_test_words.json"      # must live inside the project
+    words.write_text(json.dumps([{"word": "hello", "start": 0.4, "end": 0.9}]))
+    spec = dict(GOOD, duration=1.0, resolution=[320, 180], samples=1, ssaa=1,
+                name="captest",
+                captions={"words": "assets/_test_words.json", "size": 0.12, "y": 0.6, "stroke": True})
+    p = spec_file("captest", spec)
+    r = run(["still", str(p), "--at", "15"])          # 15/24 = 0.625 s, inside the caption
+    assert r.returncode == 0, r.stderr[-300:]
+    out = ROOT / "out" / "captest" / "still_0015.png"
+    assert out.exists(), f"no still at {out}"
+    from PIL import Image
+    import numpy as np
+    a = np.asarray(Image.open(out).convert("L"), dtype=np.uint8)
+    h = a.shape[0]
+    band = a[int(h * 0.45):int(h * 0.75)]
+    assert (band > 200).sum() > 40, f"caption pixels missing ({(band > 200).sum()} bright)"
+
+
 print(f"\n{len(PASS)} passed, {len(FAIL)} failed")
 if FAIL:
     for n, e in FAIL:

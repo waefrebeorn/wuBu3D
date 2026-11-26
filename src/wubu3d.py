@@ -1092,7 +1092,7 @@ def _ao_screenspace(dep, nrm, cam, radius=0.35, rays=10, steps=5):
     return np.where(np.isfinite(dep) & (dep < 1e5), ao, 1.0)
 
 
-def composite_passes(spec, src_dir: Path, out_dir: Path) -> Path:
+def composite_passes(spec, src_dir: Path, out_dir: Path, f0: int = 0) -> Path:
     """colour + depth + normal -> shaded frame: screen-space AO, normal rim, haze"""
     import numpy as np
     from PIL import Image, ImageFilter
@@ -1161,7 +1161,7 @@ def composite_passes(spec, src_dir: Path, out_dir: Path) -> Path:
         out_img = Image.fromarray((np.clip(lit, 0, 1)*255).astype(np.uint8))
         if (w, h) != (tw, th):
             out_img = out_img.resize((tw, th), Image.LANCZOS)   # supersample resolve
-        out_img.save(out_dir / f"f_{idx}.png")
+        out_img.save(out_dir / f"f_{int(idx) + f0:04d}.png")
     print(f"[wubu3d] composited {len(cols)} frames (AO + rim + haze) in {time.time()-t0:.1f}s")
     return out_dir
 
@@ -1191,7 +1191,8 @@ def raster(spec_path: Path) -> Path:
     err = r.stderr.decode(errors="replace")
     print(f"[wubu3d] rasterised {spec['frames']} frames in {tim['raster']:.2f}s — "
           f"{err.strip().splitlines()[-1] if err.strip() else ''}")
-    t0 = time.time(); frames = composite_passes(spec, raw, comp); tim["composite"] = time.time() - t0
+    f0 = int(spec["range"][0]) if spec.get("range") else 0
+    t0 = time.time(); frames = composite_passes(spec, raw, comp, f0); tim["composite"] = time.time() - t0
     t0 = time.time(); graded = grade(spec, frames, out); tim["grade"] = time.time() - t0
     t0 = time.time(); wav = score(spec, out); tim["score"] = time.time() - t0
     t0 = time.time(); mp4 = mux(spec, graded, wav, out); tim["mux"] = time.time() - t0
@@ -1225,13 +1226,18 @@ def still(spec_path: Path, frame: int = 0) -> Path:
     r = subprocess.run([str(RASTER_BIN), str(raw) + "/"], input=data, capture_output=True)
     if r.returncode != 0:
         raise SystemExit("raster failed: " + r.stderr.decode(errors="replace")[-400:])
-    frames = composite_passes(one, raw, comp)
+    frames = composite_passes(one, raw, comp, n)
     graded = grade(one, frames, out)
-    src = sorted(Path(graded).glob("f_*.png"))
-    if not src:
-        raise SystemExit("grade produced no frame")
+    # the graded directory keeps frames from earlier runs; take THIS frame, not the
+    # first file that happens to sort first
+    this = Path(graded) / f"f_{n:04d}.png"
+    if not this.exists():
+        cand = sorted(Path(graded).glob("f_*.png"))
+        if not cand:
+            raise SystemExit("grade produced no frame")
+        this = cand[-1]
     dst = out / f"still_{n:04d}.png"
-    shutil.copyfile(src[0], dst)
+    shutil.copyfile(this, dst)
     print(f"[wubu3d] still frame {n} -> {dst} ({time.time()-t0:.2f}s)")
     return dst
 
@@ -1270,6 +1276,10 @@ def grade(spec: dict, src: Path, out: Path) -> Path:
     t0 = time.time()
     _fonts = {}
     for i, f in enumerate(files):
+        try:
+            i = int(f.stem.split('_')[-1])   # a range render starts at frame N, not 0
+        except ValueError:
+            pass
         arr = np.asarray(Image.open(f).convert("RGBA"), dtype=np.float32) / 255
         rgb, alpha = arr[..., :3], arr[..., 3:4]
         h, w = rgb.shape[:2]
