@@ -386,6 +386,11 @@ def validate(raw: dict) -> tuple[list, list]:
                     err(f"{p}.{k}", "must be [x, y, z] or [[x,y,z], [x,y,z]] for a move")
             if "cam_offset" in s and not _v3(s["cam_offset"]):
                 err(f"{p}.cam_offset", "must be [x, y, z]")
+            if "target" not in s and "follow" not in s:
+                # follow shots aim at the subject; every other shot resolves `target`, and a
+                # missing one used to reach the builder as a KeyError after Blender had spun up
+                err(f"{p}.target", "must say where the camera looks: [x, y, z] "
+                                   "(follow shots aim at the subject instead)")
             if "follow" in s:
                 if s["follow"] not in names:
                     err(f"{p}.follow", f"no cast member named {s['follow']!r} "
