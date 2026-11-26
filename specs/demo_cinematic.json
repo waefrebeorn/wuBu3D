@@ -1,0 +1,120 @@
+{
+ "dof": {
+  "focus": 5.2,
+  "range": 7.0,
+  "amount": 0.8
+ },
+ "fade": {
+  "in": 0.7,
+  "out": 0.9
+ },
+ "titles": [
+  {
+   "text": "WuBu3D",
+   "in": 0.2,
+   "out": 2.4,
+   "size": 0.115,
+   "y": 0.4
+  },
+  {
+   "text": "one spec \u2014 two renderers",
+   "in": 0.2,
+   "out": 2.4,
+   "size": 0.042,
+   "y": 0.52
+  },
+  {
+   "text": "the keeper walks",
+   "in": 3.0,
+   "out": 5.6,
+   "size": 0.05,
+   "y": 0.86
+  }
+ ],
+ "name": "demo_cinematic",
+ "preset": "cinematic",
+ "duration": 6.0,
+ "cast": [
+  {
+   "name": "keeper",
+   "color": [
+    0.075,
+    0.07,
+    0.082
+   ],
+   "skin": [
+    0.46,
+    0.35,
+    0.28
+   ],
+   "path": [
+    [
+     -7.5,
+     -8,
+     0
+    ],
+    [
+     -1.2,
+     6.5,
+     0
+    ]
+   ],
+   "walk": [
+    0,
+    110
+   ],
+   "stride": 0.9
+  }
+ ],
+ "shots": [
+  {
+   "in": 0,
+   "out": 36,
+   "follow": "keeper",
+   "cam": [
+    -3.4,
+    -5.2,
+    1.62
+   ],
+   "cam_offset": [
+    -3.2,
+    -4.6,
+    1.62
+   ],
+   "lens": 50
+  },
+  {
+   "in": 36,
+   "out": 78,
+   "follow": "keeper",
+   "cam": [
+    -4.0,
+    -5.8,
+    1.4
+   ],
+   "cam_offset": [
+    -2.4,
+    -4.0,
+    1.4
+   ],
+   "lens": 55
+  },
+  {
+   "in": 78,
+   "out": 143,
+   "follow": "keeper",
+   "cam": [
+    -3.2,
+    -4.4,
+    1.62
+   ],
+   "cam_offset": [
+    -1.8,
+    -3.4,
+    1.7
+   ],
+   "lens": 55
+  }
+ ],
+ "exposure": 1.35
+}
