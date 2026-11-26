@@ -23,6 +23,19 @@ import argparse, json, math, os, shutil, subprocess, sys, time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
+# wubu3d.py sits at the project root on the box, and in src/ in the repo
+PROJECT = ROOT.parent if ROOT.name == "src" else ROOT
+
+
+def _bin(name: str) -> Path:
+    """Helper binaries: env override, <project>/bin, <script>/bin, then PATH."""
+    env = os.environ.get(f"WUBU_{name.upper()}")
+    for cand in (env, PROJECT / "bin" / name, ROOT / "bin" / name):
+        if cand and Path(cand).exists():
+            return Path(cand)
+    found = shutil.which(name)
+    return Path(found) if found else PROJECT / "bin" / name
+
 
 # make the box's libs importable when run with the system interpreter
 _SECRETS = Path("/opt/data/.secrets/wubu.env")
@@ -39,7 +52,7 @@ if _SYSLIB_PY not in sys.path and Path(_SYSLIB_PY).exists():
 BLENDER = os.environ.get("WUBU_BLENDER", "/opt/data/shitpost-box/blender/blender")
 SYS_LIBS = os.environ.get("WUBU_SYSLIBS", "/opt/data/shitpost-box/syslibs/usr/lib/x86_64-linux-gnu")
 FFMPEG = os.environ.get("WUBU_FFMPEG", "/usr/local/bin/ffmpeg")
-DENOISER = ROOT / "bin" / "wubudenoise"
+DENOISER = _bin("wubudenoise")
 
 PRESETS = {
     "preview":   {"resolution": [320, 180], "samples": 4, "denoise": False, "grade": True},
@@ -530,7 +543,7 @@ else:
 
 def build(spec_path: Path) -> Path:
     spec = load_spec(spec_path)
-    out = ROOT / "out" / spec["name"]
+    out = PROJECT / "out" / spec["name"]
     (out / "frames").mkdir(parents=True, exist_ok=True)
     script = SCENE_HEADER.replace("__SPEC__", repr(spec)) + SCENE_BODY  # python literal: json's true/false are not valid python
     scene = out / "scene.py"
@@ -566,7 +579,7 @@ def render(spec_path: Path) -> Path:
 
 # ───────────────────────────────────────────────────────── raster preview
 FONT_PATH = Path("/opt/data/shitpost-box/fonts/Anton-Regular.ttf")
-RASTER_BIN = ROOT / "bin" / "wuburaster"
+RASTER_BIN = _bin("wuburaster")
 
 def _eff_frame(c, f):
     """frames a character is standing still are not frames he travels.
@@ -1215,8 +1228,8 @@ DEMO = {
 
 def make_demo(preset: str) -> Path:
     spec = dict(DEMO); spec["preset"] = preset; spec["name"] = f"demo_{preset}"
-    p = ROOT / "specs" / f"{spec['name']}.json"
-    p.parent.mkdir(exist_ok=True)
+    p = PROJECT / "specs" / f"{spec['name']}.json"
+    p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(json.dumps(spec, indent=1))
     return p
 
