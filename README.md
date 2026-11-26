@@ -32,7 +32,8 @@ Sources live in `src/`. Around them:
 | `tools/silhouette.py` | measures a silhouette PNG: heads tall, shoulder-widths, hip width, knee height, leg gap |
 | `tools/salience.py` · `tools/cull_bench.py` | composition sampling and occlusion-culling benchmark |
 | `tools/build_body.py` · `tools/character_sheet.py` | body builder and contact-sheet generator used by the rig |
-| `specs/` | ten worked specs — preview, cartoon, cinematic, heavy, OIT, camera moves, plates |
+| `specs/` | twelve worked specs — preview, cartoon, cinematic, heavy, OIT, camera moves, plates, meshes |
+| `assets/` | OBJ test geometry; `props.meshes[]` imports any OBJ on both render paths |
 | `docs/` | measured notes: OIT, occlusion culling, the 10-step pipeline, SLERM provenance, security audit |
 
 ## Run it
@@ -65,6 +66,7 @@ count, QA numbers and the MP4's sha256.
 python3 src/wubu3d.py schema                       # the spec, as JSON Schema
 python3 src/wubu3d.py validate specs/demo_preview.json   # exit 2 + field paths if illegal
 python3 src/wubu3d.py plan     specs/demo_preview.json   # frames, shots, cost on both paths
+python3 src/wubu3d.py still    specs/demo_preview.json --at 70   # one frame, ~1 s
 python3 src/wubu3d.py raster   specs/demo_preview.json   # a whole film in ~20 s, no Blender
 python3 src/wubu3d.py make     specs/probe_cycles.json   # Cycles delivery + receipt
 python3 src/wubu3d.py qa       specs/demo_preview.json   # lit? moving? dead frames?
