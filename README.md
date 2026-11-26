@@ -18,7 +18,7 @@ That is the whole claim, and every part of it is checkable from this repository.
 
 | file | what it does | measured |
 |---|---|---|
-| `wuburaster.c` | fixed-function C11 rasteriser: colour, depth and normal passes, near-plane clipping, weighted blended OIT, software occlusion culling | 0.57 ms/frame at 320×180 |
+| `wuburaster.c` | fixed-function C11 rasteriser: colour, depth and normal passes, near-plane clipping, weighted blended OIT, software occlusion culling, per-pixel shadow map (2×2 PCF) | 0.57 ms/frame at 320×180, +0.38 ms/frame for shadows |
 | `wubu3d_rig.py` | 21-joint skeleton, walk cycle, pose overrides | 1.78 m, 7.2 heads |
 | `wubu2d.py` | flat cartoon puppets drawn in code, joint-driven | 9 poses × 7 expressions |
 | `wubudenoise.c` | edge-aware à-trous denoiser, RGB→YCbCr, temporal reuse | 34.53 → 35.96 dB PSNR, 56 ms/frame |

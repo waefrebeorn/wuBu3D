@@ -46,7 +46,7 @@ typedef struct {
     float sc_r, sc_g, sc_b, pad0;
 } Frame;
 
-typedef struct { float vx, vy, vz; float sh[3]; float n[3]; float a; uint8_t tag; } CVert;
+typedef struct { float vx, vy, vz; float sh[3]; float kd[3]; float n[3]; float a; uint8_t tag; } CVert;
 
 static inline void vsub(const float *a,const float *b,float *o){o[0]=a[0]-b[0];o[1]=a[1]-b[1];o[2]=a[2]-b[2];}
 static inline void vcross(const float *a,const float *b,float *o){o[0]=a[1]*b[2]-a[2]*b[1];o[1]=a[2]*b[0]-a[0]*b[2];o[2]=a[0]*b[1]-a[1]*b[0];}
@@ -86,6 +86,7 @@ static int clip_near(const CVert in[3], CVert out[4]) {
             c.vz = NEAR_Z;
             for (int k = 0; k < 3; k++) {
                 c.sh[k] = a->sh[k] + (b->sh[k] - a->sh[k]) * t;
+                c.kd[k] = a->kd[k] + (b->kd[k] - a->kd[k]) * t;
                 c.n[k]  = a->n[k]  + (b->n[k]  - a->n[k])  * t;
             }
             c.a = a->a + (b->a - a->a) * t;
@@ -168,6 +169,111 @@ static float oit_weight(float a, float z) {
     return a * w;
 }
 
+
+/* ── shadow map ────────────────────────────────────────────────────────────────
+   The one thing a fixed-function rasteriser normally cannot do. SH4DER-PVR's psm
+   route B does it as a depth map plus a per-receiver compare; the same shape works
+   here per pixel with 2x2 PCF. The map is built from the opaque triangles already
+   in the frame's stream, so the wire format does not change and the light is the
+   same fixed key direction the vertex shader uses.                              */
+#define SM 512
+static float sm_depth[SM*SM];
+static float sm_r[3], sm_u[3], sm_f[3], sm_c[3], sm_scale;
+static int sm_ok = 0;
+
+static int is_ground_tri(const Vert *A, const Vert *B, const Vert *C) {
+    return A->z < 0.2f && B->z < 0.2f && C->z < 0.2f;
+}
+
+static void build_shadowmap(const Vert *verts, const Tri *tris, uint32_t nt, const float *sun) {
+    sm_ok = 0;
+    if (nt == 0) return;
+    float up[3] = {0,0,1};
+    if (fabsf(sun[2]) > 0.95f) { up[0]=1; up[1]=0; up[2]=0; }
+    vcross(up, sun, sm_r); vnorm(sm_r);
+    vcross(sun, sm_r, sm_u); vnorm(sm_u);
+    for (int k=0;k<3;k++) sm_f[k] = sun[k];
+
+    float mn[3] = {1e30f,1e30f,1e30f}, mx[3] = {-1e30f,-1e30f,-1e30f};
+    int any = 0;
+    for (uint32_t i = 0; i < nt; i++) {
+        const Vert *V[3] = { &verts[tris[i].a], &verts[tris[i].b], &verts[tris[i].c] };
+        if (is_ground_tri(V[0], V[1], V[2])) continue;
+        any = 1;
+        for (int k = 0; k < 3; k++) {
+            const float p[3] = { V[k]->x, V[k]->y, V[k]->z };
+            for (int a = 0; a < 3; a++) { if (p[a]<mn[a]) mn[a]=p[a]; if (p[a]>mx[a]) mx[a]=p[a]; }
+        }
+    }
+    if (!any) return;
+    for (int k=0;k<3;k++) sm_c[k] = 0.5f*(mn[k]+mx[k]);
+    float dx = mx[0]-mn[0], dy = mx[1]-mn[1], dz = mx[2]-mn[2];
+    float radius = 0.5f*sqrtf(dx*dx + dy*dy + dz*dz);
+    if (radius < 8.0f) radius = 8.0f;
+    if (radius > 90.0f) radius = 90.0f;
+    sm_scale = (float)SM / (2.0f * radius);
+
+    for (size_t i = 0; i < (size_t)SM*SM; i++) sm_depth[i] = -1e30f;   /* d grows toward the light */
+
+    for (uint32_t i = 0; i < nt; i++) {
+        const Vert *V[3] = { &verts[tris[i].a], &verts[tris[i].b], &verts[tris[i].c] };
+        if (V[0]->a < 250 || V[1]->a < 250 || V[2]->a < 250) continue;   /* glass casts nothing */
+        if (is_ground_tri(V[0], V[1], V[2])) continue;                    /* the receiver */
+        float qx[3], qy[3], qd[3];
+        for (int k = 0; k < 3; k++) {
+            const float p[3] = { V[k]->x, V[k]->y, V[k]->z };
+            float rel[3]; vsub(p, sm_c, rel);
+            qx[k] = SM*0.5f + vdot(rel, sm_r) * sm_scale;
+            qy[k] = SM*0.5f - vdot(rel, sm_u) * sm_scale;
+            qd[k] = vdot(rel, sm_f);
+        }
+        float area = (qx[1]-qx[0])*(qy[2]-qy[0]) - (qx[2]-qx[0])*(qy[1]-qy[0]);
+        if (fabsf(area) < 1e-4f) continue;
+        float ia = 1.0f/area;
+        int x0 = (int)floorf(fminf(qx[0], fminf(qx[1], qx[2])));
+        int x1 = (int)ceilf (fmaxf(qx[0], fmaxf(qx[1], qx[2])));
+        int y0 = (int)floorf(fminf(qy[0], fminf(qy[1], qy[2])));
+        int y1 = (int)ceilf (fmaxf(qy[0], fmaxf(qy[1], qy[2])));
+        if (x0 < 0) x0 = 0; if (y0 < 0) y0 = 0;
+        if (x1 > SM-1) x1 = SM-1; if (y1 > SM-1) y1 = SM-1;
+        for (int y = y0; y <= y1; y++) {
+            for (int x = x0; x <= x1; x++) {
+                float px = x + 0.5f, py = y + 0.5f;
+                float w0 = ((qx[1]-px)*(qy[2]-py) - (qx[2]-px)*(qy[1]-py)) * ia;
+                float w1 = ((qx[2]-px)*(qy[0]-py) - (qx[0]-px)*(qy[2]-py)) * ia;
+                float w2 = 1.0f - w0 - w1;
+                if (w0 < 0 || w1 < 0 || w2 < 0) continue;
+                float z = w0*qd[0] + w1*qd[1] + w2*qd[2];
+                size_t idx = (size_t)y*SM + x;
+                if (z > sm_depth[idx]) sm_depth[idx] = z;    /* keep the closest to the light */
+            }
+        }
+    }
+    sm_ok = 1;
+}
+
+/* 0 = fully shadowed, 1 = fully lit; 2x2 PCF, slope-independent world bias */
+static long dbg_frag = 0, dbg_hit = 0, dbg_shadowed = 0;
+static float shadow_vis(const float *p) {
+    dbg_frag++;
+    if (!sm_ok) return 1.0f;
+    float rel[3]; vsub(p, sm_c, rel);
+    float u = SM*0.5f + vdot(rel, sm_r) * sm_scale;
+    float v = SM*0.5f - vdot(rel, sm_u) * sm_scale;
+    float d = vdot(rel, sm_f);
+    int x0 = (int)u, y0 = (int)v;
+    if (x0 < 1 || y0 < 1 || x0 >= SM-2 || y0 >= SM-2) return 1.0f;
+    dbg_hit++;
+    int lit = 0;
+    for (int dy = 0; dy < 2; dy++)
+        for (int dx = 0; dx < 2; dx++) {
+            float s = sm_depth[(size_t)(y0+dy)*SM + (x0+dx)];
+            if (s < -1e29f || d + 0.16f >= s) lit++;
+        }
+    if (lit < 4) dbg_shadowed++;
+    return lit * 0.25f;
+}
+
 static void raster_tri(Ctx *c, const CVert *A, const CVert *B, const CVert *C, int transparent) {
     const CVert *p3[3] = { A, B, C };
     int32_t sx[3], sy[3]; float iz[3];
@@ -217,9 +323,11 @@ static void raster_tri(Ctx *c, const CVert *A, const CVert *B, const CVert *C, i
             float fogh = 1.0f - expf(-z / (fr->fog > 0 ? fr->fog : 120.0f));
             if (fogh > 1.0f) fogh = 1.0f;
 
-            float base[3];
-            for (int k = 0; k < 3; k++)
+            float base[3], keyt[3];
+            for (int k = 0; k < 3; k++) {
                 base[k] = b0*p3[0]->sh[k] + b1*p3[1]->sh[k] + b2*p3[2]->sh[k];
+                keyt[k] = b0*p3[0]->kd[k] + b1*p3[1]->kd[k] + b2*p3[2]->kd[k];
+            }
 
             if (!transparent) {
                 c->depth[idx] = z;
@@ -234,6 +342,9 @@ static void raster_tri(Ctx *c, const CVert *A, const CVert *B, const CVert *C, i
                 float wxp = c->eye[0] + c->right[0]*(px-c->cx)*z/c->focal + c->up[0]*(c->cy-py)*z/c->focal + c->fwd[0]*z;
                 float wyp = c->eye[1] + c->right[1]*(px-c->cx)*z/c->focal + c->up[1]*(c->cy-py)*z/c->focal + c->fwd[1]*z;
                 float wzp = c->eye[2] + c->right[2]*(px-c->cx)*z/c->focal + c->up[2]*(c->cy-py)*z/c->focal + c->fwd[2]*z;
+                const float wp[3] = { wxp, wyp, wzp };
+                const float vis = shadow_vis(wp);
+                for (int k = 0; k < 3; k++) base[k] += vis*keyt[k];
                 float dlx = fr->lx-wxp, dly = fr->ly-wyp, dlz = fr->lz-wzp;
                 float dl = sqrtf(dlx*dlx + dly*dly + dlz*dlz) + 1e-4f;
                 float att = fr->li / (1.0f + dl*dl*2.2f);
@@ -258,7 +369,7 @@ static void raster_tri(Ctx *c, const CVert *A, const CVert *B, const CVert *C, i
             float a = b0*p3[0]->a + b1*p3[1]->a + b2*p3[2]->a;
             if (a <= 0.001f) continue;
             for (int k = 0; k < 3; k++)
-                base[k] = base[k]*(1-fogh) + (k==0?11.f:k==1?14.f:21.f)*fogh;
+                base[k] = (base[k] + keyt[k])*(1-fogh) + (k==0?11.f:k==1?14.f:21.f)*fogh;
 
             if (c->no_oit) {
                 /* the failure mode: draw in index order with plain alpha blending */
@@ -281,9 +392,11 @@ int main(int argc, char **argv) {
     const char *prefix = argc > 1 ? argv[1] : "frame_";
     int no_oit = 0;
     int no_cull = 0;
+    int no_shadow = 0;
     for (int i = 2; i < argc; i++) {
         if (!strcmp(argv[i], "--no-oit")) no_oit = 1;
         if (!strcmp(argv[i], "--no-cull")) no_cull = 1;
+        if (!strcmp(argv[i], "--no-shadow")) no_shadow = 1;
     }
 
     char magic[4]; uint32_t nf, w, h;
@@ -311,6 +424,7 @@ int main(int argc, char **argv) {
     float lfill[3] = { 0.62f, 0.30f, 0.18f}; vnorm(lfill);
 
     uint32_t total_tris = 0, glass_tris = 0;
+    long shadow_ns = 0;
     struct timespec t0,t1; clock_gettime(CLOCK_MONOTONIC,&t0);
 
     for (uint32_t f = 0; f < nf; f++) {
@@ -365,6 +479,13 @@ int main(int argc, char **argv) {
 
         if (!ctx.no_cull) build_coarse(&ctx, verts, tris, nt, vn);
 
+        if (!no_shadow) {
+            struct timespec s0, s1; clock_gettime(CLOCK_MONOTONIC,&s0);
+            build_shadowmap(verts, tris, nt, lkey);
+            clock_gettime(CLOCK_MONOTONIC,&s1);
+            shadow_ns += (s1.tv_sec-s0.tv_sec)*1000000000L + (s1.tv_nsec-s0.tv_nsec);
+        }
+
         /* two passes over the same list: opaque first, then glass. Order inside a pass
            does not matter, which is the whole point of weighted blended OIT. */
         for (int pass = 0; pass < 2; pass++) {
@@ -387,10 +508,14 @@ int main(int argc, char **argv) {
                     vnorm(nl);
                     float ndl = fabsf(vdot(nl, lkey));
                     float ndf = fmaxf(vdot(nl, lfill), 0.0f);
-                    float s = amb + 0.78f*ndl + 0.30f*ndf;
+                    float s = amb + 0.30f*ndf;     /* ambient and fill: never shadowed */
+                    float key = 0.78f*ndl;         /* the sun: shadowed per pixel */
                     in[k].sh[0] = V[k]->r*s + 26.0f*ndf;
                     in[k].sh[1] = V[k]->g*s + 14.0f*ndf;
                     in[k].sh[2] = V[k]->b*s +  7.0f*ndf;
+                    in[k].kd[0] = V[k]->r*key;
+                    in[k].kd[1] = V[k]->g*key;
+                    in[k].kd[2] = V[k]->b*key;
                     in[k].n[0] = nl[0]; in[k].n[1] = nl[1]; in[k].n[2] = nl[2];
                     in[k].a = V[k]->a / 255.0f;
                     in[k].tag = V[k]->tag;
@@ -483,8 +608,12 @@ int main(int argc, char **argv) {
     clock_gettime(CLOCK_MONOTONIC,&t1);
     double ms=(t1.tv_sec-t0.tv_sec)*1e3+(t1.tv_nsec-t0.tv_nsec)/1e6;
     fprintf(stderr,"wuburaster: %u frames, %.0f tris/frame (%u glass, %u occlusion-culled), "
-                   "%.1f ms total, %.2f ms/frame%s%s\n",
+                   "%.1f ms total, %.2f ms/frame, shadow %.2f ms/frame%s%s%s\n",
             nf, (double)total_tris/(nf?nf:1), glass_tris, ctx.culled,
-            ms, ms/(nf?nf:1), no_oit ? " [no-oit]" : "", no_cull ? " [no-cull]" : "");
+            ms, ms/(nf?nf:1), (double)shadow_ns/1e6/(nf?nf:1),
+            no_oit ? " [no-oit]" : "", no_cull ? " [no-cull]" : "",
+            no_shadow ? " [no-shadow]" : "");
+    if (getenv("WUBU_DEBUG_SHADOW"))
+        fprintf(stderr, "debug: frag %ld, in-map %ld, shadowed %ld\n", dbg_frag, dbg_hit, dbg_shadowed);
     return 0;
 }

@@ -769,8 +769,27 @@ def _static_scene(spec):
     g = spec["ground"]
     gc = tuple(min(255, int(g[i]*255*4)) for i in range(3))
     S = 400.0
-    verts += [(-S,-S,0,gc),(S,-S,0,gc),(S,S,0,gc),(-S,S,0,gc)]
-    tris += [(0,1,2),(0,2,3)]
+    # winding matters: raster_tri keeps positive barycentrics only, so a clockwise
+    # quad is silently backface-culled — the ground was invisible in every raster
+    # preview for exactly this reason
+    # The ground is a GRID, not two huge triangles. A quad whose far vertices sit
+    # behind the camera clips to polygons with screen coordinates in the millions,
+    # and the float barycentrics lose precision and reject every pixel — the ground
+    # was invisible in every raster preview for exactly this reason. Cells also give
+    # per-vertex shading and the shadow map something sane to interpolate across.
+    G = 48
+    S = 200.0
+    base_i = len(verts)
+    for j in range(G + 1):
+        for i in range(G + 1):
+            verts.append((-S + 2*S*i/G, -S + 2*S*j/G, 0.0, gc))
+    for j in range(G):
+        for i in range(G):
+            a = base_i + j*(G+1) + i
+            b = a + 1
+            c = a + (G+1)
+            d = c + 1
+            tris += [(a, c, b), (b, c, d)]
     rng = __import__("random").Random(spec.get("seed", 7))
     lo, hi = spec["props"]["tower_radius"]
     for _ in range(spec["props"]["towers"]):

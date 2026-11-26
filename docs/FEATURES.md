@@ -105,6 +105,12 @@ in Anton (`FONT_PATH`). `in`/`out` are seconds.
 "dof":  {"focus": 5.2, "range": 7.0, "amount": 0.8}
 ```
 
+> **Raster path:** the ground is a 48×48 grid over ±200 m (a single quad clipped to
+> screen coordinates in the millions and lost every pixel to float precision), and a 512²
+> shadow map is built per frame from the opaque triangles, compared per pixel with 2×2 PCF
+> (0.38 ms/frame of the ~7 ms). `wuburaster --no-shadow` renders without it. Notes and
+> measurements: `SH4DER_PVR_STUDY.md`.
+
 * `fade` — multiplies the frame by a ramp at each end of the film.
 * `dof` — defocus from the depth pass: `k = (|z − focus| / range)^{1.4} × amount`, applied as a
   half-res blur mix. Raster path only (Cycles has its own camera DOF).
