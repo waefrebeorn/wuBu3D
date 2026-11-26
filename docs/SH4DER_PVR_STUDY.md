@@ -68,6 +68,26 @@ it is the input to every effect that needs to know what is in front.**
 We already run a depth pass for the raster composite (AO, rim, haze). The next effect that
 should use it is the lantern: it currently ignores occlusion and bleeds through the coat.
 
+## Two optimisations we tried and measured, one of which lost
+
+**Vertex reuse (kept).** A closed mesh shares each vertex between ~6 triangles; the old
+inner loop transformed and shaded every vertex once per face. One pass per vertex per frame
+(Jet calls it position reuse) is byte-identical output and ~6% off the frame at 2,534 tris —
+and it is simply less work to read.
+
+**A fog LUT (rejected).** SH4ZAM's "no libm in a hot loop" suggested replacing the per-fragment
+`expf(-z/fog)` with a 1024-entry table plus a lerp. Measured on this box, min of 7 interleaved
+runs: **5.49 s with `expf`, 7.07 s with the table** — 29% slower. glibc's `expf` is fast, the
+table added a dependent load and a branch, and the result was reverted. The rule is right on an
+SH-4 with no FPU; on x86 it is not automatically right, which is exactly why the ledger marks
+things MEASURED instead of DERIVED.
+
+**What the numbers say about where the time goes.** The raster is **fill-bound, not
+vertex-bound**: 2,534 triangles or 7,140 triangles, the per-frame cost tracks covered pixels
+far more than vertex count. So the next real win is Jet's span filling (walk each scanline once,
+step the attributes incrementally, instead of recomputing three edge functions and two divides
+per pixel), not more vertex maths.
+
 ## Math and speed rules worth stealing (their SH4ZAM rule)
 
 * **One transform per vertex, none per pixel.** Our fragment loop already interpolates

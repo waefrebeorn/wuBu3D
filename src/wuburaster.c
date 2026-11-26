@@ -229,6 +229,13 @@ static void build_shadowmap(const Vert *verts, const Tri *tris, uint32_t nt, con
         }
         float area = (qx[1]-qx[0])*(qy[2]-qy[0]) - (qx[2]-qx[0])*(qy[1]-qy[0]);
         if (fabsf(area) < 1e-4f) continue;
+        if (area < 0.0f) {            /* a caster wound either way still casts */
+            float tf;
+            tf = qx[1]; qx[1] = qx[2]; qx[2] = tf;
+            tf = qy[1]; qy[1] = qy[2]; qy[2] = tf;
+            tf = qd[1]; qd[1] = qd[2]; qd[2] = tf;
+            area = -area;
+        }
         float ia = 1.0f/area;
         int x0 = (int)floorf(fminf(qx[0], fminf(qx[1], qx[2])));
         int x1 = (int)ceilf (fmaxf(qx[0], fmaxf(qx[1], qx[2])));
@@ -295,8 +302,18 @@ static void raster_tri(Ctx *c, const CVert *A, const CVert *B, const CVert *C, i
     if (maxx >= (int32_t)c->w) maxx = (int32_t)c->w - 1;
     if (maxy >= (int32_t)c->h) maxy = (int32_t)c->h - 1;
 
-    const float area = (float)((sx[1]-sx[0])*(sy[2]-sy[0]) - (sx[2]-sx[0])*(sy[1]-sy[0]));
+    float area = (float)((sx[1]-sx[0])*(sy[2]-sy[0]) - (sx[2]-sx[0])*(sy[1]-sy[0]));
     if (fabsf(area) < 1e-6f) return;
+    if (area < 0.0f) {
+        /* double-sided: an imported OBJ can be wound either way, and a face wound the
+           other way used to vanish instead of drawing. Swapping two corners keeps the
+           positive-barycentric fill and flips nothing else. */
+        const CVert *tp = p3[1]; p3[1] = p3[2]; p3[2] = tp;
+        int32_t ti = sx[1]; sx[1] = sx[2]; sx[2] = ti;
+        ti = sy[1]; sy[1] = sy[2]; sy[2] = ti;
+        float tf = iz[1]; iz[1] = iz[2]; iz[2] = tf;
+        area = -area;
+    }
     const float ia = 1.0f / area;
 
     for (int32_t y = miny; y <= maxy; y++) {
@@ -486,6 +503,35 @@ int main(int argc, char **argv) {
             shadow_ns += (s1.tv_sec-s0.tv_sec)*1000000000L + (s1.tv_nsec-s0.tv_nsec);
         }
 
+        /* One transform and one shade per VERTEX per frame, not per face. A closed mesh
+           shares every vertex between ~6 triangles, so the old loop repeated the same
+           dot products six times: 2,534 tris meant 7,602 transforms where 1,660 would do.
+           Jet calls this position reuse; here it is simply not doing the work twice. */
+        CVert *vc = malloc(sizeof(CVert) * nv);
+        if (!vc) return 1;
+        for (uint32_t i = 0; i < nv; i++) {
+            float d[3], pw[3] = { verts[i].x, verts[i].y, verts[i].z };
+            vsub(pw, ctx.eye, d);
+            vc[i].vx = vdot(d, ctx.right);
+            vc[i].vy = vdot(d, ctx.up);
+            vc[i].vz = vdot(d, ctx.fwd);
+            float nl[3] = { vn[i*3], vn[i*3+1], vn[i*3+2] };
+            vnorm(nl);
+            float ndl = fabsf(vdot(nl, lkey));
+            float ndf = fmaxf(vdot(nl, lfill), 0.0f);
+            float s = amb + 0.30f*ndf;          /* ambient and fill: never shadowed */
+            float key = 0.78f*ndl;              /* the sun: shadowed per pixel */
+            vc[i].sh[0] = verts[i].r*s + 26.0f*ndf;
+            vc[i].sh[1] = verts[i].g*s + 14.0f*ndf;
+            vc[i].sh[2] = verts[i].b*s +  7.0f*ndf;
+            vc[i].kd[0] = verts[i].r*key;
+            vc[i].kd[1] = verts[i].g*key;
+            vc[i].kd[2] = verts[i].b*key;
+            vc[i].n[0] = nl[0]; vc[i].n[1] = nl[1]; vc[i].n[2] = nl[2];
+            vc[i].a = verts[i].a / 255.0f;
+            vc[i].tag = verts[i].tag;
+        }
+
         /* two passes over the same list: opaque first, then glass. Order inside a pass
            does not matter, which is the whole point of weighted blended OIT. */
         for (int pass = 0; pass < 2; pass++) {
@@ -496,30 +542,7 @@ int main(int argc, char **argv) {
                 if (is_glass != transparent) continue;
                 if (is_glass) glass_tris++;
 
-                CVert in[3];
-                for (int k = 0; k < 3; k++) {
-                    float d[3], pw[3] = { V[k]->x, V[k]->y, V[k]->z };
-                    vsub(pw, ctx.eye, d);
-                    in[k].vx = vdot(d, ctx.right);
-                    in[k].vy = vdot(d, ctx.up);
-                    in[k].vz = vdot(d, ctx.fwd);
-                    uint32_t vi = (k==0)?tris[i].a:(k==1)?tris[i].b:tris[i].c;
-                    float nl[3] = { vn[vi*3], vn[vi*3+1], vn[vi*3+2] };
-                    vnorm(nl);
-                    float ndl = fabsf(vdot(nl, lkey));
-                    float ndf = fmaxf(vdot(nl, lfill), 0.0f);
-                    float s = amb + 0.30f*ndf;     /* ambient and fill: never shadowed */
-                    float key = 0.78f*ndl;         /* the sun: shadowed per pixel */
-                    in[k].sh[0] = V[k]->r*s + 26.0f*ndf;
-                    in[k].sh[1] = V[k]->g*s + 14.0f*ndf;
-                    in[k].sh[2] = V[k]->b*s +  7.0f*ndf;
-                    in[k].kd[0] = V[k]->r*key;
-                    in[k].kd[1] = V[k]->g*key;
-                    in[k].kd[2] = V[k]->b*key;
-                    in[k].n[0] = nl[0]; in[k].n[1] = nl[1]; in[k].n[2] = nl[2];
-                    in[k].a = V[k]->a / 255.0f;
-                    in[k].tag = V[k]->tag;
-                }
+                const CVert in[3] = { vc[tris[i].a], vc[tris[i].b], vc[tris[i].c] };
                 if (in[0].vz < NEAR_Z && in[1].vz < NEAR_Z && in[2].vz < NEAR_Z) continue;
 
                 if (!ctx.no_cull && !transparent &&
@@ -602,7 +625,7 @@ int main(int argc, char **argv) {
         fwrite(&w2,4,1,o); fwrite(&h2,4,1,o); fwrite(nrm2,4,3*(size_t)w2*h2,o); fclose(o);
         free(dep2); free(nrm2);
 
-        free(verts); free(tris); free(vn);
+        free(vc); free(verts); free(tris); free(vn);
     }
 
     clock_gettime(CLOCK_MONOTONIC,&t1);

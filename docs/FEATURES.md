@@ -20,7 +20,29 @@ python3 wubu3d.py validate specs/x.json  # path-precise errors, exit 2 when ille
 python3 wubu3d.py inspect  specs/x.json  # resolved numbers, no render
 python3 wubu3d.py plan     specs/x.json  # frames + cost on both paths (calibrated)
 python3 wubu3d.py qa       specs/x.json  # luma, motion, dead frames from the render
+python3 wubu3d.py still    specs/x.json --at 70   # one frame through the raster path, ~1 s
 ```
+
+## Meshes
+
+Real geometry comes in as OBJ. An agent that can model (or finds an asset) does not have to
+rebuild it out of primitives:
+
+```json
+"props": {
+  "meshes": [
+    {"obj": "assets/obelisk.obj", "at": [-1.6, 3.0, 0], "scale": 1.0, "yaw": 0.4,
+     "color": [0.30, 0.29, 0.32]}
+  ]
+}
+```
+
+Read by `src/wubu3d.py` (raster path) and by the generated Blender scene (Cycles path), from
+the same file. The reader takes `v` and `f` (triangles, quads, n-gons, negative indices) and
+ignores the rest; materials are the placement's `color`, because both renderers shade per
+vertex. Vertices are unshared per face, so an imported mesh keeps its hard edges instead of
+turning into a smooth blob. Paths must stay inside the project — absolute paths and `..` are
+refused by the validator.
 
 Every render also writes `out/<name>/receipt.json` (timings, triangle count, QA, mp4 sha256)
 and appends one line to `out/_history.jsonl`, which is what `plan` calibrates from.

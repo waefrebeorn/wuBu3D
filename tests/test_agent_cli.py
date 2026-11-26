@@ -160,6 +160,31 @@ def _():
     assert rec["qa"]["frames"] > 0 and "sha256" in rec["outputs"], rec
 
 
+@case("still renders one frame fast and names it")
+def _():
+    r = run(["still", str(ROOT / "specs" / "assets_test.json"), "--at", "1"])
+    assert r.returncode == 0, f"exit {r.returncode}: {r.stderr[-400:]}"
+    out = ROOT / "out" / "assets_test" / "still_0001.png"
+    assert out.exists() and out.stat().st_size > 1000, f"no still at {out}"
+
+
+@case("an OBJ meshes entry validates and imports")
+def _():
+    spec = json.loads(json.dumps(GOOD))
+    spec["props"] = {"meshes": [{"obj": "assets/obelisk.obj", "at": [2, 3, 0]}]}
+    r = run(["validate", str(spec_file("mesh_ok", spec))], )
+    assert r.returncode == 0, r.stdout + r.stderr
+
+
+@case("a mesh path outside the project is refused")
+def _():
+    spec = json.loads(json.dumps(GOOD))
+    spec["props"] = {"meshes": [{"obj": "../../etc/passwd.obj"}]}
+    r = run(["validate", str(spec_file("mesh_bad", spec))])
+    assert r.returncode == 2, f"exit {r.returncode}"
+    assert "props.meshes[0].obj" in r.stdout and "inside the project" in r.stdout, r.stdout
+
+
 print(f"\n{len(PASS)} passed, {len(FAIL)} failed")
 if FAIL:
     for n, e in FAIL:

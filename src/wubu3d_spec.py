@@ -222,6 +222,25 @@ def validate(raw: dict) -> tuple[list, list]:
                     err(f"{p}.size", "must be [width, height] metres")
                 if "alpha" in g and not (0 < _num(g["alpha"]) <= 1):
                     err(f"{p}.alpha", "must be 0 < alpha <= 1")
+            for i, m_ in enumerate(props.get("meshes") or []):
+                p = f"props.meshes[{i}]"
+                if not isinstance(m_, dict):
+                    err(p, "must be an object {obj, at, scale, yaw, color}")
+                    continue
+                obj = m_.get("obj")
+                if not isinstance(obj, str) or not obj.lower().endswith(".obj"):
+                    err(f"{p}.obj", "must be a path to a .obj file, relative to the project")
+                elif obj.startswith("/") or ".." in obj:
+                    err(f"{p}.obj", "must stay inside the project: no absolute paths, no '..'")
+                if "at" in m_ and not _v3(m_["at"]):
+                    err(f"{p}.at", "must be [x, y, z] in metres")
+                if "scale" in m_ and not (_num(m_["scale"]) > 0):
+                    err(f"{p}.scale", "must be a positive multiplier")
+                if "yaw" in m_ and not _is_num(m_["yaw"]):
+                    err(f"{p}.yaw", "must be radians about Z")
+                if "color" in m_ and not _rgb_ok(m_["color"]):
+                    err(f"{p}.color", "must be 3 numbers 0..1")
+
             for i, fg in enumerate(props.get("fg") or []):
                 p = f"props.fg[{i}]"
                 if not isinstance(fg, dict) or not (_v2(fg.get("at")) or _v3(fg.get("at"))):
@@ -508,6 +527,18 @@ SCHEMA = {
                 "towers": {"type": "integer", "minimum": 0, "maximum": 2000},
                 "rocks": {"type": "integer", "minimum": 0, "maximum": 2000},
                 "tower_radius": {"type": "array", "items": {"type": "number"}, "minItems": 2, "maxItems": 2},
+                "meshes": {"type": "array", "items": {
+                    "type": "object",
+                    "required": ["obj"],
+                    "properties": {
+                        "obj": {"type": "string", "pattern": "\\.obj$",
+                                "description": "OBJ path relative to the project root"},
+                        "at": {"type": "array", "items": {"type": "number"}, "minItems": 3, "maxItems": 3},
+                        "scale": {"type": "number", "exclusiveMinimum": 0},
+                        "yaw": {"type": "number", "description": "radians about Z"},
+                        "color": {"type": "array", "items": {"type": "number"}, "minItems": 3, "maxItems": 3},
+                    },
+                }},
                 "glass": {"type": "array", "items": {
                     "type": "object",
                     "required": ["at"],

@@ -12,6 +12,7 @@ validate → is this spec legal? path-precise errors, exit 2 if not
 inspect  → resolved numbers (frames, resolution, shots) without rendering
 plan     → frames, shots, and cost on both render paths (calibrated on measured receipts)
 raster   → the C11 path: a finished film in seconds, no Blender
+still    → one frame through the C11 path (~1 s): the viewport grab an agent looks at
 render   → Cycles frames (delivery path)
 finish   → denoise → grade → score → mux
 make     → render + finish
@@ -25,6 +26,7 @@ demo     → write a demo spec and deliver it
 python3 src/wubu3d.py schema                                  # learn the fields once
 python3 src/wubu3d.py validate my_film.json                   # exit 2 + paths if illegal
 python3 src/wubu3d.py plan     my_film.json --json             # frames, shots, cost
+python3 src/wubu3d.py still    my_film.json --at 70             # one frame, ~1 s: look at it
 python3 src/wubu3d.py raster   my_film.json                    # seconds: check framing
 #   look at out/<name>/<name>.mp4 (or a frame), fix the spec, repeat
 python3 src/wubu3d.py make     my_film.json                    # Cycles, the delivery render

@@ -109,6 +109,7 @@ import bpy
 from mathutils import Vector
 
 SPEC = __SPEC__
+MESHES = __MESHES__
 SKEL_JOINTS = {"pelvis": [0.0, 0.0, 0.945], "spine": [0.0, 0.01, 1.1], "chest": [0.0, 0.0, 1.3], "neck": [0.0, 0.0, 1.455], "head": [0.0, 0.01, 1.56], "head_top": [0.0, 0.015, 1.78], "clav.L": [0.055, 0.0, 1.395], "shoulder.L": [0.18, 0.0, 1.395], "elbow.L": [0.205, -0.005, 1.115], "wrist.L": [0.212, 0.01, 0.87], "clav.R": [-0.055, 0.0, 1.395], "shoulder.R": [-0.18, 0.0, 1.395], "elbow.R": [-0.205, -0.005, 1.115], "wrist.R": [-0.212, 0.01, 0.87], "hip.L": [0.095, 0.0, 0.905], "knee.L": [0.1, 0.01, 0.5], "ankle.L": [0.1, 0.0, 0.085], "toe.L": [0.1, 0.115, 0.035], "hip.R": [-0.095, 0.0, 0.905], "knee.R": [-0.1, 0.01, 0.5], "ankle.R": [-0.1, 0.0, 0.085], "toe.R": [-0.1, 0.115, 0.035]}
 SKEL_PARENT = {"spine": "pelvis", "chest": "spine", "neck": "chest", "head": "neck", "clav.L": "chest", "shoulder.L": "clav.L", "elbow.L": "shoulder.L", "wrist.L": "elbow.L", "clav.R": "chest", "shoulder.R": "clav.R", "elbow.R": "shoulder.R", "wrist.R": "elbow.R", "hip.L": "pelvis", "knee.L": "hip.L", "ankle.L": "knee.L", "toe.L": "ankle.L", "hip.R": "pelvis", "knee.R": "hip.R", "ankle.R": "knee.R", "toe.R": "ankle.R"}
 W, H = SPEC["resolution"]
@@ -399,6 +400,14 @@ def walk(rig, f0, f1, start, end, stride=0.85, swing=24.0):
 
 cast_objs = []
 CAST_POS = {}
+for m in MESHES:
+    me = bpy.data.meshes.new(m["name"])
+    me.from_pydata(m["verts"], [], m["tris"])
+    me.update()
+    ob = bpy.data.objects.new(m["name"], me)
+    S.collection.objects.link(ob)
+    ob.data.materials.append(mat("mesh_" + m["name"], tuple(m["color"]), rough=0.75))
+
 for c in SPEC["cast"]:
     col = tuple(c.get("color", [0.03, 0.03, 0.035]))
     skin_col = tuple(c.get("skin", [0.46, 0.35, 0.28]))
@@ -568,7 +577,10 @@ def build(spec_path: Path) -> Path:
     spec = load_spec(spec_path)
     out = PROJECT / "out" / spec["name"]
     (out / "frames").mkdir(parents=True, exist_ok=True)
-    script = SCENE_HEADER.replace("__SPEC__", repr(spec)) + SCENE_BODY  # python literal: json's true/false are not valid python
+    meshes = [{"name": m["name"], "verts": m["verts"], "tris": m["tris"], "color": m["color"]}
+              for m in _mesh_instances(spec)]
+    script = (SCENE_HEADER.replace("__SPEC__", repr(spec))       # python literal: json's true/false are not valid python
+                           .replace("__MESHES__", repr(meshes)) + SCENE_BODY)
     scene = out / "scene.py"
     scene.write_text(script)
     (out / "spec.json").write_text(json.dumps(spec, indent=1))
@@ -763,6 +775,78 @@ def _pane(verts, tris, center, size, yaw, pitch, rgba):
     tris.append((base, base + 2, base + 3))
 
 
+_OBJ_CACHE = {}
+
+
+def load_obj(path: Path):
+    """Minimal OBJ reader: v, f (triangles, quads, n-gons), negative indices, #comments.
+
+    Deliberately smaller than Jet's loader: no .mtl, no vt/vn, no textures — the raster
+    path shades flat per vertex, so a face is three indices and nothing else. Whoever
+    needs materials puts a colour on the placement instead (spec `props.meshes[].color`).
+    """
+    key = str(path)
+    if key in _OBJ_CACHE:
+        return _OBJ_CACHE[key]
+    vs, tris = [], []
+    for line in path.read_text(errors="replace").splitlines():
+        if not line or line.lstrip().startswith("#"):
+            continue
+        p_ = line.split()
+        if not p_:
+            continue
+        if p_[0] == "v" and len(p_) >= 4:
+            vs.append((float(p_[1]), float(p_[2]), float(p_[3])))
+        elif p_[0] == "f" and len(p_) >= 4:      # triangle or larger
+            idx = []
+            for tok in p_[1:]:
+                i = int(tok.split("/")[0])
+                idx.append(i - 1 if i > 0 else len(vs) + i)
+            for k in range(1, len(idx) - 1):          # fan-triangulate
+                tris.append((idx[0], idx[k], idx[k + 1]))
+        elif p_[0] in ("o", "g", "s", "usemtl", "mtllib", "vt", "vn"):
+            continue
+    if not vs or not tris:
+        raise ValueError(f"{path}: no usable v/f lines")
+    _OBJ_CACHE[key] = (vs, tris)
+    return vs, tris
+
+
+def _mesh_instances(spec):
+    """Every `props.meshes[]` entry resolved to world-space (verts, tris) + colour."""
+    out = []
+    for m in (spec.get("props", {}).get("meshes") or []):
+        rel = str(m.get("obj", ""))
+        path = (PROJECT / rel).resolve()
+        try:
+            path.relative_to(PROJECT.resolve())
+        except ValueError:
+            raise SystemExit(f"mesh {rel!r} is outside the project tree")
+        if not path.exists():
+            raise SystemExit(f"mesh not found: {path} (from spec {rel!r})")
+        vs, ts = load_obj(path)
+        s = float(m.get("scale", 1.0))
+        yaw = float(m.get("yaw", 0.0))
+        cy, sy = math.cos(yaw), math.sin(yaw)
+        at = m.get("at", [0, 0, 0])
+        col = m.get("color", [0.34, 0.34, 0.38])
+        rgb = tuple(max(0, min(255, int(col[i] * 255))) for i in range(3))   # 0..1 means 0..1
+        world = [(at[0] + (x * s) * cy - (y * s) * sy,
+                  at[1] + (x * s) * sy + (y * s) * cy,
+                  at[2] + z * s) for (x, y, z) in vs]
+        # unshare vertices per face: an imported mesh has hard edges, and averaged
+        # normals turn an obelisk into a soft blob. Three verts per triangle costs
+        # memory and buys faceted shading, which is what the asset actually is.
+        verts, tris = [], []
+        for (a, b, c) in ts:
+            base = len(verts)
+            verts += [world[a], world[b], world[c]]
+            tris.append((base, base + 1, base + 2))
+        out.append({"name": Path(rel).stem, "verts": verts, "tris": tris, "rgb": rgb,
+                    "color": [float(c) for c in col]})
+    return out
+
+
 def _static_scene(spec):
     """ground, towers and rocks: built once, reused every frame"""
     verts, tris = [], []
@@ -813,6 +897,11 @@ def _static_scene(spec):
         at = fg["at"]; size = fg.get("size", [2.0, 2.0, 2.2])
         _box(verts, tris, at[0], at[1], size[2] / 2, size[0], size[1], size[2],
              tuple(min(255, int(c * 255 * 4)) for c in fg.get("color", [0.020, 0.021, 0.026])))
+    for m in _mesh_instances(spec):
+        base = len(verts)
+        verts += [(x, y, z, m["rgb"]) for (x, y, z) in m["verts"]]
+        tris += [(base + a, base + b, base + c) for (a, b, c) in m["tris"]]
+
     for _ in range(spec["props"]["rocks"]):
         h = rng.uniform(0.35, 0.85)
         _box(verts, tris, rng.uniform(-40,40), rng.uniform(-10,60), h/2,
@@ -1029,6 +1118,38 @@ def raster(spec_path: Path) -> Path:
                  "glass_and_culled": m.group(3)}
     write_receipt(out, spec, "raster", tim, stats)
     return mp4
+
+def still(spec_path: Path, frame: int = 0) -> Path:
+    """One frame through the fast path — a viewport grab an agent can look at.
+
+    Whisk3D's MCP exposes `captura` for exactly this reason: an agent that can see one
+    frame cheaply fixes framing in seconds instead of spending a Cycles pass. Costs the
+    same as a single raster frame: ~0.1 s at 640x360.
+    """
+    spec = load_spec(spec_path)
+    n = max(0, min(spec["frames"] - 1, int(frame)))
+    out = PROJECT / "out" / spec["name"]
+    raw, comp = out / "frames_rast", out / "frames_rast_c"
+    for d in (raw, comp):
+        d.mkdir(parents=True, exist_ok=True)
+        for f in list(d.glob("*.ppm")) + list(d.glob("*.png")):
+            f.unlink()          # stale frames from an earlier full render, or grade redoes all 144
+    one = dict(spec); one["range"] = [n, n]
+    data = build_raster_scene(one, int(spec.get("ssaa", 2)))
+    t0 = time.time()
+    r = subprocess.run([str(RASTER_BIN), str(raw) + "/"], input=data, capture_output=True)
+    if r.returncode != 0:
+        raise SystemExit("raster failed: " + r.stderr.decode(errors="replace")[-400:])
+    frames = composite_passes(one, raw, comp)
+    graded = grade(one, frames, out)
+    src = sorted(Path(graded).glob("f_*.png"))
+    if not src:
+        raise SystemExit("grade produced no frame")
+    dst = out / f"still_{n:04d}.png"
+    shutil.copyfile(src[0], dst)
+    print(f"[wubu3d] still frame {n} -> {dst} ({time.time()-t0:.2f}s)")
+    return dst
+
 
 # ─────────────────────────────────────────────────────────────── post passes
 def denoise(spec: dict, out: Path) -> Path:
@@ -1536,9 +1657,10 @@ def main():
         description="WuBu3D — spec-to-film compiler. Agent commands: schema, validate, inspect, "
                     "plan, qa. Render paths: build, raster (C11, seconds), render/finish/make (Cycles).")
     ap.add_argument("cmd", choices=["build", "render", "finish", "make", "demo", "raster",
-                                    "validate", "inspect", "plan", "schema", "qa"])
+                                    "still", "validate", "inspect", "plan", "schema", "qa"])
     ap.add_argument("spec", nargs="?", help="path to spec json ('-' or omitted reads stdin)")
     ap.add_argument("--preset", default="cartoon")
+    ap.add_argument("--at", type=int, default=0, help="still: which frame to render")
     ap.add_argument("--raster", action="store_true", help="use the C11 rasteriser instead of Blender")
     ap.add_argument("--json", action="store_true",
                     help="one JSON object on stdout, human logs on stderr")
@@ -1577,6 +1699,8 @@ def main():
                 result = {"ok": True, "scene": str(build(spec_path))}
             elif a.cmd == "raster":
                 result = {"ok": True, "mp4": str(raster(spec_path))}
+            elif a.cmd == "still":
+                result = {"ok": True, "still": str(still(spec_path, a.at))}
             elif a.cmd == "render":
                 result = {"ok": True, "frames": str(render(spec_path))}
             elif a.cmd == "finish":
