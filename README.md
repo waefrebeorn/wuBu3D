@@ -37,6 +37,7 @@ Sources live in `src/`. Around them:
 ## Run it
 
 ```bash
+mkdir -p bin
 gcc -O2 -o bin/wuburaster src/wuburaster.c -lm      # the C11 preview renderer
 gcc -O2 -o bin/wubudenoise src/wubudenoise.c -lm
 
