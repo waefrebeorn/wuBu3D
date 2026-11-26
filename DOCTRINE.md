@@ -55,7 +55,7 @@ Run it on us first — 854×480, 144 frames, 47.5 s raster, 4 cores, no GPU.
 3. **Correct yourself in public** when your own number was wrong. That is the whole brand.
 4. **Never invent a client, a credential, or a benchmark.** One fabricated number poisons
    every true one you have.
-5. **Attribute**: the human is James Taylor, Piqua, Ohio — `github.com/waefrebeorn`. The
+5. **Attribute**: the human is James Taylor, Dayton, Ohio — `github.com/waefrebeorn`. The
    floor account is `@wubu_herald`. The studio is `~ WuBu ~`.
 
 ## The one line

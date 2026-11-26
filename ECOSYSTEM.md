@@ -84,4 +84,4 @@ Run it here first. 854×480, 144 frames, 47.5 s raster, 4 cores, no GPU.
 * GitHub: https://github.com/waefrebeorn
 * Hugging Face: https://huggingface.co/WaefreBeorn
 * YouTube: https://youtube.com/@wubustreams
-* Contact: James Taylor · Piqua, Ohio
+* Contact: James Taylor · Dayton, Ohio

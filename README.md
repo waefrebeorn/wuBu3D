@@ -107,7 +107,7 @@ point, not a threat.
 
 ## Contact
 
-James Taylor · Piqua, Ohio · open to remote research and technical work, and to building an
+James Taylor · Dayton, Ohio · open to remote research and technical work, and to building an
 animation and ML lab in Ohio.
 
 * GitHub: [github.com/waefrebeorn](https://github.com/waefrebeorn)
