@@ -1021,6 +1021,76 @@ def build_raster_scene(spec, ssaa=1, f0=None, f1=None):
         buf += struct.pack("<16f", *_frame_params(spec, f))
     return bytes(buf)
 
+
+AO_SAMPLES = 8
+AO_PHI = 2.399963229728653          # golden angle, radians
+
+def _read_cam(src_dir: Path, idx: str):
+    """The camera the raster wrote with the frame: eye, basis, focal length."""
+    import struct as _st
+    import numpy as np
+    p = src_dir / f"cam_{idx}.bin"
+    if not p.exists():
+        return None
+    raw = p.read_bytes()
+    w2, h2 = _st.unpack("<2I", raw[:8])
+    v = _st.unpack("<16f", raw[8:8 + 64])
+    return {"eye": np.array(v[0:3]), "right": np.array(v[3:6]), "up": np.array(v[6:9]),
+            "fwd": np.array(v[9:12]), "focal": v[12], "w": w2, "h": h2}
+
+
+def _ao_screenspace(dep, nrm, cam, radius=0.35, rays=10, steps=5):
+    """Screen-space raytraced ambient occlusion — CORTAO's family, short of its proxy.
+
+    CORTAO builds circular occluders from depth samples and traces rays against them
+    through a precomputed table. This does the honest minimum of the same idea: rays
+    in a normal-oriented hemisphere, projected back into the depth buffer and compared.
+    It needs a spatial filter to stop looking grainy (CORTAO's filter pass), which the
+    composite does not have yet, so it ships opt-in (`"ao": "ssao"`), not as the default.
+
+    One trap worth keeping: the raster's normals are geometric, not view-oriented. Every
+    AO built on them has to flip by dot(N, view) or half the scene occludes itself.
+    """
+    import numpy as np
+    h, w = dep.shape
+    eye, right, up, fwd, f = cam["eye"], cam["right"], cam["up"], cam["fwd"], cam["focal"]
+    xs = (np.arange(w, dtype=np.float32) + 0.5 - w * 0.5) / f
+    ys = (h * 0.5 - (np.arange(h, dtype=np.float32) + 0.5)) / f
+    depc = np.maximum(dep, 1e-3)
+    P = (eye[None, None, :] + fwd[None, None, :] * depc[..., None]
+         + right[None, None, :] * (xs[None, :, None] * depc[..., None])
+         + up[None, None, :] * (ys[:, None, None] * depc[..., None]))
+    N = nrm / np.maximum(np.linalg.norm(nrm, axis=2, keepdims=True), 1e-6)
+    vd = P - eye[None, None, :]
+    vd /= np.maximum(np.linalg.norm(vd, axis=2, keepdims=True), 1e-6)
+    N = np.where(((N * vd).sum(axis=2) > 0.0)[..., None], -N, N)   # face the camera
+
+    t1 = np.cross(N, np.array([0, 0, 1], dtype=np.float32))
+    thin = np.linalg.norm(t1, axis=2, keepdims=True) < 1e-3
+    t1 = np.where(thin, np.cross(N, np.array([1, 0, 0], dtype=np.float32)), t1)
+    t1 /= np.maximum(np.linalg.norm(t1, axis=2, keepdims=True), 1e-6)
+    t2 = np.cross(N, t1)
+
+    seed = ((np.arange(w)[None, :] * 374761393 + np.arange(h)[:, None] * 668265263).astype(np.uint32))
+    jit = (((seed ^ (seed >> 13)) & 1023).astype(np.float32) / 1024.0) * 6.2831853
+    occ = np.zeros((h, w), dtype=np.float32)
+    for r in range(rays):
+        a = r * AO_PHI + jit
+        d = N * 0.9 + (t1 * np.cos(a)[..., None] + t2 * np.sin(a)[..., None]) * 0.55
+        d /= np.maximum(np.linalg.norm(d, axis=2, keepdims=True), 1e-6)
+        hit = np.zeros((h, w), dtype=bool)
+        for st in range(1, steps + 1):
+            Q = P + d * np.float32(radius * st / steps)
+            v = Q - eye[None, None, :]
+            z = (v * fwd[None, None, :]).sum(axis=2)
+            sx = np.clip((w * 0.5 + f * (v * right[None, None, :]).sum(axis=2) / np.maximum(z, 1e-3)).astype(np.int32), 0, w - 1)
+            sy = np.clip((h * 0.5 - f * (v * up[None, None, :]).sum(axis=2) / np.maximum(z, 1e-3)).astype(np.int32), 0, h - 1)
+            hit |= (dep[sy, sx] < z - 0.05) & (z > 0.2)
+        occ += hit.astype(np.float32)
+    ao = 1.0 - occ / float(rays)
+    return np.where(np.isfinite(dep) & (dep < 1e5), ao, 1.0)
+
+
 def composite_passes(spec, src_dir: Path, out_dir: Path) -> Path:
     """colour + depth + normal -> shaded frame: screen-space AO, normal rim, haze"""
     import numpy as np
@@ -1047,16 +1117,30 @@ def composite_passes(spec, src_dir: Path, out_dir: Path) -> Path:
         dep = _read_bin(src_dir / f"dep_{idx}.bin", 1)[..., 0]
         nrm = _read_bin(src_dir / f"nrm_{idx}.bin", 3)
 
-        occ = np.zeros((h, w), dtype=np.float32); taps = 0.0
-        for radius, weight in ((4, 1.0), (9, 0.7), (16, 0.45)):
-            for ang in range(0, 360, 90):
-                a = math.radians(ang)
-                dx, dy = int(round(radius*math.cos(a))), int(round(radius*math.sin(a)))
-                sh = np.roll(np.roll(dep, dy, axis=0), dx, axis=1)
-                closer = (sh < dep - 0.01*dep - 0.005).astype(np.float32)
-                occ += closer*weight; taps += weight
-        occ /= max(taps, 1e-6)
-        ao = np.clip(1.0 - 0.90*occ, 0.18, 1.0)[..., None]
+        cam = _read_cam(src_dir, idx)
+        if spec.get("ao") == "ssao" and cam is not None:
+            dep_s = dep if (cam["w"], cam["h"]) == (w, h) else np.ascontiguousarray(dep[::2, ::2])
+            nrm_s = nrm if (cam["w"], cam["h"]) == (w, h) else np.ascontiguousarray(nrm[::2, ::2])
+            cam_s = dict(cam)
+            cam_s["focal"] = cam["focal"] if (cam["w"], cam["h"]) == (w, h) else cam["focal"] * 0.5
+            ao_s = _ao_screenspace(dep_s, nrm_s, cam_s,
+                                   float(spec.get("ao_radius", 0.35)),
+                                   int(spec.get("ao_rays", 10)))
+            ao_img = Image.fromarray((np.clip(ao_s, 0, 1) * 255).astype(np.uint8))
+            ao = (np.asarray(ao_img.resize((w, h), Image.BILINEAR), dtype=np.float32) / 255.0)[..., None]
+            occ = 1.0 - ao[..., 0]
+        else:
+            occ = np.zeros((h, w), dtype=np.float32); taps = 0.0
+            for radius, weight in ((4, 1.0), (9, 0.7), (16, 0.45)):
+                for ang in range(0, 360, 90):
+                    a = math.radians(ang)
+                    dx, dy = int(round(radius*math.cos(a))), int(round(radius*math.sin(a)))
+                    sh = np.roll(np.roll(dep, dy, axis=0), dx, axis=1)
+                    closer = (sh < dep - 0.01*dep - 0.005).astype(np.float32)
+                    occ += closer*weight; taps += weight
+            occ /= max(taps, 1e-6)
+            ao = np.clip(1.0 - 0.90*occ, 0.18, 1.0)[..., None]
+
         nz = np.abs(nrm[..., 2]).clip(0, 1)
         rim = np.clip((1.0 - nz)**2.2, 0, 1)[..., None]
         rim_col = np.array([1.0, 0.72, 0.45], dtype=np.float32)

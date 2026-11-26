@@ -23,6 +23,7 @@ KNOWN_TOP = [
     "name", "preset", "duration", "fps", "resolution", "samples", "denoise", "seed",
     "fog", "ssaa", "raster_gain", "range", "ground", "sky", "lights", "props", "cast",
     "shots", "titles", "fade", "dof", "sound", "exposure", "frames",
+    "ao", "ao_radius", "ao_rays",
 ]
 
 
@@ -165,6 +166,12 @@ def validate(raw: dict) -> tuple[list, list]:
         err("fog", "must be a positive distance in metres")
     if raw.get("seed") is not None and not _is_int(raw["seed"]):
         err("seed", "must be an integer")
+    if raw.get("ao") is not None and raw["ao"] not in ("taps", "ssao"):
+        err("ao", "must be 'taps' (default, cheap) or 'ssao' (raytraced, ~0.4 s/frame)")
+    if raw.get("ao_radius") is not None and not (0.02 <= _num(raw["ao_radius"]) <= 8.0):
+        err("ao_radius", "must be 0.02..8.0 metres")
+    if raw.get("ao_rays") is not None and (not _is_int(raw["ao_rays"]) or not (1 <= raw["ao_rays"] <= 32)):
+        err("ao_rays", "must be an integer 1..32")
     if raw.get("exposure") is not None and not (0.1 <= _num(raw["exposure"]) <= 5.0):
         err("exposure", "must be 0.1..5.0")
 
@@ -621,6 +628,10 @@ SCHEMA = {
             "cue": {"type": "number", "minimum": 0, "maximum": 5},
             "wind": {"type": "number", "minimum": 0, "maximum": 1}}},
         "exposure": {"type": "number", "minimum": 0.1, "maximum": 5.0},
+        "ao": {"enum": ["taps", "ssao"], "default": "taps",
+               "description": "ambient occlusion pass: fixed taps (cheap) or raytraced"},
+        "ao_radius": {"type": "number", "minimum": 0.02, "maximum": 8.0, "default": 0.35},
+        "ao_rays": {"type": "integer", "minimum": 1, "maximum": 32, "default": 10},
     },
     "additionalProperties": True,
 }

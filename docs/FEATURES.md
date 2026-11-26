@@ -133,6 +133,12 @@ in Anton (`FONT_PATH`). `in`/`out` are seconds.
 > (0.38 ms/frame of the ~7 ms). `wuburaster --no-shadow` renders without it. Notes and
 > measurements: `SH4DER_PVR_STUDY.md`.
 
+`"ao": "ssao"` switches the composite's ambient occlusion from twelve fixed taps to a
+screen-space raytraced pass with a world-space radius (`ao_radius`, metres, default 0.35;
+`ao_rays`, default 10). It costs ~0.42 s/frame at 320×180 versus 0.04 s for the taps, so it is
+opt-in: use it for `still` look-dev and hero frames. Notes and measurements:
+`CORTAO_STUDY.md`.
+
 * `fade` — multiplies the frame by a ramp at each end of the film.
 * `dof` — defocus from the depth pass: `k = (|z − focus| / range)^{1.4} × amount`, applied as a
   half-res blur mix. Raster path only (Cycles has its own camera DOF).

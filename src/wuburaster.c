@@ -623,6 +623,18 @@ int main(int argc, char **argv) {
         snprintf(path,sizeof path,"%snrm_%04u.bin",prefix,f);
         o=fopen(path,"wb"); if(!o) return 1;
         fwrite(&w2,4,1,o); fwrite(&h2,4,1,o); fwrite(nrm2,4,3*(size_t)w2*h2,o); fclose(o);
+
+        /* Publish the camera with the frame. Depth alone lets a post pass fake occlusion;
+           depth plus the eye basis lets it unproject to world space and do the real thing,
+           which is what any screen-space effect needs (AO now, reflections later). */
+        snprintf(path,sizeof path,"%scam_%04u.bin",prefix,f);
+        o=fopen(path,"wb"); if(!o) return 1;
+        float camdata[16] = { ctx.eye[0], ctx.eye[1], ctx.eye[2],
+                              ctx.right[0], ctx.right[1], ctx.right[2],
+                              ctx.up[0], ctx.up[1], ctx.up[2],
+                              ctx.fwd[0], ctx.fwd[1], ctx.fwd[2],
+                              ctx.focal, (float)w2, (float)h2, 0.0f };
+        fwrite(&w2,4,1,o); fwrite(&h2,4,1,o); fwrite(camdata,4,16,o); fclose(o);
         free(dep2); free(nrm2);
 
         free(vc); free(verts); free(tris); free(vn);
