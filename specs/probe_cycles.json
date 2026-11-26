@@ -1,0 +1,17 @@
+{
+ "name": "probe_cycles",
+ "preset": "preview",
+ "duration": 0.5,
+ "fps": 24,
+ "resolution": [320, 180],
+ "samples": 4,
+ "denoise": false,
+ "cast": [
+  {"name": "walker", "color": [0.09, 0.085, 0.10], "skin": [0.46, 0.35, 0.28],
+   "path": [[-3.0, -2.0], [0.5, 3.0]], "walk": [0, 12], "stride": 0.8,
+   "gait": {"swing": 0.5, "arm_swing": 0.35, "knee_lift": 0.5, "bob": 0.02, "lean": 0.04}}
+ ],
+ "shots": [{"in": 0, "out": 11, "follow": "walker", "cam": [-4.2, -6.0, 1.7],
+            "cam_offset": [3.2, 4.6, 1.7], "lens": 55}],
+ "sound": {"motif": [220.0, 261.6, 329.6], "cue": 0.6, "wind": 0.05}
+}

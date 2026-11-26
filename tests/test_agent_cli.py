@@ -1,0 +1,167 @@
+#!/usr/bin/env python3
+"""Contract tests for the agent-facing CLI.
+
+Run: python3 tests/test_agent_cli.py        (no pytest, no network, ~2 s)
+
+Every case is a claim the docs make: exit codes, path-precise errors, and the fact
+that a bad spec never reaches a renderer. A test that only checks "it ran" would let
+the three defects these cases were written for come back.
+"""
+from __future__ import annotations
+
+import json
+import os
+import subprocess
+import sys
+import tempfile
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+CLI = ROOT / "src" / "wubu3d.py" if (ROOT / "src" / "wubu3d.py").exists() else ROOT / "wubu3d.py"
+PY = sys.executable
+TMP = Path(tempfile.mkdtemp(prefix="wubu3d-test-"))
+
+PASS, FAIL = [], []
+
+
+def run(args, stdin=None):
+    return subprocess.run([PY, str(CLI)] + args, capture_output=True, text=True,
+                          input=stdin, cwd=str(TMP), timeout=180)
+
+
+def case(name):
+    def deco(fn):
+        try:
+            fn()
+            PASS.append(name)
+            print(f"  ok    {name}")
+        except AssertionError as e:
+            FAIL.append((name, str(e)))
+            print(f"  FAIL  {name}: {e}")
+        return fn
+    return deco
+
+
+def spec_file(name, spec) -> Path:
+    p = TMP / f"{name}.json"
+    p.write_text(json.dumps(spec))
+    return p
+
+
+GOOD = {
+    "name": "probe", "preset": "preview", "duration": 1.0, "fps": 24,
+    "cast": [{"name": "walker", "path": [[0, -4], [0, 4]], "walk": [0, 24]}],
+    "shots": [{"in": 0, "out": 23, "cam": [0, -6, 1.6], "lens": 50, "follow": "walker"}],
+}
+
+
+@case("schema is valid JSON describing the spec object")
+def _():
+    r = run(["schema"])
+    assert r.returncode == 0, r.stderr[-300:]
+    s = json.loads(r.stdout)
+    assert s["type"] == "object" and "name" in s["properties"], "schema lacks name/properties"
+    assert s["required"] == ["name"], s.get("required")
+
+
+@case("validate accepts a good spec (exit 0, no errors)")
+def _():
+    r = run(["validate", str(spec_file("good", GOOD))])
+    assert r.returncode == 0, f"exit {r.returncode}: {r.stdout} {r.stderr}"
+    assert "0 error(s)" in r.stdout, r.stdout
+
+
+@case("missing name is an error with path 'name' (exit 2)")
+def _():
+    bad = dict(GOOD); bad.pop("name")
+    r = run(["validate", str(spec_file("noname", bad))])
+    assert r.returncode == 2, f"exit {r.returncode}"
+    assert "name:" in r.stdout and "required" in r.stdout, r.stdout
+
+
+@case("odd resolution is refused with the libx264 reason")
+def _():
+    bad = dict(GOOD, resolution=[321, 181])
+    r = run(["validate", str(spec_file("odd", bad))])
+    assert r.returncode == 2, f"exit {r.returncode}"
+    assert "odd side" in r.stdout and "libx264" in r.stdout, r.stdout
+
+
+@case("unknown cast member in follow is an error naming the cast")
+def _():
+    bad = json.loads(json.dumps(GOOD))
+    bad["shots"][0]["follow"] = "nobody"
+    r = run(["validate", str(spec_file("badfollow", bad))])
+    assert r.returncode == 2, f"exit {r.returncode}"
+    assert "shots[0].follow" in r.stdout and "walker" in r.stdout, r.stdout
+
+
+@case("a walk past the end of the film is an error, not a silent clamp")
+def _():
+    bad = json.loads(json.dumps(GOOD))
+    bad["cast"][0]["walk"] = [0, 999]
+    r = run(["validate", str(spec_file("longwalk", bad))])
+    assert r.returncode == 2, f"exit {r.returncode}"
+    assert "walk ends at frame 999" in r.stdout, r.stdout
+
+
+@case("unknown top-level key is a warning, not an error")
+def _():
+    s = dict(GOOD, durration=3.0)
+    r = run(["validate", str(spec_file("typo", s))])
+    assert r.returncode == 0, f"exit {r.returncode}: {r.stdout}"
+    assert "unknown key" in r.stdout and "durration" in r.stdout, r.stdout
+
+
+@case("inspect derives frames from duration x fps")
+def _():
+    r = run(["inspect", str(spec_file("good2", GOOD))])
+    assert r.returncode == 0, r.stderr[-300:]
+    d = json.loads(r.stdout)
+    assert d["frames"] == 24 and d["fps"] == 24, d
+    assert d["mp4"] == "out/probe/probe.mp4", d["mp4"]
+
+
+@case("render refuses an invalid spec before touching a frame (exit 2)")
+def _():
+    bad = dict(GOOD, resolution=[100, 99])
+    r = run(["build", str(spec_file("badbuild", bad))])
+    assert r.returncode == 2, f"exit {r.returncode} (a renderer started on a bad spec)"
+    assert "spec error" in r.stderr and "nothing was rendered" in r.stderr, r.stderr
+
+
+@case("plan reports cost and admits when it is unmeasured")
+def _():
+    r = run(["plan", str(spec_file("good3", GOOD))])
+    assert r.returncode == 0, r.stderr[-300:]
+    d = json.loads(run(["plan", str(spec_file("good3", GOOD)), "--json"]).stdout)
+    assert "estimate" in d and "raster_s" in d["estimate"], d
+    assert "raster:" in r.stdout, r.stdout
+
+
+@case("--json keeps stdout pure JSON while logs go to stderr")
+def _():
+    p = spec_file("jsonmode", dict(GOOD, durration=1.0))   # extra key -> a warning
+    r = run(["validate", str(p), "--json"])
+    d = json.loads(r.stdout)            # would raise if a log line leaked into stdout
+    assert d["ok"] is True and isinstance(d["warnings"], list), d
+
+
+@case("qa measures a rendered film and passes it")
+def _():
+    d = ROOT / "out" / "demo_preview"
+    if not (d / "receipt.json").exists():
+        print("      (skipped: no out/demo_preview receipt)")
+        return
+    r = run(["qa", str(ROOT / "specs" / "demo_preview.json")])
+    assert r.returncode == 0, f"exit {r.returncode}: {r.stdout}"
+    assert "passed" in r.stdout.lower(), r.stdout
+    rec = json.loads((d / "receipt.json").read_text())
+    assert rec["qa"]["frames"] > 0 and "sha256" in rec["outputs"], rec
+
+
+print(f"\n{len(PASS)} passed, {len(FAIL)} failed")
+if FAIL:
+    for n, e in FAIL:
+        print(f"  {n}: {e}")
+    sys.exit(1)

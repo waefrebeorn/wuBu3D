@@ -12,6 +12,19 @@ python3 wubu3d.py finish specs/x.json     # denoise (if any) -> grade -> score -
 python3 wubu3d.py demo --preset cinematic --raster
 ```
 
+Agent-facing commands (machine-readable, exit codes, see `AGENT_API.md`):
+
+```bash
+python3 wubu3d.py schema                 # the spec as JSON Schema
+python3 wubu3d.py validate specs/x.json  # path-precise errors, exit 2 when illegal
+python3 wubu3d.py inspect  specs/x.json  # resolved numbers, no render
+python3 wubu3d.py plan     specs/x.json  # frames + cost on both paths (calibrated)
+python3 wubu3d.py qa       specs/x.json  # luma, motion, dead frames from the render
+```
+
+Every render also writes `out/<name>/receipt.json` (timings, triangle count, QA, mp4 sha256)
+and appends one line to `out/_history.jsonl`, which is what `plan` calibrates from.
+
 ## Top level
 
 | key | meaning | default |
@@ -98,6 +111,15 @@ in Anton (`FONT_PATH`). `in`/`out` are seconds.
 
 Grade is fixed (sky composite, median de-firefly, soften, bloom, S-curve, highlight rolloff,
 vignette, 2.39:1 bars). Nothing to configure, on purpose.
+
+## Validation
+
+`validate` is the contract, and every renderer runs it before touching a frame. Errors name
+the field (`shots[0].follow`, `cast[0].walk`); unknown top-level keys are warnings, not
+errors. The rules exist because each one cost a render: `frames` is derived (setting it does
+nothing), odd resolution sides break libx264, a `walk` past the last frame is cut mid-stride,
+`follow` must name a real cast member, and a shot with `follow` still needs `cam`,
+`cam_offset` or `move`.
 
 ## Gotchas that cost real runs
 
