@@ -1,6 +1,8 @@
 # What we took from SH4DER-PVR
 
-Read 2026-11-26. `JiltedValkyrie/SH4DER-PVR` (MIT) is a bespoke graphics library for the Sega
+Read 2026-11-26. Local checkout kept at `/opt/data/work/refs/SH4DER-PVR` (the wiki is the useful
+part: `wiki/shadows/thesis.md`, `wiki/effects/psm.md`, `wiki/methods/sh4zam-rule.md`).
+`JiltedValkyrie/SH4DER-PVR` (MIT) is a bespoke graphics library for the Sega
 Dreamcast: a fixed-function PowerVR2 driven by a 200 MHz SH-4 with 16 MB of RAM. It is the
 closest published thing to our problem — a fixed-function rasteriser, hand-written maths, no
 GPU driver to hide behind — so it is worth reading for the shape of the pipeline even though
