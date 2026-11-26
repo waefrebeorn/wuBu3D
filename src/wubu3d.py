@@ -976,7 +976,8 @@ def _frame_params(spec, f):
     if not spec.get("cast"):
         lx = ly = lz = 0.0
         return (*cam, *tgt, 2.0*math.degrees(math.atan(12.0/max(sh.get("lens", 40), 1e-3))),
-                spec.get("fog", 140.0), lx, ly, lz, 0.0, 1.0, 0.72, 0.36, 0.0)
+                spec.get("fog", 140.0), lx, ly, lz, 0.0, 1.0, 0.72, 0.36,
+                float(spec.get("ambient", 0.24)))
     subj = next((c for c in spec["cast"] if c["name"] == sh.get("follow")), spec["cast"][0])
     sp = _cast_at(subj, f)
     pth = subj["path"]
@@ -988,7 +989,7 @@ def _frame_params(spec, f):
         lx, ly, lz = _lantern(subj, f, yaw, sp)
     li = float((subj.get("lantern") or {}).get("intensity", subj.get("lantern_intensity", 0.95)))
     sr, sg, sb = (subj.get("lantern") or {}).get("color", (1.0, 0.72, 0.36))
-    return (*cam, *tgt, fov, spec.get("fog", 140.0), lx, ly, lz, li, sr, sg, sb, 0.0)
+    return (*cam, *tgt, fov, spec.get("fog", 140.0), lx, ly, lz, li, sr, sg, sb, float(spec.get("ambient", 0.24)))
 
 def build_raster_scene(spec, ssaa=1, f0=None, f1=None):
     """WB3D v3: per-frame geometry, optional supersampling"""
@@ -1331,7 +1332,9 @@ def grade(spec: dict, src: Path, out: Path) -> Path:
         d = (rng.random((h, w, 1), dtype=np.float32) - rng.random((h, w, 1), dtype=np.float32))
         s = np.clip(s + d * (0.5 / 255.0), 0, 1)
 
-        bar = int(max(0, (h - w / 2.39) / 2))
+        # cinema bars are for landscape frames: cropping a vertical frame to 2.39:1 hides
+        # 76% of it, which is the whole picture the format exists for
+        bar = int(max(0, (h - w / 2.39) / 2)) if w > h else 0
         if bar:
             s[:bar] = 0; s[-bar:] = 0
 
@@ -1348,7 +1351,34 @@ def grade(spec: dict, src: Path, out: Path) -> Path:
             s = s * mult
 
         frame_img = Image.fromarray((np.clip(s, 0, 1) * 255).astype(np.uint8))
-        tlist = spec.get("titles") or []
+        # captions: one word at a time, the format every vertical explainer uses. Either
+        # a list of {text, in, out} or a pointer to a whisper-style words json
+        # ([{word, start, end}]), which is what the transcription tools already emit.
+        tlist = list(spec.get("titles") or [])
+        caps = spec.get("captions")
+        if isinstance(caps, dict) and caps.get("words"):
+            wp_ = PROJECT / str(caps["words"])
+            if wp_.exists():
+                for wd in json.loads(wp_.read_text()):
+                    wtext = wd.get("word") or wd.get("text") or ""
+                    a_ = wd.get("start", wd.get("in"))
+                    b_ = wd.get("end", wd.get("out"))
+                    if wtext and isinstance(a_, (int, float)) and isinstance(b_, (int, float)):
+                        tlist.append({"text": wtext, "in": float(a_), "out": float(b_),
+                                      "size": caps.get("size", 0.048), "y": caps.get("y", 0.62),
+                                      "pos": "center", "color": [0.97, 0.97, 0.97],
+                                      "stroke": caps.get("stroke", True)})
+            else:
+                print(f"[wubu3d] captions file missing: {wp_}", file=sys.stderr)
+        elif isinstance(caps, list):
+            for c_ in caps:
+                if not isinstance(c_, dict) or "text" not in c_:
+                    continue
+                t_ = dict(c_)
+                t_.setdefault("size", 0.048); t_.setdefault("y", 0.62)
+                t_.setdefault("pos", "center"); t_.setdefault("color", [0.97, 0.97, 0.97])
+                t_.setdefault("stroke", True)
+                tlist.append(t_)
         if tlist:
             from PIL import ImageDraw, ImageFont
             dr = ImageDraw.Draw(frame_img)
@@ -1370,8 +1400,13 @@ def grade(spec: dict, src: Path, out: Path) -> Path:
                 x = int(w * px - tw * px)
                 y = int(h * t.get("y", 0.80) - th / 2)
                 col = tuple(int(c * 255) for c in t.get("color", [0.93, 0.90, 0.84]))
-                dr.text((x + 2, y + 2), text, font=font, fill=(0, 0, 0))
-                dr.text((x, y), text, font=font, fill=col)
+                sw = max(1, size // 16) if t.get("stroke") else 0
+                if sw:
+                    dr.text((x, y), text, font=font, fill=col,
+                            stroke_width=sw, stroke_fill=(0, 0, 0))
+                else:
+                    dr.text((x + 2, y + 2), text, font=font, fill=(0, 0, 0))
+                    dr.text((x, y), text, font=font, fill=col)
         frame_img.save(dst / f.name, compress_level=1)
         if i % 240 == 0:
             print(f"[wubu3d] graded {i}/{len(files)}", flush=True)

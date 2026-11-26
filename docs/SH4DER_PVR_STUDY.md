@@ -75,6 +75,17 @@ inner loop transformed and shaded every vertex once per face. One pass per verte
 (Jet calls it position reuse) is byte-identical output and ~6% off the frame at 2,534 tris —
 and it is simply less work to read.
 
+**Edge stepping (kept).** Edge functions are linear in x and y, so the per-pixel fill now
+steps two accumulators instead of recomputing both barycentrics from scratch: ~7–9% off the
+frame at 2,534 tris (19.4 → 18.4 ms/frame), output identical except for ~50 silhouette pixels
+where float drift flips a depth test.
+
+**Depth buckets (rejected for now).** Jet sorts opaque draws front to back so the z-test rejects
+far geometry before it shades. Implemented as a counting sort over 64 buckets, it measured
+*slower* (19.4 → 24.2 ms/frame on the same scene): our occlusion culling already removes the
+hidden triangles, so the sort is pure overhead. It stays behind `--sort` for scenes with heavy
+overdraw, off by default.
+
 **A fog LUT (rejected).** SH4ZAM's "no libm in a hot loop" suggested replacing the per-fragment
 `expf(-z/fog)` with a 1024-entry table plus a lerp. Measured on this box, min of 7 interleaved
 runs: **5.49 s with `expf`, 7.07 s with the table** — 29% slower. glibc's `expf` is fast, the

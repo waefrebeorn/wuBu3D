@@ -316,13 +316,24 @@ static void raster_tri(Ctx *c, const CVert *A, const CVert *B, const CVert *C, i
     }
     const float ia = 1.0f / area;
 
+    /* Edge functions are linear in x and y, so step them: one add per pixel and one per
+       row, instead of two products and four subtractions per pixel. Pineda's method, and
+       the same trick Jet's span walker uses. The weights are advanced at the TOP of the
+       body so every `continue` below stays correct. */
+    const float e0x = (sy[1] - sy[2]) * ia, e0y = (sx[2] - sx[1]) * ia;
+    const float e1x = (sy[2] - sy[0]) * ia, e1y = (sx[0] - sx[2]) * ia;
+    const float px0 = minx + 0.5f, py0 = miny + 0.5f;
+    float row0 = ((sx[1]-px0)*(sy[2]-py0) - (sx[2]-px0)*(sy[1]-py0)) * ia;
+    float row1 = ((sx[2]-px0)*(sy[0]-py0) - (sx[0]-px0)*(sy[2]-py0)) * ia;
+
     for (int32_t y = miny; y <= maxy; y++) {
+        float rw0 = row0, rw1 = row1;
         for (int32_t x = minx; x <= maxx; x++) {
-            const float px = x + 0.5f, py = y + 0.5f;
-            float w0 = ((sx[1]-px)*(sy[2]-py) - (sx[2]-px)*(sy[1]-py)) * ia;
-            float w1 = ((sx[2]-px)*(sy[0]-py) - (sx[0]-px)*(sy[2]-py)) * ia;
-            float w2 = 1.0f - w0 - w1;
+            const float w0 = rw0, w1 = rw1;
+            rw0 += e0x; rw1 += e1x;
+            const float w2 = 1.0f - w0 - w1;
             if (w0 < 0 || w1 < 0 || w2 < 0) continue;
+            const float px = x + 0.5f, py = y + 0.5f;
             const float izp = w0*iz[0] + w1*iz[1] + w2*iz[2];
             const float z = 1.0f / izp;
             const size_t idx = (size_t)y * c->w + x;
@@ -360,7 +371,8 @@ static void raster_tri(Ctx *c, const CVert *A, const CVert *B, const CVert *C, i
                 float wyp = c->eye[1] + c->right[1]*(px-c->cx)*z/c->focal + c->up[1]*(c->cy-py)*z/c->focal + c->fwd[1]*z;
                 float wzp = c->eye[2] + c->right[2]*(px-c->cx)*z/c->focal + c->up[2]*(c->cy-py)*z/c->focal + c->fwd[2]*z;
                 const float wp[3] = { wxp, wyp, wzp };
-                const float vis = shadow_vis(wp);
+                const float ksum = keyt[0] + keyt[1] + keyt[2];
+                const float vis = ksum > 0.35f ? shadow_vis(wp) : 1.0f;   /* no sun here: skip 4 taps */
                 for (int k = 0; k < 3; k++) base[k] += vis*keyt[k];
                 float dlx = fr->lx-wxp, dly = fr->ly-wyp, dlz = fr->lz-wzp;
                 float dl = sqrtf(dlx*dlx + dly*dly + dlz*dlz) + 1e-4f;
@@ -402,6 +414,7 @@ static void raster_tri(Ctx *c, const CVert *A, const CVert *B, const CVert *C, i
             c->acc[idx*4+3] += a * wgt;
             c->rev[idx] *= (1.0f - a);
         }
+        row0 += e0y; row1 += e1y;
     }
 }
 
@@ -410,10 +423,13 @@ int main(int argc, char **argv) {
     int no_oit = 0;
     int no_cull = 0;
     int no_shadow = 0;
+    int no_sort = 1;      /* --sort opts into depth-bucket ordering; measured inconclusive under load */
     for (int i = 2; i < argc; i++) {
         if (!strcmp(argv[i], "--no-oit")) no_oit = 1;
         if (!strcmp(argv[i], "--no-cull")) no_cull = 1;
         if (!strcmp(argv[i], "--no-shadow")) no_shadow = 1;
+        if (!strcmp(argv[i], "--no-sort")) no_sort = 1;
+        if (!strcmp(argv[i], "--sort")) no_sort = 0;
     }
 
     char magic[4]; uint32_t nf, w, h;
@@ -436,7 +452,7 @@ int main(int argc, char **argv) {
     if (!ctx.depth || !ctx.nrmbuf || !ctx.fb || !ctx.acc || !ctx.rev ||
         !ctx.coarse || !ctx.region_max) return 1;
 
-    const float amb = 0.24f;
+    float g_amb = 0.24f;      /* frame-supplied ambient: an interior needs a lower floor */
     float lkey[3]  = {-0.45f,-0.52f, 0.72f}; vnorm(lkey);
     float lfill[3] = { 0.62f, 0.30f, 0.18f}; vnorm(lfill);
 
@@ -472,6 +488,7 @@ int main(int argc, char **argv) {
 
         ctx.sb_minx = 1 << 30; ctx.sb_miny = 1 << 30; ctx.sb_maxx = -1; ctx.sb_maxy = -1;
         ctx.fr = fr;
+        g_amb = (fr.pad0 > 0.0f) ? fr.pad0 : 0.24f;
         ctx.eye[0]=fr.cx; ctx.eye[1]=fr.cy; ctx.eye[2]=fr.cz;
         float tg[3] = {fr.tx,fr.ty,fr.tz};
         vsub(tg, ctx.eye, ctx.fwd); vnorm(ctx.fwd);
@@ -519,7 +536,7 @@ int main(int argc, char **argv) {
             vnorm(nl);
             float ndl = fabsf(vdot(nl, lkey));
             float ndf = fmaxf(vdot(nl, lfill), 0.0f);
-            float s = amb + 0.30f*ndf;          /* ambient and fill: never shadowed */
+            float s = g_amb + 0.30f*ndf;        /* ambient and fill: never shadowed */
             float key = 0.78f*ndl;              /* the sun: shadowed per pixel */
             vc[i].sh[0] = verts[i].r*s + 26.0f*ndf;
             vc[i].sh[1] = verts[i].g*s + 14.0f*ndf;
@@ -532,11 +549,63 @@ int main(int argc, char **argv) {
             vc[i].tag = verts[i].tag;
         }
 
-        /* two passes over the same list: opaque first, then glass. Order inside a pass
-           does not matter, which is the whole point of weighted blended OIT. */
+        /* Opaque front-to-back. Shading is the expensive part, so paint the near shells of
+           the scene first and let the z-test reject the far ones before they shade. A
+           counting sort over 64 depth buckets (Jet calls them depth buckets) costs two
+           passes over the list and no comparisons. Glass keeps submission order: weighted
+           blended OIT is order independent, which is the whole point of it. */
+        uint32_t *opaque_order = malloc(sizeof(uint32_t) * (nt ? nt : 1));
+        uint32_t *glass_order  = malloc(sizeof(uint32_t) * (nt ? nt : 1));
+        uint32_t n_opaque = 0, n_glass = 0;
+        if (no_sort) {
+            for (uint32_t i = 0; i < nt; i++) {
+                const Vert *V[3] = { &verts[tris[i].a], &verts[tris[i].b], &verts[tris[i].c] };
+                if (V[0]->a < 250 || V[1]->a < 250 || V[2]->a < 250) glass_order[n_glass++] = i;
+                else opaque_order[n_opaque++] = i;
+            }
+        } else if (opaque_order && glass_order) {
+            float zmin = 1e30f, zmax = -1e30f;
+            for (uint32_t i = 0; i < nt; i++) {
+                const Vert *V[3] = { &verts[tris[i].a], &verts[tris[i].b], &verts[tris[i].c] };
+                if (V[0]->a < 250 || V[1]->a < 250 || V[2]->a < 250) { n_glass++; continue; }
+                float z = fminf(vc[tris[i].a].vz, fminf(vc[tris[i].b].vz, vc[tris[i].c].vz));
+                if (z < zmin) zmin = z;
+                if (z > zmax) zmax = z;
+            }
+            enum { NB = 64 };
+            uint32_t counts[NB]; memset(counts, 0, sizeof counts);
+            uint32_t n_o = nt - n_glass;
+            float span = (zmax > zmin) ? (zmax - zmin) : 1.0f;
+            for (uint32_t i = 0; i < nt; i++) {
+                const Vert *V[3] = { &verts[tris[i].a], &verts[tris[i].b], &verts[tris[i].c] };
+                if (V[0]->a < 250 || V[1]->a < 250 || V[2]->a < 250) { glass_order[n_glass++] = i; continue; }
+                float z = fminf(vc[tris[i].a].vz, fminf(vc[tris[i].b].vz, vc[tris[i].c].vz));
+                int b = (int)((z - zmin) / span * (NB - 1));
+                if (b < 0) b = 0; if (b >= NB) b = NB - 1;
+                counts[b]++;
+            }
+            uint32_t start[NB], sum = 0;
+            for (int b = 0; b < NB; b++) { start[b] = sum; sum += counts[b]; }
+            n_opaque = n_o;
+            for (uint32_t i = 0; i < nt; i++) {
+                const Vert *V[3] = { &verts[tris[i].a], &verts[tris[i].b], &verts[tris[i].c] };
+                if (V[0]->a < 250 || V[1]->a < 250 || V[2]->a < 250) continue;
+                float z = fminf(vc[tris[i].a].vz, fminf(vc[tris[i].b].vz, vc[tris[i].c].vz));
+                int b = (int)((z - zmin) / span * (NB - 1));
+                if (b < 0) b = 0; if (b >= NB) b = NB - 1;
+                opaque_order[start[b]++] = i;
+            }
+        } else {
+            n_opaque = n_glass = 0;   /* malloc failed: nothing draws, which is loud */
+        }
+
+        /* two passes over the same list: opaque, near to far, then glass. */
         for (int pass = 0; pass < 2; pass++) {
             int transparent = pass;
-            for (uint32_t i=0;i<nt;i++){
+            const uint32_t n_this = transparent ? n_glass : n_opaque;
+            const uint32_t *order = transparent ? glass_order : opaque_order;
+            for (uint32_t oi = 0; oi < n_this; oi++) {
+                const uint32_t i = order[oi];
                 const Vert *V[3] = { &verts[tris[i].a], &verts[tris[i].b], &verts[tris[i].c] };
                 int is_glass = (V[0]->a < 250 || V[1]->a < 250 || V[2]->a < 250);
                 if (is_glass != transparent) continue;
@@ -637,7 +706,7 @@ int main(int argc, char **argv) {
         fwrite(&w2,4,1,o); fwrite(&h2,4,1,o); fwrite(camdata,4,16,o); fclose(o);
         free(dep2); free(nrm2);
 
-        free(vc); free(verts); free(tris); free(vn);
+        free(vc); free(opaque_order); free(glass_order); free(verts); free(tris); free(vn);
     }
 
     clock_gettime(CLOCK_MONOTONIC,&t1);

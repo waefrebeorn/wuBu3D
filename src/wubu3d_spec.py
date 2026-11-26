@@ -17,13 +17,14 @@ PRESETS = {
     "preview":   {"resolution": [320, 180], "samples": 4, "denoise": False, "grade": True},
     "cartoon":   {"resolution": [640, 360], "samples": 6, "denoise": True,  "grade": True},
     "cinematic": {"resolution": [854, 480], "samples": 8, "denoise": True,  "grade": True},
+    "vertical":  {"resolution": [720, 1280], "samples": 8, "denoise": True,  "grade": True},
 }
 
 KNOWN_TOP = [
     "name", "preset", "duration", "fps", "resolution", "samples", "denoise", "seed",
     "fog", "ssaa", "raster_gain", "range", "ground", "sky", "lights", "props", "cast",
     "shots", "titles", "fade", "dof", "sound", "exposure", "frames",
-    "ao", "ao_radius", "ao_rays",
+    "ao", "ao_radius", "ao_rays", "captions", "upscale",
 ]
 
 
@@ -166,6 +167,22 @@ def validate(raw: dict) -> tuple[list, list]:
         err("fog", "must be a positive distance in metres")
     if raw.get("seed") is not None and not _is_int(raw["seed"]):
         err("seed", "must be an integer")
+    caps = raw.get("captions")
+    if caps is not None:
+        if isinstance(caps, dict):
+            if not isinstance(caps.get("words"), str):
+                err("captions", "a captions object needs 'words': a path to a words json")
+        elif isinstance(caps, list):
+            for i, c in enumerate(caps):
+                if not isinstance(c, dict) or not isinstance(c.get("text"), str):
+                    err(f"captions[{i}]", "needs a string 'text'")
+                    continue
+                if not _is_num(c.get("in")) or not _is_num(c.get("out")):
+                    err(f"captions[{i}]", "needs numeric 'in' and 'out' in seconds")
+                elif c["out"] <= c["in"]:
+                    err(f"captions[{i}].out", "must be greater than in")
+        else:
+            err("captions", "must be a list of {text, in, out} or {words: path}")
     if raw.get("ao") is not None and raw["ao"] not in ("taps", "ssao"):
         err("ao", "must be 'taps' (default, cheap) or 'ssao' (raytraced, ~0.4 s/frame)")
     if raw.get("ao_radius") is not None and not (0.02 <= _num(raw["ao_radius"]) <= 8.0):
@@ -632,6 +649,7 @@ SCHEMA = {
                "description": "ambient occlusion pass: fixed taps (cheap) or raytraced"},
         "ao_radius": {"type": "number", "minimum": 0.02, "maximum": 8.0, "default": 0.35},
         "ao_rays": {"type": "integer", "minimum": 1, "maximum": 32, "default": 10},
+        "captions": {"description": "word captions: [{text,in,out}] or {words: path to a words json}"},
     },
     "additionalProperties": True,
 }

@@ -1,0 +1,191 @@
+{
+ "name": "vertical_test",
+ "preset": "vertical",
+ "duration": 4.0,
+ "fps": 24,
+ "ssaa": 1,
+ "ground": [
+  0.1,
+  0.085,
+  0.07
+ ],
+ "sky": {
+  "horizon": [
+   0.07,
+   0.06,
+   0.055
+  ],
+  "zenith": [
+   0.02,
+   0.02,
+   0.03
+  ]
+ },
+ "fog": 60,
+ "props": {
+  "towers": 0,
+  "rocks": 2,
+  "tower_radius": [
+   40,
+   60
+  ],
+  "meshes": [
+   {
+    "obj": "assets/obelisk.obj",
+    "at": [
+     -2.3,
+     2.6,
+     0
+    ],
+    "scale": 1.0,
+    "yaw": 0.3,
+    "color": [
+     0.34,
+     0.3,
+     0.26
+    ]
+   }
+  ]
+ },
+ "cast": [
+  {
+   "name": "gunsmith",
+   "color": [
+    0.28,
+    0.24,
+    0.2
+   ],
+   "skin": [
+    0.72,
+    0.56,
+    0.44
+   ],
+   "path": [
+    [
+     0,
+     -0.6
+    ],
+    [
+     0,
+     0.4
+    ]
+   ],
+   "walk": [
+    0,
+    96
+   ],
+   "stride": 0.55
+  }
+ ],
+ "shots": [
+  {
+   "in": 0,
+   "out": 47,
+   "follow": "gunsmith",
+   "cam": [
+    0.6,
+    4.4,
+    1.55
+   ],
+   "cam_offset": [
+    0.6,
+    4.4,
+    1.55
+   ],
+   "lens": 35
+  },
+  {
+   "in": 48,
+   "out": 71,
+   "follow": "gunsmith",
+   "cam": [
+    0.4,
+    2.6,
+    1.45
+   ],
+   "cam_offset": [
+    0.4,
+    2.6,
+    1.45
+   ],
+   "lens": 60
+  },
+  {
+   "in": 72,
+   "out": 95,
+   "cam": [
+    -0.6,
+    4.6,
+    1.2
+   ],
+   "target": [
+    -2.3,
+    2.6,
+    1.1
+   ],
+   "lens": 55
+  }
+ ],
+ "lights": {
+  "key": {
+   "energy": 9000,
+   "size": 22,
+   "color": [
+    1.0,
+    0.66,
+    0.34
+   ],
+   "loc": [
+    -5,
+    -6,
+    5
+   ]
+  },
+  "rim": {
+   "energy": 3500,
+   "size": 10,
+   "color": [
+    0.45,
+    0.6,
+    1.0
+   ],
+   "loc": [
+    5,
+    4,
+    5
+   ]
+  }
+ },
+ "captions": [
+  {
+   "text": "fifty",
+   "in": 0.2,
+   "out": 1.0
+  },
+  {
+   "text": "locks",
+   "in": 1.0,
+   "out": 1.8
+  },
+  {
+   "text": "one",
+   "in": 1.8,
+   "out": 2.4
+  },
+  {
+   "text": "pile",
+   "in": 2.4,
+   "out": 3.2
+  }
+ ],
+ "sound": {
+  "motif": [
+   196.0,
+   233.1,
+   293.7
+  ],
+  "cue": 0.5,
+  "wind": 0.04
+ },
+ "ambient": 0.09
+}
