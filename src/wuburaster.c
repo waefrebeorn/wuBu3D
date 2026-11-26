@@ -428,7 +428,7 @@ int main(int argc, char **argv) {
         if (!strcmp(argv[i], "--no-oit")) no_oit = 1;
         if (!strcmp(argv[i], "--no-cull")) no_cull = 1;
         if (!strcmp(argv[i], "--no-shadow")) no_shadow = 1;
-        if (!strcmp(argv[i], "--no-sort")) no_sort = 1;
+        if (!strcmp(argv[i], "--sort")) no_sort = 0;
         if (!strcmp(argv[i], "--sort")) no_sort = 0;
     }
 
