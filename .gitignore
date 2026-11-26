@@ -16,3 +16,6 @@ graded/
 
 # scratch specs written by `demo`
 specs/demo_*.json.bak
+
+# asset packs are fetched on demand, never committed
+assets/cache/

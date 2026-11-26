@@ -283,6 +283,12 @@ def validate(raw: dict) -> tuple[list, list]:
                     err(f"{p}.yaw", "must be radians about Z")
                 if "color" in m_ and not _rgb_ok(m_["color"]):
                     err(f"{p}.color", "must be 3 numbers 0..1")
+                if "up" in m_ and m_["up"] not in ("y", "z"):
+                    err(f"{p}.up", "must be 'y' (Kenney/Quaternius/glTF) or 'z'")
+                if "repeat" in m_ and not (_is_int(m_["repeat"][0]) if isinstance(m_["repeat"], list) else False):
+                    err(f"{p}.repeat", "must be [nx, ny] integers >= 1")
+                if "step" in m_ and not (_v2(m_["step"])):
+                    err(f"{p}.step", "must be [dx, dy] metres between repeats")
 
             for i, fg in enumerate(props.get("fg") or []):
                 p = f"props.fg[{i}]"

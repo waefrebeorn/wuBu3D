@@ -200,6 +200,37 @@ opt-in: use it for `still` look-dev and hero frames. Notes and measurements:
 Grade is fixed (sky composite, median de-firefly, soften, bloom, S-curve, highlight rolloff,
 vignette, 2.39:1 bars). Nothing to configure, on purpose.
 
+
+## Asset packs: characters and levels without modelling them
+
+Modelling a human from primitives is a losing race against people who already did it. The
+pipeline now pulls ready-made geometry instead of generating it:
+
+```
+python3 wubu3d.py fetch                 # list the manifest, show what is cached
+python3 wubu3d.py fetch mini-characters # 20 characters + 32 clips each, 4.0 MB
+python3 wubu3d.py fetch mini-dungeon    # walls, floors, doors, props, 0.7 MB
+```
+
+`assets/manifest.json` is 1 KB and holds only the URL, the licence and the size. Downloads
+land in `assets/cache/`, which `.gitignore` keeps out of the repo, so a clone stays light and
+pulls exactly the packs a spec names. Sources are **CC0** on purpose: Kenney, Quaternius and
+Poly Haven can be named in a public repo. Game-rip archives (VRChat avatar mirrors, The Models
+Resource) cannot be redistributed and are not wired in.
+
+Spec side, `props.meshes[]` takes four keys that exist because every kit disagrees about
+orientation and size:
+
+| key | meaning |
+|---|---|
+| `up` | `"y"` for Kenney/Quaternius/glTF (Y-up), `"z"` for our own OBJ exports |
+| `scale` | uniform multiplier; Kenney minis are ~1 unit tall, so 2.2 makes a 1.7 m person |
+| `yaw` | radians about Z, and `repeat`/`step` march along the mesh's own axes after it |
+| `repeat` / `step` | `[nx, ny]` copies, `[dx, dy]` metres apart — one 6×6 room from one line |
+
+`specs/kenney_scene.json` is the worked example: a 12×12 m room built from 16 mesh entries,
+three Kenney characters, and no cast at all.
+
 ## Validation
 
 `validate` is the contract, and every renderer runs it before touching a frame. Errors name

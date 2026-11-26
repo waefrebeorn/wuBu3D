@@ -1,0 +1,21 @@
+{
+ "_note": "CC0 packs fetched on demand. Nothing here is committed: `wubu3d.py fetch <name>` downloads and extracts into assets/cache/, which .gitignore keeps out. The licence is recorded per entry so a render can say where its geometry came from.",
+ "mini-characters": {
+  "title": "Kenney Mini Characters",
+  "url": "https://opengameart.org/sites/default/files/kenney_mini-characters_2.0.zip",
+  "license": "CC0 1.0",
+  "author": "Kenney (kenney.nl)",
+  "bytes": 4024187,
+  "contains": "20 characters, 32 animation clips each, OBJ + GLB per model",
+  "use": "characters"
+ },
+ "mini-dungeon": {
+  "title": "Kenney Mini Dungeon",
+  "url": "https://opengameart.org/sites/default/files/kenney_mini-dungeon.zip",
+  "license": "CC0 1.0",
+  "author": "Kenney (kenney.nl)",
+  "bytes": 688958,
+  "contains": "dungeon walls, floors, doors and props; OBJ + GLB",
+  "use": "levels"
+ }
+}

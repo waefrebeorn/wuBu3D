@@ -191,8 +191,101 @@ def sphere(name, scale, material, at=(0, 0, 0)):
     ob.data.materials.append(material)
     bpy.ops.object.shade_smooth()
     return ob
-'''
 
+
+
+# ── modelling: skin the skeleton ────────────────────────────────────────────────
+BONE_RADII = {
+    "spine": 0.150, "chest": 0.170, "neck": 0.052, "head": 0.100,
+    "clav.L": 0.070, "clav.R": 0.070,
+    "shoulder.L": 0.062, "shoulder.R": 0.062,
+    "elbow.L": 0.052, "elbow.R": 0.052,
+    "wrist.L": 0.043, "wrist.R": 0.043,
+    "hip.L": 0.092, "hip.R": 0.092,
+    "knee.L": 0.064, "knee.R": 0.064,
+    "ankle.L": 0.048, "ankle.R": 0.048,
+    "toe.L": 0.040, "toe.R": 0.040,
+}
+
+
+def body_from_bones(name, material, radii, extra=(), res=0.035):
+    """Skin a skeleton with a summed implicit field, meshed at its iso level.
+
+    Every bone radiates a sphere field along its length; the fields add, and the surface is
+    wherever the sum crosses the threshold — so the arm fuses into the shoulder and the leg
+    into the hip instead of two cylinders intersecting. This is Stasiuk's Cocoon (and the
+    2026 'Wrap' tool) applied to our joint table: the skeleton we already animate IS the
+    modelling rig.
+    """
+    mb = bpy.data.metaballs.new('MB_' + name)
+    mb.resolution = res
+    mb.render_resolution = res * 0.8
+    ob = bpy.data.objects.new('MB_' + name, mb)
+    S.collection.objects.link(ob)
+    for child, par in SKEL_PARENT.items():
+        r = radii.get(child)
+        if not r:
+            continue
+        a = Vector(SKEL_JOINTS[par]); b = Vector(SKEL_JOINTS[child])
+        n = max(2, int((b - a).length / (res * 1.4)))
+        for i in range(n + 1):
+            el = mb.elements.new()
+            el.co = a.lerp(b, i / n)
+            el.radius = r
+            el.stiffness = 3.0
+    for (co, r) in extra:
+        el = mb.elements.new()
+        el.co = Vector(co)
+        el.radius = r
+        el.stiffness = 3.0
+    bpy.ops.object.select_all(action='DESELECT')
+    ob.select_set(True)
+    bpy.context.view_layer.objects.active = ob
+    bpy.ops.object.convert(target='MESH')
+    body = bpy.context.active_object
+    body.name = name
+    body.data.materials.append(material)
+    bpy.ops.object.shade_smooth()
+    return body
+
+
+def skin_by_distance(mesh, rig, max_inf=4, power=5.0):
+    """Distance-decay skin weights, four influences per vertex, normalised.
+
+    Envelope weights leak across a gap (the coat's hem grabs the far thigh) and bone heat
+    fails on meshes it cannot solve. Distance to the bone SEGMENT with a sharp falloff and
+    a four-influence cap is what the rigging papers use as their robust fallback, and it is
+    deterministic, which matters more than elegance when a render has to be repeatable.
+    """
+    segs = {}
+    for jn in SKEL_JOINTS:
+        kids = [k for k, v in SKEL_PARENT.items() if v == jn]
+        a = Vector(SKEL_JOINTS[jn])
+        b = Vector(SKEL_JOINTS[kids[0]]) if kids else a + Vector((0, 0, 0.10))
+        segs[jn] = (a, b)
+    groups = {}
+    for jn in segs:
+        groups[jn] = mesh.vertex_groups.get(jn) or mesh.vertex_groups.new(name=jn)
+    for v in mesh.data.vertices:
+        p = v.co
+        near = []
+        for jn, (a, b) in segs.items():
+            ab = b - a
+            t = (p - a).dot(ab) / max(ab.length_squared, 1e-9)
+            t = 0.0 if t < 0.0 else (1.0 if t > 1.0 else t)
+            near.append(((p - (a + ab * t)).length, jn))
+        near.sort()
+        top = near[:max_inf]
+        ws = [(1.0 / (d + 0.02)) ** power for d, _ in top]
+        s = sum(ws) or 1.0
+        for (d, jn), w in zip(top, ws):
+            groups[jn].add([v.index], w / s, 'REPLACE')
+    md = mesh.modifiers.new('Armature', 'ARMATURE')
+    md.object = rig
+    mesh.parent = rig
+    return mesh
+
+'''
 
 SCENE_BODY = r'''
 # ── set ─────────────────────────────────────────────────────────────────────
@@ -299,6 +392,34 @@ def perform(rig, parts, c, f0, f1, path, holds):
         armR.rotation_euler = (float(p.get("arm_r", math.radians(-18))), 0, 0)
         for ob in (legL, legR, armL, armR):
             ob.keyframe_insert("rotation_euler", frame=f)
+
+
+
+
+def make_armature(name):
+    """Bones only — the skinning pass needs a skeleton, not a parented pile of parts."""
+    arm = bpy.data.armatures.new('Arm_' + name)
+    rig = bpy.data.objects.new('Rig_' + name, arm)
+    S.collection.objects.link(rig)
+    bpy.context.view_layer.objects.active = rig
+    bpy.ops.object.mode_set(mode='EDIT')
+    eb = {}
+    for jn, co in SKEL_JOINTS.items():
+        b = arm.edit_bones.new(jn)
+        b.head = tuple(co)
+        eb[jn] = b
+    for jn, par in SKEL_PARENT.items():
+        if par in eb:
+            eb[jn].parent = eb[par]
+    for jn, b in eb.items():
+        kids = [k for k, v in SKEL_PARENT.items() if v == jn]
+        b.tail = tuple(SKEL_JOINTS[kids[0]]) if kids else (b.head[0], b.head[1], b.head[2] + 0.10)
+        big = jn in ('pelvis', 'spine', 'chest')
+        b.head_radius = 0.22 if big else 0.10
+        b.tail_radius = 0.20 if big else 0.09
+        b.envelope_distance = 0.30 if big else 0.16
+    bpy.ops.object.mode_set(mode='OBJECT')
+    return rig
 
 
 def build_rig(name, parts, bones_for):
@@ -413,6 +534,43 @@ for c in SPEC["cast"]:
     skin_col = tuple(c.get("skin", [0.46, 0.35, 0.28]))
     cloth = mat('cloth_' + c["name"], col, rough=0.9)
     skin = mat('skin_' + c["name"], skin_col, rough=0.55)
+    style = str(c.get("figure", SPEC.get("figure", "skin")))
+    if style == "skin" and not c.get("perf"):
+        # one continuous surface per figure, skinned to the same 21 joints the preview animates
+        body = body_from_bones('Body_' + c["name"], cloth, BONE_RADII,
+                               extra=[(SKEL_JOINTS["pelvis"], 0.155), (SKEL_JOINTS["chest"], 0.175)])
+        head = body_from_bones('Head_' + c["name"], skin, {"neck": 0.050, "head": 0.098},
+                               extra=[(SKEL_JOINTS["head"], 0.104)])
+        bpy.ops.mesh.primitive_cone_add(vertices=20, radius1=0.30, radius2=0.175, depth=0.62,
+                                        location=(0, 0, 0.86))
+        coat = bpy.context.active_object
+        coat.name = 'Coat_' + c["name"]
+        coat.data.materials.append(cloth)
+        bpy.ops.object.shade_smooth()
+        rig = make_armature(c["name"])
+        for ob in (body, head, coat):
+            skin_by_distance(ob, rig)
+        # eyes, bone-parented so they ride the head; at 480p the face is two dots and a brow
+        eyemat = mat('eye_' + c["name"], (0.02, 0.02, 0.025), rough=0.35)
+        for sx in (-0.036, 0.036):
+            bpy.ops.mesh.primitive_uv_sphere_add(radius=0.017, segments=10, ring_count=6,
+                                                 location=(sx, -0.086, 1.618))
+            e = bpy.context.active_object
+            e.name = 'Eye_' + c["name"]
+            e.data.materials.append(eyemat)
+            e.parent = rig
+            e.parent_type = 'BONE'
+            e.parent_bone = 'head'
+        f0 = int(c.get("walk", [0, LAST])[0]); f1 = int(c.get("walk", [0, LAST])[1])
+        path = c.get("path", [[-6, -20, 0], [0, 4, 0]])
+        path = [tuple(p) + (0.0,) * (3 - len(p)) for p in path]
+        animate_bones(rig, c, f0, f1, c.get("hold") or [], path)
+        cast_objs.append(rig)
+        CAST_POS[c["name"]] = {"path": path, "walk": (f0, f1), "z": c.get("target_z", 1.2),
+                               "hold": c.get("hold") or []}
+        continue
+
+    # primitives path: kept for `"figure": "primitives"` and for A/B renders.
     # 1.78 m adult, 7.2 heads. limb(at) is the BOTTOM of the part, not its centre.
     # Ratios: pelvis 0.95, shoulders 1.40, head centre 1.60, hem above the knee so the
     # legs stay visible and can act.
@@ -830,18 +988,32 @@ def _mesh_instances(spec):
         cy, sy = math.cos(yaw), math.sin(yaw)
         at = m.get("at", [0, 0, 0])
         col = m.get("color", [0.34, 0.34, 0.38])
-        rgb = tuple(max(0, min(255, int(col[i] * 255))) for i in range(3))   # 0..1 means 0..1
-        world = [(at[0] + (x * s) * cy - (y * s) * sy,
-                  at[1] + (x * s) * sy + (y * s) * cy,
-                  at[2] + z * s) for (x, y, z) in vs]
+        rgb = tuple(max(0, min(255, int(col[i] * 255))) for i in range(3))
+        if str(m.get("up", "z")).lower() == "y":
+            # most asset kits (Kenney, Quaternius, glTF) are Y-up; the film graph is Z-up
+            vs = [(x, -z, y) for (x, y, z) in vs]
+        rep = m.get("repeat") or [1, 1]
+        step = m.get("step") or [1.0, 1.0]
+        world = []
+        for ix in range(int(rep[0])):
+            for iy in range(int(rep[1])):
+                # repeats march along the mesh's OWN axes, so a yawed wall rows up the wall
+                ax = at[0] + ix * float(step[0]) * cy - iy * float(step[1]) * sy
+                ay = at[1] + ix * float(step[0]) * sy + iy * float(step[1]) * cy
+                world += [(ax + (x * s) * cy - (y * s) * sy,
+                           ay + (x * s) * sy + (y * s) * cy,
+                           at[2] + z * s) for (x, y, z) in vs]
         # unshare vertices per face: an imported mesh has hard edges, and averaged
         # normals turn an obelisk into a soft blob. Three verts per triangle costs
         # memory and buys faceted shading, which is what the asset actually is.
         verts, tris = [], []
-        for (a, b, c) in ts:
-            base = len(verts)
-            verts += [world[a], world[b], world[c]]
-            tris.append((base, base + 1, base + 2))
+        nv = len(vs)                                   # verts per copy, before repeats
+        for copy in range(int(rep[0]) * int(rep[1])):
+            off = copy * nv
+            for (a, b, c) in ts:
+                base = len(verts)
+                verts += [world[off + a], world[off + b], world[off + c]]
+                tris.append((base, base + 1, base + 2))
         out.append({"name": Path(rel).stem, "verts": verts, "tris": tris, "rgb": rgb,
                     "color": [float(c) for c in col]})
     return out
@@ -1600,6 +1772,48 @@ def mux(spec: dict, frames_dir: Path, wav: Path, out: Path) -> Path:
     return target
 
 # ───────────────────────────────────────────────────── receipts and the agent gate
+def fetch_asset(name: str | None = None, list_only: bool = False) -> dict:
+    """Download a CC0 pack into assets/cache/ and report what is usable.
+
+    The repo stays light: the manifest is 1 KB and nothing downloaded is committed, so a
+    fresh clone pulls exactly the packs a spec needs. Sources are CC0 so a public repo can
+    name them; game-rip archives (VRChat mirrors, Models Resource) cannot be redistributed
+    and stay out of this pipeline on purpose.
+    """
+    import urllib.request, zipfile, io
+    manifest = json.loads((PROJECT / "assets" / "manifest.json").read_text())
+    packs = {k: v for k, v in manifest.items() if not k.startswith("_")}
+    if list_only or not name:
+        for k, v in packs.items():
+            got = (PROJECT / "assets" / "cache" / k).exists()
+            print(f"{k:18s} {v['license']:8s} {v['bytes']/1e6:5.1f} MB  "
+                  f"{'cached' if got else 'not fetched':11s}  {v['title']}")
+        return {"ok": True, "packs": {k: {"cached": (PROJECT / 'assets' / 'cache' / k).exists(), **v}
+                                      for k, v in packs.items()}}
+    if name not in packs:
+        raise SystemExit(f"unknown pack {name!r}; try: {', '.join(packs)}")
+    dest = PROJECT / "assets" / "cache" / name
+    OBJ = sorted(dest.rglob("*.obj")) if dest.exists() else []
+    GLB = sorted(dest.rglob("*.glb")) if dest.exists() else []
+    if OBJ or GLB:
+        print(f"[wubu3d] {name}: already fetched ({len(OBJ)} obj, {len(GLB)} glb)")
+        return {"ok": True, "pack": name, "dir": str(dest), "obj": len(OBJ), "glb": len(GLB)}
+    dest.mkdir(parents=True, exist_ok=True)
+    url = packs[name]["url"]
+    print(f"[wubu3d] fetching {name} — {packs[name]['title']} ({packs[name]['license']})")
+    req = urllib.request.Request(url, headers={"User-Agent": "wubu3d/1.1 (+github.com/waefrebeorn)"})
+    with urllib.request.urlopen(req, timeout=180) as r:
+        blob = r.read()
+    with zipfile.ZipFile(io.BytesIO(blob)) as z:
+        z.extractall(dest)
+    OBJ = sorted(dest.rglob("*.obj"))
+    GLB = sorted(dest.rglob("*.glb"))
+    print(f"[wubu3d] {name}: {len(blob)/1e6:.1f} MB -> {dest}  ({len(OBJ)} obj, {len(GLB)} glb)")
+    for q in OBJ[:6]:
+        print("   ", q.relative_to(PROJECT))
+    return {"ok": True, "pack": name, "dir": str(dest), "obj": len(OBJ), "glb": len(GLB)}
+
+
 def _sha256(path: Path) -> str:
     h = hashlib.sha256()
     with open(path, "rb") as f:
@@ -1874,7 +2088,8 @@ def main():
         description="WuBu3D — spec-to-film compiler. Agent commands: schema, validate, inspect, "
                     "plan, qa. Render paths: build, raster (C11, seconds), render/finish/make (Cycles).")
     ap.add_argument("cmd", choices=["build", "render", "finish", "make", "demo", "raster",
-                                    "still", "validate", "inspect", "plan", "schema", "qa"])
+                                    "still", "validate", "inspect", "plan", "schema", "qa",
+                                    "fetch"])
     ap.add_argument("spec", nargs="?", help="path to spec json ('-' or omitted reads stdin)")
     ap.add_argument("--preset", default="cartoon")
     ap.add_argument("--at", type=int, default=0, help="still: which frame to render")
@@ -1888,7 +2103,10 @@ def main():
         sys.stdout = sys.stderr
     code, result = 0, {}
     try:
-        if a.cmd in ("schema", "validate", "inspect", "plan", "qa"):
+        if a.cmd == "fetch":
+            result = fetch_asset(a.spec, list_only=(a.spec in (None, "-")))
+            code = 0
+        elif a.cmd in ("schema", "validate", "inspect", "plan", "qa"):
             result = run_agent_command(a.cmd, a.spec)
             code = 0 if result.get("ok") else 2
         elif a.cmd == "demo":
