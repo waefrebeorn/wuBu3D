@@ -1258,11 +1258,9 @@ def main():
     spec_path = Path(a.spec)
     if a.cmd == "build":  build(spec_path)
     elif a.cmd == "raster":
-        png = raster(spec_path)
-        spec = json.loads((Path(png).parent / "spec.json").read_text())
-        graded = grade(spec, png, Path(png).parent)
-        wav = score(spec, Path(png).parent)
-        mux(spec, graded, wav, Path(png).parent)
+        # raster() already composites, grades, scores and muxes — grading the
+        # returned MP4 again raised "no frames to grade" after a good delivery
+        raster(spec_path)
     elif a.cmd == "render": render(spec_path)
     elif a.cmd == "finish": finish(spec_path)
     else: render(spec_path); finish(spec_path)
