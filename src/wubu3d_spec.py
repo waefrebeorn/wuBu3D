@@ -24,7 +24,7 @@ KNOWN_TOP = [
     "name", "preset", "duration", "fps", "resolution", "samples", "denoise", "seed",
     "fog", "ssaa", "raster_gain", "range", "ground", "sky", "lights", "props", "cast",
     "shots", "titles", "fade", "dof", "sound", "exposure", "frames",
-    "ao", "ao_radius", "ao_rays", "ambient", "captions", "accum", "shutter", "tonemap", "upscale",
+    "ao", "ao_radius", "ao_rays", "ambient", "captions", "accum", "shutter", "tonemap", "upscale", "night",
 ]
 
 
@@ -179,6 +179,8 @@ def validate(raw: dict) -> tuple[list, list]:
                 err("captions.size", "must be 0..0.5 of frame height")
             if "y" in caps and not (0 <= _num(caps["y"]) <= 1):
                 err("captions.y", "must be 0..1 of frame height")
+            if "font" in caps and str(caps["font"]).lower() not in ("anton", "sans", "bold", "dejavu"):
+                err("captions.font", "must be 'anton' (condensed display) or 'sans' (DejaVu Bold)")
         elif isinstance(caps, list):
             for i, c in enumerate(caps):
                 if not isinstance(c, dict) or not isinstance(c.get("text"), str):
@@ -190,6 +192,8 @@ def validate(raw: dict) -> tuple[list, list]:
                     err(f"captions[{i}].out", "must be greater than in")
         else:
             err("captions", "must be a list of {text, in, out} or {words: path}")
+    if raw.get("night") is not None and not (0.0 <= _num(raw["night"]) <= 1.0):
+        err("night", "must be 0..1 — how far the grade pulls to night (cool, desaturated)")
     if raw.get("tonemap") is not None and raw["tonemap"] not in ("srgb", "aces"):
         err("tonemap", "must be 'srgb' (tone curve on encoded values) or 'aces' (linear)")
     if raw.get("accum") is not None and (not _is_int(raw["accum"]) or not (1 <= raw["accum"] <= 16)):
@@ -434,6 +438,16 @@ def validate(raw: dict) -> tuple[list, list]:
                 err("dof.amount", "must be 0..4")
 
     snd = raw.get("sound")
+    if isinstance(snd, dict):
+        for i, hit in enumerate(snd.get("sfx") or []):
+            p_ = f"sound.sfx[{i}]"
+            if not isinstance(hit, dict) or not _is_num(hit.get("at")):
+                err(p_, "needs an 'at' time in seconds")
+                continue
+            if hit.get("type") not in ("clink", "click", "thud", "scrape"):
+                err(f"{p_}.type", "must be clink, click, thud or scrape")
+            if "gain" in hit and not (0 <= _num(hit["gain"]) <= 1.0):
+                err(f"{p_}.gain", "must be 0..1")
     if snd is not None:
         if not isinstance(snd, dict):
             err("sound", "must be an object {motif, cue, wind}")
@@ -658,8 +672,17 @@ SCHEMA = {
         "sound": {"type": "object", "properties": {
             "motif": {"type": "array", "items": {"type": "number", "minimum": 55, "maximum": 2000}},
             "cue": {"type": "number", "minimum": 0, "maximum": 5},
-            "wind": {"type": "number", "minimum": 0, "maximum": 1}}},
+            "wind": {"type": "number", "minimum": 0, "maximum": 1},
+            "sfx": {"type": "array", "items": {
+                "type": "object", "required": ["at"],
+                "properties": {
+                    "at": {"type": "number", "minimum": 0},
+                    "type": {"enum": ["clink", "click", "thud", "scrape"]},
+                    "gain": {"type": "number", "minimum": 0, "maximum": 1},
+                    "pan": {"type": "number", "minimum": -1, "maximum": 1},
+                }}}}},
         "exposure": {"type": "number", "minimum": 0.1, "maximum": 5.0},
+        "night": {"type": "number", "minimum": 0.0, "maximum": 1.0, "default": 0.75},
         "tonemap": {"enum": ["srgb", "aces"], "default": "srgb",
                     "description": "aces applies the tone curve in linear light, like a film pipeline"},
         "accum": {"type": "integer", "minimum": 1, "maximum": 16, "default": 1,
@@ -675,6 +698,7 @@ SCHEMA = {
                 "size": {"type": "number", "exclusiveMinimum": 0, "maximum": 0.5},
                 "y": {"type": "number", "minimum": 0, "maximum": 1},
                 "stroke": {"type": "boolean"},
+                "font": {"enum": ["anton", "sans"], "default": "anton"},
             },
         },
         "ao": {"enum": ["taps", "ssao"], "default": "taps",

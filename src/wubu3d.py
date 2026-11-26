@@ -1440,6 +1440,11 @@ def grade(spec: dict, src: Path, out: Path) -> Path:
                 tlist.append(t_)
         if tlist:
             from PIL import ImageDraw, ImageFont
+            fp = FONT_PATH
+            if str((spec.get("captions") or {}).get("font", "anton")).lower() in ("sans", "bold", "dejavu"):
+                alt = Path("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf")
+                if alt.exists():
+                    fp = alt
             dr = ImageDraw.Draw(frame_img)
             tsec = i / fps
             for t in tlist:
@@ -1448,7 +1453,7 @@ def grade(spec: dict, src: Path, out: Path) -> Path:
                 size = int(t.get("size", 0.052) * h)
                 if size not in _fonts:
                     try:
-                        _fonts[size] = ImageFont.truetype(FONT_PATH, size)
+                        _fonts[size] = ImageFont.truetype(fp, size)
                     except Exception:
                         _fonts[size] = ImageFont.load_default()
                 font = _fonts[size]
@@ -1503,6 +1508,40 @@ def score(spec: dict, out: Path) -> Path:
 
     cue = spec["sound"].get("cue", 0.6) * dur
     motif = spec["sound"].get("motif", [220, 261.6, 329.6])
+    # diegetic hits. A "why does he..." explainer lives on the sound of the thing being
+    # done — locks clicking, metal clinking, weight landing — not on a music bed. Each is
+    # synthesised: a noise transient plus a short ring, weighted by the material.
+    def sfx(name, at, gain=0.5, pan=0.0):
+        if name == "clink":          # small metal parts: bright, fast, two rings
+            ln = int(0.30 * sr); tt = np.arange(ln) / sr
+            ring = (np.sin(2*np.pi*2450*tt) * 0.5 + np.sin(2*np.pi*3700*tt) * 0.3
+                    + np.sin(2*np.pi*5200*tt) * 0.12)
+            sig = ring * np.exp(-tt / 0.055)
+        elif name == "click":        # a lock snapping shut: louder transient, tighter
+            ln = int(0.18 * sr); tt = np.arange(ln) / sr
+            sig = (np.sin(2*np.pi*1250*tt) * 0.6 + np.sin(2*np.pi*3100*tt) * 0.25) * np.exp(-tt / 0.022)
+        elif name == "thud":         # something heavy placed on wood
+            ln = int(0.55 * sr); tt = np.arange(ln) / sr
+            sig = np.sin(2*np.pi*72*tt) * np.exp(-tt / 0.13) + 0.25*np.sin(2*np.pi*46*tt)*np.exp(-tt/0.2)
+        elif name == "scrape":       # dragging metal across stone
+            ln = int(0.45 * sr); tt = np.arange(ln) / sr
+            nz = np.random.default_rng(3).standard_normal(ln)
+            k = np.hanning(64); nz = np.convolve(nz, k, mode="same")[:ln]
+            sig = nz * 0.5 * np.exp(-tt / 0.22) * (0.6 + 0.4*np.sin(2*np.pi*17*tt))
+            sig = np.convolve(sig, np.hanning(9)/np.hanning(9).sum(), mode="same")[:ln]
+        else:
+            return
+        # 4 ms noise transient on top of every hit — that is the "contact"
+        nl = int(0.004 * sr)
+        tr = np.random.default_rng(11).standard_normal(nl) * np.linspace(1.0, 0.0, nl)
+        sig[:nl] += tr
+        add(place(sig * gain, at), pan=pan)
+
+    for hit in (spec.get("sound", {}).get("sfx") or []):
+        if isinstance(hit, dict) and "at" in hit:
+            sfx(hit.get("type", "clink"), float(hit["at"]), float(hit.get("gain", 0.45)),
+                float(hit.get("pan", 0.0)))
+
     def play(freqs, at, gain=0.10, d=0.9, pan=0.0):
         for i, f in enumerate(freqs):
             st = np.arange(int(d * sr)) / sr
