@@ -1,0 +1,18 @@
+# build products
+__pycache__/
+*.pyc
+bin/wuburaster
+bin/wubudenoise
+
+# renders and working output
+out/
+film3/
+qc/
+dist/
+*.png.tmp
+frames/
+denoised/
+graded/
+
+# scratch specs written by `demo`
+specs/demo_*.json.bak

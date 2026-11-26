@@ -24,6 +24,30 @@ That is the whole claim, and every part of it is checkable from this repository.
 | `wubudenoise.c` | edge-aware à-trous denoiser, RGB→YCbCr, temporal reuse | 34.53 → 35.96 dB PSNR, 56 ms/frame |
 | `wubu3d.py` | spec → film: geometry, camera, grade, score, mux | 110 s end to end at 480p |
 
+Sources live in `src/`. Around them:
+
+| path | what it is |
+|---|---|
+| `tools/silhouette.py` | measures a silhouette PNG: heads tall, shoulder-widths, hip width, knee height, leg gap |
+| `tools/salience.py` · `tools/cull_bench.py` | composition sampling and occlusion-culling benchmark |
+| `tools/build_body.py` · `tools/character_sheet.py` | body builder and contact-sheet generator used by the rig |
+| `specs/` | ten worked specs — preview, cartoon, cinematic, heavy, OIT, camera moves, plates |
+| `docs/` | measured notes: OIT, occlusion culling, the 10-step pipeline, SLERM provenance, security audit |
+
+## Run it
+
+```bash
+gcc -O2 -o bin/wuburaster src/wuburaster.c -lm      # the C11 preview renderer
+gcc -O2 -o bin/wubudenoise src/wubudenoise.c -lm
+
+python3 src/wubu3d.py build  specs/demo_preview.json   # emit scene.py — inspect before spending CPU
+python3 src/wubu3d.py raster specs/demo_preview.json   # 144 frames, 20 s, no Blender
+python3 src/wubu3d.py make   specs/demo_cinematic.json # Blender 5.x → denoise → grade → score → mp4
+```
+
+Outputs land in `out/<name>/`: `scene.py`, `frames/`, `denoised/`, `graded/`, `score.wav`, `<name>.mp4`.
+Blender 5.x is required for the Cycles path; the raster path runs on `gcc` and `libm`.
+
 Nothing here is a secret, a fork, or a wrapper. The renderer, the denoiser, the rig and the
 grade are all written from scratch against this project's own formats.
 
