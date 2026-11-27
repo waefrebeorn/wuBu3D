@@ -30,6 +30,24 @@ Eyebrows, eyes and mouth are three independent channels, and expressions are com
 With only the mouth, "angry" and "neutral" differ by a line's curvature and read as the same face.
 That was a real bug in the cast: the simple face had no brows at all.
 
+## Construction rules from a 100-query sweep
+
+The face is a proportion problem before it is a detail problem. These are the rules that survived
+the sweep, and each one is now a constant in the code:
+
+| rule | value | why |
+| --- | --- | --- |
+| five-eye width | face = 5 eye widths, gap = 1 eye width | the single most common beginner error is eyes that collide into one mass |
+| eyes at the vertical middle | `eye_v = 0.46` | not above the middle; almost every drawn face puts them too high |
+| mouth width | interpupillary distance, narrowed ~30% for appeal | wider reads as a muppet, narrower reads as a doll |
+| nose | halfway between eye line and mouth | not at the mouth |
+| ear (where a character has one) | top at brow, bottom at nose base | |
+| lid at rest | covers 15-25% of the iris | more reads sleepy, less reads startled |
+| sclera | warm tint `(247,243,238)` | pure white reads as a sticker pasted on |
+| catchlight | two: a large one offset to the key side, a small opposite | one dot reads dead |
+| asymmetry | 2-5% | measured believability work is unambiguous: perfect symmetry reads as a mask |
+| mouth curve | scales with mouth WIDTH | scaled with height, a closed mouth can never smile (it was a real bug) |
+
 ## Proportions that matter (measured, not taste)
 
 - mouth width ≈ **1/6** of the face; at 1/3 the face becomes a muppet
