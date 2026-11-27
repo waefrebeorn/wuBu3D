@@ -1,7 +1,8 @@
 # Materials: why everything used to look like clay
 
-Three separate bugs produced the same complaint — a scene painted in one colour, lit like
-plasticine. Each was in a different layer, and fixing one alone changed nothing visible.
+Five separate bugs produced the same complaint — a scene painted in one colour, lit like
+plasticine. Each was in a different layer, and fixing one alone changed nothing visible. The
+last one found (vertex colours, §5) was still visible after the other four were fixed.
 
 ## 1. The OBJ loader threw materials away
 
@@ -57,6 +58,32 @@ warm rim at 0.12, and exposure defaulted to 1.55. Together that is a wash. Now:
 | `bloom` | 0.30 | 0.18 |
 | `exposure` default | 1.55 | 1.05 |
 | composite rim (additive) | 0.12 | 0.035, and it scales |
+
+## 5. The kit's vertex colours were never read
+
+Kenney's OBJ export writes a colour on every vertex line — `v x y z r g b`, 7 tokens, not 4.
+`load_obj` read `p_[1:4]` and stopped, so the wall's five authored tones (dark 0.18,0.20,0.29
+through light 0.56,0.62,0.94) never reached the renderer. Materials only made it worse: the
+`.mtl` ships one `Kd` per material (`grey` 0.525,0.545,0.631), so every face of a mesh resolved
+to a single flat tone, then the spec tint (`0.34,0.33,0.31`) dragged it warm. A whole room of
+that is Play-Doh.
+
+The loader now keeps the per-vertex colour and prefers it over `usemtl`, in this order:
+
+1. atlas sample (`map_Kd`, glTF `baseColorTexture`)
+2. per-vertex colour from the `v` line
+3. the material's `Kd`
+4. the placement colour
+
+Tint has to be handled with care for the same reason. A tint is a *zone hue*, not an exposure
+stop, but the spec tints are authored dark because they used to be the whole base colour. The
+fix is one gain per mesh, computed over the mesh's mean luma (`tint_gain`), applied to every
+corner. A per-corner luma match looks tempting and is wrong: the kit's tones differ mainly in
+value, so matching each corner's luma erases the baked facet shading and every surface collapses
+back to one flat colour — the same bug wearing a different hat.
+
+`"vertex_color": false` in a spec restores the old flat path, which is how the before/after pair
+was measured (`specs/kenney_novc.json` vs `specs/kenney_vc.json`).
 
 ## Checking it instead of eyeballing it
 

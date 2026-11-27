@@ -25,6 +25,7 @@ KNOWN_TOP = [
     "fog", "ssaa", "raster_gain", "range", "ground", "sky", "lights", "props", "cast",
     "shots", "titles", "fade", "dof", "sound", "exposure", "frames",
     "ao", "ao_radius", "ao_rays", "ambient", "captions", "accum", "shutter", "tonemap", "upscale", "night",
+    "vertex_color",
 ]
 
 
@@ -114,6 +115,9 @@ def validate(raw: dict) -> tuple[list, list]:
         err("name", "must be a non-empty string")
     elif any(c in name for c in "/\\") or ".." in name or name != name.strip():
         err("name", "must be a plain directory name: no slashes, no '..', no surrounding spaces")
+
+    if "vertex_color" in raw and not isinstance(raw["vertex_color"], bool):
+        err("vertex_color", "must be true or false")
 
     if "frames" in raw:
         warn("frames", "frames is derived from duration x fps — setting it does nothing "

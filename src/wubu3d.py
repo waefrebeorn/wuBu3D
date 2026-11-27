@@ -1124,7 +1124,7 @@ def _sample_image(path: Path, u: float, v: float):
     return tuple(float(x) for x in (top * (1 - fy) + bot * fy))
 
 
-def load_obj(path: Path):
+def load_obj(path: Path, use_vcol: bool = True):
     """OBJ reader with materials: v, f (n-gons), negative indices, usemtl, Kd, map_Kd, vt.
 
     The first version threw materials away and painted each placement one colour, which is
@@ -1135,7 +1135,7 @@ def load_obj(path: Path):
     key = str(path)
     if key in _OBJ_CACHE:
         return _OBJ_CACHE[key]
-    vs, tris, vts = [], [], []
+    vs, tris, vts, vcol = [], [], [], []
     mats, cur = {}, None
     face_mat = []
     for line in path.read_text(errors="replace").splitlines():
@@ -1147,6 +1147,10 @@ def load_obj(path: Path):
         tag = p_[0]
         if tag == "v" and len(p_) >= 4:
             vs.append((float(p_[1]), float(p_[2]), float(p_[3])))
+            # Kenney and several other kits append the vertex colour after xyz. It is the
+            # whole palette AND the facet shading of the kit, so it is not optional data.
+            vcol.append(tuple(float(x) for x in p_[4:7])
+                        if (use_vcol and len(p_) >= 7) else None)
         elif tag == "vt" and len(p_) >= 3:
             vts.append((float(p_[1]), float(p_[2])))
         elif tag == "usemtl":
@@ -1166,28 +1170,60 @@ def load_obj(path: Path):
                     uv.append(-1)
             for k in range(1, len(idx) - 1):          # fan-triangulate
                 tris.append((idx[0], idx[k], idx[k + 1]))
-                face_mat.append((cur, (uv[0], uv[k], uv[k + 1])))
+                face_mat.append((cur, (uv[0], uv[k], uv[k + 1]),
+                                 (idx[0], idx[k], idx[k + 1])))
     if not vs or not tris:
         raise ValueError(f"{path}: no usable v/f lines")
-    # resolve each face to three corner colours (texture) or one material colour
+    # resolve each face to three corner colours: atlas sample, vertex colours, or one Kd
     face_col = []
-    for (name, uvs) in face_mat:
+    for (name, uvs, ids) in face_mat:
         rgb, tex = mats.get(name, ((1.0, 1.0, 1.0), None)) if mats else ((1.0, 1.0, 1.0), None)
-        # a catch-all white material ("default", "Material", "None") means the kit never
-        # painted that face: white is not a colour choice, it is an absence, and painting it
-        # 1,1,1 is what made a whole dungeon read as white plaster
-        if not tex and tuple(rgb) == (1.0, 1.0, 1.0) and (name or "").lower() in (
-                "", "default", "defaultmat", "material", "none", "white"):
-            face_col.append(None)
-            continue
         if tex is not None and tex.exists() and any(uv >= 0 for uv in uvs):
             corners = tuple(_sample_image(tex, vts[uv][0], vts[uv][1]) if uv >= 0 else rgb
                             for uv in uvs)
             face_col.append(corners)
-        else:
-            face_col.append((rgb, rgb, rgb))
+            continue
+        # Per-vertex colour comes before usemtl. A Kenney kit ships ONE flat `Kd` per material
+        # (`grey` 0.525,0.545,0.631) and puts the actual per-facet palette and shading on the
+        # vertices: the wall's five tones run 0.18,0.20,0.29 to 0.56,0.62,0.94. Trusting the
+        # Kd threw that away, which is what left every placement a single flat beige.
+        vc = tuple(vcol[i] for i in ids) if all(
+            0 <= i < len(vcol) and vcol[i] is not None for i in ids) else None
+        if vc is not None:
+            face_col.append(vc)
+            continue
+        # a catch-all white material ("default", "Material", "None") means the kit never
+        # painted that face: white is not a colour choice, it is an absence, and painting it
+        # 1,1,1 is what made a whole dungeon read as white plaster
+        if tuple(rgb) == (1.0, 1.0, 1.0) and (name or "").lower() in (
+                "", "default", "defaultmat", "material", "none", "white"):
+            face_col.append(None)
+            continue
+        face_col.append((rgb, rgb, rgb))
     _OBJ_CACHE[key] = (vs, tris, face_col)
     return vs, tris, face_col
+
+
+def tint_gain(fcol, tint):
+    """One exposure gain for a whole tinted mesh, so the tint moves hue only.
+
+    Spec tints are authored dark (`0.34,0.33,0.31`) because they used to be the entire base
+    colour of an untextured mesh. Multiply a periwinkle vertex colour by that and a room of them
+    goes back to clay. The gain restores the kit's average brightness — computed once over the
+    mesh, NOT per corner: a per-corner luma match erases the baked facet shading that makes a
+    blockout read as geometry, collapsing every tone in the kit to one flat value.
+    """
+    tl = 0.2126 * tint[0] + 0.7152 * tint[1] + 0.0722 * tint[2]
+    num = den = 0.0
+    for f in fcol:
+        if f is None:
+            continue
+        for c in f:
+            num += 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]
+            den += (0.2126 * c[0] * tint[0] + 0.7152 * c[1] * tint[1] + 0.0722 * c[2] * tint[2])
+    if den < 1e-6:
+        return 1.0
+    return min(num / den, 4.0 / max(tl, 1e-3))
 
 
 def _mesh_instances(spec):
@@ -1202,7 +1238,7 @@ def _mesh_instances(spec):
             raise SystemExit(f"mesh {rel!r} is outside the project tree")
         if not path.exists():
             raise SystemExit(f"mesh not found: {path} (from spec {rel!r})")
-        vs, ts, fcol = load_obj(path)
+        vs, ts, fcol = load_obj(path, use_vcol=bool(spec.get("vertex_color", True)))
         s = float(m.get("scale", 1.0))
         yaw = float(m.get("yaw", 0.0))
         cy, sy = math.cos(yaw), math.sin(yaw)
@@ -1229,6 +1265,7 @@ def _mesh_instances(spec):
         # a kit with materials paints itself; a bare OBJ falls back to the placement colour
         textured = any(trio is not None for trio in fcol)
         tint = tuple(float(c) for c in col)
+        tgain = tint_gain(fcol, tint) if m.get("tint", False) else 0.0
         verts, tris, colors = [], [], []
         nv = len(vs)                                   # verts per copy, before repeats
         for copy in range(int(rep[0]) * int(rep[1])):
@@ -1239,8 +1276,9 @@ def _mesh_instances(spec):
                 fc = fcol[fi] if fi < len(fcol) else None
                 if fc is not None:
                     corners = fc
-                    if m.get("tint", False):
-                        corners = tuple(tuple(cc[i] * tint[i] for i in range(3)) for cc in corners)
+                    if tgain:
+                        corners = tuple(tuple(min(1.0, cc[i] * tint[i] * tgain)
+                                              for i in range(3)) for cc in corners)
                 else:
                     corners = (tint, tint, tint)
                 colors += list(corners)
@@ -1324,6 +1362,7 @@ def _frame_params(spec, f, jx=0.0, jy=0.0):
             sh = s_; break
     # camera moves: a shot can name a move instead of hand-authored keys
     mv = sh.get("move")
+    cam = sh.get("cam")      # a `move` with no `follow` has no subject to orbit; fall back
     if mv and sh.get("follow") in names:
         cc3 = next(c for c in spec["cast"] if c["name"] == sh["follow"])
         sub = _cast_at(cc3, f)
@@ -1348,8 +1387,6 @@ def _frame_params(spec, f, jx=0.0, jy=0.0):
             cam = [sub[0] + math.sin(ang) * r, sub[1] - math.cos(ang) * r,
                    mv.get("height", 1.5)]
 
-    if mv is None:
-        cam = sh.get("cam")
     if sh.get("follow") in names and sh.get("cam_offset") and mv is None:
         cc2 = next(c for c in spec["cast"] if c["name"] == sh["follow"])
         base = _cast_at(cc2, f)
@@ -1591,6 +1628,10 @@ def composite_passes(spec, src_dir: Path, out_dir: Path, f0: int = 0, accum: int
                 arr = np.repeat(np.repeat(arr, 2, axis=0), 2, axis=1)[:h, :w]
             return arr
         dep = _read_bin(src_dir / f"dep_{idx}.bin", 1)[..., 0]
+        # a couple of pixels per frame can come back NaN out of the depth pass (an edge
+        # where no triangle settled the interpolant). One NaN poisons haze and the whole
+        # cast, so sanitise at the door instead of downstream.
+        dep = np.nan_to_num(dep, nan=1e30, posinf=1e30, neginf=1e30)
         nrm = _read_bin(src_dir / f"nrm_{idx}.bin", 3)
 
         cam = _read_cam(src_dir, idx)
@@ -1637,7 +1678,7 @@ def composite_passes(spec, src_dir: Path, out_dir: Path, f0: int = 0, accum: int
             soft = np.asarray(small.resize((w, h), Image.BILINEAR), dtype=np.float32)/255.0
             lit = lit*(1 - k[..., None]) + soft*k[..., None]
 
-        out_img = Image.fromarray((np.clip(lit, 0, 1)*255).astype(np.uint8))
+        out_img = Image.fromarray((np.clip(np.nan_to_num(lit), 0, 1)*255).astype(np.uint8))
         if (w, h) != (tw, th):
             out_img = out_img.resize((tw, th), Image.LANCZOS)   # supersample resolve
         out_img.save(out_dir / f"f_{f0 + gidx:04d}.png")
