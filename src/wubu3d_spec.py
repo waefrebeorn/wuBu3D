@@ -25,7 +25,7 @@ KNOWN_TOP = [
     "fog", "ssaa", "raster_gain", "range", "ground", "sky", "lights", "props", "cast",
     "shots", "titles", "fade", "dof", "sound", "exposure", "frames",
     "ao", "ao_radius", "ao_rays", "ambient", "captions", "accum", "shutter", "tonemap", "upscale", "night",
-    "vertex_color",
+    "vertex_color", "sun",
 ]
 
 
@@ -118,6 +118,8 @@ def validate(raw: dict) -> tuple[list, list]:
 
     if "vertex_color" in raw and not isinstance(raw["vertex_color"], bool):
         err("vertex_color", "must be true or false")
+    if "sun" in raw and not (_is_num(raw["sun"]) and raw["sun"] >= 0):
+        err("sun", "must be a number >= 0 (Cycles sun-lamp strength; the raster path has its own key)")
 
     if "frames" in raw:
         warn("frames", "frames is derived from duration x fps — setting it does nothing "

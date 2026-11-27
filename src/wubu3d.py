@@ -289,8 +289,12 @@ def skin_by_distance(mesh, rig, max_inf=4, power=5.0):
 
 SCENE_BODY = r'''
 # ── set ─────────────────────────────────────────────────────────────────────
-GROUND = mat('ground', tuple(SPEC["ground"]), rough=0.92)
-bpy.ops.mesh.primitive_plane_add(size=900, location=(0, 0, 0))
+# the raster path multiplies the ground swatch 4x (it is authored as an unlit albedo);
+# Cycles took it raw, so the same spec drew a black floor on one path and a grey one on the other
+GROUND = mat('ground', tuple(min(1.0, float(c) * 4.0) for c in SPEC["ground"]), rough=0.92)
+# 12 mm under the kit's floor tiles, not coplanar with them: two surfaces at the same z make
+# Cycles self-shadow, and the whole ground renders as black acne while the tiles stay lit.
+bpy.ops.mesh.primitive_plane_add(size=900, location=(0, 0, -0.012))
 ground = bpy.context.active_object
 ground.data.materials.append(GROUND)
 
@@ -307,6 +311,10 @@ for i in range(SPEC["props"]["towers"]):
     bpy.ops.mesh.primitive_cylinder_add(radius=rng.uniform(0.12, 0.26), depth=h,
                                         location=(x, y, h / 2), vertices=8)
     bpy.context.active_object.data.materials.append(to_mesh)
+    # background dressing 30-120 m out. Left shadow-casting, an 18 m mast between the sun and
+    # the set blacked out the whole room floor in Cycles: the set was lit only where a shadow
+    # edge happened to miss it.
+    bpy.context.active_object.visible_shadow = False
 
 for i in range(SPEC["props"]["rocks"]):
     bpy.ops.mesh.primitive_ico_sphere_add(subdivisions=1, radius=rng.uniform(0.3, 1.2),
@@ -315,21 +323,44 @@ for i in range(SPEC["props"]["rocks"]):
     o = bpy.context.active_object
     o.scale = (1, 1, rng.uniform(0.4, 0.8))
     o.data.materials.append(GROUND)
+    o.visible_shadow = False
 
 # ── lights ──────────────────────────────────────────────────────────────────
-def area(loc, energy, size, color, rot=(math.radians(55), 0, math.radians(-35))):
+# aim is derived, never hard-coded: a fixed Euler rotation on a lamp 45 m out meant the
+# key pointed at empty ground and left the set lit only by the world colour. That is why a
+# dungeon came out as a near-black sheet in Cycles while the raster path looked lit.
+AIM = Vector((SPEC["shots"][0].get("target") or [0, 0, 0]) if SPEC.get("shots") else (0, 0, 0))
+
+def area(loc, energy, size, color, aim=None):
     d = bpy.data.lights.new('A', 'AREA'); d.energy = energy; d.size = size; d.color = color
-    o = bpy.data.objects.new('A', d); o.location = loc; o.rotation_euler = rot
+    o = bpy.data.objects.new('A', d); o.location = loc
+    v = (Vector(aim) if aim is not None else AIM) - Vector(loc)
+    o.rotation_euler = v.to_track_quat('-Z', 'Y').to_euler()
     S.collection.objects.link(o); return o
 
 key = SPEC["lights"]["key"]; rim = SPEC["lights"]["rim"]
 area(tuple(key["loc"]), key["energy"], key["size"], tuple(key["color"]))
-area(tuple(rim["loc"]), rim["energy"], rim["size"], tuple(rim["color"]),
-     rot=(math.radians(115), 0, math.radians(25)))
+area(tuple(rim["loc"]), rim["energy"], rim["size"], tuple(rim["color"]))
+
+# A sun, from the same direction the rasteriser's key light comes from. Area lamps 45 m out
+# deliver almost nothing at 2600 W, so Cycles had no key at all and the set sat in world colour.
+# steeper than the rasteriser's key (which is an unshadowed fill): at 46 deg a 4 m wall throws
+# a 4 m shadow and half the room floor goes black. 64 deg clears the walls.
+_sun_d = Vector((-0.30, -0.34, 0.89)); _sun_d.normalize()
+sund = bpy.data.lights.new('S', 'SUN')
+sund.energy = float(SPEC.get("sun", 2.4))
+sund.color = tuple(key.get("color") or (1.0, 1.0, 1.0))
+sund.angle = math.radians(6.0)
+sun = bpy.data.objects.new('S', sund)
+sun.rotation_euler = (-_sun_d).to_track_quat('-Z', 'Y').to_euler()
+S.collection.objects.link(sun)
 
 S.world = bpy.data.worlds.new('W'); S.world.use_nodes = True
-S.world.node_tree.nodes['Background'].inputs['Color'].default_value = (0.03, 0.04, 0.06, 1)
-S.world.node_tree.nodes['Background'].inputs['Strength'].default_value = 0.85
+# the world IS the ambient term on this path. At 0.03/0.04/0.06 it was so dim that any
+# surface the sun did not hit directly rendered pure black, which is half a dungeon.
+_sky = SPEC.get("sky", {}).get("horizon") or SPEC.get("sky", {}).get("top") or (0.09, 0.10, 0.14)
+S.world.node_tree.nodes['Background'].inputs['Color'].default_value = (float(_sky[0]), float(_sky[1]), float(_sky[2]), 1)
+S.world.node_tree.nodes['Background'].inputs['Strength'].default_value = float(SPEC.get("ambient", 1.15))
 
 # ── cast ────────────────────────────────────────────────────────────────────
 def perf_at(c, f):
@@ -525,6 +556,12 @@ for m in MESHES:
     me = bpy.data.meshes.new(m["name"])
     me.from_pydata(m["verts"], [], m["tris"])
     me.update()
+    # A Y-up kit is converted with (x, -z, y): a mirror, so every triangle's winding — and
+    # therefore its normal — comes out inverted. The raster path never noticed because it
+    # shades |N.L|; Cycles believes the normal, so a mirrored floor tile lights from below and
+    # renders black. Flip the winding back on import.
+    if str(m.get("up", "z")).lower() == "y":
+        me.flip_normals()
     ob = bpy.data.objects.new(m["name"], me)
     S.collection.objects.link(ob)
     cols = m.get("colors") or []

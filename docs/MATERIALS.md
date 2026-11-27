@@ -85,6 +85,32 @@ back to one flat colour — the same bug wearing a different hat.
 `"vertex_color": false` in a spec restores the old flat path, which is how the before/after pair
 was measured (`specs/kenney_novc.json` vs `specs/kenney_vc.json`).
 
+## Open: Cycles renders a mesh kit's floor black
+
+On `specs/kenney_c.json` the Blender/Cycles path draws the dungeon floor — and only the floor —
+at RGB 0, even with the world at full ambient and the sun off. The same `floor-detail.obj`,
+material and colour attribute render at 0.26 mean in an isolated two-object scene, and the
+raster path renders the same geometry normally, so the mesh data, the vertex-colour attribute
+and the material are all fine.
+
+Ruled out by measurement, in this order:
+
+- light aiming — the area lamps had a hard-coded Euler and were lighting empty ground (fixed;
+  they now derive their rotation from the shot target)
+- no key at all — added a sun from the raster path's key direction (kept)
+- ground swatch — the raster path multiplies `ground` by 4 and Cycles did not (fixed)
+- coplanar ground plane under the tiles — separated by 12 mm (kept)
+- background props casting shadows — towers and rocks no longer cast (kept)
+- inverted winding from the Y-up mirror — flipped on import (kept; the mirror really does
+  invert it, the raster path just shades `abs(N.L)` and never noticed)
+- overlapping tile repeats — checked the OBJ footprint: 1.0 x 1.0 at scale 2.0, step 2.0, no overlap
+- sun angle — 46 deg and 64 deg produce the identical fraction of black pixels, so it is not
+  a wall shadow
+
+Still open. The next thing to try is a material override pass on the generated `scene.py` to
+separate "no light reaches it" from "the material is black", and `bpy` ray casts at a known
+floor pixel to see what object is actually hit.
+
 ## Checking it instead of eyeballing it
 
 Saturation is measurable: median HSV saturation over the graded frame. The character probe

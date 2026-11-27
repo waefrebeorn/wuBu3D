@@ -1,0 +1,61 @@
+{
+ "name": "dbg_floor",
+ "resolution": [
+  480,
+  270
+ ],
+ "samples": 16,
+ "duration": 0.0833,
+ "exposure": 1.0,
+ "ground": [
+  0.045,
+  0.042,
+  0.04
+ ],
+ "props": {
+  "meshes": [
+   {
+    "obj": "assets/cache/mini-dungeon/Models/OBJ format/floor-detail.obj",
+    "at": [
+     -2,
+     -2,
+     0.01
+    ],
+    "scale": 2.0,
+    "up": "y",
+    "repeat": [
+     2,
+     2
+    ],
+    "step": [
+     2,
+     2
+    ],
+    "color": [
+     1,
+     1,
+     1
+    ],
+    "tint": false
+   }
+  ]
+ },
+ "cast": [],
+ "shots": [
+  {
+   "in": 0,
+   "out": 2,
+   "cam": [
+    0.9,
+    -6.3,
+    2.45
+   ],
+   "target": [
+    -2.2,
+    -0.2,
+    0.95
+   ],
+   "lens": 28
+  }
+ ]
+}

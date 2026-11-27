@@ -1,0 +1,324 @@
+{
+ "name": "dbg_notint",
+ "resolution": [
+  480,
+  270
+ ],
+ "samples": 16,
+ "duration": 0.0833,
+ "exposure": 1.0,
+ "ground": [
+  0.045,
+  0.042,
+  0.04
+ ],
+ "props": {
+  "meshes": [
+   {
+    "obj": "assets/cache/mini-dungeon/Models/OBJ format/floor-detail.obj",
+    "at": [
+     -7,
+     -7,
+     0
+    ],
+    "scale": 2.0,
+    "up": "y",
+    "repeat": [
+     6,
+     6
+    ],
+    "step": [
+     2,
+     2
+    ],
+    "color": [
+     0.4,
+     0.38,
+     0.35
+    ]
+   },
+   {
+    "obj": "assets/cache/mini-dungeon/Models/OBJ format/wall.obj",
+    "at": [
+     -7,
+     -8,
+     0
+    ],
+    "scale": 1.8,
+    "up": "y",
+    "repeat": [
+     6,
+     1
+    ],
+    "step": [
+     2,
+     0
+    ],
+    "color": [
+     0.34,
+     0.33,
+     0.31
+    ]
+   },
+   {
+    "obj": "assets/cache/mini-dungeon/Models/OBJ format/wall.obj",
+    "at": [
+     -7,
+     4,
+     0
+    ],
+    "scale": 1.8,
+    "up": "y",
+    "repeat": [
+     6,
+     1
+    ],
+    "step": [
+     2,
+     0
+    ],
+    "color": [
+     0.34,
+     0.33,
+     0.31
+    ]
+   },
+   {
+    "obj": "assets/cache/mini-dungeon/Models/OBJ format/wall.obj",
+    "at": [
+     -8,
+     -7,
+     0
+    ],
+    "scale": 1.8,
+    "up": "y",
+    "yaw": 1.5708,
+    "repeat": [
+     6,
+     1
+    ],
+    "step": [
+     2,
+     0
+    ],
+    "color": [
+     0.34,
+     0.33,
+     0.31
+    ]
+   },
+   {
+    "obj": "assets/cache/mini-dungeon/Models/OBJ format/wall.obj",
+    "at": [
+     4,
+     -7,
+     0
+    ],
+    "scale": 1.8,
+    "up": "y",
+    "yaw": 1.5708,
+    "repeat": [
+     6,
+     1
+    ],
+    "step": [
+     2,
+     0
+    ],
+    "color": [
+     0.34,
+     0.33,
+     0.31
+    ]
+   },
+   {
+    "obj": "assets/cache/mini-dungeon/Models/OBJ format/column.obj",
+    "at": [
+     -6.9,
+     -6.9,
+     0
+    ],
+    "scale": 1.8,
+    "up": "y",
+    "color": [
+     0.33,
+     0.32,
+     0.3
+    ]
+   },
+   {
+    "obj": "assets/cache/mini-dungeon/Models/OBJ format/column.obj",
+    "at": [
+     -6.9,
+     2.9,
+     0
+    ],
+    "scale": 1.8,
+    "up": "y",
+    "color": [
+     0.33,
+     0.32,
+     0.3
+    ]
+   },
+   {
+    "obj": "assets/cache/mini-dungeon/Models/OBJ format/column.obj",
+    "at": [
+     2.9,
+     2.9,
+     0
+    ],
+    "scale": 1.8,
+    "up": "y",
+    "color": [
+     0.33,
+     0.32,
+     0.3
+    ]
+   },
+   {
+    "obj": "assets/cache/mini-dungeon/Models/OBJ format/chest.obj",
+    "at": [
+     0.4,
+     0.9,
+     0
+    ],
+    "scale": 1.8,
+    "up": "y",
+    "yaw": 0.5,
+    "color": [
+     0.5,
+     0.37,
+     0.2
+    ]
+   },
+   {
+    "obj": "assets/cache/mini-dungeon/Models/OBJ format/barrel.obj",
+    "at": [
+     -3.0,
+     0.2,
+     0
+    ],
+    "scale": 1.8,
+    "up": "y",
+    "color": [
+     0.44,
+     0.32,
+     0.21
+    ]
+   },
+   {
+    "obj": "assets/cache/mini-dungeon/Models/OBJ format/barrel.obj",
+    "at": [
+     1.6,
+     -3.0,
+     0
+    ],
+    "scale": 1.8,
+    "up": "y",
+    "yaw": 0.9,
+    "color": [
+     0.44,
+     0.32,
+     0.21
+    ]
+   },
+   {
+    "obj": "assets/cache/mini-dungeon/Models/OBJ format/rocks.obj",
+    "at": [
+     -3.8,
+     -2.2,
+     0
+    ],
+    "scale": 1.4,
+    "up": "y",
+    "color": [
+     0.26,
+     0.25,
+     0.24
+    ]
+   },
+   {
+    "obj": "assets/cache/mini-dungeon/Models/OBJ format/banner.obj",
+    "at": [
+     -7.85,
+     -1.6,
+     0
+    ],
+    "scale": 1.6,
+    "up": "y",
+    "color": [
+     0.45,
+     0.17,
+     0.15
+    ]
+   },
+   {
+    "obj": "assets/cache/mini-dungeon/Models/OBJ format/character-human.obj",
+    "at": [
+     -1.8,
+     0.2,
+     0
+    ],
+    "scale": 2.2,
+    "up": "y",
+    "yaw": 0.35,
+    "color": [
+     0.55,
+     0.47,
+     0.38
+    ]
+   },
+   {
+    "obj": "assets/cache/mini-dungeon/Models/OBJ format/character-orc.obj",
+    "at": [
+     0.2,
+     -1.6,
+     0
+    ],
+    "scale": 2.2,
+    "up": "y",
+    "yaw": -0.6,
+    "color": [
+     0.38,
+     0.45,
+     0.3
+    ]
+   },
+   {
+    "obj": "assets/cache/mini-dungeon/Models/OBJ format/character-human.obj",
+    "at": [
+     1.8,
+     1.4,
+     0
+    ],
+    "scale": 2.2,
+    "up": "y",
+    "yaw": -2.4,
+    "color": [
+     0.46,
+     0.42,
+     0.5
+    ]
+   }
+  ]
+ },
+ "cast": [],
+ "shots": [
+  {
+   "in": 0,
+   "out": 2,
+   "cam": [
+    0.9,
+    -6.3,
+    2.45
+   ],
+   "target": [
+    -2.2,
+    -0.2,
+    0.95
+   ],
+   "lens": 28
+  }
+ ]
+}
