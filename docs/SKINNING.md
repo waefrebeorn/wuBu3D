@@ -49,3 +49,58 @@ range.
 
 Weights are normalised to sum to 1 (error ~1e-16) and capped at 4 influences per vertex, the GPU
 skinning limit.
+
+## The core is C11; Python only drives it
+
+Per-vertex work is the one place the language matters. `src/wubuskin.c` implements the bone
+transform, linear blend skinning, dual quaternion skinning and bone-heat weights; `wubu3d_c11.py`
+binds it with ctypes and rebuilds the shared object when the C source changes.
+
+Measured on 200,000 vertices, two bones, one blend each:
+
+| | time |
+| --- | --- |
+| C11 (`wb_lbs`) | **1.5 ms** |
+| Python (`wubu3d_skin.deform`) | ~2400 ms |
+
+**1595×**. The C results match the Python reference to 1.2e-07 (LBS), 3.6e-07 (DQS) and 1.1e-08
+(bone matrices), so the fast path is the same maths, not an approximation of it.
+
+## Dual quaternions, and why they replace LBS
+
+Linear blend skinning averages the bone MATRICES. The average of two rotations is not a rotation,
+so a vertex weighted 50/50 between them is pulled inside the surface. On a twist — a bone rolling
+about its own axis — the limb collapses into a candy-wrapper pinch.
+
+Dual quaternions carry rotation and translation as one unit that blends correctly: weighted sum,
+renormalise, apply. Measured with a 50/50 blend against a 90° roll, point at radius 0.085:
+
+| | radius | |
+| --- | --- | --- |
+| rest | 0.0850 | |
+| LBS | 0.0601 | **71% — pinched** |
+| DQS | 0.0850 | **100% — preserved** |
+
+Note that `bone_matrix` derives its rotation from the bone's rest and posed DIRECTIONS, so it
+cannot express a roll at all: the parentheses above needed matrices built by hand. Roll has to come
+from the rig, not from the segment pair.
+
+## Bone heat weights (Baran & Popović 2007)
+
+Distance-based weights are a proximity proxy: a bone buried inside the torso and a bone lying on the
+surface are treated the same if they are equally far. Heat weights diffuse over the MESH instead —
+each bone seeds the vertices that clearly belong to it (less than 60% as far as any other bone), and
+the weights relax along mesh edges until they settle.
+
+```
+heat: 416 raw verts -> 112 welded, 216 edges, weight-sum error 0.0e+00, max influences 2
+bend 90: worst edge stretch  heat 1.69x   distance 1.64x
+```
+
+Seeding by radius alone (every vertex within a band) fixed every vertex and left the diffusion
+nothing to solve, which silently produced hard 100/0 weights. The dominance rule is what leaves a
+free region between the bones.
+
+Sources in the tree: Baran & Popović, *Automatic Rigging and Animation of 3D Characters* (SIGGRAPH
+2007); Kavan, Collins, O'Sullivan & Zara, *Dual Quaternions for Rigid Transformation Blending*
+(TCD-CS-2006-46).
