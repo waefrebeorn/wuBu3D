@@ -1358,6 +1358,35 @@ def _read_cam(src_dir: Path, idx: str):
             "fwd": np.array(v[9:12]), "focal": v[12], "w": w2, "h": h2}
 
 
+
+def _ao_filter(ao, dep, nrm, sigma_z=0.06, sigma_n=0.55):
+    """Edge-aware blur over the AO buffer — the filter pass CORTAO runs after its trace.
+
+    Their pipeline is prepass, trace, filter; ours was trace and stop, which is why SSAO
+    looked grainy at 10 rays and unusable at 4. A bilateral pass costs one convolution and
+    lets the ray count drop: weight falls off with depth difference (in metres) and normal
+    difference (in dot product), so a silhouette keeps its edge while a flat wall smooths.
+    """
+    import numpy as np
+    h, w = ao.shape
+    acc = ao * 1.0
+    wsum = np.ones_like(ao)
+    ring = ((0, 1), (0, -1), (1, 0), (-1, 0), (1, 1), (1, -1), (-1, 1), (-1, -1))
+    for step in (1, 2):
+        for dy, dx in ring:
+            sd = np.roll(np.roll(dep, dy * step, axis=0), dx * step, axis=1)
+            sn = np.roll(np.roll(nrm, dy * step, axis=0), dx * step, axis=1)
+            sa = np.roll(np.roll(ao, dy * step, axis=0), dx * step, axis=1)
+            dz = np.abs(sd - dep)
+            dn = np.clip((sn * nrm).sum(axis=2), -1.0, 1.0)          # 1 = same facing
+            wgt = (np.exp(-(dz / max(sigma_z, 1e-6)) ** 2)
+                   * np.exp(-((1.0 - dn) / max(sigma_n, 1e-6)) ** 2))
+            wgt /= (1.0 + 0.5 * step)                                # wider ring counts less
+            acc += sa * wgt
+            wsum += wgt
+    return acc / np.maximum(wsum, 1e-6)
+
+
 def _ao_screenspace(dep, nrm, cam, radius=0.35, rays=10, steps=5):
     """Screen-space raytraced ambient occlusion — CORTAO's family, short of its proxy.
 
@@ -1456,6 +1485,8 @@ def composite_passes(spec, src_dir: Path, out_dir: Path, f0: int = 0, accum: int
             ao_s = _ao_screenspace(dep_s, nrm_s, cam_s,
                                    float(spec.get("ao_radius", 0.35)),
                                    int(spec.get("ao_rays", 10)))
+            if spec.get("ao_filter", True):
+                ao_s = _ao_filter(np.asarray(ao_s, dtype=np.float32), dep_s, nrm_s)
             ao_img = Image.fromarray((np.clip(ao_s, 0, 1) * 255).astype(np.uint8))
             ao = (np.asarray(ao_img.resize((w, h), Image.BILINEAR), dtype=np.float32) / 255.0)[..., None]
             occ = 1.0 - ao[..., 0]

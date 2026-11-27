@@ -65,6 +65,28 @@ than no AO. That filter is the next piece of work, and it is the reason this shi
 * Their Carbon Engine depth-range specialisation (16-bit packed depth for vast space scenes).
   Our depth is already linear in metres.
 
+
+## The filter pass, finally built
+
+CORTAO runs prepass → trace → filter. We had prepass → trace and stopped, and the missing
+stage is why SSAO shipped opt-in: 10 rays looked grainy and 4 looked like noise. `_ao_filter`
+is a bilateral pass over the AO buffer, weighted by depth difference in metres and by the dot
+product of neighbouring normals, over two rings of eight taps. Silhouettes keep their edge
+because a jump in depth or facing kills the weight; flat walls smooth out.
+
+Measured on `specs/assets_ssao.json` at 320×180 (a still, wall clock, same machine load):
+
+| rays | filter | still time |
+|---|---|---|
+| 10 | no  | 3.30 s |
+| 4  | no  | 2.46 s |
+| 4  | yes | 2.56 s |
+| 2  | yes | 2.29 s |
+
+So the filter buys back the ray count: 2 rays + filter is 31% faster than 10 rays alone and
+reads cleaner than 4 unfiltered. The default stays 10 rays for hero frames; the preview path
+can now afford `"ao": "ssao", "ao_rays": 2` at all.
+
 ## The rule this leaves behind
 
 Every screen-space effect needs three things from the rasteriser: linear depth, world normals

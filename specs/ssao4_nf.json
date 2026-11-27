@@ -1,0 +1,128 @@
+{
+ "name": "ssao4_nf",
+ "preset": "preview",
+ "duration": 0.1,
+ "fps": 24,
+ "resolution": [
+  640,
+  360
+ ],
+ "samples": 16,
+ "ground": [
+  0.2,
+  0.2,
+  0.22
+ ],
+ "sky": {
+  "horizon": [
+   0.24,
+   0.26,
+   0.32
+  ],
+  "zenith": [
+   0.07,
+   0.08,
+   0.12
+  ]
+ },
+ "props": {
+  "towers": 0,
+  "rocks": 0,
+  "tower_radius": [
+   60,
+   80
+  ],
+  "meshes": [
+   {
+    "obj": "assets/obelisk.obj",
+    "at": [
+     -1.6,
+     3.0,
+     0
+    ],
+    "scale": 1.0,
+    "yaw": 0.4,
+    "color": [
+     0.3,
+     0.29,
+     0.32
+    ]
+   },
+   {
+    "obj": "assets/octa.obj",
+    "at": [
+     1.6,
+     3.0,
+     0.62
+    ],
+    "scale": 1.0,
+    "yaw": 0.0,
+    "color": [
+     0.42,
+     0.3,
+     0.22
+    ]
+   }
+  ]
+ },
+ "cast": [],
+ "shots": [
+  {
+   "in": 0,
+   "out": 1,
+   "cam": [
+    0,
+    -3.0,
+    1.6
+   ],
+   "target": [
+    0,
+    3.0,
+    1.2
+   ],
+   "lens": 35
+  }
+ ],
+ "lights": {
+  "key": {
+   "energy": 9000,
+   "size": 30,
+   "color": [
+    1.0,
+    0.97,
+    0.92
+   ],
+   "loc": [
+    -18,
+    -26,
+    26
+   ]
+  },
+  "rim": {
+   "energy": 12000,
+   "size": 12,
+   "color": [
+    0.75,
+    0.85,
+    1.0
+   ],
+   "loc": [
+    12,
+    16,
+    12
+   ]
+  }
+ },
+ "sound": {
+  "motif": [
+   220.0,
+   261.6
+  ],
+  "cue": 0.6,
+  "wind": 0.05
+ },
+ "ao": "ssao",
+ "ao_radius": 0.45,
+ "ao_rays": 4,
+ "ao_filter": false
+}
