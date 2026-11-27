@@ -46,6 +46,19 @@ per side. A correct bake needs the surface normal to be resolved against the own
 Neither is in the pipeline. Both are cheap to finish and both are cosmetic next to the open gaps
 below.
 
+## Second sweep (25 more facets): what this pass added and what it found
+
+Added: depth of field from the zbuf, depth fog, per-face subdivision, and positional lighting.
+
+**The biggest find was not on any list.** The room rendered as a flat diagram, so subdivision was
+added to let shading vary across a wall — and it changed nothing, because the light model is
+**normal-only**: every cell of a flat wall has the same normal, so every cell gets the same tone.
+The missing thing was a *positional* light. With a point light at the lamp (inverse-square falloff,
+floor term) the wall finally has a gradient and the room reads as lit.
+
+That is the shape of most of the remaining gaps: not missing features, but a model that is one
+dimension short of the job.
+
 ## What the sweep says to build next
 
 Ordered by what a finished short needs and what we have least of:
