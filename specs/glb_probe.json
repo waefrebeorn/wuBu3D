@@ -7,7 +7,7 @@
  ],
  "samples": 16,
  "duration": 1.0,
- "exposure": 1.4,
+ "exposure": 1.0,
  "cast": [
   {
    "name": "probe",

@@ -527,7 +527,24 @@ for m in MESHES:
     me.update()
     ob = bpy.data.objects.new(m["name"], me)
     S.collection.objects.link(ob)
-    ob.data.materials.append(mat("mesh_" + m["name"], tuple(m["color"]), rough=0.75))
+    cols = m.get("colors") or []
+    if cols:
+        # the OBJ's own palette or atlas, as a point-domain colour attribute. A single
+        # flat material was what made a Kenney dungeon look like grey clay.
+        attr = me.color_attributes.new(name="Col", type='FLOAT_COLOR', domain='POINT')
+        for i, c in enumerate(cols[:len(me.vertices)]):
+            attr.data[i].color = (c[0], c[1], c[2], 1.0)
+        mmat = bpy.data.materials.new("mesh_" + m["name"])
+        mmat.use_nodes = True
+        nt = mmat.node_tree
+        bsdf = nt.nodes["Principled BSDF"]
+        node = nt.nodes.new("ShaderNodeVertexColor")
+        node.layer_name = "Col"
+        nt.links.new(node.outputs["Color"], bsdf.inputs["Base Color"])
+        bsdf.inputs["Roughness"].default_value = 0.8
+        me.materials.append(mmat)
+    else:
+        ob.data.materials.append(mat("mesh_" + m["name"], tuple(m["color"]), rough=0.75))
 
 for c in SPEC["cast"]:
     if c.get("glb"):
@@ -777,7 +794,8 @@ def build(spec_path: Path) -> Path:
     spec = load_spec(spec_path)
     out = PROJECT / "out" / spec["name"]
     (out / "frames").mkdir(parents=True, exist_ok=True)
-    meshes = [{"name": m["name"], "verts": m["verts"], "tris": m["tris"], "color": m["color"]}
+    meshes = [{"name": m["name"], "verts": m["verts"], "tris": m["tris"], "color": m["color"],
+               "colors": m.get("colors") or []}
               for m in _mesh_instances(spec)]
     # the scene runs inside Blender with no idea where the project lives: hand it the
     # absolute path of every actor so the glTF importer can open it
@@ -971,13 +989,16 @@ def glb_at(c, frame, verts, tris):
     dy = path[1][1] - path[0][1]
     yaw = math.atan2(dx, dy)
     cy_, sy_ = math.cos(yaw), math.sin(yaw)
-    col = c.get("color")
-    for (v, idxs, base_color) in parts:
-        use = tuple(col) if col else base_color
-        rgba = (min(255, int(use[0] * 255)), min(255, int(use[1] * 255)),
-                min(255, int(use[2] * 255)), 255)
+    tint = c.get("color")
+    for (v, idxs, vcols) in parts:
         base = len(verts)
-        for (x, y, z, a) in v:
+        for i in range(len(v)):
+            x, y, z = float(v[i, 0]), float(v[i, 1]), float(v[i, 2])
+            cc = vcols[i] if vcols is not None else (0.6, 0.55, 0.5)
+            if tint:                     # a spec colour overrides the atlas when asked
+                cc = (float(tint[0]), float(tint[1]), float(tint[2]))
+            rgba = (min(255, int(cc[0] * 255)), min(255, int(cc[1] * 255)),
+                    min(255, int(cc[2] * 255)), 255)
             rx = x * cy_ - y * sy_
             ry = x * sy_ + y * cy_
             verts.append((rx + pos[0], ry + pos[1], z, rgba))
@@ -989,19 +1010,22 @@ def _gltf_pose(asset, clip, t_clip, scale):
     """pose -> [(verts(n,4), tris(m,3), rgb)] in film space, feet on z=0"""
     import numpy as np
     raw = _GLTF_POSE(asset, clip, t_clip, scale)
-    low = min((float(v[:, 2].min()) for v, _, _ in raw), default=0.0)
+    low = min((float(v[:, 2].min()) for v, _i, _c in raw), default=0.0)
     out = []
-    for (v, idxs, color) in raw:
+    for (v, idxs, cols) in raw:
         v = v.copy()
         v[:, 2] -= low
-        out.append((v, idxs, color))
+        out.append((v, idxs, cols))
     return out
 
 
 def _GLTF_POSE(asset, clip, t_clip, scale):
     import wubu3d_gltf as _G
     parts = _G.pose(asset, clip, t_clip, scale=scale)
-    return [(v, idxs, (0.55, 0.52, 0.48)) for (_n, v, idxs) in parts]
+    out = []
+    for (_n, v, idxs, cols) in parts:
+        out.append((v, idxs, cols))
+    return out
 
 
 def figure_at(c, frame, verts, tris):
@@ -1055,38 +1079,115 @@ def _pane(verts, tris, center, size, yaw, pitch, rgba):
 _OBJ_CACHE = {}
 
 
-def load_obj(path: Path):
-    """Minimal OBJ reader: v, f (triangles, quads, n-gons), negative indices, #comments.
+def _mtl_materials(path: Path) -> dict:
+    """name -> (rgb, texture path) from a companion .mtl. Kenney ships Kd colours, other kits
+    ship map_Kd atlases; both beat the flat placement colour we used to paint everything."""
+    out = {}
+    if not path.exists():
+        return out
+    cur = None
+    for line in path.read_text(errors="replace").splitlines():
+        p_ = line.split()
+        if not p_:
+            continue
+        if p_[0] == "newmtl":
+            cur = " ".join(p_[1:])
+            out[cur] = [(1.0, 1.0, 1.0), None]
+        elif cur and p_[0] == "Kd" and len(p_) >= 4:
+            out[cur][0] = (float(p_[1]), float(p_[2]), float(p_[3]))
+        elif cur and p_[0] == "map_Kd":
+            rel = " ".join(p_[1:]).replace("\\", "/")
+            out[cur][1] = (path.parent / rel)
+    return {k: (v[0], v[1]) for k, v in out.items()}
 
-    Deliberately smaller than Jet's loader: no .mtl, no vt/vn, no textures — the raster
-    path shades flat per vertex, so a face is three indices and nothing else. Whoever
-    needs materials puts a colour on the placement instead (spec `props.meshes[].color`).
+
+_IMG_CACHE: dict = {}
+
+
+def _sample_image(path: Path, u: float, v: float):
+    """Bilinear sample of an atlas, in 0..1, with v flipped for OBJ's bottom-up convention."""
+    key = str(path)
+    if key not in _IMG_CACHE:
+        from PIL import Image
+        _IMG_CACHE[key] = np.asarray(Image.open(path).convert("RGB"), dtype=np.float32) / 255.0
+    tex = _IMG_CACHE[key]
+    h, w, _ = tex.shape
+    x = (u % 1.0) * (w - 1)
+    y = (1.0 - (v % 1.0)) * (h - 1)
+    x0, y0 = int(x), int(y)
+    x1, y1 = min(x0 + 1, w - 1), min(y0 + 1, h - 1)
+    fx, fy = x - x0, y - y0
+    c00, c10 = tex[y0, x0], tex[y0, x1]
+    c01, c11 = tex[y1, x0], tex[y1, x1]
+    top = c00 * (1 - fx) + c10 * fx
+    bot = c01 * (1 - fx) + c11 * fx
+    return tuple(float(x) for x in (top * (1 - fy) + bot * fy))
+
+
+def load_obj(path: Path):
+    """OBJ reader with materials: v, f (n-gons), negative indices, usemtl, Kd, map_Kd, vt.
+
+    The first version threw materials away and painted each placement one colour, which is
+    exactly why a Kenney dungeon came out monochrome: the kit ships `usemtl grey` / `grey-light`
+    lines and a per-face palette, and we were discarding them. Faces now carry the material
+    colour, and a face with a texture is sampled at its own UVs.
     """
     key = str(path)
     if key in _OBJ_CACHE:
         return _OBJ_CACHE[key]
-    vs, tris = [], []
+    vs, tris, vts = [], [], []
+    mats, cur = {}, None
+    face_mat = []
     for line in path.read_text(errors="replace").splitlines():
         if not line or line.lstrip().startswith("#"):
             continue
         p_ = line.split()
         if not p_:
             continue
-        if p_[0] == "v" and len(p_) >= 4:
+        tag = p_[0]
+        if tag == "v" and len(p_) >= 4:
             vs.append((float(p_[1]), float(p_[2]), float(p_[3])))
-        elif p_[0] == "f" and len(p_) >= 4:      # triangle or larger
-            idx = []
+        elif tag == "vt" and len(p_) >= 3:
+            vts.append((float(p_[1]), float(p_[2])))
+        elif tag == "usemtl":
+            cur = " ".join(p_[1:])
+        elif tag == "mtllib" and len(p_) >= 2:
+            mats.update(_mtl_materials(path.parent / " ".join(p_[1:])))
+        elif tag == "f" and len(p_) >= 4:
+            idx, uv = [], []
             for tok in p_[1:]:
-                i = int(tok.split("/")[0])
+                parts = tok.split("/")
+                i = int(parts[0])
                 idx.append(i - 1 if i > 0 else len(vs) + i)
+                if len(parts) > 1 and parts[1]:
+                    j = int(parts[1])
+                    uv.append(j - 1 if j > 0 else len(vts) + j)
+                else:
+                    uv.append(-1)
             for k in range(1, len(idx) - 1):          # fan-triangulate
                 tris.append((idx[0], idx[k], idx[k + 1]))
-        elif p_[0] in ("o", "g", "s", "usemtl", "mtllib", "vt", "vn"):
-            continue
+                face_mat.append((cur, (uv[0], uv[k], uv[k + 1])))
     if not vs or not tris:
         raise ValueError(f"{path}: no usable v/f lines")
-    _OBJ_CACHE[key] = (vs, tris)
-    return vs, tris
+    # resolve each face to three corner colours (texture) or one material colour
+    face_col = []
+    for (name, uvs) in face_mat:
+        rgb, tex = mats.get(name, ((1.0, 1.0, 1.0), None)) if mats else ((1.0, 1.0, 1.0), None)
+        # a catch-all white material ("default", "Material", "None") means the kit never
+        # painted that face: white is not a colour choice, it is an absence, and painting it
+        # 1,1,1 is what made a whole dungeon read as white plaster
+        if not tex and tuple(rgb) == (1.0, 1.0, 1.0) and (name or "").lower() in (
+                "", "default", "defaultmat", "material", "none", "white"):
+            face_col.append(None)
+            continue
+        if tex is not None and tex.exists() and any(uv >= 0 for uv in uvs):
+            corners = tuple(_sample_image(tex, vts[uv][0], vts[uv][1]) if uv >= 0 else rgb
+                            for uv in uvs)
+            face_col.append(corners)
+        else:
+            face_col.append((rgb, rgb, rgb))
+    _OBJ_CACHE[key] = (vs, tris, face_col)
+    return vs, tris, face_col
 
 
 def _mesh_instances(spec):
@@ -1101,7 +1202,7 @@ def _mesh_instances(spec):
             raise SystemExit(f"mesh {rel!r} is outside the project tree")
         if not path.exists():
             raise SystemExit(f"mesh not found: {path} (from spec {rel!r})")
-        vs, ts = load_obj(path)
+        vs, ts, fcol = load_obj(path)
         s = float(m.get("scale", 1.0))
         yaw = float(m.get("yaw", 0.0))
         cy, sy = math.cos(yaw), math.sin(yaw)
@@ -1125,16 +1226,27 @@ def _mesh_instances(spec):
         # unshare vertices per face: an imported mesh has hard edges, and averaged
         # normals turn an obelisk into a soft blob. Three verts per triangle costs
         # memory and buys faceted shading, which is what the asset actually is.
-        verts, tris = [], []
+        # a kit with materials paints itself; a bare OBJ falls back to the placement colour
+        textured = any(trio is not None for trio in fcol)
+        tint = tuple(float(c) for c in col)
+        verts, tris, colors = [], [], []
         nv = len(vs)                                   # verts per copy, before repeats
         for copy in range(int(rep[0]) * int(rep[1])):
             off = copy * nv
-            for (a, b, c) in ts:
+            for fi, (a, b, c) in enumerate(ts):
                 base = len(verts)
                 verts += [world[off + a], world[off + b], world[off + c]]
+                fc = fcol[fi] if fi < len(fcol) else None
+                if fc is not None:
+                    corners = fc
+                    if m.get("tint", False):
+                        corners = tuple(tuple(cc[i] * tint[i] for i in range(3)) for cc in corners)
+                else:
+                    corners = (tint, tint, tint)
+                colors += list(corners)
                 tris.append((base, base + 1, base + 2))
-        out.append({"name": Path(rel).stem, "verts": verts, "tris": tris, "rgb": rgb,
-                    "color": [float(c) for c in col]})
+        out.append({"name": Path(rel).stem, "verts": verts, "tris": tris, "colors": colors,
+                    "rgb": rgb, "color": [float(c) for c in col]})
     return out
 
 
@@ -1190,7 +1302,12 @@ def _static_scene(spec):
              tuple(min(255, int(c * 255 * 4)) for c in fg.get("color", [0.020, 0.021, 0.026])))
     for m in _mesh_instances(spec):
         base = len(verts)
-        verts += [(x, y, z, m["rgb"]) for (x, y, z) in m["verts"]]
+        cols = m.get("colors") or []
+        if cols:
+            verts += [(x, y, z, tuple(int(max(0, min(255, v * 255))) for v in cols[i]))
+                      for i, (x, y, z) in enumerate(m["verts"])]
+        else:
+            verts += [(x, y, z, m["rgb"]) for (x, y, z) in m["verts"]]
         tris += [(base + a, base + b, base + c) for (a, b, c) in m["tris"]]
 
     for _ in range(spec["props"]["rocks"]):
@@ -1505,7 +1622,9 @@ def composite_passes(spec, src_dir: Path, out_dir: Path, f0: int = 0, accum: int
         nz = np.abs(nrm[..., 2]).clip(0, 1)
         rim = np.clip((1.0 - nz)**2.2, 0, 1)[..., None]
         rim_col = np.array([1.0, 0.72, 0.45], dtype=np.float32)
-        lit = rgb*ao + rim_col*rim*(1.0 - occ[..., None])*0.12
+        # rim light SCALES the surface and adds only a token: a fat additive term here was
+        # the final wash — it pushed every bright area toward the same warm white
+        lit = rgb*ao*(1.0 + rim*0.35) + rim_col*rim*(1.0 - occ[..., None])*0.035
         sky_h = np.array(spec["sky"]["horizon"], dtype=np.float32)
         haze = np.clip((dep - 55.0)/190.0, 0, 1)[..., None]*0.34
         lit = lit*(1 - haze) + sky_h*haze
@@ -1670,10 +1789,10 @@ def grade(spec: dict, src: Path, out: Path) -> Path:
         small = small.resize((max(2, w // 10), max(2, h // 10)), Image.BILINEAR)
         small = small.filter(ImageFilter.GaussianBlur(1.8))
         bloom = np.asarray(small.resize((w, h), Image.BILINEAR), dtype=np.float32) / 255
-        rgb = np.clip(rgb + 0.30 * bloom, 0, 1)
+        rgb = np.clip(rgb + float(spec.get("bloom", 0.18)) * bloom, 0, 1)
 
         # ACES (Narkowicz) — a neutral tone map, so the grade below is doing the look
-        expo = float(spec.get("exposure", 1.55))
+        expo = float(spec.get("exposure", 1.05))
         if spec.get("tonemap") == "aces":
             # Unreal's order of operations: the tone curve belongs in LINEAR light, then the
             # display transform. Applied to sRGB-encoded values (the default here) the same
@@ -1695,9 +1814,14 @@ def grade(spec: dict, src: Path, out: Path) -> Path:
         s = s + shadow * np.array([-0.012, 0.004, 0.030], dtype=np.float32)
         s = s + high * np.array([0.030, 0.012, -0.016], dtype=np.float32)
 
-        # Purkinje shift: at night the eye desaturates and pulls toward blue-grey
-        night = float(spec.get("night", 0.75))
+        # saturation is a knob, not a side effect: a scene can be graded moody without every
+        # material collapsing to the same grey. 0.75 night desaturated 16% and the standing
+        # order was "everything looks like clay" — the default was doing that.
+        sat = float(spec.get("saturation", 1.12))
         grey = s.mean(axis=2, keepdims=True)
+        s = np.clip(grey + (s - grey) * sat, 0, 1)
+        # Purkinje shift: at night the eye desaturates and pulls toward blue-grey
+        night = float(spec.get("night", 0.30))
         s = s * (1 - 0.22 * night) + grey * (0.22 * night)
         s = s + np.array([-0.004, 0.002, 0.014], dtype=np.float32) * night
 

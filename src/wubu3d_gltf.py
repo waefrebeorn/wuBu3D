@@ -63,6 +63,8 @@ class Primitive:
     skin: int = -1
     joints: np.ndarray | None = None       # (n, 4)
     weights: np.ndarray | None = None      # (n, 4)
+    uv: np.ndarray | None = None           # (n, 2) TEXCOORD_0
+    texture: int = -1                      # index into Asset.textures
 
 
 @dataclass
@@ -73,6 +75,7 @@ class Asset:
     primitives: list = field(default_factory=list)
     animations: dict = field(default_factory=dict)   # name -> {(node, path): (times, values, interp)}
     skins: list = field(default_factory=list)        # [{"joints": [...], "ibm": (k,4,4)}]
+    textures: list = field(default_factory=list)     # [(image name, ndarray HxWx3)]
     duration: float = 0.0
 
     def clip_names(self) -> list:
@@ -172,6 +175,33 @@ def load(path) -> Asset:
             ibm = raw.reshape(-1, 4, 4).transpose(0, 2, 1)      # glTF stores column-major
         asset.skins.append({"joints": list(skin["joints"]), "ibm": ibm})
 
+    # images: bufferView blobs or external files, decoded once for the whole asset
+    for img in js.get("images", []):
+        try:
+            if "bufferView" in img:
+                bv = js["bufferViews"][img["bufferView"]]
+                blob = bufs[bv["buffer"]]
+                start = bv.get("byteOffset", 0)
+                blob = blob[start:start + bv["byteLength"]]
+            elif "uri" in img and not img["uri"].startswith("data:"):
+                blob = (base / img["uri"]).read_bytes()
+            else:
+                import base64
+                blob = base64.b64decode(img["uri"].split(",", 1)[1])
+            from PIL import Image
+            import io as _io
+            asset.textures.append(np.asarray(Image.open(_io.BytesIO(blob)).convert("RGB"),
+                                             dtype=np.float32) / 255.0)
+        except Exception as exc:                       # a broken atlas must not kill the load
+            print(f"[gltf] image {img.get('name', '?')} not decoded: {exc}")
+            asset.textures.append(None)
+
+    tex_for_material = {}
+    for ti, tex in enumerate(js.get("textures", [])):
+        src = tex.get("source")
+        if isinstance(src, int) and src < len(asset.textures):
+            tex_for_material[ti] = src
+
     for mi, m in enumerate(js.get("meshes", [])):
         for pi, prim in enumerate(m.get("primitives", [])):
             attrs = prim["attributes"]
@@ -189,6 +219,15 @@ def load(path) -> Asset:
                 bcf = mtl.get("pbrMetallicRoughness", {}).get("baseColorFactor")
                 if bcf:
                     color = (float(bcf[0]), float(bcf[1]), float(bcf[2]))
+            uv = None
+            if "TEXCOORD_0" in attrs:
+                uv = np.asarray(_accessor(js, bufs, attrs["TEXCOORD_0"]), dtype=np.float64)
+            tex_idx = -1
+            if "material" in prim:
+                pbr = js["materials"][prim["material"]].get("pbrMetallicRoughness", {})
+                bct = pbr.get("baseColorTexture", {}).get("index")
+                if bct in tex_for_material:
+                    tex_idx = tex_for_material[bct]
             joints = weights = None
             if "JOINTS_0" in attrs and "WEIGHTS_0" in attrs:
                 joints = np.asarray(_accessor(js, bufs, attrs["JOINTS_0"])).astype(np.int64)
@@ -199,7 +238,8 @@ def load(path) -> Asset:
                     joints = np.pad(joints, ((0, 0), (0, pad)), constant_values=0)
             p = Primitive(name=m.get("name") or f"mesh{mi}" + (f"_{pi}" if pi else ""),
                           positions=pos, indices=idx.reshape(-1, 3),
-                          color=color, material=matname, joints=joints, weights=weights)
+                          color=color, material=matname, joints=joints, weights=weights,
+                          uv=uv, texture=tex_idx)
             # find the node that carries this mesh
             for ni, n in enumerate(nodes):
                 if n.get("mesh") == mi:
@@ -298,15 +338,33 @@ def pose(asset: Asset, clip: str | None = None, t: float = 0.0, scale: float = 1
         if to_z_up:                      # glTF is Y-up, the film graph is Z-up
             pos = np.stack([pos[:, 0], -pos[:, 2], pos[:, 1]], axis=1)
         verts = np.hstack([pos * scale, np.full((len(pos), 1), 255.0)])
-        out.append((p.name, verts, p.indices))
+        if p.texture >= 0 and p.uv is not None and asset.textures[p.texture] is not None:
+            cols = _sample_tex(asset.textures[p.texture], p.uv)
+        else:
+            cols = np.tile(np.array(p.color, dtype=np.float64), (len(pos), 1))
+        out.append((p.name, verts, p.indices, cols))
     if ground and out:
-        low = min(float(v[:, 2].min()) for _, v, _ in out)
-        for _, v, _ in out:
+        low = min(float(v[:, 2].min()) for _, v, _c, _ in out)
+        for _, v, _c, _ in out:
             v[:, 2] -= low
     return out
 
 
+def _sample_tex(tex, uv):
+    """Bilinear sample of a kit atlas at per-vertex UVs. glTF UVs start top-left, so v is
+    not flipped — flipping it is what turns a character's face into its shoes."""
+    h, w, _ = tex.shape
+    u = np.clip(uv[:, 0] % 1.0, 0, 1) * (w - 1)
+    v = np.clip(uv[:, 1] % 1.0, 0, 1) * (h - 1)
+    x0 = u.astype(np.int64); y0 = v.astype(np.int64)
+    x1 = np.minimum(x0 + 1, w - 1); y1 = np.minimum(y0 + 1, h - 1)
+    fx = (u - x0)[:, None]; fy = (v - y0)[:, None]
+    top = tex[y0, x0] * (1 - fx) + tex[y0, x1] * fx
+    bot = tex[y1, x0] * (1 - fx) + tex[y1, x1] * fx
+    return top * (1 - fy) + bot * fy
+
+
 def bounds(asset: Asset, clip: str | None = None, t: float = 0.0) -> tuple:
     vs = pose(asset, clip, t)
-    pts = np.vstack([v[:, :3] for _, v, _ in vs]) if vs else np.zeros((1, 3))
+    pts = np.vstack([v[:, :3] for _, v, _c, _ in vs]) if vs else np.zeros((1, 3))
     return pts.min(axis=0), pts.max(axis=0)

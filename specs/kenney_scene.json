@@ -6,7 +6,7 @@
  ],
  "samples": 32,
  "duration": 2.0,
- "exposure": 1.35,
+ "exposure": 1.0,
  "ground": [
   0.045,
   0.042,
@@ -32,10 +32,11 @@
      2
     ],
     "color": [
-     0.3,
-     0.28,
-     0.26
-    ]
+     0.4,
+     0.38,
+     0.35
+    ],
+    "tint": true
    },
    {
     "obj": "assets/cache/mini-dungeon/Models/OBJ format/wall.obj",
@@ -55,10 +56,11 @@
      0
     ],
     "color": [
-     0.44,
-     0.42,
-     0.39
-    ]
+     0.34,
+     0.33,
+     0.31
+    ],
+    "tint": true
    },
    {
     "obj": "assets/cache/mini-dungeon/Models/OBJ format/wall.obj",
@@ -78,10 +80,11 @@
      0
     ],
     "color": [
-     0.44,
-     0.42,
-     0.39
-    ]
+     0.34,
+     0.33,
+     0.31
+    ],
+    "tint": true
    },
    {
     "obj": "assets/cache/mini-dungeon/Models/OBJ format/wall.obj",
@@ -102,10 +105,11 @@
      0
     ],
     "color": [
-     0.44,
-     0.42,
-     0.39
-    ]
+     0.34,
+     0.33,
+     0.31
+    ],
+    "tint": true
    },
    {
     "obj": "assets/cache/mini-dungeon/Models/OBJ format/wall.obj",
@@ -126,10 +130,11 @@
      0
     ],
     "color": [
-     0.44,
-     0.42,
-     0.39
-    ]
+     0.34,
+     0.33,
+     0.31
+    ],
+    "tint": true
    },
    {
     "obj": "assets/cache/mini-dungeon/Models/OBJ format/column.obj",
@@ -141,10 +146,11 @@
     "scale": 1.8,
     "up": "y",
     "color": [
-     0.4,
-     0.38,
-     0.35
-    ]
+     0.33,
+     0.32,
+     0.3
+    ],
+    "tint": true
    },
    {
     "obj": "assets/cache/mini-dungeon/Models/OBJ format/column.obj",
@@ -156,10 +162,11 @@
     "scale": 1.8,
     "up": "y",
     "color": [
-     0.4,
-     0.38,
-     0.35
-    ]
+     0.33,
+     0.32,
+     0.3
+    ],
+    "tint": true
    },
    {
     "obj": "assets/cache/mini-dungeon/Models/OBJ format/column.obj",
@@ -171,10 +178,11 @@
     "scale": 1.8,
     "up": "y",
     "color": [
-     0.4,
-     0.38,
-     0.35
-    ]
+     0.33,
+     0.32,
+     0.3
+    ],
+    "tint": true
    },
    {
     "obj": "assets/cache/mini-dungeon/Models/OBJ format/chest.obj",

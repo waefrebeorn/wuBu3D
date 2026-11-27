@@ -385,9 +385,12 @@ static void raster_tri(Ctx *c, const CVert *A, const CVert *B, const CVert *C, i
                 if (ndl < 0.0f) ndl = 0.0f;
                 float attr = att * ndl;
                 if (attr > 0.55f) attr = 0.55f;
-                base[0] += attr*255.0f*0.55f;
-                base[1] += attr*255.0f*0.34f;
-                base[2] += attr*255.0f*0.16f;
+                /* the lamp also scales the surface, for the same reason: adding a fixed
+                   warm value on top of albedo is a wash, not a light */
+                float kk = 1.0f + attr*2.0f;
+                base[0] *= kk*1.04f;
+                base[1] *= kk*1.00f;
+                base[2] *= kk*0.94f;
                 float haze_l = att * 0.55f;
                 uint8_t *out = c->fb + 3*idx;
                 for (int k = 0; k < 3; k++) {
@@ -456,7 +459,7 @@ int main(int argc, char **argv) {
     if (!ctx.depth || !ctx.nrmbuf || !ctx.fb || !ctx.acc || !ctx.rev ||
         !ctx.coarse || !ctx.region_max) return 1;
 
-    float g_amb = 0.24f;      /* frame-supplied ambient: an interior needs a lower floor */
+    float g_amb = 0.15f;      /* frame-supplied ambient: an interior needs a lower floor */
     float lkey[3]  = {-0.45f,-0.52f, 0.72f}; vnorm(lkey);
     float lfill[3] = { 0.62f, 0.30f, 0.18f}; vnorm(lfill);
 
@@ -540,11 +543,22 @@ int main(int argc, char **argv) {
             vnorm(nl);
             float ndl = fabsf(vdot(nl, lkey));
             float ndf = fmaxf(vdot(nl, lfill), 0.0f);
-            float s = g_amb + 0.30f*ndf;        /* ambient and fill: never shadowed */
-            float key = 0.78f*ndl;              /* the sun: shadowed per pixel */
-            vc[i].sh[0] = verts[i].r*s + 26.0f*ndf;
-            vc[i].sh[1] = verts[i].g*s + 14.0f*ndf;
-            vc[i].sh[2] = verts[i].b*s +  7.0f*ndf;
+            float s = g_amb + 0.16f*ndf;        /* ambient and fill: never shadowed */
+            /* The key falls off with distance from the lamp. Without it every surface in a
+               12 m room received the same light, which is why a dungeon read as a flat white
+               sheet: no gradient means no depth cue, whatever the albedo says. */
+            float kdx = verts[i].x - fr.lx, kdy = verts[i].y - fr.ly, kdz = verts[i].z - fr.lz;
+            float kd2 = kdx*kdx + kdy*kdy + kdz*kdz;
+            float kfall = 1.0f / (1.0f + kd2*0.0022f);
+            float key = 0.95f*ndl*kfall;        /* the sun: shadowed per pixel */
+            /* Ambient MULTIPLIES albedo. It used to add a warm constant (+26/+14/+7 per
+               fill-light) which is what made every material converge on the same beige:
+               a blue wall, a green orc and a white floor all drifted toward clay. A
+               lighting term that adds light instead of scaling reflectance destroys
+               saturation, and no amount of texture fixes it downstream. */
+            vc[i].sh[0] = verts[i].r * (s + 0.10f*ndf);
+            vc[i].sh[1] = verts[i].g * (s + 0.10f*ndf);
+            vc[i].sh[2] = verts[i].b * (s + 0.10f*ndf);
             vc[i].kd[0] = verts[i].r*key;
             vc[i].kd[1] = verts[i].g*key;
             vc[i].kd[2] = verts[i].b*key;
