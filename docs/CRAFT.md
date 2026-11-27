@@ -56,7 +56,7 @@ distribution (even or ramped), plus FK/IK blending.
 
 What the show still has none of, in the order it hurts:
 
-1. **Stage plates** — every shot needs a background; we have characters and a few 2D drawings
+1. ~~**Stage plates**~~ — done: three riggable sets, one camera with the cast (see STAGES.md)
 2. **Expression library** — three per character is a start, not a library
 3. **Pose silhouettes** — walk, run, idle, react; the rig can pose, nothing drives it
 4. **Caption set** — typography, bounce timing, the hard-caption look the format runs on
