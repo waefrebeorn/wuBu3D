@@ -530,6 +530,48 @@ for m in MESHES:
     ob.data.materials.append(mat("mesh_" + m["name"], tuple(m["color"]), rough=0.75))
 
 for c in SPEC["cast"]:
+    if c.get("glb"):
+        # A rigged GLB becomes a real actor: Blender's own importer brings the skeleton, the
+        # skin weights and every clip, so the delivery path and the raster path show the same
+        # character. The empty we parent it to carries the walk along the path.
+        before = {o.name for o in bpy.data.objects}
+        bpy.ops.import_scene.gltf(filepath=c["_glb"])
+        new = [o for o in bpy.data.objects if o.name not in before]
+        root = bpy.data.objects.new('Actor_' + c["name"], None)
+        S.collection.objects.link(root)
+        for o in new:
+            if o.parent is None:
+                o.parent = root
+        sc = float(c.get("scale", 1.0))
+        root.scale = (sc, sc, sc)
+        clip = c.get("clip") or ""
+        for o in new:
+            ad = getattr(o, "animation_data", None)
+            if ad is None or not o.type == 'ARMATURE':
+                continue
+            acts = [a for a in bpy.data.actions if a.name == clip] or \
+                   [a for a in bpy.data.actions if clip and a.name.startswith(clip)]
+            if acts:
+                try:
+                    ad.action = acts[0]
+                    slot = getattr(ad, "action_slot", None)
+                    if slot is None and getattr(acts[0], "slots", None):
+                        ad.action_slot = acts[0].slots[0]
+                except Exception as exc:
+                    print(f"[wubu3d] clip {clip!r} not assignable on {o.name}: {exc}")
+        f0 = int(c.get("walk", [0, LAST])[0]); f1 = int(c.get("walk", [0, LAST])[1])
+        path = c.get("path", [[-6, -20, 0], [0, 4, 0]])
+        path = [tuple(p_) + (0.0,) * (3 - len(p_)) for p_ in path]
+        # the empty rides the same straight line the raster path uses
+        a_, b_ = path[0], path[1]
+        root.location = a_
+        root.keyframe_insert('location', frame=max(0, f0 - 1))
+        root.location = b_
+        root.keyframe_insert('location', frame=f1 + 1)
+        cast_objs.append(root)
+        CAST_POS[c["name"]] = {"path": path, "walk": (f0, f1), "z": c.get("target_z", 1.2),
+                               "hold": c.get("hold") or []}
+        continue
     col = tuple(c.get("color", [0.03, 0.03, 0.035]))
     skin_col = tuple(c.get("skin", [0.46, 0.35, 0.28]))
     cloth = mat('cloth_' + c["name"], col, rough=0.9)
@@ -737,6 +779,11 @@ def build(spec_path: Path) -> Path:
     (out / "frames").mkdir(parents=True, exist_ok=True)
     meshes = [{"name": m["name"], "verts": m["verts"], "tris": m["tris"], "color": m["color"]}
               for m in _mesh_instances(spec)]
+    # the scene runs inside Blender with no idea where the project lives: hand it the
+    # absolute path of every actor so the glTF importer can open it
+    for c in spec.get("cast") or []:
+        if c.get("glb"):
+            c["_glb"] = str((PROJECT / c["glb"]).resolve())
     script = (SCENE_HEADER.replace("__SPEC__", repr(spec))       # python literal: json's true/false are not valid python
                            .replace("__MESHES__", repr(meshes)) + SCENE_BODY)
     scene = out / "scene.py"
@@ -887,8 +934,80 @@ def _perf_at(c, frame):
     return {}
 
 
+_GLTF_CACHE: dict = {}
+_FPS: float = 24.0
+
+
+def _gltf(rel: str):
+    import wubu3d_gltf as _G
+    p = str((PROJECT / rel).resolve())
+    if p not in _GLTF_CACHE:
+        _GLTF_CACHE[p] = _G.load(p)
+    return _GLTF_CACHE[p]
+
+
+def glb_at(c, frame, verts, tris):
+    """A rigged GLB as an actor: clip sampled by time, skinned on the CPU, walked along the path.
+
+    This is the difference between a character and a mannequin — the kit ships 32 clips and
+    the clip is the performance. Time is the local frame index divided by fps, so a 0.667 s
+    walk cycle loops as often as the distance demands, not once per shot.
+    """
+    asset = _gltf(str(c["glb"]))
+    clip = c.get("clip") or ""
+    if clip and clip not in asset.animations:
+        raise SystemExit(f"cast {c['name']!r}: no clip {clip!r} in {c['glb']} "
+                         f"(has: {', '.join(asset.clip_names()[:10])})")
+    length = asset.clip_length(clip) if clip else 0.0
+    speed = float(c.get("clip_speed", 1.0))
+    scale = float(c.get("scale", 1.0))
+    pos = _cast_at(c, frame)
+    f0 = float(c.get("walk", [0, 1])[0])
+    local_t = max(0.0, (float(frame) - f0) / float(_FPS or 24))
+    t_clip = ((local_t * speed) % length) if length > 1e-6 else 0.0
+    parts = _gltf_pose(asset, clip or None, t_clip, scale)
+    path = c.get("path", [[0, 0, 0], [0, 1, 0]])
+    dx = path[1][0] - path[0][0]
+    dy = path[1][1] - path[0][1]
+    yaw = math.atan2(dx, dy)
+    cy_, sy_ = math.cos(yaw), math.sin(yaw)
+    col = c.get("color")
+    for (v, idxs, base_color) in parts:
+        use = tuple(col) if col else base_color
+        rgba = (min(255, int(use[0] * 255)), min(255, int(use[1] * 255)),
+                min(255, int(use[2] * 255)), 255)
+        base = len(verts)
+        for (x, y, z, a) in v:
+            rx = x * cy_ - y * sy_
+            ry = x * sy_ + y * cy_
+            verts.append((rx + pos[0], ry + pos[1], z, rgba))
+        for (a, b, d) in idxs:
+            tris.append((base + int(a), base + int(b), base + int(d)))
+
+
+def _gltf_pose(asset, clip, t_clip, scale):
+    """pose -> [(verts(n,4), tris(m,3), rgb)] in film space, feet on z=0"""
+    import numpy as np
+    raw = _GLTF_POSE(asset, clip, t_clip, scale)
+    low = min((float(v[:, 2].min()) for v, _, _ in raw), default=0.0)
+    out = []
+    for (v, idxs, color) in raw:
+        v = v.copy()
+        v[:, 2] -= low
+        out.append((v, idxs, color))
+    return out
+
+
+def _GLTF_POSE(asset, clip, t_clip, scale):
+    import wubu3d_gltf as _G
+    parts = _G.pose(asset, clip, t_clip, scale=scale)
+    return [(v, idxs, (0.55, 0.52, 0.48)) for (_n, v, idxs) in parts]
+
+
 def figure_at(c, frame, verts, tris):
-    """posed character from the shared rig — same skeleton the Blender path uses"""
+    """posed character — a GLB actor if the cast entry names one, else the shared rig"""
+    if c.get("glb"):
+        return glb_at(c, frame, verts, tris)
     from wubu3d_rig import build as rig_build
     pos = _cast_at(c, frame)
     from wubu3d_rig import gait_phase
@@ -1177,6 +1296,8 @@ def _halton(i: int, base: int) -> float:
 def build_raster_scene(spec, ssaa=1, f0=None, f1=None):
     """WB3D v3: per-frame geometry, optional supersampling"""
     import struct
+    global _FPS
+    _FPS = float(spec.get("fps", 24))
     static_v, static_t = _static_scene(spec)
     nf = spec["frames"]; w, h = spec["resolution"]
     w, h = w * ssaa, h * ssaa
@@ -2089,7 +2210,7 @@ def main():
                     "plan, qa. Render paths: build, raster (C11, seconds), render/finish/make (Cycles).")
     ap.add_argument("cmd", choices=["build", "render", "finish", "make", "demo", "raster",
                                     "still", "validate", "inspect", "plan", "schema", "qa",
-                                    "fetch"])
+                                    "fetch", "clip"])
     ap.add_argument("spec", nargs="?", help="path to spec json ('-' or omitted reads stdin)")
     ap.add_argument("--preset", default="cartoon")
     ap.add_argument("--at", type=int, default=0, help="still: which frame to render")
@@ -2103,7 +2224,17 @@ def main():
         sys.stdout = sys.stderr
     code, result = 0, {}
     try:
-        if a.cmd == "fetch":
+        if a.cmd == "clip":
+            import wubu3d_gltf as _G
+            asset = _G.load(PROJECT / a.spec if not Path(a.spec).is_absolute() else Path(a.spec))
+            lo, hi = _G.bounds(asset)
+            print(f"{asset.path.name}: {len(asset.primitives)} primitive(s), "
+                  f"{len(asset.nodes)} node(s), {len(asset.skins)} skin(s)")
+            print(f"bounds {lo.round(2).tolist()} .. {hi.round(2).tolist()}")
+            for name in asset.clip_names():
+                print(f"  {name:24s} {asset.clip_length(name):.3f}s")
+            code = 0
+        elif a.cmd == "fetch":
             result = fetch_asset(a.spec, list_only=(a.spec in (None, "-")))
             code = 0
         elif a.cmd in ("schema", "validate", "inspect", "plan", "qa"):

@@ -226,6 +226,38 @@ def _():
     assert len(graded) == 2, f"expected 2 output frames, got {len(graded)}"
 
 
+
+
+@case("a GLB actor needs a clip that exists in the file")
+def _():
+    spec = dict(GOOD, name="glbclip", duration=2 / 24, fps=24, resolution=[96, 64], samples=1,
+                cast=[{"name": "walker", "glb": "assets/cache/mini-characters/Models/GLB format/"
+                                                "character-female-a.glb",
+                       "clip": "no-such-clip", "path": [[0, -2], [0, 2]], "walk": [0, 1]}],
+                shots=[{"in": 0, "out": 1, "cam": [0, -5, 1.6], "target": [0, 0, 1.0], "lens": 40}])
+    if not (ROOT / "assets/cache/mini-characters").exists():
+        return          # the pack is fetched on demand; nothing to test without it
+    r = run(["raster", str(spec_file("glbclip", spec))])
+    assert r.returncode != 0, "a missing clip must fail"
+    assert "no clip" in (r.stdout + r.stderr), (r.stdout + r.stderr)[-300:]
+
+
+@case("a GLB actor renders and the posed mesh is not empty")
+def _():
+    import sys as _s
+    _s.path.insert(0, str(ROOT))
+    import wubu3d_gltf as G
+    glb = ROOT / "assets/cache/mini-characters/Models/GLB format/character-female-a.glb"
+    if not glb.exists():
+        return
+    asset = G.load(glb)
+    assert "walk" in asset.animations, asset.clip_names()[:5]
+    a = G.bounds(asset, "walk", 0.0)
+    b = G.bounds(asset, "walk", 0.33)
+    import numpy as _np
+    assert float(_np.linalg.norm(a[1] - b[1])) > 1e-4, "the walk clip does not move the mesh"
+
+
 print(f"\n{len(PASS)} passed, {len(FAIL)} failed")
 if FAIL:
     for n, e in FAIL:

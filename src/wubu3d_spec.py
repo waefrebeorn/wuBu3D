@@ -318,6 +318,21 @@ def validate(raw: dict) -> tuple[list, list]:
             err(f"{p}.color", "must be 3 numbers 0..1")
         if "skin" in c and not _rgb_ok(c["skin"]):
             err(f"{p}.skin", "must be 3 numbers 0..1")
+        glb = c.get("glb")
+        if glb is not None:
+            if not isinstance(glb, str) or not glb.lower().endswith((".glb", ".gltf")):
+                err(f"{p}.glb", "must be a path to a .glb/.gltf inside the project "
+                                "(`wubu3d.py fetch mini-characters` has 43 of them)")
+            elif glb.startswith("/") or ".." in glb:
+                err(f"{p}.glb", "must stay inside the project: no absolute paths, no '..'")
+            elif "clip" not in c:
+                warn(f"{p}.clip", "no clip named; the model renders in its rest pose")
+        if "clip" in c and not isinstance(c["clip"], str):
+            err(f"{p}.clip", "must be a clip name string (see `wubu3d.py clip` on the .glb)")
+        if "clip_speed" in c and not (_is_num(c["clip_speed"]) and 0 < c["clip_speed"] <= 10):
+            err(f"{p}.clip_speed", "must be a positive playback multiplier, 0..10")
+        if "scale" in c and not (_is_num(c["scale"]) and c["scale"] > 0):
+            err(f"{p}.scale", "must be a positive multiplier (Kenney minis are ~0.8 m, so 2.2)")
         path = c.get("path")
         if path is not None:
             if not (isinstance(path, list) and len(path) == 2
