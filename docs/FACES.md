@@ -75,3 +75,32 @@ the sweep, and each one is now a constant in the code:
 - **squash & stretch** on expressions (the mouth and eyes should deform, not just move)
 - **line-weight variation** — our outlines are one thickness everywhere
 - **expression library** — six states exist; a sheet needs twenty
+
+## The eye, after 100 more queries
+
+The eye is a **clipped stack inside a symmetric ellipse**, not shapes drawn loose on a face:
+
+```
+ellipse sclera (tinted, shaded top, bounce bottom)   <- clip mask
+  iris  56% of eye height, radial gradient, limbal ring
+    pupil 46% of iris, pure black
+    catchlights: large key-side, small opposite
+tapered lash band along the ellipse's top edge
+lower lid: thin, outer half only
+```
+
+Four things broke on the way, each worth recording:
+
+1. **The almond path is asymmetric.** Every eye drawn from it read as a *profile* eye — a wedge of
+   white on one side and the iris filling the other. An ellipse is symmetric by construction.
+2. **A thick `arc()` cannot taper.** PIL draws a constant-width stroke whose ends are radial cuts:
+   blunt black triangles at both corners. Stopping the arc short of the corners only moves the
+   wedge. The lash is now a polygon whose thickness tapers to zero at both ends.
+3. **Mirroring matters.** Building both eyes the same way puts the lash flick on the INNER corner of
+   one of them — a stray hair growing out of the eye. The layer is built as a right eye and mirrored.
+4. **The tilt sign was inverted.** Positive PIL rotation is counter-clockwise, which raises the
+   outer corner of the right eye. Passing `-tilt` dropped it and gave every eye a sad, drooping read.
+
+Measured proportions: iris 56% of the eye's height (below ~45% the eye reads blank, above ~70% the
+sclera disappears), pupil 46% of the iris, lash thickness 15-20% of eye height, catchlight 26% of
+the iris radius, lid at rest covering 15-20% of the iris.
