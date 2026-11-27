@@ -16,7 +16,7 @@ def build(force=False):
     so = os.path.join(_HERE, "libwubuik.so")
     if force or not os.path.exists(so) or os.path.getmtime(so) < os.path.getmtime(SRC):
         tmp = so + ".tmp"
-        subprocess.run(["cc", "-O2", "-std=c11", "-shared", "-fPIC", "-o", tmp, SRC, "-lm"],
+        subprocess.run(["cc", "-O3", "-std=c11", "-shared", "-fPIC", "-o", tmp, SRC, "-lm"],
                        check=True)
         os.replace(tmp, so)
     return so

@@ -27,7 +27,7 @@ def build(force=False):
     so = os.path.join(_HERE, "libwubuskin.so")
     if force or not os.path.exists(so) or os.path.getmtime(so) < os.path.getmtime(SRC):
         tmp = so + ".tmp"
-        cmd = ["cc", "-O2", "-std=c11", "-shared", "-fPIC", "-o", tmp, SRC, "-lm"]
+        cmd = ["cc", "-O3", "-std=c11", "-shared", "-fPIC", "-o", tmp, SRC, "-lm"]
         subprocess.run(cmd, check=True)
         os.replace(tmp, so)
     return so
