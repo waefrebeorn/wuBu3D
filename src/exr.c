@@ -62,7 +62,10 @@ static uint16_t _half(float f)
     return (uint16_t)(sign | ((uint32_t)exp << 10) | (mant >> 13));
 }
 
-int wubu_exr(const char *path, const float *rgb, int w, int h)
+/* when set, a Z plane is written alongside beauty: the pass that turns a picture into comp data */
+static const float *g_z = 0;
+
+static int _exr(const char *path, const float *rgb, int w, int h, int nch)
 {
     if (!path || !rgb || w < 1 || h < 1) return -1;
     _buf hd = {0, 0, 0};
@@ -72,9 +75,9 @@ int wubu_exr(const char *path, const float *rgb, int w, int h)
     int32_t chsize_pos = (int32_t)hd.n;
     _put_i32(&hd, 0);
     size_t ch_start = hd.n;
-    const char *names[3] = {"B", "G", "R"};       /* alphabetical, as EXR requires */
+    const char *names[4] = {"B", "G", "R", "Z"};  /* alphabetical, as EXR requires */
     int order[3] = {2, 1, 0};
-    for (int c = 0; c < 3; ++c) {
+    for (int c = 0; c < nch; ++c) {
         _put_str(&hd, names[c]);
         _put_i32(&hd, 1);                          /* pixelType = HALF */
         /* pLinear is ONE byte plus THREE reserved bytes, not an int32. With 4 extra bytes here the
@@ -113,7 +116,7 @@ int wubu_exr(const char *path, const float *rgb, int w, int h)
     _put(&hd, "\0", 1);                            /* end of header */
 
     size_t header_end = 8 + hd.n;                  /* magic + version come first */
-    size_t line_bytes = 4 + 4 + (size_t)w * 3 * 2;  /* y, size, planes */
+    size_t line_bytes = 4 + 4 + (size_t)w * nch * 2;  /* y, size, planes */
     size_t off_table = header_end;
     size_t first = off_table + (size_t)h * 8;
 
@@ -128,15 +131,19 @@ int wubu_exr(const char *path, const float *rgb, int w, int h)
         fwrite(&off, 8, 1, f);
     }
 
-    uint8_t *row = malloc((size_t)w * 3 * 2);
+    uint8_t *row = malloc((size_t)w * nch * 2);
     for (int y = 0; y < h; ++y) {
-        int32_t yy = y, sz = w * 3 * 2;
+        int32_t yy = y, sz = w * nch * 2;
         fwrite(&yy, 4, 1, f);
         fwrite(&sz, 4, 1, f);
-        for (int c = 0; c < 3; ++c) {
-            int src = order[c];
+        for (int c = 0; c < nch; ++c) {
+            /* order[] has three entries: indexing it with c==3 is undefined behaviour, which lets an
+               optimising compiler assume c<3 and delete the Z branch entirely. The plane was written
+               as a copy of R for exactly this reason. */
+            int src = (c < 3) ? order[c] : 0;
             for (int x = 0; x < w; ++x) {
-                uint16_t hv = _half(rgb[((size_t)y * w + x) * 3 + src]);
+                uint16_t hv = _half(c == 3 ? g_z[(size_t)y * w + x]
+                                           : rgb[((size_t)y * w + x) * 3 + src]);
                 row[((size_t)c * w + x) * 2 + 0] = (uint8_t)(hv & 0xFF);
                 row[((size_t)c * w + x) * 2 + 1] = (uint8_t)(hv >> 8);
             }
@@ -147,4 +154,20 @@ int wubu_exr(const char *path, const float *rgb, int w, int h)
     fclose(f);
     free(hd.p);
     return 0;
+}
+
+
+int wubu_exr(const char *path, const float *rgb, int w, int h)
+{
+    g_z = 0;
+    return _exr(path, rgb, w, h, 3);
+}
+
+/* beauty + depth. A comp can defocus, fog or grade by this plane without a re-render, which is the
+   whole difference between an EXR and a PNG. */
+int wubu_exr_z(const char *path, const float *rgb, const float *z, int w, int h)
+{
+    if (!z) return wubu_exr(path, rgb, w, h);
+    g_z = z;
+    return _exr(path, rgb, w, h, 4);
 }

@@ -175,3 +175,48 @@ void wubu_to_linear(const uint8_t *in, float *out, int n, float gain)
         out[i] = v * gain;
     }
 }
+
+
+/* lens pass: vignette, chromatic aberration, grain. The three things every comp adds in the last ten
+ * minutes and every renderer forgets — a frame with no vignette reads as a diagram, and grain is what
+ * keeps a gradient from banding after 8-bit encode. */
+void wubu_lens(float *rgb, int w, int h, float vignette, float ca, float grain, int seed)
+{
+    int n = w * h;
+    float cx = (float)w * 0.5f, cy = (float)h * 0.5f;
+    float norm = 1.0f / sqrtf(cx * cx + cy * cy);
+    float *src = malloc((size_t)n * 3 * sizeof(float));
+    if (!src) return;
+    memcpy(src, rgb, (size_t)n * 3 * sizeof(float));
+
+    unsigned s = (unsigned)(seed ? seed : 99);
+    for (int y = 0; y < h; ++y) {
+        for (int x = 0; x < w; ++x) {
+            float dx = ((float)x + 0.5f - cx), dy = ((float)y + 0.5f - cy);
+            float r = sqrtf(dx * dx + dy * dy) * norm;          /* 0 centre, 1 corner */
+
+            /* chromatic aberration: red and blue sample slightly outward, green stays put. At 1-2
+               pixels on a 1080 frame it is invisible on purpose and impossible to fake in post */
+            float k = ca * r * r * 12.0f;
+            int sxr = (int)(x + dx * k), syr = (int)(y + dy * k);
+            int sxb = (int)(x - dx * k), syb = (int)(y - dy * k);
+            if (sxr < 0 || sxr >= w || syr < 0 || syr >= h) { sxr = x; syr = y; }
+            if (sxb < 0 || sxb >= w || syb < 0 || syb >= h) { sxb = x; syb = y; }
+            int o = (y * w + x) * 3;
+            float R = src[(syr * w + sxr) * 3 + 0];
+            float G = src[o + 1];
+            float B = src[(syb * w + sxb) * 3 + 2];
+
+            float v = 1.0f - vignette * r * r;
+            if (v < 0.0f) v = 0.0f;
+
+            s = s * 1664525u + 1013904223u;
+            float g = (((float)((s >> 8) & 0xFFFF) / 65535.0f) - 0.5f) * grain;
+
+            rgb[o + 0] = R * v + g;
+            rgb[o + 1] = G * v + g;
+            rgb[o + 2] = B * v + g;
+        }
+    }
+    free(src);
+}
