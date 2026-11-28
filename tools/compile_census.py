@@ -155,6 +155,24 @@ def main():
                 n, p["name"].replace("|", "/")[:60], p["seller"][:22] or "-",
                 p["price"] or "free", (p["desc"] or "")[:170], p["url"].split("/")[-1], p["url"]))
 
+    # ---- what the hops reached
+    hops_path = os.path.join(BOX, "specs/gumroad_hops.json")
+    if os.path.exists(hops_path):
+        hops = json.load(open(hops_path)).get("hops", [])
+        by = {}
+        for h in hops:
+            key = (h.get("query") or "hop").replace("gap:", "").replace("lilypad:", "seller:")
+            by.setdefault(key, []).append(h)
+        A("\n## Reached by hopping (%d products)\n" % len(hops))
+        A("Straight search only finds what you already thought to ask for. These came from searching "
+          "the *operation* instead of the domain, and from reading a maker's whole catalogue. Each "
+          "group is one hop; the URL is the product the hop landed on.\n")
+        A("| hop | products | examples |")
+        A("|---|---|---|")
+        for k in sorted(by, key=lambda x: -len(by[x])):
+            ex = by[k][:3]
+            exs = ", ".join("[%s](%s)" % ((e.get("name") or "")[:38].replace("|", "/"), e["url"]) for e in ex)
+            A("| %s | %d | %s |" % (k, len(by[k]), exs))
     A("\n---\n")
     A("Regenerate: `python3 tools/gumroad_census.py --market all` then "
       "`python3 tools/compile_census.py`. Query list and scrape date are in "

@@ -27,14 +27,14 @@ A paid tool's description is a specification: it names the operation, the input 
 Not implemented yet, and said plainly: **texture sampling** (surfaces are flat-coloured), **cast shadows** (a contact ellipse stands in), **bevels**, **retargeting**, **squash/stretch**, and **translucency** — the glossy subsurface look of a TrendStory-style vinyl character is a transmission model we do not have, even though the specular highlight and the depth of field around it now exist.
 
 
-## Shaders & rendering (71)
+## Shaders & rendering (73)
 
 | # | product | maker | price | the listing's own claim | source |
 |---|---|---|---|---|---|
 | 1 | "Frosted Glass" Gradient Shader | 1HP | 15.00 | _page unavailable (HTTPError)_ | [exzjvy](https://1hp.gumroad.com/l/exzjvy) |
 | 2 | "Shaders Plus" - Real-Time Caustics, Thin Film, Dispersion f | SMOUSE | free | _page unavailable (HTTPError)_ | [bljae](https://smouse.gumroad.com/l/bljae) |
 | 3 | (ENG) TUTORIAL NPR Painterly Arnold Shader Pack: Arcane & An | Mani Salguero | 27.50 | _page unavailable (HTTPError)_ | [obmxk](https://manisalguero.gumroad.com/l/obmxk) |
-| 4 | 150+ ChatGPT prompts to make you a top 1% shader wizard 🪄 | OccaSoftware | free | _page unavailable (HTTPError)_ | [ihlcap](https://occasoftware.gumroad.com/l/ihlcap) |
+| 4 | 150+ ChatGPT prompts to make you a top 1% shader wizard 🪄 | OccaSoftware | free | 150 ChatGPT prompts to make you a top 1% shader wizard 🧙‍♂️ This collection of ChatGPT prompts will help you make the most of ChatGPT to supercharge your... | [ihlcap](https://occasoftware.gumroad.com/l/ihlcap) |
 | 5 | [Tutorial] UE5 Advanced Ocean Shader Creation - With Gerstne | Abderrezak Bouhedda | 20.00 | _page unavailable (HTTPError)_ | [nmwaa](https://artofab.gumroad.com/l/nmwaa) |
 | 6 | Advanced Outline Shader for Unreal Engine 5 | Evans Bohl | 14.99 | _page unavailable (HTTPError)_ | [uiqov](https://evansbohl.gumroad.com/l/uiqov) |
 | 7 | Bake Multiple Materials into One Texture Atlas - AtlasForge  | Aisal | free | _page unavailable (HTTPError)_ | [gfeaqu](https://aisal.gumroad.com/l/gfeaqu) |
@@ -47,478 +47,525 @@ Not implemented yet, and said plainly: **texture sampling** (surfaces are flat-c
 | 14 | Fake Diamonds shader for Cycles and Eevee | Lance Phan | 5.85 | This product is a collection of 4 diamond shader node groups to let you quickly and easily make a lot of diamonds. These node groups are very easy to use... | [wfoff](https://lancephan.gumroad.com/l/wfoff) |
 | 15 | Feather/Fur Shader | normalizedcrow | free | _page unavailable (HTTPError)_ | [bvako](https://normalizedcrow.gumroad.com/l/bvako) |
 | 16 | GLSL Eyeball + MediaPipe Timemachine / Two-in-One TouchDesig | Irina.ae | 5.00 | _page unavailable (HTTPError)_ | [ucsggn](https://irinaught.gumroad.com/l/ucsggn) |
-| 17 | Godot Pixelated Shader + RGB shift + Pixel Size + Curved scr | Yaroslav Samoilov | 5.99 | _page unavailable (HTTPError)_ | [xqaoh](https://yaosam0.gumroad.com/l/xqaoh) |
-| 18 | Godot Shader Pack: 150+ shaders for Godot 4 | Filip Rachůnek | 14.99 | _page unavailable (HTTPError)_ | [krudjf](https://filiprachunek.gumroad.com/l/krudjf) |
-| 19 | Holofoil Shader | 1HP | 15.00 | _page unavailable (HTTPError)_ | [fogdg](https://1hp.gumroad.com/l/fogdg) |
-| 20 | Hologram Shaders Pro for Unity | Daniel Ilett | 19.99 | _page unavailable (HTTPError)_ | [oqgmq](https://danielilett.gumroad.com/l/oqgmq) |
-| 21 | MANI NPR for Blender — Stylized Shader & Lookdev Toolkit (An | Mani Salguero | 39.99 | _page unavailable (HTTPError)_ | [wdcig](https://manisalguero.gumroad.com/l/wdcig) |
-| 22 | MatricX bake: Blender Material & Decal Baking Addon | EidosEdge | 79.00 | _page unavailable (HTTPError)_ | [gjpmlv](https://eidosedge.gumroad.com/l/gjpmlv) |
-| 23 | More shaders in Godot 4: Add stunning visual effects to your | Filip Rachůnek | 9.90 | _page unavailable (HTTPError)_ | [mrtmj](https://filiprachunek.gumroad.com/l/mrtmj) |
-| 24 | Motion Blur Shaders – Advanced Shader Setups for Unreal Engi | raulfx | 14.99 | _page unavailable (HTTPError)_ | [ebtxq](https://raulfx.gumroad.com/l/ebtxq) |
-| 25 | Multi-Mat Baker - Bake Multiple Materials into One PBR Textu | Junaid Alam | 15.00 | _page unavailable (HTTPError)_ | [btyxer](https://blenderustad.gumroad.com/l/btyxer) |
-| 26 | Next-Gen Shader Helper Plugin | Hanmen | 5.99 | _page unavailable (HTTPError)_ | [lnfdr](https://hanmen.gumroad.com/l/lnfdr) |
-| 27 | Next-Gen Shaders V5.10 for Honey Select 2 (FLASH SALE) | Hanmen | 10.99 | _page unavailable (HTTPError)_ | [cdxely](https://hanmen.gumroad.com/l/cdxely) |
-| 28 | OMNIKIT — Geometry Nodes, VFX & Materials for Blender | Blender addons | free | _page unavailable (HTTPError)_ | [lauvm](https://maroc777772.gumroad.com/l/lauvm) |
-| 29 | Photoshop Character Designer Toolkit Brushes | Francisco Beltrán | 20.00 | This pack includes all my brush sets (Pencils, Inkers, Screentones, Storyboard) plus the Cartoon, Sketch, Gouache, Oils, Pastels and Aquarelles / Watercolors... | [xAMz](https://frankstore.gumroad.com/l/xAMz) |
-| 30 | Physically Based Cel Shader | Jumpeter | 50.00 | _page unavailable (HTTPError)_ | [zobtn](https://jumpeter.gumroad.com/l/zobtn) |
-| 31 | Quest Basic Water Shader(VRChat) | noriben | 9.00 | _page unavailable (HTTPError)_ | [exzzss](https://noriben3.gumroad.com/l/exzzss) |
-| 32 | Quick Water Drops V3 (Blender 5.0+ Addon) | Faebe | 5.00 | _page unavailable (HTTPError)_ | [yifmr](https://faebe.gumroad.com/l/yifmr) |
-| 33 | RainDrop Shader (VRChat) | noriben | 9.00 | _page unavailable (HTTPError)_ | [quhsao](https://noriben3.gumroad.com/l/quhsao) |
-| 34 | Realistic Rainbow Shader (VRChat) | noriben | 7.00 | _page unavailable (HTTPError)_ | [qbuorz](https://noriben3.gumroad.com/l/qbuorz) |
-| 35 | Realistic Unity Clay Shader | taletronic | 2.00 | _page unavailable (HTTPError)_ | [TVgZk](https://taletronic.gumroad.com/l/TVgZk) |
-| 36 | REDSHIFT SHADER SUITE v.5 + REDSHIFT LIGHT SUITE v.5 + TT MO | jonpol | 139.00 | _page unavailable (HTTPError)_ | [milqk](https://trucateam.gumroad.com/l/milqk) |
-| 37 | Retro Shaders Pro for Unity URP | Daniel Ilett | 23.99 | _page unavailable (HTTPError)_ | [fnrbi](https://danielilett.gumroad.com/l/fnrbi) |
-| 38 | SafeSpace (VRChat Shader & Particle Filter) | KleineLuka 🌺 | 5.00 | _page unavailable (HTTPError)_ | [qgniq](https://kleineluka.gumroad.com/l/qgniq) |
-| 39 | Sanctus Library - Procedural Materials and Assets Library fo | Sanctus | free | _page unavailable (HTTPError)_ | [fogcj](https://sanctus.gumroad.com/l/fogcj) |
-| 40 | Screen Freeze Shader (Godot 4) | Mina Pêcheux | 6.00 | _page unavailable (HTTPError)_ | [femznt](https://mpecheux.gumroad.com/l/femznt) |
-| 41 | Shader Toolbox: Graphs and Nodes for Unity URP | Daniel Ilett | 24.99 | _page unavailable (HTTPError)_ | [tjlzf](https://danielilett.gumroad.com/l/tjlzf) |
-| 42 | Shey Hair Shader | Shey | 10.00 | _page unavailable (HTTPError)_ | [kvuuz](https://shrenders.gumroad.com/l/kvuuz) |
-| 43 | Simple Skybox Shader | TechSane | 3.00 | _page unavailable (HTTPError)_ | [ybnjla](https://techsane.gumroad.com/l/ybnjla) |
-| 44 | Skybox - (Plugin) | MrQuaxkers | 9.99 | 450+ Skybox library / browser for roblox studio. | [pjedcf](https://mrquaxkers.gumroad.com/l/pjedcf) |
-| 45 | SkyCraft: Skybox Shader for VRChat & Unity | DX | 8.00 | _page unavailable (HTTPError)_ | [cdegf](https://dx30.gumroad.com/l/cdegf) |
-| 46 | SkyMove: Skybox Shader for VRChat & Unity & Blender | DX | 8.00 | _page unavailable (HTTPError)_ | [adrpwl](https://dx30.gumroad.com/l/adrpwl) |
-| 47 | Snakeskin Tunnel / 2-in-1 TouchDesigner Gyroid Shader | Irina.ae | 10.00 | A real-time raymarched gyroid shader that never ends. Two .toe files included — one driven by MediaPipe hand tracking with three switchable colorways, one by... | [ngmfist](https://irinaught.gumroad.com/l/ngmfist) |
-| 48 | Soft Outline Shader (VRChat) | Zekk | 13.59 | _page unavailable (HTTPError)_ | [exmcjh](https://zekk.gumroad.com/l/exmcjh) |
-| 49 | Spark AR - Heart Bloom / Shader | Spark AR Shaders by De | 50.00 | _page unavailable (HTTPError)_ | [njlAb](https://enuriru.gumroad.com/l/njlAb) |
-| 50 | Stylized Medieval Inn Shader Pack for Blender 5 Cycles | 3D Tudor | 4.50 | _page unavailable (HTTPError)_ | [atisqm](https://3dtudor.gumroad.com/l/atisqm) |
-| 51 | Stylized Water Shaders And Generator | Casey Sheep | 12.00 | _page unavailable (HTTPError)_ | [jclot](https://caseysheep.gumroad.com/l/jclot) |
-| 52 | TG Shaders: Updated Shaders for Assetto Corsa | Allies Motor House | 8.00 | _page unavailable (HTTPError)_ | [mlpnj](https://threatjpn.gumroad.com/l/mlpnj) |
-| 53 | Tiny Hair Shader | tinynocky | free | _page unavailable (HTTPError)_ | [yhyuou](https://tinynocky.gumroad.com/l/yhyuou) |
-| 54 | Udin Blender Shaders | UDIN | free | _page unavailable (HTTPError)_ | [fzvbo](https://udinbv.gumroad.com/l/fzvbo) |
-| 55 | UE 5 Katana Toolkit : 30+ professional tools, materials, and | I am Wanderboy. | 24.90 | _page unavailable (HTTPError)_ | [azfnlg](https://xaviwanderboy.gumroad.com/l/azfnlg) |
-| 56 | UE5 Procedural Regular Polygon Shader | HeyYo | 3.00 | _page unavailable (HTTPError)_ | [nmusq](https://heyyohanashima.gumroad.com/l/nmusq) |
-| 57 | Ultimate Blender Procedural Material Pack | Ryan King Art | 55.30 | _page unavailable (HTTPError)_ | [gdkltz](https://ryankingart.gumroad.com/l/gdkltz) |
-| 58 | Ultimate Metallic Silk: Interactive Molten Shader for Framer | Creative Apes | 10.00 | _page unavailable (HTTPError)_ | [pndod](https://creativeapes.gumroad.com/l/pndod) |
-| 59 | Ultimate ShaderFuse Guide for DaVinci Resolve | Akascape | 20.00 | _page unavailable (HTTPError)_ | [ohaswb](https://akascape.gumroad.com/l/ohaswb) |
-| 60 | Unity VFX Graph：Collision Edge Line(SDF) | Eric VFX Studio | 4.00 | Created using VFX Graph and SDF, particles can create irregular lines along their edges when in contact with SDF. Version：6000.0.3f1 Render Mode：HDRP... | [xybwbh](https://raywang4.gumroad.com/l/xybwbh) |
-| 61 | Unity VFX Graph：Lightning Trail | Eric VFX Studio | 10.00 | Drag lightning effect created using Unity VFX Graph, You can follow the target point and modify the length, color, jitter level, etc. 2022.3.45f1 Render... | [vvhpas](https://raywang4.gumroad.com/l/vvhpas) |
-| 62 | Unity VFX Graph：Sci-fi Line | Eric VFX Studio | 3.00 | Sci-fi linework created using Unity VFX Graph. You can modify the line changes, size, color, direction, etc. by yourself. 2021.3.28f1(up) Render Mode：HDRP... | [eibuq](https://raywang4.gumroad.com/l/eibuq) |
-| 63 | Unity VFX Graph：Waterfall(HDRP) | Eric VFX Studio | 7.50 | _page unavailable (HTTPError)_ | [slzhfx](https://raywang4.gumroad.com/l/slzhfx) |
-| 64 | Volumetric Environment Shaders | Naito Ookami | 12.50 | Fog Volume/Fog Volume Lite The first shader is an extremely customizable fog shader with several variants for performance optimization. Shader variants are... | [QceXI](https://naitoookami.gumroad.com/l/QceXI) |
-| 65 | VRChat Hypno Eyes Shader / 🌌 Somna Presets | Value 🌿 | 15.00 | _page unavailable (HTTPError)_ | [cwqvu](https://valuef.gumroad.com/l/cwqvu) |
-| 66 | Warren's Fast Fur Shader | Warren | free | _page unavailable (HTTPError)_ | [atntv](https://warrenwolfy.gumroad.com/l/atntv) |
-| 67 | Water Shader Blender Add-on + Assets & Terrains | Chuck_CG | free | _page unavailable (HTTPError)_ | [sxbcnw](https://chuckcg.gumroad.com/l/sxbcnw) |
-| 68 | YMA Toon Shader [RS + C4D] [DEPRECATED - C4D 2023 - XPresso  | You And Me Academy | 49.00 | ATTENTION DEPRECATED: YMA Toon Shader uses XPresso only and was custom built in 2023 before toon existed in Redshift. For 2026 modern Redshift Toon Materials... | [icujek](https://youmeacademy.gumroad.com/l/icujek) |
-| 69 | 🌌 Domain Warp Noise Generator (GPU Compute Shader) | CyberLuna | free | _page unavailable (HTTPError)_ | [acjge](https://cyberluna.gumroad.com/l/acjge) |
-| 70 | 💦 VRChat Goo Shader 2.0 / 🌌 Somna Presets | Value 🌿 | 17.50 | _page unavailable (HTTPError)_ | [pzfmx](https://valuef.gumroad.com/l/pzfmx) |
-| 71 | 📜 Worley Noise Generator (GPU Compute Shader) | CyberLuna | free | _page unavailable (HTTPError)_ | [tnlsug](https://cyberluna.gumroad.com/l/tnlsug) |
+| 17 | Godot Pixelated Shader + RGB shift + Pixel Size + Curved scr | Yaroslav Samoilov | 5.99 | Godot 2d/3d Shader with Curvature and RGB shift. | [xqaoh](https://yaosam0.gumroad.com/l/xqaoh) |
+| 18 | Godot Shader Pack: 150+ shaders for Godot 4 | Filip Rachůnek | 14.99 | ⚠️ Get all Godot products at a discounted price! Godot Master Creator Bundle Would you like to add great-looking visual effects to your game made in the... | [krudjf](https://filiprachunek.gumroad.com/l/krudjf) |
+| 19 | GPU Fluid Simulation / No Kinect Required | Irina.ae | 5.00 | A real-time GPU fluid simulation for TouchDesigner. Not a blur trick — a proper Navier-Stokes solver running 16 GLSL passes per frame: advection, vorticity... | [jelqf](https://irinaught.gumroad.com/l/jelqf) |
+| 20 | Holofoil Shader | 1HP | 15.00 | _page unavailable (HTTPError)_ | [fogdg](https://1hp.gumroad.com/l/fogdg) |
+| 21 | Hologram Shaders Pro for Unity | Daniel Ilett | 19.99 | _page unavailable (HTTPError)_ | [oqgmq](https://danielilett.gumroad.com/l/oqgmq) |
+| 22 | MANI NPR for Blender — Stylized Shader & Lookdev Toolkit (An | Mani Salguero | 39.99 | _page unavailable (HTTPError)_ | [wdcig](https://manisalguero.gumroad.com/l/wdcig) |
+| 23 | MatricX bake: Blender Material & Decal Baking Addon | EidosEdge | 79.00 | _page unavailable (HTTPError)_ | [gjpmlv](https://eidosedge.gumroad.com/l/gjpmlv) |
+| 24 | More shaders in Godot 4: Add stunning visual effects to your | Filip Rachůnek | 9.90 | ⚠️ Get all Godot products at a discounted price! Godot Master Creator Bundle Once more, learn how to enhance your game&#39;s graphics with impressive visual... | [mrtmj](https://filiprachunek.gumroad.com/l/mrtmj) |
+| 25 | Motion Blur Shaders – Advanced Shader Setups for Unreal Engi | raulfx | 14.99 | _page unavailable (HTTPError)_ | [ebtxq](https://raulfx.gumroad.com/l/ebtxq) |
+| 26 | Multi-Mat Baker - Bake Multiple Materials into One PBR Textu | Junaid Alam | 15.00 | Multi-Mat Baker- One Click. One Material. Game Ready. Downloaded a character with 30 materials? Bought an asset pack where every piece has its own shader... | [btyxer](https://blenderustad.gumroad.com/l/btyxer) |
+| 27 | Next-Gen Shader Helper Plugin | Hanmen | 5.99 | _page unavailable (HTTPError)_ | [lnfdr](https://hanmen.gumroad.com/l/lnfdr) |
+| 28 | Next-Gen Shaders V5.10 for Honey Select 2 (FLASH SALE) | Hanmen | 10.99 | FEATURES ULTIMATE PERFORMANCE Up to 100-500%. New optimized SSS algorithm. Based on improved HSSSS. Better Integration with other Post Processing Effects... | [cdxely](https://hanmen.gumroad.com/l/cdxely) |
+| 29 | OMNIKIT — Geometry Nodes, VFX & Materials for Blender | Blender addons | free | _page unavailable (HTTPError)_ | [lauvm](https://maroc777772.gumroad.com/l/lauvm) |
+| 30 | Photoshop Character Designer Toolkit Brushes | Francisco Beltrán | 20.00 | This pack includes all my brush sets (Pencils, Inkers, Screentones, Storyboard) plus the Cartoon, Sketch, Gouache, Oils, Pastels and Aquarelles / Watercolors... | [xAMz](https://frankstore.gumroad.com/l/xAMz) |
+| 31 | Physically Based Cel Shader | Jumpeter | 50.00 | _page unavailable (HTTPError)_ | [zobtn](https://jumpeter.gumroad.com/l/zobtn) |
+| 32 | Procedural Planet (Blender 4+) | Mina Pêcheux | 9.00 | Need to make some neat 3D procedural planet for your next project? This node-based shader will give you an infinity of variations just by tweaking a few... | [gfhysx](https://mpecheux.gumroad.com/l/gfhysx) |
+| 33 | Quest Basic Water Shader(VRChat) | noriben | 9.00 | _page unavailable (HTTPError)_ | [exzzss](https://noriben3.gumroad.com/l/exzzss) |
+| 34 | Quick Water Drops V3 (Blender 5.0+ Addon) | Faebe | 5.00 | _page unavailable (HTTPError)_ | [yifmr](https://faebe.gumroad.com/l/yifmr) |
+| 35 | RainDrop Shader (VRChat) | noriben | 9.00 | _page unavailable (HTTPError)_ | [quhsao](https://noriben3.gumroad.com/l/quhsao) |
+| 36 | Realistic Rainbow Shader (VRChat) | noriben | 7.00 | _page unavailable (HTTPError)_ | [qbuorz](https://noriben3.gumroad.com/l/qbuorz) |
+| 37 | Realistic Unity Clay Shader | taletronic | 2.00 | _page unavailable (HTTPError)_ | [TVgZk](https://taletronic.gumroad.com/l/TVgZk) |
+| 38 | REDSHIFT SHADER SUITE v.5 + REDSHIFT LIGHT SUITE v.5 + TT MO | jonpol | 139.00 | _page unavailable (HTTPError)_ | [milqk](https://trucateam.gumroad.com/l/milqk) |
+| 39 | Retro Shaders Pro for Unity URP | Daniel Ilett | 23.99 | _page unavailable (HTTPError)_ | [fnrbi](https://danielilett.gumroad.com/l/fnrbi) |
+| 40 | SafeSpace (VRChat Shader & Particle Filter) | KleineLuka 🌺 | 5.00 | _page unavailable (HTTPError)_ | [qgniq](https://kleineluka.gumroad.com/l/qgniq) |
+| 41 | Sanctus Library - Procedural Materials and Assets Library fo | Sanctus | free | _page unavailable (HTTPError)_ | [fogcj](https://sanctus.gumroad.com/l/fogcj) |
+| 42 | Screen Freeze Shader (Godot 4) | Mina Pêcheux | 6.00 | Fancy a little &quot;screen freeze&quot; shader for your next Godot game? With this simple GLSL shader, you&#39;ll be able to easily setup and configure an icy... | [femznt](https://mpecheux.gumroad.com/l/femznt) |
+| 43 | Shader Toolbox: Graphs and Nodes for Unity URP | Daniel Ilett | 24.99 | _page unavailable (HTTPError)_ | [tjlzf](https://danielilett.gumroad.com/l/tjlzf) |
+| 44 | Shey Hair Shader | Shey | 10.00 | _page unavailable (HTTPError)_ | [kvuuz](https://shrenders.gumroad.com/l/kvuuz) |
+| 45 | Simple Skybox Shader | TechSane | 3.00 | _page unavailable (HTTPError)_ | [ybnjla](https://techsane.gumroad.com/l/ybnjla) |
+| 46 | Skybox - (Plugin) | MrQuaxkers | 9.99 | 450+ Skybox library / browser for roblox studio. | [pjedcf](https://mrquaxkers.gumroad.com/l/pjedcf) |
+| 47 | SkyCraft: Skybox Shader for VRChat & Unity | DX | 8.00 | _page unavailable (HTTPError)_ | [cdegf](https://dx30.gumroad.com/l/cdegf) |
+| 48 | SkyMove: Skybox Shader for VRChat & Unity & Blender | DX | 8.00 | _page unavailable (HTTPError)_ | [adrpwl](https://dx30.gumroad.com/l/adrpwl) |
+| 49 | Snakeskin Tunnel / 2-in-1 TouchDesigner Gyroid Shader | Irina.ae | 10.00 | A real-time raymarched gyroid shader that never ends. Two .toe files included — one driven by MediaPipe hand tracking with three switchable colorways, one by... | [ngmfist](https://irinaught.gumroad.com/l/ngmfist) |
+| 50 | Soft Outline Shader (VRChat) | Zekk | 13.59 | _page unavailable (HTTPError)_ | [exmcjh](https://zekk.gumroad.com/l/exmcjh) |
+| 51 | Spark AR - Heart Bloom / Shader | Spark AR Shaders by De | 50.00 | Описание на русском — ниже. 🇺🇸 A unique effect that transforms lights into hearts. Try the demo: test link Adjustable size and light detection Compatible... | [njlAb](https://enuriru.gumroad.com/l/njlAb) |
+| 52 | Stylized Medieval Inn Shader Pack for Blender 5 Cycles | 3D Tudor | 4.50 | _page unavailable (HTTPError)_ | [atisqm](https://3dtudor.gumroad.com/l/atisqm) |
+| 53 | Stylized Water Shaders And Generator | Casey Sheep | 12.00 | _page unavailable (HTTPError)_ | [jclot](https://caseysheep.gumroad.com/l/jclot) |
+| 54 | TG Shaders: Updated Shaders for Assetto Corsa | Allies Motor House | 8.00 | _page unavailable (HTTPError)_ | [mlpnj](https://threatjpn.gumroad.com/l/mlpnj) |
+| 55 | Tiny Hair Shader | tinynocky | free | What is Tiny Hair Shader? Tiny Hair Shader is a fully procedural hair shader that works in both EEVEE and Cycles (Blender) Read before you purchase the... | [yhyuou](https://tinynocky.gumroad.com/l/yhyuou) |
+| 56 | Udin Blender Shaders | UDIN | free | _page unavailable (HTTPError)_ | [fzvbo](https://udinbv.gumroad.com/l/fzvbo) |
+| 57 | UE 5 Katana Toolkit : 30+ professional tools, materials, and | I am Wanderboy. | 24.90 | _page unavailable (HTTPError)_ | [azfnlg](https://xaviwanderboy.gumroad.com/l/azfnlg) |
+| 58 | UE5 Procedural Regular Polygon Shader | HeyYo | 3.00 | _page unavailable (HTTPError)_ | [nmusq](https://heyyohanashima.gumroad.com/l/nmusq) |
+| 59 | Ultimate Blender Procedural Material Pack | Ryan King Art | 55.30 | Ultimate Blender Procedural Material Pack, pre-setup in Blender’s asset browser, with custom thumbnails, sorted catalogs, and customizable node groups. In my... | [gdkltz](https://ryankingart.gumroad.com/l/gdkltz) |
+| 60 | Ultimate Metallic Silk: Interactive Molten Shader for Framer | Creative Apes | 10.00 | _page unavailable (HTTPError)_ | [pndod](https://creativeapes.gumroad.com/l/pndod) |
+| 61 | Ultimate ShaderFuse Guide for DaVinci Resolve | Akascape | 20.00 | Learn to build Shader Fuses, convert Shadertoy shaders, add custom controls, and create your own Fusion effects, all in one course. Shader Fuses bring the... | [ohaswb](https://akascape.gumroad.com/l/ohaswb) |
+| 62 | Unity VFX Graph：Collision Edge Line(SDF) | Eric VFX Studio | 4.00 | Created using VFX Graph and SDF, particles can create irregular lines along their edges when in contact with SDF. Version：6000.0.3f1 Render Mode：HDRP... | [xybwbh](https://raywang4.gumroad.com/l/xybwbh) |
+| 63 | Unity VFX Graph：Lightning Trail | Eric VFX Studio | 10.00 | Drag lightning effect created using Unity VFX Graph, You can follow the target point and modify the length, color, jitter level, etc. 2022.3.45f1 Render... | [vvhpas](https://raywang4.gumroad.com/l/vvhpas) |
+| 64 | Unity VFX Graph：Sci-fi Line | Eric VFX Studio | 3.00 | Sci-fi linework created using Unity VFX Graph. You can modify the line changes, size, color, direction, etc. by yourself. 2021.3.28f1(up) Render Mode：HDRP... | [eibuq](https://raywang4.gumroad.com/l/eibuq) |
+| 65 | Unity VFX Graph：Waterfall(HDRP) | Eric VFX Studio | 7.50 | _page unavailable (HTTPError)_ | [slzhfx](https://raywang4.gumroad.com/l/slzhfx) |
+| 66 | Volumetric Environment Shaders | Naito Ookami | 12.50 | Fog Volume/Fog Volume Lite The first shader is an extremely customizable fog shader with several variants for performance optimization. Shader variants are... | [QceXI](https://naitoookami.gumroad.com/l/QceXI) |
+| 67 | VRChat Hypno Eyes Shader / 🌌 Somna Presets | Value 🌿 | 15.00 | Available for -20% HERE (Card and PayPal supported!) 🥴 The Hypno Shader for VRChat Avatars. 🎯 Focus DLC \| 💻 Screenspace DLC \| 📦 Material Preset Pack 🌍 Public... | [cwqvu](https://valuef.gumroad.com/l/cwqvu) |
+| 68 | Warren's Fast Fur Shader | Warren | free | NOTE: IF (WHEN) YOU ENCOUNTER ANY BUGS, PLEASE LET ME KNOW ON THE DISCORD SERVER! Free &quot;Lite&quot; version available. Heavily-optimized for speed. Automatically... | [atntv](https://warrenwolfy.gumroad.com/l/atntv) |
+| 69 | Water Shader Blender Add-on + Assets & Terrains | Chuck_CG | free | _page unavailable (HTTPError)_ | [sxbcnw](https://chuckcg.gumroad.com/l/sxbcnw) |
+| 70 | YMA Toon Shader [RS + C4D] [DEPRECATED - C4D 2023 - XPresso  | You And Me Academy | 49.00 | ATTENTION DEPRECATED: YMA Toon Shader uses XPresso only and was custom built in 2023 before toon existed in Redshift. For 2026 modern Redshift Toon Materials... | [icujek](https://youmeacademy.gumroad.com/l/icujek) |
+| 71 | 🌌 Domain Warp Noise Generator (GPU Compute Shader) | CyberLuna | free | _page unavailable (HTTPError)_ | [acjge](https://cyberluna.gumroad.com/l/acjge) |
+| 72 | 💦 VRChat Goo Shader 2.0 / 🌌 Somna Presets | Value 🌿 | 17.50 | Available for -20% HERE (Card and PayPal supported!) 💦 The droopy &amp; reactive VRChat goo &amp; slime shader 💦 💧 Owned 1.0 previously? Get your 100% or 50%... | [pzfmx](https://valuef.gumroad.com/l/pzfmx) |
+| 73 | 📜 Worley Noise Generator (GPU Compute Shader) | CyberLuna | free | _page unavailable (HTTPError)_ | [tnlsug](https://cyberluna.gumroad.com/l/tnlsug) |
 
-## Rigging, skinning & animation (106)
-
-| # | product | maker | price | the listing's own claim | source |
-|---|---|---|---|---|---|
-| 72 | 2D FX Animation Bundle – High-Impact Visual Effects for Anim | DucVu FX | 35.00 | ⚡ Subscribe for official store updates. I'm engineering something big behind the scenes. Stay tuned. 📢 Update 2026: FX List & Future Updates View the Update... | [yrryu](https://ducvu.gumroad.com/l/yrryu) |
-| 73 | 2D Rigging Toolbox 4.0 | Motion Gears | 22.50 | _page unavailable (HTTPError)_ | [iqabgx](https://motiongears.gumroad.com/l/iqabgx) |
-| 74 | 2D/3D Storyboarding MASTERCLASS - Creating Animatics in BLEN | Spitfire Storyboards | 250.00 | Are you looking to learn how to create 2D 3D storyboards and animatics using Blender and its awesome Grease Pencil tool? Then this is THE COURSE for you... | [tciowl](https://spitfirestoryboards.gumroad.com/l/tciowl) |
-| 75 | AniMate Forge - all AniMate Add-ons Bundle | not that NDA | 89.00 | _page unavailable (HTTPError)_ | [lgvbxw](https://nda.gumroad.com/l/lgvbxw) |
-| 76 | AniMate Pro - Core | not that NDA | 50.00 | _page unavailable (HTTPError)_ | [kxqdom](https://nda.gumroad.com/l/kxqdom) |
-| 77 | Animated 3D Curve Graph in AE / Project File | Noble Kreative | 30.00 | _page unavailable (HTTPError)_ | [hQcfQ](https://noblekreative.gumroad.com/l/hQcfQ) |
-| 78 | Animated RPG Health Bar | gfxcomet | 11.40 | A fully animated and customizable stylized Health Bar UI component for your Roblox game project! What&#39;s included? A health and stamina bar which you can... | [mohtug](https://gfxcomet.gumroad.com/l/mohtug) |
-| 79 | Animated Toggle | gfxcomet | free | Enjoy this Animated Toggle UI for your own game project! Instructions: Make sure the script is placed in &quot;StarterPlayerScripts&quot; Add the tag &quot;ToggleComponen | [txoms](https://gfxcomet.gumroad.com/l/txoms) |
-| 80 | Animation Snapper Pro - Blender Addon | Melowilo Animation | 24.99 | _page unavailable (HTTPError)_ | [rwyvce](https://melowilo.gumroad.com/l/rwyvce) |
-| 81 | Animator Toolkit | TohruTheDragon | 20.00 | _page unavailable (HTTPError)_ | [oizdm](https://tohruthedragon.gumroad.com/l/oizdm) |
-| 82 | Anime Codes | gfxcomet | 1.80 | A simple yet aesthetic Anime Codes UI inspired by the popular Roblox game &quot;Anime Last Stand&quot; What&#39;s Included? A textbox/field to enter your codes in A clean | [skjcnx](https://gfxcomet.gumroad.com/l/skjcnx) |
-| 83 | Anime Egg Shop | gfxcomet | free | The perfect egg shop ui for your anime game project. What&#39;s Included? 6 item displays with rarity color coding Currency display with gem icon (from Currency... | [hkqiur](https://gfxcomet.gumroad.com/l/hkqiur) |
-| 84 | Anime Hair HM Toolkit — Shadows & Highlights for Blender | Weytant_V | 15.20 | _page unavailable (HTTPError)_ | [gywiag](https://weytant.gumroad.com/l/gywiag) |
-| 85 | Anime Health 3 | gfxcomet | 1.80 | A stylized anime health interface component for your next game project What&#39;s included? A stylistic design Avatar Frame (you can add an image or icon) The... | [batgd](https://gfxcomet.gumroad.com/l/batgd) |
-| 86 | Anime Inventory 2 | gfxcomet | 4.80 | Meet the new Anime Inventory 2 This is a robust and stylized inventory interface which consists of: Unlocked and Locked item variants Stroke + Glow to... | [hmmdv](https://gfxcomet.gumroad.com/l/hmmdv) |
-| 87 | Anime Quests | gfxcomet | 3.00 | A robust and aesthetic Anime Quests UI inspired by the popular Roblox game Anime Last Stand. What&#39;s Included? Gradients used to visually separate elements... | [stqzza](https://gfxcomet.gumroad.com/l/stqzza) |
-| 88 | Anime Rewards UI for Roblox Studio (RBXM) | Kaisen | free | Elevate your Roblox game with the Anime Rewards UI a beautifully designed, anime-inspired user interface for reward systems! This script provides a visually... | [qogihq](https://claritykaisen.gumroad.com/l/qogihq) |
-| 89 | Anime Settings | gfxcomet | 3.00 | A beautifully crafted Anime Settings interface inspired by the popular title Anime Last Stand What&#39;s Included Responsive List Sections: each section allows... | [ydgqz](https://gfxcomet.gumroad.com/l/ydgqz) |
-| 90 | Anime Simulator 2 UI Kit | gfxcomet | 11.40 | Presenting the sequel to the Anime Simulator UI Kit! Looking to start your new anime game but don&#39;t know where to find good design? The Anime Simulator UI... | [hchgy](https://gfxcomet.gumroad.com/l/hchgy) |
-| 91 | Anime Simulator Kit V2 | gfxcomet | 11.97 | Introducing the Anime Simulator UI Kit V2! The sequel to our Anime Simulator UI Kit, this one is fresh, new and improved, with the highest design quality... | [jibid](https://gfxcomet.gumroad.com/l/jibid) |
-| 92 | Anime Stylized VFX - Unity | Vefects - Realtime VFX | 29.99 | _page unavailable (HTTPError)_ | [tfegu](https://vefects.gumroad.com/l/tfegu) |
-| 93 | Anime Units | gfxcomet | 6.00 | A robust and aesthetic Anime Units ui inspired by the popular Roblox game &quot;Anime Last Stand&quot; This is a robust and comprehensive Anime Units interface that is... | [hwxbz](https://gfxcomet.gumroad.com/l/hwxbz) |
-| 94 | AnimToTexture (VAT) One-Click Tool by tiedtke. | tiedtke. | 9.99 | _page unavailable (HTTPError)_ | [agfrjg](https://tiedtke.gumroad.com/l/agfrjg) |
-| 95 | Arrow Shot VFX | HeyYo | 7.00 | A blazing arrow streaks across the field and strikes the enemy, bursting into a ring of light and scattering sparks. Made in Unreal Engine. I provide the... | [phxbo](https://heyyohanashima.gumroad.com/l/phxbo) |
-| 96 | Audiomation for Unity animation | Pancake992 | 7.00 | _page unavailable (HTTPError)_ | [nxkih](https://pancake992.gumroad.com/l/nxkih) |
-| 97 | basic scripts for the OverRig animation method | Pavel Barnev | 70.00 | _page unavailable (HTTPError)_ | [cIdFbR](https://pavelbarnev.gumroad.com/l/cIdFbR) |
-| 98 | Blender Massive 250-Piece Modular Mega - Kitbash Immersive C | 3D Tudor | 18.00 | _page unavailable (HTTPError)_ | [bmbhc](https://3dtudor.gumroad.com/l/bmbhc) |
-| 99 | Book Rigger | Tik Works | 15.00 | _page unavailable (HTTPError)_ | [vjcph](https://tikworks.gumroad.com/l/vjcph) |
-| 100 | Bookasaur Rig | ComixProd. | free | This is my first rig made on timelapse! The rig is featuring Bookasaur, make sure to check him out since he&#39;s cool. Also I wanna say the rig is not fit for... | [YMeCo](https://comixproductions.gumroad.com/l/YMeCo) |
-| 101 | CGDive: The Vault - Rigging and Animation Tutorials [SUBSCRI | Todor - cgdive.com | 6.00 | _page unavailable (HTTPError)_ | [ruyce](https://toshicg.gumroad.com/l/ruyce) |
-| 102 | Cubic Face (Roblox Face Rig) | ComixProd. | free | Cubic Face is a simple face rig I created. It was made in a video. No credit needed, however do not redistribute or claim ownership. If you want to share... | [crzat](https://comixproductions.gumroad.com/l/crzat) |
-| 103 | DEM V3.1 — Procedural Animation System for Cinema 4D + Blend | Giuliano Dasky | 59.00 | NEW RELEASE — DEM V3.1 A NEW WAY TO ANIMATE IN CINEMA 4D A complete procedural animation system — build advanced motion with editable layers in a dedicated... | [kumrw](https://daskydesign.gumroad.com/l/kumrw) |
-| 104 | EPIK RIG - Quick Rig + Animation Tools for Games (UE) | ShinGidora | 29.99 | _page unavailable (HTTPError)_ | [njrwka](https://shingidora.gumroad.com/l/njrwka) |
-| 105 | Fluid Rig | ComixProd. | free | Latest Version: E2 This rig is designed for Blender, and it will not work in Roblox Studio. Fluid Rig is one of the best ROBLOX package rigs you can find for... | [iinfw](https://comixproductions.gumroad.com/l/iinfw) |
-| 106 | Free Low Poly 3D Character - Juliet from Lollipop Chainsaw ( | Crashsune | free | _page unavailable (HTTPError)_ | [inljko](https://crashsune.gumroad.com/l/inljko) |
-| 107 | FUGA - Imagined by Starkim1999 [VFX/VRChat] | Starkim1999 | 25.00 | This is an animation inspired by Sukuna&#39;s Fuga (Fire Arrow) from Jujutsu Kaisen. I took heavy inspiration from how Roblox games portray this effect, as well... | [gwsrd](https://starkim1999.gumroad.com/l/gwsrd) |
-| 108 | Game Rig Tools (Blender Addon) - game-ready rigs in seconds | Todor - cgdive.com | free | _page unavailable (HTTPError)_ | [OmHCS](https://toshicg.gumroad.com/l/OmHCS) |
-| 109 | Ghost Frames — Onion Skinning Plugin for Unreal Engine 5.8 | Aymen Selmi | 14.99 | _page unavailable (HTTPError)_ | [gyubxu](https://kazuyasama.gumroad.com/l/gyubxu) |
-| 110 | Glock R6 Roblox Rig for Moon Animator | Nisky | free | Roblox R6 Rig with a Welded and fully animatable Glock 17 designed to be used with Moon Animator. | [yaavw](https://nisky.gumroad.com/l/yaavw) |
-| 111 | Gridflow — Procedural Animated Grids | Rajat Subhra | 35.00 | _page unavailable (HTTPError)_ | [wpgzfh](https://rajatsubhra.gumroad.com/l/wpgzfh) |
-| 112 | Happy Birthday Grimace! (Animation File + Animation Timelaps | Paribes | 10.00 | This file includes my animation file AND a timelapse which is not edited and not sped up of me animating this! (tipping is always appreciated! :)) PS: I... | [nbbxnn](https://paribes.gumroad.com/l/nbbxnn) |
-| 113 | Hazem Rig | ComixProd. | 3.00 | This is the rig I made when making the "How To Make A Roblox Rig" tutorial series. If you want to explore what I made and find out more about how the rig... | [ppwik](https://comixproductions.gumroad.com/l/ppwik) |
-| 114 | Houdini Animation Sequencer | bereg | 25.00 | _page unavailable (HTTPError)_ | [wyaanb](https://bereg.gumroad.com/l/wyaanb) |
-| 115 | How To Design an Anime Inventory UI (Tutorial) | gfxcomet | 6.00 | This is a 41 minute comprehensive lesson where I walk you through step-by-step, the design and import of an Anime Inventory interface. You will learn how to... | [tceqo](https://gfxcomet.gumroad.com/l/tceqo) |
-| 116 | How to Design An Anime Units UI in Roblox Studio | gfxcomet | 6.00 | This 53 minute tutorial follows the first part where we designed this Units frame from the game Anime Last Stand inside of Photoshop, which you can watch for... | [vjvcdvq](https://gfxcomet.gumroad.com/l/vjvcdvq) |
-| 117 | HP Art Toolset: Facial Character Rigging for Maya | HP Art Toolset by Hai  | free | _page unavailable (HTTPError)_ | [mqrebc](https://hparttoolset.gumroad.com/l/mqrebc) |
-| 118 | HP Art Toolset: Fast Character Rigging for Maya | HP Art Toolset by Hai  | free | _page unavailable (HTTPError)_ | [bmstj](https://hparttoolset.gumroad.com/l/bmstj) |
-| 119 | i5K Rig | ComixProd. | free | A random GFX rig for i5K. What&#39;s cool is that this rig has better bends than all of my other rigs, so yeah 🤷‍♂️ No credit needed just don&#39;t claim ownership | [obfij](https://comixproductions.gumroad.com/l/obfij) |
-| 120 | IK Grab | normalizedcrow | 12.00 | _page unavailable (HTTPError)_ | [karln](https://normalizedcrow.gumroad.com/l/karln) |
-| 121 | Industrial Sci-Fi and Modular Oil Rig | Sierra Division | 179.00 | _page unavailable (HTTPError)_ | [ikobf](https://sierradivision.gumroad.com/l/ikobf) |
-| 122 | KTR - E.V.A. Suit from Dead Space RIG for Jerry | KTR | 22.00 | _page unavailable (HTTPError)_ | [hiwpa](https://kotyor.gumroad.com/l/hiwpa) |
-| 123 | Launch Control  //  Auto Car Rig | Daniel Vesterbaek | 59.00 | _page unavailable (HTTPError)_ | [orzsz](https://danielvesterbaek.gumroad.com/l/orzsz) |
-| 124 | Let’s learn ANIMATED CHARACTER  CREATION IN 3D | Ram@Crossmind | 34.30 | _page unavailable (HTTPError)_ | [gjpami](https://crossmindstudio.gumroad.com/l/gjpami) |
-| 125 | Magma Rig (Blender 3.4+) | Paribes | free | This rig is a rig from a character in Roblox called "The Magma Fiend" including features like: - Brightness control - Magma Fiend's color - Fancy Feet on... | [embpw](https://paribes.gumroad.com/l/embpw) |
-| 126 | Marik / Male / PC + Quest + Opti / VRCFT & VRCFury | Heartmarksman | 35.00 | _page unavailable (HTTPError)_ | [zuvneh](https://heartmarksman.gumroad.com/l/zuvneh) |
-| 127 | Mechanical Rigging in Blender - A Beginner Course 🦾 | Niko | 19.90 | _page unavailable (HTTPError)_ | [zecxxb](https://demnikoart.gumroad.com/l/zecxxb) |
-| 128 | MHFRT - Auto Facial Rig & Auto Retopology | Souhail Ninia | 24.99 | _page unavailable (HTTPError)_ | [pzqmlw](https://souhailninia.gumroad.com/l/pzqmlw) |
-| 129 | Mixamo Rig 5 | Knit Motion | 5.00 | _page unavailable (HTTPError)_ | [fjidu](https://knitmotion.gumroad.com/l/fjidu) |
-| 130 | Moon Animator 2 Plugin | kai | free | This was originally a paid plugin but its free to get here:) Best Roblox Studio animating plugin out there | [bbsmm](https://realestkai.gumroad.com/l/bbsmm) |
-| 131 | Muscle Anatomy  - Ecorche Rigged Set | Alex Lashko | 99.00 | _page unavailable (HTTPError)_ | [fffeg](https://alexlashko.gumroad.com/l/fffeg) |
-| 132 | Painterly + Animately Bundle DEAL! | Doughy Animation Studi | 34.50 | _page unavailable (HTTPError)_ | [qrdvwb](https://doughyanimation.gumroad.com/l/qrdvwb) |
-| 133 | Physics animation (Plugin for Figma) | DAVV | 39.00 | _page unavailable (HTTPError)_ | [pfabo](https://davvstore.gumroad.com/l/pfabo) |
-| 134 | PinRig / After Effects Plugin | What? Studio | free | _page unavailable (HTTPError)_ | [rvcux](https://whatstudio.gumroad.com/l/rvcux) |
-| 135 | Profine's Roblox Toy Rig EDIT (Blender 4.0+) | Paribes | free | Profine made a Roblox toy rig a while back, I made a simple edit which has bone shapes and allat (this was mainly for me to have a better animating experience). | [udkwsf](https://paribes.gumroad.com/l/udkwsf) |
-| 136 | Quick Start To Blender Animation: Professional Techniques An | VFX Grace | 198.00 | _page unavailable (HTTPError)_ | [kavusr](https://vfxgrace.gumroad.com/l/kavusr) |
-| 137 | R15 Roblox ANIMATION Rig (Blender -> Roblox Studio) | Paribes | free | A rig for Blender 3D to export to Roblox Studio! Settings HeadTarget HeadTarget Parent Torso IK Arm/Leg Settings IK/FK Switch Bone Layers (IK/FK) Fancy... | [zmyfl](https://paribes.gumroad.com/l/zmyfl) |
-| 138 | R15 Roblox Starter Rigs (TEMPORARY) | Paribes | free | while waiting for the next starter rigs update, use these rigs if you need r15 here's the description of starter rigs: Introducing Roblox Starter Rigs, which... | [jjhtt](https://paribes.gumroad.com/l/jjhtt) |
-| 139 | Rich Rig (Blender 3.4+) | Paribes | free | roblox rig for the Rich package. Blender version: 3.4+ SECOND THUMBNAIL BY CLIPON If you need rigs, contact me on Discord (chillingparibes)... | [xsgzm](https://paribes.gumroad.com/l/xsgzm) |
-| 140 | Roblox Blocky Finger Rig (Blender 4.0+) | Paribes | free | fingies NOTE: FACE RIG IS NOT INCLUDED, THAT IS AEPBR EXCLUSIVE | [fpbjgc](https://paribes.gumroad.com/l/fpbjgc) |
-| 141 | Roblox Blocky Rig / C4D R20+ | Chastling | 1.50 | Available on Gumroad | [ahkbz](https://chastling.gumroad.com/l/ahkbz) |
-| 142 | Roblox Fat Rig (4.0+) | Paribes | free | _no description in metadata_ | [jiojiw](https://paribes.gumroad.com/l/jiojiw) |
-| 143 | Roblox Football Rig V1 (Blender 4.2+) | Paribes | 10.00 | NOTE: redistributing or reselling the rigs, even if modified or at a price, is PROHIBITED. Muscle System The rig contains a special muscle system that is... | [ifhke](https://paribes.gumroad.com/l/ifhke) |
-| 144 | Roblox Multipurpose Cloth Rig (4.5+) | Paribes | free | Features: Classic Cloth Modification - This modification is a top-tier cloth simulation rig that bakes the shirt, providing realistic cloth physics... | [hwthor](https://paribes.gumroad.com/l/hwthor) |
-| 145 | Roblox Ocean System | Tekleed | 200.00 | Roblox FFT Ocean System Real ocean simulation for Roblox. This uses the FFT wave technique behind AAA oceans like Sea of Thieves, running natively on... | [qgvvc](https://tekleed.gumroad.com/l/qgvvc) |
-| 146 | Roblox Rig Vault (Blender 4.0+) | Paribes | free | Introducing Roblox Rig Vault! Roblox Rig Vault (RRV) is a unique Blender rig pack and addon made by Roblox rigging innovators ChillingParibes and Comix... | [htzgj](https://paribes.gumroad.com/l/htzgj) |
-| 147 | Roblox Rigs Suite | ComixProd. | free | Thanks to @BricksBree, @ChillingParibes, @MrSonicTeam, @MXFlamez, @Koth for beta testing this! I would really appreciate it if you donated, it's taken me... | [xpqyw](https://comixproductions.gumroad.com/l/xpqyw) |
-| 148 | Roblox Starter Rigs (Blender 3.4+) | Softy | free | Introducing Roblox Starter Rigs, which will match all your needs when making gfx, whether you are a beginner at gfx or experienced. It includes the... | [ytmdjz](https://softgb.gumroad.com/l/ytmdjz) |
-| 149 | Roblox Starter Rigs (Blender 3.4+) | Paribes | free | Introducing Roblox Starter Rigs, which will match all your needs when making gfx, whether you are a beginner at gfx or experienced. It includes the... | [pblgq](https://paribes.gumroad.com/l/pblgq) |
-| 150 | Roblox Starter Rigs 1.0 MODDED | Paribes | free | Starter rigs by SoftGB & ChillingParibes Modified rigs by imbob02 (seamless boy rigs) R15 rig by BaconofVibes Compiled by Malakai_GFX If you need rigs... | [xbrdsa](https://paribes.gumroad.com/l/xbrdsa) |
-| 151 | Roblox Studio: Movement system (8 directions) | LionDev | 12.00 | This package for Roblox Studio includes a movement system that detects the direction in which the character is moving and plays the appropriate animations... | [cddbt](https://liondev.gumroad.com/l/cddbt) |
-| 152 | Roblox Woman Blocky Legs Rig (Blender 4.0+) | Paribes | free | If you need rigs, contact me on Discord (chillingparibes)! https://discord.com/invite/Mc5PdfZnBd NOTE: redistributing or reselling the rigs, even if modified... | [oqjvxf](https://paribes.gumroad.com/l/oqjvxf) |
-| 153 | Scene Auditor Pro — Analyze, Clean & Optimize Blender Scenes | Chowdhury Tarul Ahsan | 15.00 | _page unavailable (HTTPError)_ | [yvydx](https://tarulahsanbd.gumroad.com/l/yvydx) |
-| 154 | Seraph Wings — Animated Six-Wing VRChat Accessory / PCVR | KuroLabs | 15.00 | _page unavailable (HTTPError)_ | [fetsbo](https://rajcu.gumroad.com/l/fetsbo) |
-| 155 | SimpleAnime - Fast Anime / Retro Texturing | Nhance School | 19.00 | SimpleAnime - Easy Anime / Retro texturing Create stunning texturing results on your 3D Models + speed up workflow with SimpleAnime filter🎨 SimpleAnime was... | [dptffu](https://nhanceschool.gumroad.com/l/dptffu) |
-| 156 | Spider-Man Roblox Rig (4.4+) | Paribes | free | credits to @imbob02 , @BallzyGFX and @xmavster on Twitter for making this Starter Rigs mod! | [ogunp](https://paribes.gumroad.com/l/ogunp) |
-| 157 | Stadium Spectators: High Performance Stadium Crowds for Unre | RT ArtFast | 150.00 | _page unavailable (HTTPError)_ | [oannzl](https://tartfast.gumroad.com/l/oannzl) |
-| 158 | Stylized Character Modeling for Animation | Stephen Anderson | 100.00 | Stylized Character Modeling for Animation is all about character design and application in production modeling for the animation pipeline. This self-paced... | [hqtmF](https://smaartist.gumroad.com/l/hqtmF) |
-| 159 | SuperRoblox (Roblox Rig) | ComixProd. | free | Superhero rig with a load of settings. | [jFnRyz](https://comixproductions.gumroad.com/l/jFnRyz) |
-| 160 | Talia + Adam - Maya Rig Bundle | Red Crow Studio | 68.00 | _page unavailable (HTTPError)_ | [xfplhw](https://manuelaf.gumroad.com/l/xfplhw) |
-| 161 | Texter - Text Animation Tool for Blender | Graffinity | free | _page unavailable (HTTPError)_ | [tquro](https://graffinity3d.gumroad.com/l/tquro) |
-| 162 | The Ultimate Guide to Blender 3D Rigging and Animation | 3D Tudor | 11.25 | _page unavailable (HTTPError)_ | [irfmu](https://3dtudor.gumroad.com/l/irfmu) |
-| 163 | Throw Food For Animals Template | ROKITS | 9.99 | Throw Food for Animals \| Roblox Template Train your strength, throw food farther, and collect animals to build your income! What’s Included 🐾 40 collectible... | [pyycl](https://rokits.gumroad.com/l/pyycl) |
-| 164 | UI Animator Pro / After Effects Plugin | What? Studio | free | _page unavailable (HTTPError)_ | [xariqf](https://whatstudio.gumroad.com/l/xariqf) |
-| 165 | Ultimate 2D FX Explosions for Animators & Devs | DucVu FX | 20.00 | _page unavailable (HTTPError)_ | [rfhalq](https://ducvu.gumroad.com/l/rfhalq) |
-| 166 | Ultimate 2D FX Fire Animation Pack for Creators & Devs | DucVu FX | 20.00 | _page unavailable (HTTPError)_ | [menshz](https://ducvu.gumroad.com/l/menshz) |
-| 167 | Ultimate Roblox Rig | MattRBX | 5.00 | IF YOU DIDN'T RECIEVE THE PRODUCT OR HAVE SIMILAR ISSUES JOIN THE DISCORD SERVER BELOW !! Support Server: https://discord.gg/DvK73fgEka Ultimate Rig Premium... | [lnldn](https://mattrbx.gumroad.com/l/lnldn) |
-| 168 | Ultimate Weapon Sweep VFX !! [Houdini 19-20 / Niagara UE Cou | Tristan Gybels | 30.00 | This course tackles one of the most common problems but yet unheard of solutions for creating incredibly precise weapon sweep VFX. Unlike similar tutorials... | [qbfhe](https://tristangybels.gumroad.com/l/qbfhe) |
-| 169 | Unreal Engine 5 Massive 250-Piece Modular Mega - Kitbash Imm | 3D Tudor | 18.00 | _page unavailable (HTTPError)_ | [rapdi](https://3dtudor.gumroad.com/l/rapdi) |
-| 170 | Weight Scatter - (Plugin) | MrQuaxkers | 4.99 | Weight based object scattering in roblox studio. | [vhxkmj](https://mrquaxkers.gumroad.com/l/vhxkmj) |
-| 171 | Worm Host Animation | Satch Nomad | 20.00 | This is a custom animation that can be easily transfered over to the custom character model of your choice. the "Worm Host", is a 3D combat/ability splash... | [racij](https://n5studios.gumroad.com/l/racij) |
-| 172 | Zazar - Rigged 3D Lizard for Blender | Rakenval | 60.00 | _page unavailable (HTTPError)_ | [ynfspb](https://rakenval.gumroad.com/l/ynfspb) |
-| 173 | ⚽ Roblox Football/Soccer Rigs (Kit, Shoes, Trophies, ...) | Paribes | free | credit: @ChillingParibes - the rig @SoftGB - HD Faces @imbob02 - modified seamless boy rig vansire - football stuff on the rig and the boot textures... | [ovwtcn](https://paribes.gumroad.com/l/ovwtcn) |
-| 174 | 🎮 Legendary Sky Champion Rig (Roblox: The Games) | Paribes | free | "Defeat" will be forever erased from your vocabulary. A brand new rig for the package Roblox released For Blender 4.2+ (probably works for minimum 4.0+) | [yowflf](https://paribes.gumroad.com/l/yowflf) |
-| 175 | 🏃 Roblox Animation Starter Pack | Paribes | free | A bunch of assets you could possibly need to start as an animator! | [knclku](https://paribes.gumroad.com/l/knclku) |
-| 176 | 🤖 AEPBR Roblox Rig (BETA) | Paribes | free | 🤖 STILL IN BETA!! Features it has so far: ☑️ Customisable face rig Customisable Eye Color Hideable Parts Face controls Mouth Sync Control Blink Control Teeth... | [wvyryw](https://paribes.gumroad.com/l/wvyryw) |
-| 177 | 🧟 Roblox Zombie Rig (Blender 4.0+) | Paribes | free | zombie PS: The best works of Softy and STAR's contest will end up on this page as well! EDIT: Winning GFX has been added, made by @vanziervh If you need... | [quhwki](https://paribes.gumroad.com/l/quhwki) |
-
-## Modeling, mesh & procedural (30)
+## Rigging, skinning & animation (107)
 
 | # | product | maker | price | the listing's own claim | source |
 |---|---|---|---|---|---|
-| 178 | [Addon]MESHmachine | machin3 | 44.99 | _page unavailable (HTTPError)_ | [Gwgt](https://machin3.gumroad.com/l/Gwgt) |
-| 179 | CGE Sculpting Tool for Maya | CGElementary | 78.40 | _page unavailable (HTTPError)_ | [lkvikqt](https://cgelementary.gumroad.com/l/lkvikqt) |
-| 180 | Cloud Creator / Blender Geometry Nodes Tool | Adrien Latran | free | _page unavailable (HTTPError)_ | [qcppwq](https://adrienltn.gumroad.com/l/qcppwq) |
-| 181 | Cobweb Generator Pro | Jose Leon Molfino | free | Houdini Cobweb Generator Pro - It generates cobwebs procedurally from a collider geometry, from your own straight lines, or both. This is a full rewrite of... | [zbrsd](https://cmolfino.gumroad.com/l/zbrsd) |
-| 182 | Extra Nodes for Geometry Nodes | 3dsinghvfx | free | _page unavailable (HTTPError)_ | [aaxrtj](https://3dsinghvfx.gumroad.com/l/aaxrtj) |
-| 183 | EzyTopo - Retopology tool for Maya | Justin Kirkwood | 16.99 | _page unavailable (HTTPError)_ | [otyqu](https://justinkirkwood.gumroad.com/l/otyqu) |
-| 184 | Hiddenfy 6 — Hard-Surface Armor, IMM system, Tactical Cloth  | Daniel Arcos Escobar | 10.50 | _page unavailable (HTTPError)_ | [ebbxj](https://darksurfacetv.gumroad.com/l/ebbxj) |
-| 185 | Houdini Tutorial Procedural Pillar Generation | Radu Cius | 45.00 | _page unavailable (HTTPError)_ | [btbwd](https://rart.gumroad.com/l/btbwd) |
-| 186 | MEDUSA NODES - Procedural Hair System for Blender (Beta) | Irakli Kupunia | 15.00 | _page unavailable (HTTPError)_ | [XEzSy](https://ikakupa.gumroad.com/l/XEzSy) |
-| 187 | PatchGAP - Plasticity Retopology tool for Blender | Andrei Bezgodov | 35.00 | _page unavailable (HTTPError)_ | [ildlkt](https://bezgod.gumroad.com/l/ildlkt) |
-| 188 | Procedural City Generator for Houdini / by MrShark (UPDATED  | Mr.Shark | 15.00 | _page unavailable (HTTPError)_ | [bpdiq](https://mrshark.gumroad.com/l/bpdiq) |
-| 189 | Procedural Damage + Imperfections (Blender Geometry-Nodes) | Alex Martinelli | free | _page unavailable (HTTPError)_ | [tkbjk](https://sagado.gumroad.com/l/tkbjk) |
-| 190 | Procedural Grid (Blender 3+, 4+) | Mina Pêcheux | 3.00 | _page unavailable (HTTPError)_ | [okeizj](https://mpecheux.gumroad.com/l/okeizj) |
-| 191 | Procedural Pipes & Roads (Godot 4) | Mina Pêcheux | 7.00 | _page unavailable (HTTPError)_ | [bmobcx](https://mpecheux.gumroad.com/l/bmobcx) |
-| 192 | Procedural Planet (Blender 4+) | Mina Pêcheux | 9.00 | _page unavailable (HTTPError)_ | [gfhysx](https://mpecheux.gumroad.com/l/gfhysx) |
-| 193 | Procedural Sky System - Blender Addon | Other Realms | 15.00 | _page unavailable (HTTPError)_ | [sogyzv](https://otrealms.gumroad.com/l/sogyzv) |
-| 194 | Procedural Thunder | HeyYo | 7.00 | _page unavailable (HTTPError)_ | [mycyh](https://heyyohanashima.gumroad.com/l/mycyh) |
-| 195 | Procedural Urban Building Generator for Houdini (HDA) | Radu Cius | 39.00 | _page unavailable (HTTPError)_ | [civgek](https://rart.gumroad.com/l/civgek) |
-| 196 | Project Damage / Procedural Destruction Toolkit [Blender Add | Lazy3D Blender | free | _page unavailable (HTTPError)_ | [wwwauu](https://lazy3d.gumroad.com/l/wwwauu) |
-| 197 | Quadremsh Tools for Blender — Fast Quad Remeshing & Retopolo | SyncTools Pro — Cross- | free | _page unavailable (HTTPError)_ | [svwvny](https://synctools.gumroad.com/l/svwvny) |
-| 198 | Spall: Procedural Damage for Blender | Alberto Cordero | 29.00 | _page unavailable (HTTPError)_ | [ttqrme](https://albertocgart.gumroad.com/l/ttqrme) |
-| 199 | SpiralForge – Procedural Galaxy Builder for Blender | Petr Chekushkin | free | _page unavailable (HTTPError)_ | [qlafqt](https://astrodemiurge.gumroad.com/l/qlafqt) |
-| 200 | Stacking Stones — Procedural Rock Walls & Ruins in Houdini ( | Hugo Beyer | 29.00 | _page unavailable (HTTPError)_ | [jsepsh](https://hugobeyer.gumroad.com/l/jsepsh) |
-| 201 | The Big Nodebook: A Geometry Nodes Guide | MTR Animation | 19.99 | _page unavailable (HTTPError)_ | [hzsqw](https://mtranimationgumroad.gumroad.com/l/hzsqw) |
-| 202 | Tutorial series - Procedural Cliffs with SideFX houdini | adrienlambert | 10.00 | _page unavailable (HTTPError)_ | [pYaGH](https://adrienlambert.gumroad.com/l/pYaGH) |
-| 203 | Unity VFX Graph：Mesh Particle Fragments | Eric VFX Studio | 8.99 | _page unavailable (HTTPError)_ | [udgno](https://raywang4.gumroad.com/l/udgno) |
-| 204 | Unity VFX Graph：Particle Character (Skinned Mesh) | Eric VFX Studio | 9.99 | _page unavailable (HTTPError)_ | [cwkeg](https://raywang4.gumroad.com/l/cwkeg) |
-| 205 | Unreal Engine Procedural Damage Toolset | Hoj Dee | 19.99 | _page unavailable (HTTPError)_ | [vsykco](https://hojdee.gumroad.com/l/vsykco) |
-| 206 | Unreal Engine Procedural Snow Toolset | Hoj Dee | 19.99 | _page unavailable (HTTPError)_ | [jixnf](https://hojdee.gumroad.com/l/jixnf) |
-| 207 | UV Unfoldr – A Modern UV Editor for 3ds Max | Sargis Ter-Grigoryan | 39.00 | _page unavailable (HTTPError)_ | [nnwzju](https://sargisstg.gumroad.com/l/nnwzju) |
+| 74 | 2D FX Animation Bundle – High-Impact Visual Effects for Anim | DucVu FX | 35.00 | ⚡ Subscribe for official store updates. I'm engineering something big behind the scenes. Stay tuned. 📢 Update 2026: FX List & Future Updates View the Update... | [yrryu](https://ducvu.gumroad.com/l/yrryu) |
+| 75 | 2D Rigging Toolbox 4.0 | Motion Gears | 22.50 | _page unavailable (HTTPError)_ | [iqabgx](https://motiongears.gumroad.com/l/iqabgx) |
+| 76 | 2D/3D Storyboarding MASTERCLASS - Creating Animatics in BLEN | Spitfire Storyboards | 250.00 | Are you looking to learn how to create 2D 3D storyboards and animatics using Blender and its awesome Grease Pencil tool? Then this is THE COURSE for you... | [tciowl](https://spitfirestoryboards.gumroad.com/l/tciowl) |
+| 77 | AniMate Forge - all AniMate Add-ons Bundle | not that NDA | 89.00 | _page unavailable (HTTPError)_ | [lgvbxw](https://nda.gumroad.com/l/lgvbxw) |
+| 78 | AniMate Pro - Core | not that NDA | 50.00 | _page unavailable (HTTPError)_ | [kxqdom](https://nda.gumroad.com/l/kxqdom) |
+| 79 | Animated 3D Curve Graph in AE / Project File | Noble Kreative | 30.00 | _page unavailable (HTTPError)_ | [hQcfQ](https://noblekreative.gumroad.com/l/hQcfQ) |
+| 80 | Animated RPG Health Bar | gfxcomet | 11.40 | A fully animated and customizable stylized Health Bar UI component for your Roblox game project! What&#39;s included? A health and stamina bar which you can... | [mohtug](https://gfxcomet.gumroad.com/l/mohtug) |
+| 81 | Animated Toggle | gfxcomet | free | Enjoy this Animated Toggle UI for your own game project! Instructions: Make sure the script is placed in &quot;StarterPlayerScripts&quot; Add the tag &quot;ToggleComponen | [txoms](https://gfxcomet.gumroad.com/l/txoms) |
+| 82 | Animation Snapper Pro - Blender Addon | Melowilo Animation | 24.99 | _page unavailable (HTTPError)_ | [rwyvce](https://melowilo.gumroad.com/l/rwyvce) |
+| 83 | Animator Toolkit | TohruTheDragon | 20.00 | _page unavailable (HTTPError)_ | [oizdm](https://tohruthedragon.gumroad.com/l/oizdm) |
+| 84 | Anime Codes | gfxcomet | 1.80 | A simple yet aesthetic Anime Codes UI inspired by the popular Roblox game &quot;Anime Last Stand&quot; What&#39;s Included? A textbox/field to enter your codes in A clean | [skjcnx](https://gfxcomet.gumroad.com/l/skjcnx) |
+| 85 | Anime Egg Shop | gfxcomet | free | The perfect egg shop ui for your anime game project. What&#39;s Included? 6 item displays with rarity color coding Currency display with gem icon (from Currency... | [hkqiur](https://gfxcomet.gumroad.com/l/hkqiur) |
+| 86 | Anime Hair HM Toolkit — Shadows & Highlights for Blender | Weytant_V | 15.20 | _page unavailable (HTTPError)_ | [gywiag](https://weytant.gumroad.com/l/gywiag) |
+| 87 | Anime Health 3 | gfxcomet | 1.80 | A stylized anime health interface component for your next game project What&#39;s included? A stylistic design Avatar Frame (you can add an image or icon) The... | [batgd](https://gfxcomet.gumroad.com/l/batgd) |
+| 88 | Anime Inventory 2 | gfxcomet | 4.80 | Meet the new Anime Inventory 2 This is a robust and stylized inventory interface which consists of: Unlocked and Locked item variants Stroke + Glow to... | [hmmdv](https://gfxcomet.gumroad.com/l/hmmdv) |
+| 89 | Anime Quests | gfxcomet | 3.00 | A robust and aesthetic Anime Quests UI inspired by the popular Roblox game Anime Last Stand. What&#39;s Included? Gradients used to visually separate elements... | [stqzza](https://gfxcomet.gumroad.com/l/stqzza) |
+| 90 | Anime Rewards UI for Roblox Studio (RBXM) | Kaisen | free | Elevate your Roblox game with the Anime Rewards UI a beautifully designed, anime-inspired user interface for reward systems! This script provides a visually... | [qogihq](https://claritykaisen.gumroad.com/l/qogihq) |
+| 91 | Anime Settings | gfxcomet | 3.00 | A beautifully crafted Anime Settings interface inspired by the popular title Anime Last Stand What&#39;s Included Responsive List Sections: each section allows... | [ydgqz](https://gfxcomet.gumroad.com/l/ydgqz) |
+| 92 | Anime Simulator 2 UI Kit | gfxcomet | 11.40 | Presenting the sequel to the Anime Simulator UI Kit! Looking to start your new anime game but don&#39;t know where to find good design? The Anime Simulator UI... | [hchgy](https://gfxcomet.gumroad.com/l/hchgy) |
+| 93 | Anime Simulator Kit V2 | gfxcomet | 11.97 | Introducing the Anime Simulator UI Kit V2! The sequel to our Anime Simulator UI Kit, this one is fresh, new and improved, with the highest design quality... | [jibid](https://gfxcomet.gumroad.com/l/jibid) |
+| 94 | Anime Stylized VFX - Unity | Vefects - Realtime VFX | 29.99 | _page unavailable (HTTPError)_ | [tfegu](https://vefects.gumroad.com/l/tfegu) |
+| 95 | Anime Units | gfxcomet | 6.00 | A robust and aesthetic Anime Units ui inspired by the popular Roblox game &quot;Anime Last Stand&quot; This is a robust and comprehensive Anime Units interface that is... | [hwxbz](https://gfxcomet.gumroad.com/l/hwxbz) |
+| 96 | AnimToTexture (VAT) One-Click Tool by tiedtke. | tiedtke. | 9.99 | _page unavailable (HTTPError)_ | [agfrjg](https://tiedtke.gumroad.com/l/agfrjg) |
+| 97 | Arrow Shot VFX | HeyYo | 7.00 | A blazing arrow streaks across the field and strikes the enemy, bursting into a ring of light and scattering sparks. Made in Unreal Engine. I provide the... | [phxbo](https://heyyohanashima.gumroad.com/l/phxbo) |
+| 98 | Audiomation for Unity animation | Pancake992 | 7.00 | _page unavailable (HTTPError)_ | [nxkih](https://pancake992.gumroad.com/l/nxkih) |
+| 99 | basic scripts for the OverRig animation method | Pavel Barnev | 70.00 | _page unavailable (HTTPError)_ | [cIdFbR](https://pavelbarnev.gumroad.com/l/cIdFbR) |
+| 100 | Blender Massive 250-Piece Modular Mega - Kitbash Immersive C | 3D Tudor | 18.00 | _page unavailable (HTTPError)_ | [bmbhc](https://3dtudor.gumroad.com/l/bmbhc) |
+| 101 | Book Rigger | Tik Works | 15.00 | _page unavailable (HTTPError)_ | [vjcph](https://tikworks.gumroad.com/l/vjcph) |
+| 102 | Bookasaur Rig | ComixProd. | free | This is my first rig made on timelapse! The rig is featuring Bookasaur, make sure to check him out since he&#39;s cool. Also I wanna say the rig is not fit for... | [YMeCo](https://comixproductions.gumroad.com/l/YMeCo) |
+| 103 | CGDive: The Vault - Rigging and Animation Tutorials [SUBSCRI | Todor - cgdive.com | 6.00 | _page unavailable (HTTPError)_ | [ruyce](https://toshicg.gumroad.com/l/ruyce) |
+| 104 | Cryomancy and Earthshaping (VRCHAT + Quest) | Liindy | 15.00 | Please rate this item if you buy it, this will vastly help me out by getting seen more, and will help fund more cool items like this one! ⭐⭐⭐⭐⭐ Alternate... | [gqvvuq](https://liindy.gumroad.com/l/gqvvuq) |
+| 105 | Cubic Face (Roblox Face Rig) | ComixProd. | free | Cubic Face is a simple face rig I created. It was made in a video. No credit needed, however do not redistribute or claim ownership. If you want to share... | [crzat](https://comixproductions.gumroad.com/l/crzat) |
+| 106 | DEM V3.1 — Procedural Animation System for Cinema 4D + Blend | Giuliano Dasky | 59.00 | NEW RELEASE — DEM V3.1 A NEW WAY TO ANIMATE IN CINEMA 4D A complete procedural animation system — build advanced motion with editable layers in a dedicated... | [kumrw](https://daskydesign.gumroad.com/l/kumrw) |
+| 107 | EPIK RIG - Quick Rig + Animation Tools for Games (UE) | ShinGidora | 29.99 | _page unavailable (HTTPError)_ | [njrwka](https://shingidora.gumroad.com/l/njrwka) |
+| 108 | Fluid Rig | ComixProd. | free | Latest Version: E2 This rig is designed for Blender, and it will not work in Roblox Studio. Fluid Rig is one of the best ROBLOX package rigs you can find for... | [iinfw](https://comixproductions.gumroad.com/l/iinfw) |
+| 109 | Free Low Poly 3D Character - Juliet from Lollipop Chainsaw ( | Crashsune | free | What You’ll Get A fully rigged low-poly Juliet inspired by Lollipop Chainsaw ✨ Included in the download: Juliet (fully rigged) Her chainsaw Nick All assets... | [inljko](https://crashsune.gumroad.com/l/inljko) |
+| 110 | FUGA - Imagined by Starkim1999 [VFX/VRChat] | Starkim1999 | 25.00 | This is an animation inspired by Sukuna&#39;s Fuga (Fire Arrow) from Jujutsu Kaisen. I took heavy inspiration from how Roblox games portray this effect, as well... | [gwsrd](https://starkim1999.gumroad.com/l/gwsrd) |
+| 111 | Game Rig Tools (Blender Addon) - game-ready rigs in seconds | Todor - cgdive.com | free | _page unavailable (HTTPError)_ | [OmHCS](https://toshicg.gumroad.com/l/OmHCS) |
+| 112 | Ghost Frames — Onion Skinning Plugin for Unreal Engine 5.8 | Aymen Selmi | 14.99 | _page unavailable (HTTPError)_ | [gyubxu](https://kazuyasama.gumroad.com/l/gyubxu) |
+| 113 | Glock R6 Roblox Rig for Moon Animator | Nisky | free | Roblox R6 Rig with a Welded and fully animatable Glock 17 designed to be used with Moon Animator. | [yaavw](https://nisky.gumroad.com/l/yaavw) |
+| 114 | Gridflow — Procedural Animated Grids | Rajat Subhra | 35.00 | _page unavailable (HTTPError)_ | [wpgzfh](https://rajatsubhra.gumroad.com/l/wpgzfh) |
+| 115 | Happy Birthday Grimace! (Animation File + Animation Timelaps | Paribes | 10.00 | This file includes my animation file AND a timelapse which is not edited and not sped up of me animating this! (tipping is always appreciated! :)) PS: I... | [nbbxnn](https://paribes.gumroad.com/l/nbbxnn) |
+| 116 | Hazem Rig | ComixProd. | 3.00 | This is the rig I made when making the "How To Make A Roblox Rig" tutorial series. If you want to explore what I made and find out more about how the rig... | [ppwik](https://comixproductions.gumroad.com/l/ppwik) |
+| 117 | Houdini Animation Sequencer | bereg | 25.00 | _page unavailable (HTTPError)_ | [wyaanb](https://bereg.gumroad.com/l/wyaanb) |
+| 118 | How To Design an Anime Inventory UI (Tutorial) | gfxcomet | 6.00 | This is a 41 minute comprehensive lesson where I walk you through step-by-step, the design and import of an Anime Inventory interface. You will learn how to... | [tceqo](https://gfxcomet.gumroad.com/l/tceqo) |
+| 119 | How to Design An Anime Units UI in Roblox Studio | gfxcomet | 6.00 | This 53 minute tutorial follows the first part where we designed this Units frame from the game Anime Last Stand inside of Photoshop, which you can watch for... | [vjvcdvq](https://gfxcomet.gumroad.com/l/vjvcdvq) |
+| 120 | HP Art Toolset: Facial Character Rigging for Maya | HP Art Toolset by Hai  | free | _page unavailable (HTTPError)_ | [mqrebc](https://hparttoolset.gumroad.com/l/mqrebc) |
+| 121 | HP Art Toolset: Fast Character Rigging for Maya | HP Art Toolset by Hai  | free | _page unavailable (HTTPError)_ | [bmstj](https://hparttoolset.gumroad.com/l/bmstj) |
+| 122 | i5K Rig | ComixProd. | free | A random GFX rig for i5K. What&#39;s cool is that this rig has better bends than all of my other rigs, so yeah 🤷‍♂️ No credit needed just don&#39;t claim ownership | [obfij](https://comixproductions.gumroad.com/l/obfij) |
+| 123 | IK Grab | normalizedcrow | 12.00 | _page unavailable (HTTPError)_ | [karln](https://normalizedcrow.gumroad.com/l/karln) |
+| 124 | Industrial Sci-Fi and Modular Oil Rig | Sierra Division | 179.00 | _page unavailable (HTTPError)_ | [ikobf](https://sierradivision.gumroad.com/l/ikobf) |
+| 125 | KTR - E.V.A. Suit from Dead Space RIG for Jerry | KTR | 22.00 | _page unavailable (HTTPError)_ | [hiwpa](https://kotyor.gumroad.com/l/hiwpa) |
+| 126 | Launch Control  //  Auto Car Rig | Daniel Vesterbaek | 59.00 | _page unavailable (HTTPError)_ | [orzsz](https://danielvesterbaek.gumroad.com/l/orzsz) |
+| 127 | Let’s learn ANIMATED CHARACTER  CREATION IN 3D | Ram@Crossmind | 34.30 | _page unavailable (HTTPError)_ | [gjpami](https://crossmindstudio.gumroad.com/l/gjpami) |
+| 128 | Magma Rig (Blender 3.4+) | Paribes | free | This rig is a rig from a character in Roblox called "The Magma Fiend" including features like: - Brightness control - Magma Fiend's color - Fancy Feet on... | [embpw](https://paribes.gumroad.com/l/embpw) |
+| 129 | Marik / Male / PC + Quest + Opti / VRCFT & VRCFury | Heartmarksman | 35.00 | Marik comes which MANY features not listed here, go to my discord linked below to see the full list of Toggles! 😏❤️ We also offer FREE Uploads if you can&#39;t... | [zuvneh](https://heartmarksman.gumroad.com/l/zuvneh) |
+| 130 | Mechanical Rigging in Blender - A Beginner Course 🦾 | Niko | 19.90 | _page unavailable (HTTPError)_ | [zecxxb](https://demnikoart.gumroad.com/l/zecxxb) |
+| 131 | MHFRT - Auto Facial Rig & Auto Retopology | Souhail Ninia | 24.99 | _page unavailable (HTTPError)_ | [pzqmlw](https://souhailninia.gumroad.com/l/pzqmlw) |
+| 132 | Mixamo Rig 5 | Knit Motion | 5.00 | _page unavailable (HTTPError)_ | [fjidu](https://knitmotion.gumroad.com/l/fjidu) |
+| 133 | Moon Animator 2 Plugin | kai | free | This was originally a paid plugin but its free to get here:) Best Roblox Studio animating plugin out there | [bbsmm](https://realestkai.gumroad.com/l/bbsmm) |
+| 134 | Muscle Anatomy  - Ecorche Rigged Set | Alex Lashko | 99.00 | _page unavailable (HTTPError)_ | [fffeg](https://alexlashko.gumroad.com/l/fffeg) |
+| 135 | Painterly + Animately Bundle DEAL! | Doughy Animation Studi | 34.50 | _page unavailable (HTTPError)_ | [qrdvwb](https://doughyanimation.gumroad.com/l/qrdvwb) |
+| 136 | Physics animation (Plugin for Figma) | DAVV | 39.00 | _page unavailable (HTTPError)_ | [pfabo](https://davvstore.gumroad.com/l/pfabo) |
+| 137 | PinRig / After Effects Plugin | What? Studio | free | _page unavailable (HTTPError)_ | [rvcux](https://whatstudio.gumroad.com/l/rvcux) |
+| 138 | Profine's Roblox Toy Rig EDIT (Blender 4.0+) | Paribes | free | Profine made a Roblox toy rig a while back, I made a simple edit which has bone shapes and allat (this was mainly for me to have a better animating experience). | [udkwsf](https://paribes.gumroad.com/l/udkwsf) |
+| 139 | Quick Start To Blender Animation: Professional Techniques An | VFX Grace | 198.00 | _page unavailable (HTTPError)_ | [kavusr](https://vfxgrace.gumroad.com/l/kavusr) |
+| 140 | R15 Roblox ANIMATION Rig (Blender -> Roblox Studio) | Paribes | free | A rig for Blender 3D to export to Roblox Studio! Settings HeadTarget HeadTarget Parent Torso IK Arm/Leg Settings IK/FK Switch Bone Layers (IK/FK) Fancy... | [zmyfl](https://paribes.gumroad.com/l/zmyfl) |
+| 141 | R15 Roblox Starter Rigs (TEMPORARY) | Paribes | free | while waiting for the next starter rigs update, use these rigs if you need r15 here's the description of starter rigs: Introducing Roblox Starter Rigs, which... | [jjhtt](https://paribes.gumroad.com/l/jjhtt) |
+| 142 | Rich Rig (Blender 3.4+) | Paribes | free | roblox rig for the Rich package. Blender version: 3.4+ SECOND THUMBNAIL BY CLIPON If you need rigs, contact me on Discord (chillingparibes)... | [xsgzm](https://paribes.gumroad.com/l/xsgzm) |
+| 143 | Roblox Blocky Finger Rig (Blender 4.0+) | Paribes | free | fingies NOTE: FACE RIG IS NOT INCLUDED, THAT IS AEPBR EXCLUSIVE | [fpbjgc](https://paribes.gumroad.com/l/fpbjgc) |
+| 144 | Roblox Blocky Rig / C4D R20+ | Chastling | 1.50 | Available on Gumroad | [ahkbz](https://chastling.gumroad.com/l/ahkbz) |
+| 145 | Roblox Fat Rig (4.0+) | Paribes | free | _no description in metadata_ | [jiojiw](https://paribes.gumroad.com/l/jiojiw) |
+| 146 | Roblox Football Rig V1 (Blender 4.2+) | Paribes | 10.00 | NOTE: redistributing or reselling the rigs, even if modified or at a price, is PROHIBITED. Muscle System The rig contains a special muscle system that is... | [ifhke](https://paribes.gumroad.com/l/ifhke) |
+| 147 | Roblox Multipurpose Cloth Rig (4.5+) | Paribes | free | Features: Classic Cloth Modification - This modification is a top-tier cloth simulation rig that bakes the shirt, providing realistic cloth physics... | [hwthor](https://paribes.gumroad.com/l/hwthor) |
+| 148 | Roblox Ocean System | Tekleed | 200.00 | Roblox FFT Ocean System Real ocean simulation for Roblox. This uses the FFT wave technique behind AAA oceans like Sea of Thieves, running natively on... | [qgvvc](https://tekleed.gumroad.com/l/qgvvc) |
+| 149 | Roblox Rig Vault (Blender 4.0+) | Paribes | free | Introducing Roblox Rig Vault! Roblox Rig Vault (RRV) is a unique Blender rig pack and addon made by Roblox rigging innovators ChillingParibes and Comix... | [htzgj](https://paribes.gumroad.com/l/htzgj) |
+| 150 | Roblox Rigs Suite | ComixProd. | free | Thanks to @BricksBree, @ChillingParibes, @MrSonicTeam, @MXFlamez, @Koth for beta testing this! I would really appreciate it if you donated, it's taken me... | [xpqyw](https://comixproductions.gumroad.com/l/xpqyw) |
+| 151 | Roblox Starter Rigs (Blender 3.4+) | Softy | free | Introducing Roblox Starter Rigs, which will match all your needs when making gfx, whether you are a beginner at gfx or experienced. It includes the... | [ytmdjz](https://softgb.gumroad.com/l/ytmdjz) |
+| 152 | Roblox Starter Rigs (Blender 3.4+) | Paribes | free | Introducing Roblox Starter Rigs, which will match all your needs when making gfx, whether you are a beginner at gfx or experienced. It includes the... | [pblgq](https://paribes.gumroad.com/l/pblgq) |
+| 153 | Roblox Starter Rigs 1.0 MODDED | Paribes | free | Starter rigs by SoftGB & ChillingParibes Modified rigs by imbob02 (seamless boy rigs) R15 rig by BaconofVibes Compiled by Malakai_GFX If you need rigs... | [xbrdsa](https://paribes.gumroad.com/l/xbrdsa) |
+| 154 | Roblox Studio: Movement system (8 directions) | LionDev | 12.00 | This package for Roblox Studio includes a movement system that detects the direction in which the character is moving and plays the appropriate animations... | [cddbt](https://liondev.gumroad.com/l/cddbt) |
+| 155 | Roblox Woman Blocky Legs Rig (Blender 4.0+) | Paribes | free | If you need rigs, contact me on Discord (chillingparibes)! https://discord.com/invite/Mc5PdfZnBd NOTE: redistributing or reselling the rigs, even if modified... | [oqjvxf](https://paribes.gumroad.com/l/oqjvxf) |
+| 156 | Scene Auditor Pro — Analyze, Clean & Optimize Blender Scenes | Chowdhury Tarul Ahsan | 15.00 | _page unavailable (HTTPError)_ | [yvydx](https://tarulahsanbd.gumroad.com/l/yvydx) |
+| 157 | Seraph Wings — Animated Six-Wing VRChat Accessory / PCVR | KuroLabs | 15.00 | _page unavailable (HTTPError)_ | [fetsbo](https://rajcu.gumroad.com/l/fetsbo) |
+| 158 | SimpleAnime - Fast Anime / Retro Texturing | Nhance School | 19.00 | SimpleAnime - Easy Anime / Retro texturing Create stunning texturing results on your 3D Models + speed up workflow with SimpleAnime filter🎨 SimpleAnime was... | [dptffu](https://nhanceschool.gumroad.com/l/dptffu) |
+| 159 | Spider-Man Roblox Rig (4.4+) | Paribes | free | credits to @imbob02 , @BallzyGFX and @xmavster on Twitter for making this Starter Rigs mod! | [ogunp](https://paribes.gumroad.com/l/ogunp) |
+| 160 | Stadium Spectators: High Performance Stadium Crowds for Unre | RT ArtFast | 150.00 | _page unavailable (HTTPError)_ | [oannzl](https://tartfast.gumroad.com/l/oannzl) |
+| 161 | Stylized Character Modeling for Animation | Stephen Anderson | 100.00 | Stylized Character Modeling for Animation is all about character design and application in production modeling for the animation pipeline. This self-paced... | [hqtmF](https://smaartist.gumroad.com/l/hqtmF) |
+| 162 | SuperRoblox (Roblox Rig) | ComixProd. | free | Superhero rig with a load of settings. | [jFnRyz](https://comixproductions.gumroad.com/l/jFnRyz) |
+| 163 | Talia + Adam - Maya Rig Bundle | Red Crow Studio | 68.00 | _page unavailable (HTTPError)_ | [xfplhw](https://manuelaf.gumroad.com/l/xfplhw) |
+| 164 | Texter - Text Animation Tool for Blender | Graffinity | free | _page unavailable (HTTPError)_ | [tquro](https://graffinity3d.gumroad.com/l/tquro) |
+| 165 | The Ultimate Guide to Blender 3D Rigging and Animation | 3D Tudor | 11.25 | _page unavailable (HTTPError)_ | [irfmu](https://3dtudor.gumroad.com/l/irfmu) |
+| 166 | Throw Food For Animals Template | ROKITS | 9.99 | Throw Food for Animals \| Roblox Template Train your strength, throw food farther, and collect animals to build your income! What’s Included 🐾 40 collectible... | [pyycl](https://rokits.gumroad.com/l/pyycl) |
+| 167 | UI Animator Pro / After Effects Plugin | What? Studio | free | _page unavailable (HTTPError)_ | [xariqf](https://whatstudio.gumroad.com/l/xariqf) |
+| 168 | Ultimate 2D FX Explosions for Animators & Devs | DucVu FX | 20.00 | _page unavailable (HTTPError)_ | [rfhalq](https://ducvu.gumroad.com/l/rfhalq) |
+| 169 | Ultimate 2D FX Fire Animation Pack for Creators & Devs | DucVu FX | 20.00 | _page unavailable (HTTPError)_ | [menshz](https://ducvu.gumroad.com/l/menshz) |
+| 170 | Ultimate Roblox Rig | MattRBX | 5.00 | IF YOU DIDN'T RECIEVE THE PRODUCT OR HAVE SIMILAR ISSUES JOIN THE DISCORD SERVER BELOW !! Support Server: https://discord.gg/DvK73fgEka Ultimate Rig Premium... | [lnldn](https://mattrbx.gumroad.com/l/lnldn) |
+| 171 | Ultimate Weapon Sweep VFX !! [Houdini 19-20 / Niagara UE Cou | Tristan Gybels | 30.00 | This course tackles one of the most common problems but yet unheard of solutions for creating incredibly precise weapon sweep VFX. Unlike similar tutorials... | [qbfhe](https://tristangybels.gumroad.com/l/qbfhe) |
+| 172 | Unreal Engine 5 Massive 250-Piece Modular Mega - Kitbash Imm | 3D Tudor | 18.00 | _page unavailable (HTTPError)_ | [rapdi](https://3dtudor.gumroad.com/l/rapdi) |
+| 173 | Weight Scatter - (Plugin) | MrQuaxkers | 4.99 | Weight based object scattering in roblox studio. | [vhxkmj](https://mrquaxkers.gumroad.com/l/vhxkmj) |
+| 174 | Worm Host Animation | Satch Nomad | 20.00 | This is a custom animation that can be easily transfered over to the custom character model of your choice. the "Worm Host", is a 3D combat/ability splash... | [racij](https://n5studios.gumroad.com/l/racij) |
+| 175 | Zazar - Rigged 3D Lizard for Blender | Rakenval | 60.00 | Meet Zazar, a fully rigged, expressive 3D Lizard ready to leap into your Blender projects ! From subtle blinks to dramatic screams, this rig will let you... | [ynfspb](https://rakenval.gumroad.com/l/ynfspb) |
+| 176 | ⚽ Roblox Football/Soccer Rigs (Kit, Shoes, Trophies, ...) | Paribes | free | credit: @ChillingParibes - the rig @SoftGB - HD Faces @imbob02 - modified seamless boy rig vansire - football stuff on the rig and the boot textures... | [ovwtcn](https://paribes.gumroad.com/l/ovwtcn) |
+| 177 | 🎮 Legendary Sky Champion Rig (Roblox: The Games) | Paribes | free | "Defeat" will be forever erased from your vocabulary. A brand new rig for the package Roblox released For Blender 4.2+ (probably works for minimum 4.0+) | [yowflf](https://paribes.gumroad.com/l/yowflf) |
+| 178 | 🏃 Roblox Animation Starter Pack | Paribes | free | A bunch of assets you could possibly need to start as an animator! | [knclku](https://paribes.gumroad.com/l/knclku) |
+| 179 | 🤖 AEPBR Roblox Rig (BETA) | Paribes | free | 🤖 STILL IN BETA!! Features it has so far: ☑️ Customisable face rig Customisable Eye Color Hideable Parts Face controls Mouth Sync Control Blink Control Teeth... | [wvyryw](https://paribes.gumroad.com/l/wvyryw) |
+| 180 | 🧟 Roblox Zombie Rig (Blender 4.0+) | Paribes | free | zombie PS: The best works of Softy and STAR's contest will end up on this page as well! EDIT: Winning GFX has been added, made by @vanziervh If you need... | [quhwki](https://paribes.gumroad.com/l/quhwki) |
 
-## VFX & simulation (35)
+## Modeling, mesh & procedural (33)
 
 | # | product | maker | price | the listing's own claim | source |
 |---|---|---|---|---|---|
-| 208 | 200 FX Alpha VFX Asset Library | Comp Academy | 150.00 | _page unavailable (HTTPError)_ | [bgnny](https://compacademy.gumroad.com/l/bgnny) |
-| 209 | Background Birds - Drag-and-Drop Niagara Bird System for Unr | Josh Toonen | 25.00 | _page unavailable (HTTPError)_ | [yyrmy](https://unrealforvfx.gumroad.com/l/yyrmy) |
-| 210 | Blood VFX - Unreal Engine | Vefects - Realtime VFX | 57.99 | _page unavailable (HTTPError)_ | [qmvvfa](https://vefects.gumroad.com/l/qmvvfa) |
-| 211 | Chain Simulation in Niagara - Create Mario's Chain Chomp | HeyYo | 7.00 | This is a Chain Simulation Niagara asset. I created Mario's Chain Chomp as an example to show how the chain simulation works. Both ends of the chain are... | [noiblu](https://heyyohanashima.gumroad.com/l/noiblu) |
-| 212 | Fire Slash VFX | HeyYo | 15.00 | I made Fire Slash VFX as my personal work. I provide the whole UE data of this VFX so that you can explore, study, modify, and utilize the data for any... | [uajdj](https://heyyohanashima.gumroad.com/l/uajdj) |
-| 213 | Flux Particle Studio / Blender | R Animation Studios | 29.00 | _page unavailable (HTTPError)_ | [wtgjlc](https://ranimationstudios.gumroad.com/l/wtgjlc) |
-| 214 | Fumaris — GPU Smoke & Fire Simulation for Blender | Venous_FX | 39.00 | Smoke and fire you can direct while it simulates Watch the simulation run in the Blender viewport, lit by your scene, and change it while it plays. When the... | [sszyf](https://venousfx.gumroad.com/l/sszyf) |
-| 215 | GPU Fluid Simulation / No Kinect Required | Irina.ae | 5.00 | _page unavailable (HTTPError)_ | [jelqf](https://irinaught.gumroad.com/l/jelqf) |
-| 216 | Magic Spell VFX System | Digital Dungeon Assets | 124.99 | _page unavailable (HTTPError)_ | [ozbpme](https://dungeonforge.gumroad.com/l/ozbpme) |
-| 217 | MPMStudio Solver - Particle simulation plugin for C4D & BLEN | RiverExtend | 35.00 | _page unavailable (HTTPError)_ | [kwttbt](https://riverextend.gumroad.com/l/kwttbt) |
-| 218 | Next Gen Destruction Toolkit for Unreal Engine 5 | Kristian Kebbe | 44.99 | _page unavailable (HTTPError)_ | [fjpon](https://lucendev.gumroad.com/l/fjpon) |
-| 219 | PCOPs - GPU Enabled Particle Simulation Tools in Houdini | Inside The Mind | 35.00 | _page unavailable (HTTPError)_ | [kpysmy](https://insidethemindspace.gumroad.com/l/kpysmy) |
-| 220 | Pro Particles - Advanced Blender Particle System Add-on v5 | Cg-Flow | 51.35 | _page unavailable (HTTPError)_ | [qzaiz](https://cgflow.gumroad.com/l/qzaiz) |
-| 221 | Standing Fire [Medium Scale] VFX Asset Bundle [x10] | Ben Harker | VFX | 15.00 | _page unavailable (HTTPError)_ | [bnizsn](https://benharkervfx.gumroad.com/l/bnizsn) |
-| 222 | Unity VFX Graph - Level Up Effect | Gabriel Aguiar Prod | 5.00 | _page unavailable (HTTPError)_ | [alchf](https://gabrielaguiarprod1.gumroad.com/l/alchf) |
-| 223 | Unity VFX Graph - Muzzle Effects Vol. 1 | Gabriel Aguiar Prod | 10.00 | _page unavailable (HTTPError)_ | [lkcfx](https://gabrielaguiarprod1.gumroad.com/l/lkcfx) |
-| 224 | Unity VFX Graph - Stylized Laser Beams Vol. 1 | Gabriel Aguiar Prod | 10.00 | _page unavailable (HTTPError)_ | [jrdekb](https://gabrielaguiarprod1.gumroad.com/l/jrdekb) |
-| 225 | Unity VFX Graph - Weapon Effects Vol. 1 | Gabriel Aguiar Prod | 10.00 | _page unavailable (HTTPError)_ | [mmckxd](https://gabrielaguiarprod1.gumroad.com/l/mmckxd) |
-| 226 | Unity VFX Graph：Attractor Force and Particle Trail effect | Eric VFX Studio | 8.00 | _page unavailable (HTTPError)_ | [kbffp](https://raywang4.gumroad.com/l/kbffp) |
-| 227 | Unity VFX Graph：Disturbed Image Particles | Eric VFX Studio | 9.99 | Particle picture effects created using Unity VFX Graph, You can add pictures yourself, modify particle size, color, jitter amplitude, etc. Detailed... | [wzdfe](https://raywang4.gumroad.com/l/wzdfe) |
-| 228 | Unity VFX Graph：Galaxy and Meteor | Eric VFX Studio | 7.99 | _page unavailable (HTTPError)_ | [hubvqv](https://raywang4.gumroad.com/l/hubvqv) |
-| 229 | Unity VFX Graph：Image Fireworks | Eric VFX Studio | 8.99 | _page unavailable (HTTPError)_ | [ejzku](https://raywang4.gumroad.com/l/ejzku) |
-| 230 | Unity VFX Graph：Particle shaping application(SDF) | Eric VFX Studio | 9.00 | _page unavailable (HTTPError)_ | [jhrat](https://raywang4.gumroad.com/l/jhrat) |
-| 231 | Unity VFX Graph：Particles Attraction | Eric VFX Studio | 8.00 | Made using Unity VFX Graph so that particles can follow the target point. You can modify the particle size, color, fluttering direction, etc. by yourself... | [qiqwkbw](https://raywang4.gumroad.com/l/qiqwkbw) |
-| 232 | Unity VFX Graph：Post-it(Particles aggregate into models) | Eric VFX Studio | 7.99 | _page unavailable (HTTPError)_ | [fjnqc](https://raywang4.gumroad.com/l/fjnqc) |
-| 233 | Unity VFX Graph：SDF Model Particle Deformation | Eric VFX Studio | 7.99 | _page unavailable (HTTPError)_ | [mcstjd](https://raywang4.gumroad.com/l/mcstjd) |
-| 234 | Unity VFX Graph：Use SDF to make model particle effects | Eric VFX Studio | 9.99 | Made using Unity VFX Graph, with the model special effects generated by the SDF function, you can change the model to create different effects. Detailed... | [kehpsj](https://raywang4.gumroad.com/l/kehpsj) |
-| 235 | Unreal 5 Advanced Niagara | tharlevfx | 50.00 | _page unavailable (HTTPError)_ | [wkvru](https://tharlevfx.gumroad.com/l/wkvru) |
-| 236 | Unreal 5 Intro to Niagara | tharlevfx | 50.00 | _page unavailable (HTTPError)_ | [yvgfg](https://tharlevfx.gumroad.com/l/yvgfg) |
-| 237 | Unreal 5 Niagara Bundle | tharlevfx | 125.00 | _page unavailable (HTTPError)_ | [czhuq](https://tharlevfx.gumroad.com/l/czhuq) |
-| 238 | Unreal 5 Niagara Sim Stages | tharlevfx | 50.00 | _page unavailable (HTTPError)_ | [ufmqh](https://tharlevfx.gumroad.com/l/ufmqh) |
-| 239 | Unreal Engine 4.22 Niagara Dissolution Effect | ArtHiteca | 15.00 | _page unavailable (HTTPError)_ | [AzoNY](https://arthiteca.gumroad.com/l/AzoNY) |
-| 240 | Unreal Engine 4.22 Niagara Test Examples #1 | ArtHiteca | 20.00 | _page unavailable (HTTPError)_ | [SvcVn](https://arthiteca.gumroad.com/l/SvcVn) |
-| 241 | VFXGen — Stylized VFX Texture Editor | ChunHu | 29.99 | _page unavailable (HTTPError)_ | [frhhpp](https://chunhuvfx.gumroad.com/l/frhhpp) |
-| 242 | WebGL Magnetic Field: Interactive Particle Engine for Framer | Creative Apes | 8.00 | _page unavailable (HTTPError)_ | [dqgfpw](https://creativeapes.gumroad.com/l/dqgfpw) |
+| 181 | [Addon]MESHmachine | machin3 | 44.99 | _page unavailable (HTTPError)_ | [Gwgt](https://machin3.gumroad.com/l/Gwgt) |
+| 182 | Avatar Protection System for VRChat | Dextro | 20.00 | SCRAMBLED MESH WILL NEVER BE VISIBLE, VIDEO IS SIMPLIFIED FOR DEMONSTRATION This asset is also available on Jinxxy for 10% off: Avatar Protection System on... | [gxayd](https://dextrovr.gumroad.com/l/gxayd) |
+| 183 | CGE Sculpting Tool for Maya | CGElementary | 78.40 | Please note this is a perpetual license, not a subscription; you pay once and can use it forever. Stop round-tripping to other Apps. A complete... | [lkvikqt](https://cgelementary.gumroad.com/l/lkvikqt) |
+| 184 | Cloud Creator / Blender Geometry Nodes Tool | Adrien Latran | free | _page unavailable (HTTPError)_ | [qcppwq](https://adrienltn.gumroad.com/l/qcppwq) |
+| 185 | Cobweb Generator Pro | Jose Leon Molfino | free | Houdini Cobweb Generator Pro - It generates cobwebs procedurally from a collider geometry, from your own straight lines, or both. This is a full rewrite of... | [zbrsd](https://cmolfino.gumroad.com/l/zbrsd) |
+| 186 | EDGY - Worn Edges Plugin for Cinema 4D & Blender | Cornelius Dämmrich | 15.00 | Edgy is a plugin for Cinema 4D and Blender. It cuts damage into the edges and surfaces of a closed mesh. Edgy modifies the mesh itself. It does not use a... | [fyhsz](https://corneliusdammrich.gumroad.com/l/fyhsz) |
+| 187 | Extra Nodes for Geometry Nodes | 3dsinghvfx | free | _page unavailable (HTTPError)_ | [aaxrtj](https://3dsinghvfx.gumroad.com/l/aaxrtj) |
+| 188 | EzyTopo - Retopology tool for Maya | Justin Kirkwood | 16.99 | _page unavailable (HTTPError)_ | [otyqu](https://justinkirkwood.gumroad.com/l/otyqu) |
+| 189 | Hiddenfy 6 — Hard-Surface Armor, IMM system, Tactical Cloth  | Daniel Arcos Escobar | 10.50 | _page unavailable (HTTPError)_ | [ebbxj](https://darksurfacetv.gumroad.com/l/ebbxj) |
+| 190 | hood release system | chedsapp | 4.00 | visuals shown are placeholders, meant to be replaced by your own meshes. | [pdnoc](https://chedsapp.gumroad.com/l/pdnoc) |
+| 191 | Houdini Tutorial Procedural Pillar Generation | Radu Cius | 45.00 | _page unavailable (HTTPError)_ | [btbwd](https://rart.gumroad.com/l/btbwd) |
+| 192 | MEDUSA NODES - Procedural Hair System for Blender (Beta) | Irakli Kupunia | 15.00 | _page unavailable (HTTPError)_ | [XEzSy](https://ikakupa.gumroad.com/l/XEzSy) |
+| 193 | PatchGAP - Plasticity Retopology tool for Blender | Andrei Bezgodov | 35.00 | _page unavailable (HTTPError)_ | [ildlkt](https://bezgod.gumroad.com/l/ildlkt) |
+| 194 | Procedural City Generator for Houdini / by MrShark (UPDATED  | Mr.Shark | 15.00 | _page unavailable (HTTPError)_ | [bpdiq](https://mrshark.gumroad.com/l/bpdiq) |
+| 195 | Procedural Damage + Imperfections (Blender Geometry-Nodes) | Alex Martinelli | free | _page unavailable (HTTPError)_ | [tkbjk](https://sagado.gumroad.com/l/tkbjk) |
+| 196 | Procedural Grid (Blender 3+, 4+) | Mina Pêcheux | 3.00 | _page unavailable (HTTPError)_ | [okeizj](https://mpecheux.gumroad.com/l/okeizj) |
+| 197 | Procedural Pipes & Roads (Godot 4) | Mina Pêcheux | 7.00 | Want to create some instant pipes or roads in your Godot 3D scenes using just a simple Path3D node? This addon is for you! With the Procedural Pipes &amp; Roads... | [bmobcx](https://mpecheux.gumroad.com/l/bmobcx) |
+| 198 | Procedural Sky System - Blender Addon | Other Realms | 15.00 | _page unavailable (HTTPError)_ | [sogyzv](https://otrealms.gumroad.com/l/sogyzv) |
+| 199 | Procedural Thunder | HeyYo | 7.00 | _page unavailable (HTTPError)_ | [mycyh](https://heyyohanashima.gumroad.com/l/mycyh) |
+| 200 | Procedural Urban Building Generator for Houdini (HDA) | Radu Cius | 39.00 | _page unavailable (HTTPError)_ | [civgek](https://rart.gumroad.com/l/civgek) |
+| 201 | Project Damage / Procedural Destruction Toolkit [Blender Add | Lazy3D Blender | free | _page unavailable (HTTPError)_ | [wwwauu](https://lazy3d.gumroad.com/l/wwwauu) |
+| 202 | Quadremsh Tools for Blender — Fast Quad Remeshing & Retopolo | SyncTools Pro — Cross- | free | _page unavailable (HTTPError)_ | [svwvny](https://synctools.gumroad.com/l/svwvny) |
+| 203 | Spall: Procedural Damage for Blender | Alberto Cordero | 29.00 | _page unavailable (HTTPError)_ | [ttqrme](https://albertocgart.gumroad.com/l/ttqrme) |
+| 204 | SpiralForge – Procedural Galaxy Builder for Blender | Petr Chekushkin | free | _page unavailable (HTTPError)_ | [qlafqt](https://astrodemiurge.gumroad.com/l/qlafqt) |
+| 205 | Stacking Stones — Procedural Rock Walls & Ruins in Houdini ( | Hugo Beyer | 29.00 | _page unavailable (HTTPError)_ | [jsepsh](https://hugobeyer.gumroad.com/l/jsepsh) |
+| 206 | Stylized Sky World Generator | Rei | 18.00 | 360° procedural Stylized Sky World in one click Making a stylized sky for 3D scenes usually takes heavy node tweaking and volumetrics, or painting a full... | [vaznyj](https://reipart.gumroad.com/l/vaznyj) |
+| 207 | The Big Nodebook: A Geometry Nodes Guide | MTR Animation | 19.99 | _page unavailable (HTTPError)_ | [hzsqw](https://mtranimationgumroad.gumroad.com/l/hzsqw) |
+| 208 | Tutorial series - Procedural Cliffs with SideFX houdini | adrienlambert | 10.00 | _page unavailable (HTTPError)_ | [pYaGH](https://adrienlambert.gumroad.com/l/pYaGH) |
+| 209 | Unity VFX Graph：Mesh Particle Fragments | Eric VFX Studio | 8.99 | _page unavailable (HTTPError)_ | [udgno](https://raywang4.gumroad.com/l/udgno) |
+| 210 | Unity VFX Graph：Particle Character (Skinned Mesh) | Eric VFX Studio | 9.99 | _page unavailable (HTTPError)_ | [cwkeg](https://raywang4.gumroad.com/l/cwkeg) |
+| 211 | Unreal Engine Procedural Damage Toolset | Hoj Dee | 19.99 | _page unavailable (HTTPError)_ | [vsykco](https://hojdee.gumroad.com/l/vsykco) |
+| 212 | Unreal Engine Procedural Snow Toolset | Hoj Dee | 19.99 | _page unavailable (HTTPError)_ | [jixnf](https://hojdee.gumroad.com/l/jixnf) |
+| 213 | UV Unfoldr – A Modern UV Editor for 3ds Max | Sargis Ter-Grigoryan | 39.00 | _page unavailable (HTTPError)_ | [nnwzju](https://sargisstg.gumroad.com/l/nnwzju) |
+
+## VFX & simulation (34)
+
+| # | product | maker | price | the listing's own claim | source |
+|---|---|---|---|---|---|
+| 214 | 200 FX Alpha VFX Asset Library | Comp Academy | 150.00 | _page unavailable (HTTPError)_ | [bgnny](https://compacademy.gumroad.com/l/bgnny) |
+| 215 | Background Birds - Drag-and-Drop Niagara Bird System for Unr | Josh Toonen | 25.00 | _page unavailable (HTTPError)_ | [yyrmy](https://unrealforvfx.gumroad.com/l/yyrmy) |
+| 216 | Blood VFX - Unreal Engine | Vefects - Realtime VFX | 57.99 | _page unavailable (HTTPError)_ | [qmvvfa](https://vefects.gumroad.com/l/qmvvfa) |
+| 217 | Chain Simulation in Niagara - Create Mario's Chain Chomp | HeyYo | 7.00 | This is a Chain Simulation Niagara asset. I created Mario's Chain Chomp as an example to show how the chain simulation works. Both ends of the chain are... | [noiblu](https://heyyohanashima.gumroad.com/l/noiblu) |
+| 218 | Fire Slash VFX | HeyYo | 15.00 | I made Fire Slash VFX as my personal work. I provide the whole UE data of this VFX so that you can explore, study, modify, and utilize the data for any... | [uajdj](https://heyyohanashima.gumroad.com/l/uajdj) |
+| 219 | Flux Particle Studio / Blender | R Animation Studios | 29.00 | _page unavailable (HTTPError)_ | [wtgjlc](https://ranimationstudios.gumroad.com/l/wtgjlc) |
+| 220 | Fumaris — GPU Smoke & Fire Simulation for Blender | Venous_FX | 39.00 | Smoke and fire you can direct while it simulates Watch the simulation run in the Blender viewport, lit by your scene, and change it while it plays. When the... | [sszyf](https://venousfx.gumroad.com/l/sszyf) |
+| 221 | Magic Spell VFX System | Digital Dungeon Assets | 124.99 | _page unavailable (HTTPError)_ | [ozbpme](https://dungeonforge.gumroad.com/l/ozbpme) |
+| 222 | MPMStudio Solver - Particle simulation plugin for C4D & BLEN | RiverExtend | 35.00 | _page unavailable (HTTPError)_ | [kwttbt](https://riverextend.gumroad.com/l/kwttbt) |
+| 223 | Next Gen Destruction Toolkit for Unreal Engine 5 | Kristian Kebbe | 44.99 | _page unavailable (HTTPError)_ | [fjpon](https://lucendev.gumroad.com/l/fjpon) |
+| 224 | PCOPs - GPU Enabled Particle Simulation Tools in Houdini | Inside The Mind | 35.00 | _page unavailable (HTTPError)_ | [kpysmy](https://insidethemindspace.gumroad.com/l/kpysmy) |
+| 225 | Pro Particles - Advanced Blender Particle System Add-on v5 | Cg-Flow | 51.35 | _page unavailable (HTTPError)_ | [qzaiz](https://cgflow.gumroad.com/l/qzaiz) |
+| 226 | Standing Fire [Medium Scale] VFX Asset Bundle [x10] | Ben Harker | VFX | 15.00 | This bundle includes fully loopable VFX elements, built for maximum flexibility across film, game, and real-time projects! What’s inside: ✅ EXR image... | [bnizsn](https://benharkervfx.gumroad.com/l/bnizsn) |
+| 227 | Unity VFX Graph - Level Up Effect | Gabriel Aguiar Prod | 5.00 | _page unavailable (HTTPError)_ | [alchf](https://gabrielaguiarprod1.gumroad.com/l/alchf) |
+| 228 | Unity VFX Graph - Muzzle Effects Vol. 1 | Gabriel Aguiar Prod | 10.00 | _page unavailable (HTTPError)_ | [lkcfx](https://gabrielaguiarprod1.gumroad.com/l/lkcfx) |
+| 229 | Unity VFX Graph - Stylized Laser Beams Vol. 1 | Gabriel Aguiar Prod | 10.00 | _page unavailable (HTTPError)_ | [jrdekb](https://gabrielaguiarprod1.gumroad.com/l/jrdekb) |
+| 230 | Unity VFX Graph - Weapon Effects Vol. 1 | Gabriel Aguiar Prod | 10.00 | _page unavailable (HTTPError)_ | [mmckxd](https://gabrielaguiarprod1.gumroad.com/l/mmckxd) |
+| 231 | Unity VFX Graph：Attractor Force and Particle Trail effect | Eric VFX Studio | 8.00 | _page unavailable (HTTPError)_ | [kbffp](https://raywang4.gumroad.com/l/kbffp) |
+| 232 | Unity VFX Graph：Disturbed Image Particles | Eric VFX Studio | 9.99 | Particle picture effects created using Unity VFX Graph, You can add pictures yourself, modify particle size, color, jitter amplitude, etc. Detailed... | [wzdfe](https://raywang4.gumroad.com/l/wzdfe) |
+| 233 | Unity VFX Graph：Galaxy and Meteor | Eric VFX Studio | 7.99 | _page unavailable (HTTPError)_ | [hubvqv](https://raywang4.gumroad.com/l/hubvqv) |
+| 234 | Unity VFX Graph：Image Fireworks | Eric VFX Studio | 8.99 | _page unavailable (HTTPError)_ | [ejzku](https://raywang4.gumroad.com/l/ejzku) |
+| 235 | Unity VFX Graph：Particle shaping application(SDF) | Eric VFX Studio | 9.00 | _page unavailable (HTTPError)_ | [jhrat](https://raywang4.gumroad.com/l/jhrat) |
+| 236 | Unity VFX Graph：Particles Attraction | Eric VFX Studio | 8.00 | Made using Unity VFX Graph so that particles can follow the target point. You can modify the particle size, color, fluttering direction, etc. by yourself... | [qiqwkbw](https://raywang4.gumroad.com/l/qiqwkbw) |
+| 237 | Unity VFX Graph：Post-it(Particles aggregate into models) | Eric VFX Studio | 7.99 | _page unavailable (HTTPError)_ | [fjnqc](https://raywang4.gumroad.com/l/fjnqc) |
+| 238 | Unity VFX Graph：SDF Model Particle Deformation | Eric VFX Studio | 7.99 | _page unavailable (HTTPError)_ | [mcstjd](https://raywang4.gumroad.com/l/mcstjd) |
+| 239 | Unity VFX Graph：Use SDF to make model particle effects | Eric VFX Studio | 9.99 | Made using Unity VFX Graph, with the model special effects generated by the SDF function, you can change the model to create different effects. Detailed... | [kehpsj](https://raywang4.gumroad.com/l/kehpsj) |
+| 240 | Unreal 5 Advanced Niagara | tharlevfx | 50.00 | _page unavailable (HTTPError)_ | [wkvru](https://tharlevfx.gumroad.com/l/wkvru) |
+| 241 | Unreal 5 Intro to Niagara | tharlevfx | 50.00 | _page unavailable (HTTPError)_ | [yvgfg](https://tharlevfx.gumroad.com/l/yvgfg) |
+| 242 | Unreal 5 Niagara Bundle | tharlevfx | 125.00 | _page unavailable (HTTPError)_ | [czhuq](https://tharlevfx.gumroad.com/l/czhuq) |
+| 243 | Unreal 5 Niagara Sim Stages | tharlevfx | 50.00 | _page unavailable (HTTPError)_ | [ufmqh](https://tharlevfx.gumroad.com/l/ufmqh) |
+| 244 | Unreal Engine 4.22 Niagara Dissolution Effect | ArtHiteca | 15.00 | _page unavailable (HTTPError)_ | [AzoNY](https://arthiteca.gumroad.com/l/AzoNY) |
+| 245 | Unreal Engine 4.22 Niagara Test Examples #1 | ArtHiteca | 20.00 | _page unavailable (HTTPError)_ | [SvcVn](https://arthiteca.gumroad.com/l/SvcVn) |
+| 246 | VFXGen — Stylized VFX Texture Editor | ChunHu | 29.99 | _page unavailable (HTTPError)_ | [frhhpp](https://chunhuvfx.gumroad.com/l/frhhpp) |
+| 247 | WebGL Magnetic Field: Interactive Particle Engine for Framer | Creative Apes | 8.00 | _page unavailable (HTTPError)_ | [dqgfpw](https://creativeapes.gumroad.com/l/dqgfpw) |
 
 ## Engine tooling: Unity / Godot / Unreal (37)
 
 | # | product | maker | price | the listing's own claim | source |
 |---|---|---|---|---|---|
-| 243 | 1900s Office (Unreal Engine) | Leartes Studios | 69.99 | _page unavailable (HTTPError)_ | [zjvzpa](https://leartesstudios.gumroad.com/l/zjvzpa) |
-| 244 | 2D Modern Pack - SPUM Premium AddOn (Unity Addition) | SOONSOON | 19.99 | _page unavailable (HTTPError)_ | [sbdqj](https://soonsoon.gumroad.com/l/sbdqj) |
-| 245 | Asset Downgrader for Unreal Engine 5 | Ciprian Stanciu | 34.99 | _page unavailable (HTTPError)_ | [igbejz](https://relativegames.gumroad.com/l/igbejz) |
-| 246 | AWS GameLift Client Plugin by eelDev for Unreal Engine | eelDev | 45.00 | _page unavailable (HTTPError)_ | [fbozz](https://eeldev.gumroad.com/l/fbozz) |
-| 247 | Blender Godot 4 Pipeline Add-on | Michael Burt | 5.00 | _page unavailable (HTTPError)_ | [alpunq](https://michaeljared.gumroad.com/l/alpunq) |
-| 248 | Blender Godot Suffixes (Addon) by Suzuka Ka | Suzuka Ka | 2.00 | _page unavailable (HTTPError)_ | [yvzxt](https://orb91.gumroad.com/l/yvzxt) |
-| 249 | Blender To Game Engine (Unity, Unreal & Godot) Bundle | karan@b3dhub | 42.50 | _page unavailable (HTTPError)_ | [najqn](https://b3dhub.gumroad.com/l/najqn) |
-| 250 | Blender to Unreal Engine 5: Build a Stylized Greek Island En | 3D Tudor | 11.25 | _page unavailable (HTTPError)_ | [vmbyjm](https://3dtudor.gumroad.com/l/vmbyjm) |
-| 251 | Blender to Unreal Engine 5: Playable Stylized Turret | 3D Tudor | 11.25 | _page unavailable (HTTPError)_ | [whfxr](https://3dtudor.gumroad.com/l/whfxr) |
-| 252 | Cloud Forge Complete 1.4.3 Unreal Engine 5.3 - 5.6 - VDB Clo | Arghanion's Puzzlebox | 24.99 | _page unavailable (HTTPError)_ | [fkjic](https://arghanion.gumroad.com/l/fkjic) |
-| 253 | Cloud Forge Vol 2 - Unreal Engine 5.3 - 5.6 - VDB Clouds | Arghanion's Puzzlebox | 10.99 | _page unavailable (HTTPError)_ | [fxwqc](https://arghanion.gumroad.com/l/fxwqc) |
-| 254 | Cloud Forge Volume 3 - Unreal Engine 5.3 - 5.6 - VDB Clouds | Arghanion's Puzzlebox | 12.99 | _page unavailable (HTTPError)_ | [plicg](https://arghanion.gumroad.com/l/plicg) |
-| 255 | Collision Splitter for Maya -> Unreal Engine | Honey3D | free | _page unavailable (HTTPError)_ | [atvjq](https://raditsys.gumroad.com/l/atvjq) |
-| 256 | Complete Masterclass for Creating Cinematic Games in Unreal  | CGDealers | 39.90 | _page unavailable (HTTPError)_ | [nluov](https://cgdealers.gumroad.com/l/nluov) |
-| 257 | Creating a metro train interior in Unreal Engine 5 | FastTrack Tutorials | 29.99 | _page unavailable (HTTPError)_ | [coMXC](https://fasttracktutorials.gumroad.com/l/coMXC) |
-| 258 | EOSCore (Epic Online Services) Plugin for Unreal Engine | eelDev | 65.00 | _page unavailable (HTTPError)_ | [aoGtA](https://eeldev.gumroad.com/l/aoGtA) |
-| 259 | Ezreal Slashes Vol.1 - Unreal Engine | Gabriel Aguiar Prod | 12.00 | _page unavailable (HTTPError)_ | [yizfn](https://gabrielaguiarprod1.gumroad.com/l/yizfn) |
-| 260 | Flipbook Tool - Looping flipbook textures for Unreal Engine | henlo | free | _page unavailable (HTTPError)_ | [SQnwg](https://henlo.gumroad.com/l/SQnwg) |
-| 261 | French Quarter Street Environment (Unreal Engine) | Leartes Studios | 69.99 | _page unavailable (HTTPError)_ | [homxva](https://leartesstudios.gumroad.com/l/homxva) |
-| 262 | Godot 4 AutoSave Plugin — Periodic & On-Event Save System (G | OccaSoftware | free | _page unavailable (HTTPError)_ | [ogxgd](https://occasoftware.gumroad.com/l/ogxgd) |
-| 263 | How to make a movie in Unreal Engine 5 Beginners Edition (Up | JSFILMZ | 19.99 | _page unavailable (HTTPError)_ | [mdwrk](https://jsfilmz.gumroad.com/l/mdwrk) |
-| 264 | NameFrame 1.0 for Unreal Engine 5.8 | NameFrame | 149.00 | _page unavailable (HTTPError)_ | [vuaozu](https://nameframe.gumroad.com/l/vuaozu) |
-| 265 | RevoltGPT Plugin for Unreal Engine 5 | RevoltGPT | 79.99 | _page unavailable (HTTPError)_ | [jbgunp](https://revoltgpt.gumroad.com/l/jbgunp) |
-| 266 | Sentari AI Assistant - Copilot & MCP for Unreal Engine 5 | Sentari Digital | 99.00 | BUILD INSIDE UNREAL BY DESCRIBING WHAT YOU WANT Sentari AI Assistant installs into the Unreal Editor as a panel you talk to. Describe what you need in plain... | [wlwvbl](https://sentaridigital.gumroad.com/l/wlwvbl) |
-| 267 | Star Collapse Space Scene for Unreal Engine 5.1 - 5.6 | Arghanion's Puzzlebox | 15.00 | _page unavailable (HTTPError)_ | [ormou](https://arghanion.gumroad.com/l/ormou) |
-| 268 | Unreal 5 Tech Art Bundle | tharlevfx | 225.00 | _page unavailable (HTTPError)_ | [yilqk](https://tharlevfx.gumroad.com/l/yilqk) |
-| 269 | Unreal Engine - Shrubland 4x4km Landscape Environment ( Arid | Freshcan 3D | 44.00 | _page unavailable (HTTPError)_ | [owybs](https://freshcan.gumroad.com/l/owybs) |
-| 270 | Unreal Engine 5 - Ultimate Courses & Plugins Bundle | CGDealers | 49.99 | _page unavailable (HTTPError)_ | [fyiyw](https://cgdealers.gumroad.com/l/fyiyw) |
-| 271 | Unreal Engine Cosmic Forge Bundle 30% OFF - Standard License | Arghanion's Puzzlebox | 32.32 | _page unavailable (HTTPError)_ | [eskpl](https://arghanion.gumroad.com/l/eskpl) |
-| 272 | Unreal Engine Film School (Course) | Virtual Production Ins | 199.00 | _page unavailable (HTTPError)_ | [mszovu](https://vpinsider.gumroad.com/l/mszovu) |
-| 273 | Unreal Engine Jumpstart (Tutorial) | Fabio Montorzi | 34.00 | _page unavailable (HTTPError)_ | [cqgrq](https://fabiomontorzi.gumroad.com/l/cqgrq) |
-| 274 | Unreal Engine Space Bundle - Standard Licence - 40% Savings! | Arghanion's Puzzlebox | 22.79 | Elevate Your Unreal Engine Projects with Our Exclusive 3D Asset Bundle! Transform your Unreal Engine creations with this exclusive bundle featuring four... | [qvjbb](https://arghanion.gumroad.com/l/qvjbb) |
-| 275 | Unreal Engine to 3ds Max Biped Tool | Mark Blosser | 15.00 | _page unavailable (HTTPError)_ | [iaxic](https://markblosser.gumroad.com/l/iaxic) |
-| 276 | Unreal Exporter - Blender Addon | Kostia Perry | free | _page unavailable (HTTPError)_ | [perhw](https://tarmunds.gumroad.com/l/perhw) |
-| 277 | Unreal Self Balance 1.2 Project - UE5.6 Self Balancing Ragdo | CodeFloat | 49.99 | _page unavailable (HTTPError)_ | [ytjyu](https://codefloat.gumroad.com/l/ytjyu) |
-| 278 | Utu Plugin - Unity to Unreal Project Converter | Alex Quevillon | 30.00 | _page unavailable (HTTPError)_ | [eamdpu](https://alexquevillon.gumroad.com/l/eamdpu) |
-| 279 | xGen2UE Script - Export Alembic Hair from Maya xGen to Unrea | RealTime Hair | 15.00 | _page unavailable (HTTPError)_ | [clqdlu](https://realtimehair.gumroad.com/l/clqdlu) |
+| 248 | 1900s Office (Unreal Engine) | Leartes Studios | 69.99 | _page unavailable (HTTPError)_ | [zjvzpa](https://leartesstudios.gumroad.com/l/zjvzpa) |
+| 249 | 2D Modern Pack - SPUM Premium AddOn (Unity Addition) | SOONSOON | 19.99 | _page unavailable (HTTPError)_ | [sbdqj](https://soonsoon.gumroad.com/l/sbdqj) |
+| 250 | Asset Downgrader for Unreal Engine 5 | Ciprian Stanciu | 34.99 | _page unavailable (HTTPError)_ | [igbejz](https://relativegames.gumroad.com/l/igbejz) |
+| 251 | AWS GameLift Client Plugin by eelDev for Unreal Engine | eelDev | 45.00 | _page unavailable (HTTPError)_ | [fbozz](https://eeldev.gumroad.com/l/fbozz) |
+| 252 | Blender Godot 4 Pipeline Add-on | Michael Burt | 5.00 | _page unavailable (HTTPError)_ | [alpunq](https://michaeljared.gumroad.com/l/alpunq) |
+| 253 | Blender Godot Suffixes (Addon) by Suzuka Ka | Suzuka Ka | 2.00 | _page unavailable (HTTPError)_ | [yvzxt](https://orb91.gumroad.com/l/yvzxt) |
+| 254 | Blender To Game Engine (Unity, Unreal & Godot) Bundle | karan@b3dhub | 42.50 | _page unavailable (HTTPError)_ | [najqn](https://b3dhub.gumroad.com/l/najqn) |
+| 255 | Blender to Unreal Engine 5: Build a Stylized Greek Island En | 3D Tudor | 11.25 | _page unavailable (HTTPError)_ | [vmbyjm](https://3dtudor.gumroad.com/l/vmbyjm) |
+| 256 | Blender to Unreal Engine 5: Playable Stylized Turret | 3D Tudor | 11.25 | _page unavailable (HTTPError)_ | [whfxr](https://3dtudor.gumroad.com/l/whfxr) |
+| 257 | Cloud Forge Complete 1.4.3 Unreal Engine 5.3 - 5.6 - VDB Clo | Arghanion's Puzzlebox | 24.99 | _page unavailable (HTTPError)_ | [fkjic](https://arghanion.gumroad.com/l/fkjic) |
+| 258 | Cloud Forge Vol 2 - Unreal Engine 5.3 - 5.6 - VDB Clouds | Arghanion's Puzzlebox | 10.99 | _page unavailable (HTTPError)_ | [fxwqc](https://arghanion.gumroad.com/l/fxwqc) |
+| 259 | Cloud Forge Volume 3 - Unreal Engine 5.3 - 5.6 - VDB Clouds | Arghanion's Puzzlebox | 12.99 | _page unavailable (HTTPError)_ | [plicg](https://arghanion.gumroad.com/l/plicg) |
+| 260 | Collision Splitter for Maya -> Unreal Engine | Honey3D | free | _page unavailable (HTTPError)_ | [atvjq](https://raditsys.gumroad.com/l/atvjq) |
+| 261 | Complete Masterclass for Creating Cinematic Games in Unreal  | CGDealers | 39.90 | _page unavailable (HTTPError)_ | [nluov](https://cgdealers.gumroad.com/l/nluov) |
+| 262 | Creating a metro train interior in Unreal Engine 5 | FastTrack Tutorials | 29.99 | _page unavailable (HTTPError)_ | [coMXC](https://fasttracktutorials.gumroad.com/l/coMXC) |
+| 263 | EOSCore (Epic Online Services) Plugin for Unreal Engine | eelDev | 65.00 | _page unavailable (HTTPError)_ | [aoGtA](https://eeldev.gumroad.com/l/aoGtA) |
+| 264 | Ezreal Slashes Vol.1 - Unreal Engine | Gabriel Aguiar Prod | 12.00 | _page unavailable (HTTPError)_ | [yizfn](https://gabrielaguiarprod1.gumroad.com/l/yizfn) |
+| 265 | Flipbook Tool - Looping flipbook textures for Unreal Engine | henlo | free | _page unavailable (HTTPError)_ | [SQnwg](https://henlo.gumroad.com/l/SQnwg) |
+| 266 | French Quarter Street Environment (Unreal Engine) | Leartes Studios | 69.99 | _page unavailable (HTTPError)_ | [homxva](https://leartesstudios.gumroad.com/l/homxva) |
+| 267 | Godot 4 AutoSave Plugin — Periodic & On-Event Save System (G | OccaSoftware | free | _page unavailable (HTTPError)_ | [ogxgd](https://occasoftware.gumroad.com/l/ogxgd) |
+| 268 | How to make a movie in Unreal Engine 5 Beginners Edition (Up | JSFILMZ | 19.99 | _page unavailable (HTTPError)_ | [mdwrk](https://jsfilmz.gumroad.com/l/mdwrk) |
+| 269 | NameFrame 1.0 for Unreal Engine 5.8 | NameFrame | 149.00 | _page unavailable (HTTPError)_ | [vuaozu](https://nameframe.gumroad.com/l/vuaozu) |
+| 270 | RevoltGPT Plugin for Unreal Engine 5 | RevoltGPT | 79.99 | _page unavailable (HTTPError)_ | [jbgunp](https://revoltgpt.gumroad.com/l/jbgunp) |
+| 271 | Sentari AI Assistant - Copilot & MCP for Unreal Engine 5 | Sentari Digital | 99.00 | BUILD INSIDE UNREAL BY DESCRIBING WHAT YOU WANT Sentari AI Assistant installs into the Unreal Editor as a panel you talk to. Describe what you need in plain... | [wlwvbl](https://sentaridigital.gumroad.com/l/wlwvbl) |
+| 272 | Star Collapse Space Scene for Unreal Engine 5.1 - 5.6 | Arghanion's Puzzlebox | 15.00 | _page unavailable (HTTPError)_ | [ormou](https://arghanion.gumroad.com/l/ormou) |
+| 273 | Unreal 5 Tech Art Bundle | tharlevfx | 225.00 | _page unavailable (HTTPError)_ | [yilqk](https://tharlevfx.gumroad.com/l/yilqk) |
+| 274 | Unreal Engine - Shrubland 4x4km Landscape Environment ( Arid | Freshcan 3D | 44.00 | _page unavailable (HTTPError)_ | [owybs](https://freshcan.gumroad.com/l/owybs) |
+| 275 | Unreal Engine 5 - Ultimate Courses & Plugins Bundle | CGDealers | 49.99 | _page unavailable (HTTPError)_ | [fyiyw](https://cgdealers.gumroad.com/l/fyiyw) |
+| 276 | Unreal Engine Cosmic Forge Bundle 30% OFF - Standard License | Arghanion's Puzzlebox | 32.32 | _page unavailable (HTTPError)_ | [eskpl](https://arghanion.gumroad.com/l/eskpl) |
+| 277 | Unreal Engine Film School (Course) | Virtual Production Ins | 199.00 | _page unavailable (HTTPError)_ | [mszovu](https://vpinsider.gumroad.com/l/mszovu) |
+| 278 | Unreal Engine Jumpstart (Tutorial) | Fabio Montorzi | 34.00 | _page unavailable (HTTPError)_ | [cqgrq](https://fabiomontorzi.gumroad.com/l/cqgrq) |
+| 279 | Unreal Engine Space Bundle - Standard Licence - 40% Savings! | Arghanion's Puzzlebox | 22.79 | Elevate Your Unreal Engine Projects with Our Exclusive 3D Asset Bundle! Transform your Unreal Engine creations with this exclusive bundle featuring four... | [qvjbb](https://arghanion.gumroad.com/l/qvjbb) |
+| 280 | Unreal Engine to 3ds Max Biped Tool | Mark Blosser | 15.00 | _page unavailable (HTTPError)_ | [iaxic](https://markblosser.gumroad.com/l/iaxic) |
+| 281 | Unreal Exporter - Blender Addon | Kostia Perry | free | _page unavailable (HTTPError)_ | [perhw](https://tarmunds.gumroad.com/l/perhw) |
+| 282 | Unreal Self Balance 1.2 Project - UE5.6 Self Balancing Ragdo | CodeFloat | 49.99 | _page unavailable (HTTPError)_ | [ytjyu](https://codefloat.gumroad.com/l/ytjyu) |
+| 283 | Utu Plugin - Unity to Unreal Project Converter | Alex Quevillon | 30.00 | _page unavailable (HTTPError)_ | [eamdpu](https://alexquevillon.gumroad.com/l/eamdpu) |
+| 284 | xGen2UE Script - Export Alembic Hair from Maya xGen to Unrea | RealTime Hair | 15.00 | _page unavailable (HTTPError)_ | [clqdlu](https://realtimehair.gumroad.com/l/clqdlu) |
 
 ## Roblox tools (20)
 
 | # | product | maker | price | the listing's own claim | source |
 |---|---|---|---|---|---|
-| 280 | [ NEW ] Roblox The Armory OP Script Hub / Crate ESP, Human E | Rixtreat | 0.99 | 🔥 THE ARMORY – ULTIMATE OP SCRIPT 🔥 ⚡ FEATURES 👁 Crate ESP – Instantly locate valuable loot across the map 🧍 Human ESP – Track every player with precision... | [dpdhro](https://rixtreat.gumroad.com/l/dpdhro) |
-| 281 | [Roblox Studio]Advanced  (Suspicious)  NPC System | TheTomato | free | [Roblox Studio]Advanced (Suspicious) NPC System Contains: NPC Dummy. Instructions. NPC functions: Finds the closest player and follows (until the player... | [hfmpt](https://thetomato.gumroad.com/l/hfmpt) |
-| 282 | [v1.3] Hash Studios Alcohol Drinks [UdonSharp] [SDK3] | Hash Studios LLC | 49.99 | _page unavailable (HTTPError)_ | [dcggw](https://hashstudiosllc.gumroad.com/l/dcggw) |
-| 283 | [‼️ON SALE‼️] Advanced Roblox NPC System | _mosES() | 0.99 | [‼️ON SALE‼️] Advanced Roblox NPC System - Add interactive NPCs to your game for free! No Refunds as this is a Digital Download file. | [ggtge](https://mose5.gumroad.com/l/ggtge) |
-| 284 | Advanced Car Spawner Script | Kaisen | free | Advanced Car Spawner Script for Roblox This script lets you easily spawn and control cars in your Roblox game. With customizable options for car models... | [exfxu](https://claritykaisen.gumroad.com/l/exfxu) |
-| 285 | Advanced Zombie Horde System | Nox | 5.00 | Tired of zombies that stop at the first wall? Elevate your Roblox survival or horror game with our Advanced Horde AI. Inspired by World War Z, this system... | [pdemm](https://noxwen.gumroad.com/l/pdemm) |
-| 286 | Car Customization System (Paint, Wheels & More) / Roblox Stu | Nytrix Prime | 6.99 | Create fully customizable cars in your Roblox game with this powerful and beginner-friendly system! This system lets players change the look of their... | [wlqsva](https://nytrixprime4.gumroad.com/l/wlqsva) |
-| 287 | Foliage Presets Plugin – Studio License (UE 5.7 and 5.8, up  | levelarttools | 999.00 | STUDIO LICENSE This listing is a Studio License covering up to 15 named users within one company – intended for teams that cannot purchase individual seats... | [pmrma](https://levelarttools.gumroad.com/l/pmrma) |
-| 288 | Hair Card Studio (Hair Card Creator Addon for Blender) | PixelicaCG | 11.99 | _page unavailable (HTTPError)_ | [bktxo](https://pixelicacg.gumroad.com/l/bktxo) |
-| 289 | R6 ROBLOX REALISTIC MOVEMENT/CAMERA SYSTEM | JUNIS | 9.99 | A high-quality, professional First Person Movement System for ROBLOX R6, designed to deliver a smooth and immersive gameplay experience!! 🎮 Key Features... | [aorzrj](https://clownjunis.gumroad.com/l/aorzrj) |
-| 290 | Roblox Advanced Player Data System (Attributes + DataStore) | AB price | 50.00 | A clean, scalable, and production-ready Player Data System for Roblox games. Built with DataStoreService, Attributes, Leaderstats, and RemoteFunctions, this... | [lprem](https://abprice.gumroad.com/l/lprem) |
-| 291 | Roblox Boid System | Tekleed | 15.00 | Roblox BOID System Bring natural flocking behavior to your Roblox game. Schools of fish, flocks of birds, swarms of bats, or anything else that moves as a... | [vxmjq](https://tekleed.gumroad.com/l/vxmjq) |
-| 292 | Roblox FPS System | Jeynkins | 12.00 | Includes: Fire, Sliding, Physics, Guns, Blocking, Melees, Explosives, Glass Breaking Level up your Roblox game with this easy-to-use system: Fire that... | [gfmdgs](https://jeynkinsrbxlstudios.gumroad.com/l/gfmdgs) |
-| 293 | Roblox Jojo Bizarre Incremental Script / Auto Combat, Auto S | Rixtreat | 0.99 | 🩸 JoJo’s Bizarre Incremental – PRIVATE OP SCRIPT 🩸 ⚠️ LIMITED • UNDETECTED • NOT PUBLIC ⚠️ This is NOT one of those leaked, overused scripts floating around... | [nprkf](https://rixtreat.gumroad.com/l/nprkf) |
-| 294 | Roblox Sorcerer Incremental Script Hub / OP Auto Farm, Auto  | Rixtreat | 0.99 | ⚠️ Early Access Script (Experimental) This is an early release version of my Roblox script. The project is currently in active development, meaning features... | [mtujfu](https://rixtreat.gumroad.com/l/mtujfu) |
-| 295 | SmartMonster AI - Dynamic Enemy Pathfinding for Roblox | Harry | 15.00 | 🧠 SmartMonster AI – Plug-and-Play Monster System for Roblox A fully-featured Monster AI system designed for Roblox developers who want smarter, dynamic... | [zwotiv](https://scriptrblx.gumroad.com/l/zwotiv) |
-| 296 | Studio Color - (Plugin) | MrQuaxkers | 6.99 | Full coloring toolkit for roblox studio. | [wbfovn](https://mrquaxkers.gumroad.com/l/wbfovn) |
-| 297 | Sword Combat & NPC System [ROBLOX] | Pierce | 5.00 | Level up your game with this fully-featured Sword Combat System, perfect for action, RPG, or PvP experiences on Roblox! ⚔️ Core Features: Dynamic Sword... | [swhwn](https://piercedevelop.gumroad.com/l/swhwn) |
-| 298 | Texture - (Plugin) | MrQuaxkers | 14.99 | 3000+ CC0 Textures for roblox studio. | [aebhqo](https://mrquaxkers.gumroad.com/l/aebhqo) |
-| 299 | WEPPY Roblox Plugin Pro | Weppy | 9.99 | 🚀 WEPPY Roblox AI Toolkit Pro — AI-Powered Roblox Studio Workflow Ship production Roblox workflows faster with AI coding agents connected directly to Roblox... | [faccjs](https://weppy.gumroad.com/l/faccjs) |
+| 285 | [ NEW ] Roblox The Armory OP Script Hub / Crate ESP, Human E | Rixtreat | 0.99 | 🔥 THE ARMORY – ULTIMATE OP SCRIPT 🔥 ⚡ FEATURES 👁 Crate ESP – Instantly locate valuable loot across the map 🧍 Human ESP – Track every player with precision... | [dpdhro](https://rixtreat.gumroad.com/l/dpdhro) |
+| 286 | [Roblox Studio]Advanced  (Suspicious)  NPC System | TheTomato | free | [Roblox Studio]Advanced (Suspicious) NPC System Contains: NPC Dummy. Instructions. NPC functions: Finds the closest player and follows (until the player... | [hfmpt](https://thetomato.gumroad.com/l/hfmpt) |
+| 287 | [v1.3] Hash Studios Alcohol Drinks [UdonSharp] [SDK3] | Hash Studios LLC | 49.99 | _page unavailable (HTTPError)_ | [dcggw](https://hashstudiosllc.gumroad.com/l/dcggw) |
+| 288 | [‼️ON SALE‼️] Advanced Roblox NPC System | _mosES() | 0.99 | [‼️ON SALE‼️] Advanced Roblox NPC System - Add interactive NPCs to your game for free! No Refunds as this is a Digital Download file. | [ggtge](https://mose5.gumroad.com/l/ggtge) |
+| 289 | Advanced Car Spawner Script | Kaisen | free | Advanced Car Spawner Script for Roblox This script lets you easily spawn and control cars in your Roblox game. With customizable options for car models... | [exfxu](https://claritykaisen.gumroad.com/l/exfxu) |
+| 290 | Advanced Zombie Horde System | Nox | 5.00 | Tired of zombies that stop at the first wall? Elevate your Roblox survival or horror game with our Advanced Horde AI. Inspired by World War Z, this system... | [pdemm](https://noxwen.gumroad.com/l/pdemm) |
+| 291 | Car Customization System (Paint, Wheels & More) / Roblox Stu | Nytrix Prime | 6.99 | Create fully customizable cars in your Roblox game with this powerful and beginner-friendly system! This system lets players change the look of their... | [wlqsva](https://nytrixprime4.gumroad.com/l/wlqsva) |
+| 292 | Foliage Presets Plugin – Studio License (UE 5.7 and 5.8, up  | levelarttools | 999.00 | STUDIO LICENSE This listing is a Studio License covering up to 15 named users within one company – intended for teams that cannot purchase individual seats... | [pmrma](https://levelarttools.gumroad.com/l/pmrma) |
+| 293 | Hair Card Studio (Hair Card Creator Addon for Blender) | PixelicaCG | 11.99 | _page unavailable (HTTPError)_ | [bktxo](https://pixelicacg.gumroad.com/l/bktxo) |
+| 294 | R6 ROBLOX REALISTIC MOVEMENT/CAMERA SYSTEM | JUNIS | 9.99 | A high-quality, professional First Person Movement System for ROBLOX R6, designed to deliver a smooth and immersive gameplay experience!! 🎮 Key Features... | [aorzrj](https://clownjunis.gumroad.com/l/aorzrj) |
+| 295 | Roblox Advanced Player Data System (Attributes + DataStore) | AB price | 50.00 | A clean, scalable, and production-ready Player Data System for Roblox games. Built with DataStoreService, Attributes, Leaderstats, and RemoteFunctions, this... | [lprem](https://abprice.gumroad.com/l/lprem) |
+| 296 | Roblox Boid System | Tekleed | 15.00 | Roblox BOID System Bring natural flocking behavior to your Roblox game. Schools of fish, flocks of birds, swarms of bats, or anything else that moves as a... | [vxmjq](https://tekleed.gumroad.com/l/vxmjq) |
+| 297 | Roblox FPS System | Jeynkins | 12.00 | Includes: Fire, Sliding, Physics, Guns, Blocking, Melees, Explosives, Glass Breaking Level up your Roblox game with this easy-to-use system: Fire that... | [gfmdgs](https://jeynkinsrbxlstudios.gumroad.com/l/gfmdgs) |
+| 298 | Roblox Jojo Bizarre Incremental Script / Auto Combat, Auto S | Rixtreat | 0.99 | 🩸 JoJo’s Bizarre Incremental – PRIVATE OP SCRIPT 🩸 ⚠️ LIMITED • UNDETECTED • NOT PUBLIC ⚠️ This is NOT one of those leaked, overused scripts floating around... | [nprkf](https://rixtreat.gumroad.com/l/nprkf) |
+| 299 | Roblox Sorcerer Incremental Script Hub / OP Auto Farm, Auto  | Rixtreat | 0.99 | ⚠️ Early Access Script (Experimental) This is an early release version of my Roblox script. The project is currently in active development, meaning features... | [mtujfu](https://rixtreat.gumroad.com/l/mtujfu) |
+| 300 | SmartMonster AI - Dynamic Enemy Pathfinding for Roblox | Harry | 15.00 | 🧠 SmartMonster AI – Plug-and-Play Monster System for Roblox A fully-featured Monster AI system designed for Roblox developers who want smarter, dynamic... | [zwotiv](https://scriptrblx.gumroad.com/l/zwotiv) |
+| 301 | Studio Color - (Plugin) | MrQuaxkers | 6.99 | Full coloring toolkit for roblox studio. | [wbfovn](https://mrquaxkers.gumroad.com/l/wbfovn) |
+| 302 | Sword Combat & NPC System [ROBLOX] | Pierce | 5.00 | Level up your game with this fully-featured Sword Combat System, perfect for action, RPG, or PvP experiences on Roblox! ⚔️ Core Features: Dynamic Sword... | [swhwn](https://piercedevelop.gumroad.com/l/swhwn) |
+| 303 | Texture - (Plugin) | MrQuaxkers | 14.99 | 3000+ CC0 Textures for roblox studio. | [aebhqo](https://mrquaxkers.gumroad.com/l/aebhqo) |
+| 304 | WEPPY Roblox Plugin Pro | Weppy | 9.99 | 🚀 WEPPY Roblox AI Toolkit Pro — AI-Powered Roblox Studio Workflow Ship production Roblox workflows faster with AI coding agents connected directly to Roblox... | [faccjs](https://weppy.gumroad.com/l/faccjs) |
 
-## Gameplay systems (17)
+## Gameplay systems (14)
 
 | # | product | maker | price | the listing's own claim | source |
 |---|---|---|---|---|---|
-| 300 | 2D Avatar : Avatar System for VRChat | DX | 15.00 | _page unavailable (HTTPError)_ | [otqkek](https://dx30.gumroad.com/l/otqkek) |
-| 301 | Avatar Flying System & Effects [VRChat] | Pointless Creations | 5.00 | _page unavailable (HTTPError)_ | [ytgqe](https://pointlesscreations.gumroad.com/l/ytgqe) |
-| 302 | Avatar Protection System for VRChat | Dextro | 20.00 | _page unavailable (HTTPError)_ | [gxayd](https://dextrovr.gumroad.com/l/gxayd) |
-| 303 | CAMSUITE — All-in-One Camera Toolkit for Houdini | HYUNJOON KANG | 19.00 | _page unavailable (HTTPError)_ | [nzgkr](https://hyunjoonkang.gumroad.com/l/nzgkr) |
-| 304 | Cryomancy and Earthshaping (VRCHAT + Quest) | Liindy | 15.00 | _page unavailable (HTTPError)_ | [gqvvuq](https://liindy.gumroad.com/l/gqvvuq) |
-| 305 | Hair Card Pack + Pro Hair System | PixelicaCG | 8.99 | _page unavailable (HTTPError)_ | [wlwfe](https://pixelicacg.gumroad.com/l/wlwfe) |
-| 306 | hood release system | chedsapp | 4.00 | _page unavailable (HTTPError)_ | [pdnoc](https://chedsapp.gumroad.com/l/pdnoc) |
-| 307 | Jeano's Gun Framework | Jeano | 1.00 | A clean gun system built for speed and ease. This system makes it effortless to drop powerful weapons into any experience. Testing Place... | [xvpxc](https://scofieldstudios.gumroad.com/l/xvpxc) |
-| 308 | NodeArchitect - AI Agent and MCP Server for Houdini. | Jbishop - NodeArchitec | 24.99 | _page unavailable (HTTPError)_ | [thptkt](https://bishopvfx.gumroad.com/l/thptkt) |
-| 309 | Real Sweat System for VRChat | Cooki | 6.49 | _page unavailable (HTTPError)_ | [vosmpv](https://cookipiece.gumroad.com/l/vosmpv) |
-| 310 | Real Wet System for VRChat | Cooki | 14.99 | _page unavailable (HTTPError)_ | [ucwktv](https://cookipiece.gumroad.com/l/ucwktv) |
-| 311 | Reality Field Virtual Production System 2024 | LOLED | free | _page unavailable (HTTPError)_ | [zkxko](https://loledvirtual.gumroad.com/l/zkxko) |
-| 312 | Replicated Hitbox System | Aurora Devs | 54.99 | _page unavailable (HTTPError)_ | [xdcif](https://auroradevs.gumroad.com/l/xdcif) |
-| 313 | Style-Locked AI Motion Graphics from Any Script (Claude Skil | FRMWRKD | 10.00 | _page unavailable (HTTPError)_ | [vluidk](https://frmwrkd.gumroad.com/l/vluidk) |
-| 314 | TekDetek Pro // Live AI Detection // ASCII // VJ Browser Too | TekDetek | 20.00 | _page unavailable (HTTPError)_ | [xkljia](https://tekdetek.gumroad.com/l/xkljia) |
-| 315 | Vibe Coder Kit — AI Development Framework for Production-Rea | Shahid Malik | 79.89 | _page unavailable (HTTPError)_ | [wvshw](https://nuovanceai.gumroad.com/l/wvshw) |
-| 316 | VRCLens: VRChat Camera Extension for Desktop and VR | Hirabiki | 10.00 | _page unavailable (HTTPError)_ | [rpnel](https://hirabiki.gumroad.com/l/rpnel) |
+| 305 | 2D Avatar : Avatar System for VRChat | DX | 15.00 | _page unavailable (HTTPError)_ | [otqkek](https://dx30.gumroad.com/l/otqkek) |
+| 306 | Avatar Flying System & Effects [VRChat] | Pointless Creations | 5.00 | ⭐️⭐️⭐️⭐️⭐️ Leave a rating on this product! Helps my product get recommended more! Want to test it out before you buy it? You can try out my Public Asset Test... | [ytgqe](https://pointlesscreations.gumroad.com/l/ytgqe) |
+| 307 | CAMSUITE — All-in-One Camera Toolkit for Houdini | HYUNJOON KANG | 19.00 | _page unavailable (HTTPError)_ | [nzgkr](https://hyunjoonkang.gumroad.com/l/nzgkr) |
+| 308 | Hair Card Pack + Pro Hair System | PixelicaCG | 8.99 | _page unavailable (HTTPError)_ | [wlwfe](https://pixelicacg.gumroad.com/l/wlwfe) |
+| 309 | Jeano's Gun Framework | Jeano | 1.00 | A clean gun system built for speed and ease. This system makes it effortless to drop powerful weapons into any experience. Testing Place... | [xvpxc](https://scofieldstudios.gumroad.com/l/xvpxc) |
+| 310 | NodeArchitect - AI Agent and MCP Server for Houdini. | Jbishop - NodeArchitec | 24.99 | _page unavailable (HTTPError)_ | [thptkt](https://bishopvfx.gumroad.com/l/thptkt) |
+| 311 | Real Sweat System for VRChat | Cooki | 6.49 | ━━━━━━━━━━━━━━━━━━━━ Official Documentation https://cookipiece.github.io/RealSweatSystem-Docs/ Installation Video https://youtu.be/KyYyZLNPSnc Real Wet... | [vosmpv](https://cookipiece.gumroad.com/l/vosmpv) |
+| 312 | Real Wet System for VRChat | Cooki | 14.99 | _page unavailable (HTTPError)_ | [ucwktv](https://cookipiece.gumroad.com/l/ucwktv) |
+| 313 | Reality Field Virtual Production System 2024 | LOLED | free | _page unavailable (HTTPError)_ | [zkxko](https://loledvirtual.gumroad.com/l/zkxko) |
+| 314 | Replicated Hitbox System | Aurora Devs | 54.99 | _page unavailable (HTTPError)_ | [xdcif](https://auroradevs.gumroad.com/l/xdcif) |
+| 315 | Style-Locked AI Motion Graphics from Any Script (Claude Skil | FRMWRKD | 10.00 | _page unavailable (HTTPError)_ | [vluidk](https://frmwrkd.gumroad.com/l/vluidk) |
+| 316 | TekDetek Pro // Live AI Detection // ASCII // VJ Browser Too | TekDetek | 20.00 | _page unavailable (HTTPError)_ | [xkljia](https://tekdetek.gumroad.com/l/xkljia) |
+| 317 | Vibe Coder Kit — AI Development Framework for Production-Rea | Shahid Malik | 79.89 | _page unavailable (HTTPError)_ | [wvshw](https://nuovanceai.gumroad.com/l/wvshw) |
+| 318 | VRCLens: VRChat Camera Extension for Desktop and VR | Hirabiki | 10.00 | VRCLens is a set of photographic extensions to the stock VRChat camera to be added on your avatar. It also supports desktop/2D mode, meaning you can take... | [rpnel](https://hirabiki.gumroad.com/l/rpnel) |
 
 ## Audio (17)
 
 | # | product | maker | price | the listing's own claim | source |
 |---|---|---|---|---|---|
-| 317 | 3dSynth - Generative G-code Engine for Creative 3D Printing | Kubuz | 39.00 | _page unavailable (HTTPError)_ | [vkyvdy](https://kubuz.gumroad.com/l/vkyvdy) |
-| 318 | ALL IN ONE SOUND LIBRARY BUNDLE | Free To Use Sounds | 25.00 | _page unavailable (HTTPError)_ | [waasf](https://ftus.gumroad.com/l/waasf) |
-| 319 | DEGAUSS - VST Plugin | SynthSkool | 99.00 | _page unavailable (HTTPError)_ | [exmdlr](https://synthskool.gumroad.com/l/exmdlr) |
-| 320 | FIELD KIT Playback Engine / Standalone + VST3 + AU | Field Tone Audio | 26.25 | _page unavailable (HTTPError)_ | [yurac](https://fieldtoneaudio.gumroad.com/l/yurac) |
-| 321 | GuyEngine V2 - VST | Ultima DSP | 14.00 | _page unavailable (HTTPError)_ | [aaube](https://ultimadsp.gumroad.com/l/aaube) |
-| 322 | Kick & Bass Auto Mix: VST3 & AU Plugin | Wagner Who | 37.00 | _page unavailable (HTTPError)_ | [reveh](https://wagnerwho.gumroad.com/l/reveh) |
-| 323 | Liminal Space 2: Haunted Digital Reverb Synthesizer - CLAP,  | Wavetables.lol | 10.00 | _page unavailable (HTTPError)_ | [zobuuw](https://kcrosley.gumroad.com/l/zobuuw) |
-| 324 | MODEL 200 REVERBERATOR PLUGIN (VST3 - AU - AAX - MAC - WINDO | PastToFutureReverbs | 99.00 | _page unavailable (HTTPError)_ | [ctwdx](https://pasttofuturereverbs.gumroad.com/l/ctwdx) |
-| 325 | Old (Kinda broken) - Boom-Box (VRChat-SDK3) | Doloro | 3.50 | Annoy your friends!, Vibe to Music while staring into a mirror!, Do what ever you want with this VRChat boombox prefab https://discord.gg/eBMMr5csQM It comes... | [txufu](https://doloro.gumroad.com/l/txufu) |
-| 326 | PTF 144 FOUR TRACK CASSETTE MIXER PLUGIN (VST3 - AU - AAX -  | PastToFutureReverbs | 69.00 | PTF-144 – Four-Track Cassette Mixer & Recorder Four Channels. Four Tracks. Pure Analog Cassette Magic. Bring the unmistakable sound and workflow of a... | [dwqdph](https://pasttofuturereverbs.gumroad.com/l/dwqdph) |
-| 327 | PTF 16 DIGITAL REVERB PLUGIN (VST3 - AU - AAX - MAC - WINDOW | PastToFutureReverbs | 99.00 | PTF 16 – Legendary Digital Reverb THE SOUND OF THE '80s. THE MAGIC OF EARLY DIGITAL REVERB. Before plugins, before endless processing power, there was a... | [wkcax](https://pasttofuturereverbs.gumroad.com/l/wkcax) |
-| 328 | PTF 350 TUBE TAPE RECORDER PLUGIN (VST3 - AU - AAX - MAC OS  | PastToFutureReverbs | 79.00 | The PTF-350 by Past To Future Plugins is a detailed plugin recreation (available as VST3 and Audio Unit for macOS, and VST3 for Windows) of a classic... | [gkdxxy](https://pasttofuturereverbs.gumroad.com/l/gkdxxy) |
-| 329 | PTF 3630 COMPRESSOR PLUGIN (VST3 - AU - AAX - MAC OS - WINDO | PastToFutureReverbs | 49.00 | _page unavailable (HTTPError)_ | [ajaipb](https://pasttofuturereverbs.gumroad.com/l/ajaipb) |
-| 330 | PTF DMX-15 STEREO DIGITAL DELAY & PITCH SHIFTER PLUGIN (VST3 | PastToFutureReverbs | 89.00 | _page unavailable (HTTPError)_ | [kvizb](https://pasttofuturereverbs.gumroad.com/l/kvizb) |
-| 331 | PTF S950 SAMPLER PLUGIN (VST3 - AU - AAX - MAC - WINDOWS) | PastToFutureReverbs | 89.00 | _page unavailable (HTTPError)_ | [blrcpl](https://pasttofuturereverbs.gumroad.com/l/blrcpl) |
-| 332 | Twenty Engine 1.1: an 8-voice polysynth inspired by the Korg | Peter Kohlmetz Møller | free | _page unavailable (HTTPError)_ | [ygmrks](https://7233849350308.gumroad.com/l/ygmrks) |
-| 333 | U273 VINTAGE GERMAN COMPRESSOR LIMITER PLUGIN (VST3 - AU - A | PastToFutureReverbs | 79.00 | _page unavailable (HTTPError)_ | [ouitxw](https://pasttofuturereverbs.gumroad.com/l/ouitxw) |
+| 319 | 3dSynth - Generative G-code Engine for Creative 3D Printing | Kubuz | 39.00 | _page unavailable (HTTPError)_ | [vkyvdy](https://kubuz.gumroad.com/l/vkyvdy) |
+| 320 | ALL IN ONE SOUND LIBRARY BUNDLE | Free To Use Sounds | 25.00 | _page unavailable (HTTPError)_ | [waasf](https://ftus.gumroad.com/l/waasf) |
+| 321 | DEGAUSS - VST Plugin | SynthSkool | 99.00 | _page unavailable (HTTPError)_ | [exmdlr](https://synthskool.gumroad.com/l/exmdlr) |
+| 322 | FIELD KIT Playback Engine / Standalone + VST3 + AU | Field Tone Audio | 26.25 | _page unavailable (HTTPError)_ | [yurac](https://fieldtoneaudio.gumroad.com/l/yurac) |
+| 323 | GuyEngine V2 - VST | Ultima DSP | 14.00 | _page unavailable (HTTPError)_ | [aaube](https://ultimadsp.gumroad.com/l/aaube) |
+| 324 | Kick & Bass Auto Mix: VST3 & AU Plugin | Wagner Who | 37.00 | _page unavailable (HTTPError)_ | [reveh](https://wagnerwho.gumroad.com/l/reveh) |
+| 325 | Liminal Space 2: Haunted Digital Reverb Synthesizer - CLAP,  | Wavetables.lol | 10.00 | _page unavailable (HTTPError)_ | [zobuuw](https://kcrosley.gumroad.com/l/zobuuw) |
+| 326 | MODEL 200 REVERBERATOR PLUGIN (VST3 - AU - AAX - MAC - WINDO | PastToFutureReverbs | 99.00 | _page unavailable (HTTPError)_ | [ctwdx](https://pasttofuturereverbs.gumroad.com/l/ctwdx) |
+| 327 | Old (Kinda broken) - Boom-Box (VRChat-SDK3) | Doloro | 3.50 | Annoy your friends!, Vibe to Music while staring into a mirror!, Do what ever you want with this VRChat boombox prefab https://discord.gg/eBMMr5csQM It comes... | [txufu](https://doloro.gumroad.com/l/txufu) |
+| 328 | PTF 144 FOUR TRACK CASSETTE MIXER PLUGIN (VST3 - AU - AAX -  | PastToFutureReverbs | 69.00 | PTF-144 – Four-Track Cassette Mixer & Recorder Four Channels. Four Tracks. Pure Analog Cassette Magic. Bring the unmistakable sound and workflow of a... | [dwqdph](https://pasttofuturereverbs.gumroad.com/l/dwqdph) |
+| 329 | PTF 16 DIGITAL REVERB PLUGIN (VST3 - AU - AAX - MAC - WINDOW | PastToFutureReverbs | 99.00 | PTF 16 – Legendary Digital Reverb THE SOUND OF THE '80s. THE MAGIC OF EARLY DIGITAL REVERB. Before plugins, before endless processing power, there was a... | [wkcax](https://pasttofuturereverbs.gumroad.com/l/wkcax) |
+| 330 | PTF 350 TUBE TAPE RECORDER PLUGIN (VST3 - AU - AAX - MAC OS  | PastToFutureReverbs | 79.00 | The PTF-350 by Past To Future Plugins is a detailed plugin recreation (available as VST3 and Audio Unit for macOS, and VST3 for Windows) of a classic... | [gkdxxy](https://pasttofuturereverbs.gumroad.com/l/gkdxxy) |
+| 331 | PTF 3630 COMPRESSOR PLUGIN (VST3 - AU - AAX - MAC OS - WINDO | PastToFutureReverbs | 49.00 | _page unavailable (HTTPError)_ | [ajaipb](https://pasttofuturereverbs.gumroad.com/l/ajaipb) |
+| 332 | PTF DMX-15 STEREO DIGITAL DELAY & PITCH SHIFTER PLUGIN (VST3 | PastToFutureReverbs | 89.00 | _page unavailable (HTTPError)_ | [kvizb](https://pasttofuturereverbs.gumroad.com/l/kvizb) |
+| 333 | PTF S950 SAMPLER PLUGIN (VST3 - AU - AAX - MAC - WINDOWS) | PastToFutureReverbs | 89.00 | _page unavailable (HTTPError)_ | [blrcpl](https://pasttofuturereverbs.gumroad.com/l/blrcpl) |
+| 334 | Twenty Engine 1.1: an 8-voice polysynth inspired by the Korg | Peter Kohlmetz Møller | free | _page unavailable (HTTPError)_ | [ygmrks](https://7233849350308.gumroad.com/l/ygmrks) |
+| 335 | U273 VINTAGE GERMAN COMPRESSOR LIMITER PLUGIN (VST3 - AU - A | PastToFutureReverbs | 79.00 | _page unavailable (HTTPError)_ | [ouitxw](https://pasttofuturereverbs.gumroad.com/l/ouitxw) |
 
-## Pipeline, export & automation (4)
-
-| # | product | maker | price | the listing's own claim | source |
-|---|---|---|---|---|---|
-| 334 | Blender Batch AO Baker Addon | VD Skinworks | 24.99 | ## 🇬🇧 English ### Batch AO Baker – Unwrap, bake & denoise ambient occlusion for all your objects in one click Stop baking AO object by object. Batch AO Baker... | [embsc](https://vdskinworks.gumroad.com/l/embsc) |
-| 335 | Clip Exporter / Essential Premiere Pro Plugin | Piotr Toczynski | 25.00 | _page unavailable (HTTPError)_ | [otjkzv](https://cuttothepoint.gumroad.com/l/otjkzv) |
-| 336 | MetaHuman Converter tool | Pavel Barnev | 300.00 | _page unavailable (HTTPError)_ | [tgxgnp](https://pavelbarnev.gumroad.com/l/tgxgnp) |
-| 337 | Mystery Pixel Image Generator By Marina Art Design (WINDOWS  | Marina Art Design | 80.00 | ⭐ Mystery Pixel Image Generator Turn any black‑and‑white image into a clean, printable Mystery Pixel Image in minutes. This desktop tool lets you import or... | [qczcw](https://marinaartdesign.gumroad.com/l/qczcw) |
-
-## UI & interface (5)
+## Pipeline, export & automation (5)
 
 | # | product | maker | price | the listing's own claim | source |
 |---|---|---|---|---|---|
-| 338 | Item Tooltip | gfxcomet | 1.80 | A beautiful Tooltip UI to display your weapons and in-game items What&#39;s included: Tooltip design with gradient header Organized and clean list of stats... | [ihsii](https://gfxcomet.gumroad.com/l/ihsii) |
-| 339 | Lua Scripting Full Course | Rodel Catampongan | 10.00 | 🚀 Stop Searching for Scripts. Start Building Your Own. Tired of searching for working scripts only to find out they’ve been patched the very next day? You... | [kibiI](https://venuslock.gumroad.com/l/kibiI) |
-| 340 | Pie Menu Editor Fork 2.4.0 | Pluglug | 29.99 | _page unavailable (HTTPError)_ | [ghqdwox](https://pluglug.gumroad.com/l/ghqdwox) |
-| 341 | Quick Launcher | Live Workflow Tools | 14.00 | _page unavailable (HTTPError)_ | [grqraj](https://liveworkflowtools.gumroad.com/l/grqraj) |
-| 342 | QuickMat Bake Pro – Ultimate Texture Baking Tool for Blender | Studio156 | 15.00 | _page unavailable (HTTPError)_ | [vdfltt](https://studio156.gumroad.com/l/vdfltt) |
+| 336 | Blender Batch AO Baker Addon | VD Skinworks | 24.99 | ## 🇬🇧 English ### Batch AO Baker – Unwrap, bake & denoise ambient occlusion for all your objects in one click Stop baking AO object by object. Batch AO Baker... | [embsc](https://vdskinworks.gumroad.com/l/embsc) |
+| 337 | Clip Exporter / Essential Premiere Pro Plugin | Piotr Toczynski | 25.00 | _page unavailable (HTTPError)_ | [otjkzv](https://cuttothepoint.gumroad.com/l/otjkzv) |
+| 338 | MetaHuman Converter tool | Pavel Barnev | 300.00 | _page unavailable (HTTPError)_ | [tgxgnp](https://pavelbarnev.gumroad.com/l/tgxgnp) |
+| 339 | Mystery Pixel Image Generator By Marina Art Design (WINDOWS  | Marina Art Design | 80.00 | ⭐ Mystery Pixel Image Generator Turn any black‑and‑white image into a clean, printable Mystery Pixel Image in minutes. This desktop tool lets you import or... | [qczcw](https://marinaartdesign.gumroad.com/l/qczcw) |
+| 340 | Tree Library Botaniq Trees+Plants | polygoniq | 2.00 | About botaniq is a library of optimized &amp; realistic 3D vegetation. It features a variety of Trees, Palms, Succulents, Shrubs, Plants, and Pots for... | [MOZJY](https://polygoniq.gumroad.com/l/MOZJY) |
 
-## Uncategorised (96)
+## UI & interface (7)
 
 | # | product | maker | price | the listing's own claim | source |
 |---|---|---|---|---|---|
-| 343 | 100+ CLAUDE REMOTION STYLES VAULT - Fully Automatic Editor | CHRONIXEL SHOP | free | _page unavailable (HTTPError)_ | [gexbt](https://chronixel.gumroad.com/l/gexbt) |
-| 344 | 40% OFF🧨IN DESCRIPTION / Antigen VRChat Furry Avatar | gum.neochroma.xyz | 35.00 | _page unavailable (HTTPError)_ | [hhtkv](https://neochroma.gumroad.com/l/hhtkv) |
-| 345 | 40% OFF🧨IN DESCRIPTION / Dergal VRChat Furry Model | gum.neochroma.xyz | 35.00 | _page unavailable (HTTPError)_ | [yxtvch](https://neochroma.gumroad.com/l/yxtvch) |
-| 346 | [Addon]DECALmachine | machin3 | 54.99 | _page unavailable (HTTPError)_ | [fjXBHu](https://machin3.gumroad.com/l/fjXBHu) |
-| 347 | [Addon]MACHIN3tools | machin3 | 2.00 | _page unavailable (HTTPError)_ | [IjsAf](https://machin3.gumroad.com/l/IjsAf) |
-| 348 | [VRChat/SDK3] GD's VRChat Avatar Making Masterclass | YerGodDamnRight (GD, Y | 80.00 | _page unavailable (HTTPError)_ | [xmzhz](https://yergoddamnright.gumroad.com/l/xmzhz) |
-| 349 | A3D TexSync - Substance Painter Plugin | A3D Labs | 15.00 | _page unavailable (HTTPError)_ | [fcxrss](https://a3dtools.gumroad.com/l/fcxrss) |
-| 350 | Ability Toolbar | gfxcomet | 1.80 | A simple, aesthetic ability toolbar based off Valorant Need a practical and visually appealing ability toolbar for your game project? This is perfect for any... | [wjxwf](https://gfxcomet.gumroad.com/l/wjxwf) |
-| 351 | Afterimages Installation Script (VRChat) | Zekk | free | _page unavailable (HTTPError)_ | [bghnkq](https://zekk.gumroad.com/l/bghnkq) |
-| 352 | Anymo | Anymotool | 240.00 | _page unavailable (HTTPError)_ | [kptqn](https://anymotool.gumroad.com/l/kptqn) |
-| 353 | Asad FX (After Effects, Premier Pro Plugin) | Asad Ali | 49.99 | _page unavailable (HTTPError)_ | [ozigow](https://editmaster12.gumroad.com/l/ozigow) |
-| 354 | Atlas Cutter | Sebastien Rousseau | 25.00 | _page unavailable (HTTPError)_ | [fpros](https://darktreetools.gumroad.com/l/fpros) |
-| 355 | Avatar Accessory Tools | Shatter | 2.99 | _page unavailable (HTTPError)_ | [rwani](https://shatteredfur.gumroad.com/l/rwani) |
-| 356 | BDFM tool - pixelated SVG | DesignFamilyMarket | free | _page unavailable (HTTPError)_ | [byown](https://designfamilymarket.gumroad.com/l/byown) |
-| 357 | Behemox Hair Generator for Blender | Behemox Studio | 19.50 | _page unavailable (HTTPError)_ | [ucnep](https://behemox.gumroad.com/l/ucnep) |
-| 358 | Blender vertex color I Octopus | maso_tools | 14.99 | _page unavailable (HTTPError)_ | [omprho](https://masotools.gumroad.com/l/omprho) |
-| 359 | Blueish Asset-A Free Node Library | blueish | 10.00 | _page unavailable (HTTPError)_ | [jkglzv](https://blueish0930.gumroad.com/l/jkglzv) |
-| 360 | BLUUR Tool License Key | Antlii | 9.00 | _page unavailable (HTTPError)_ | [pwobgm](https://antlii.gumroad.com/l/pwobgm) |
-| 361 | CAD Sketcher [ Blender Addon ] | Keep Making | free | _page unavailable (HTTPError)_ | [rfoow](https://keepmaking.gumroad.com/l/rfoow) |
-| 362 | CC4D Tools & CC4D Link | Benjamin Broschinski | 40.00 | _page unavailable (HTTPError)_ | [tovtvi](https://blkmsk.gumroad.com/l/tovtvi) |
-| 363 | Cinematic Compositor Addon | ALANWAYNE | 8.98 | _page unavailable (HTTPError)_ | [memaa](https://alanwayne.gumroad.com/l/memaa) |
-| 364 | Cloooner - Ae Cloner Tool That’s Actually Simple! | Phan Đức Trọng | 15.00 | _page unavailable (HTTPError)_ | [gojuoe](https://motionbytrong.gumroad.com/l/gojuoe) |
-| 365 | DanTools | Daniel TechArt | 29.00 | HOUDINI HDAs. Houdini version 21+ New updated DanTools version: 1.1 Added high-resolution LiDAR in Europe, from 0.5 centimeters to 10 meters per pixels... | [noreow](https://danieltechart.gumroad.com/l/noreow) |
-| 366 | Deep Paint -Blender GP Modeling & Painting tool Set | Gaku | 40.00 | _page unavailable (HTTPError)_ | [ffodac](https://gakutada.gumroad.com/l/ffodac) |
-| 367 | Delta Quad (blender addon) | Kushiro | 10.00 | _page unavailable (HTTPError)_ | [hoivtl](https://kushiro.gumroad.com/l/hoivtl) |
-| 368 | DITHR Tool License Key | Antlii | 9.00 | _page unavailable (HTTPError)_ | [bdfpne](https://antlii.gumroad.com/l/bdfpne) |
-| 369 | Draw Model Tool | Joey Carlino | 7.00 | _page unavailable (HTTPError)_ | [npepei](https://joeycarlino.gumroad.com/l/npepei) |
-| 370 | Droplet Generator 3 for Blender | ibotpl | 19.00 | _page unavailable (HTTPError)_ | [alvgr](https://ibotpl.gumroad.com/l/alvgr) |
-| 371 | Easy Chain — Blender Addon for FiveM Jewelry Conversion | DistrictXStudios | 10.00 | _page unavailable (HTTPError)_ | [xnvxa](https://districtxstudios.gumroad.com/l/xnvxa) |
-| 372 | Easy Custom Normals - Stylized Shading Workflows in Blender | Fondant | 10.00 | _page unavailable (HTTPError)_ | [oatmwu](https://fondanttools.gumroad.com/l/oatmwu) |
-| 373 | Easy Terrain Generator | kollapse3d | 4.99 | _page unavailable (HTTPError)_ | [qcmfh](https://kollapse3d.gumroad.com/l/qcmfh) |
-| 374 | Easy Treez V2.0 for Maya | UnPLUG Tools | 110.00 | _page unavailable (HTTPError)_ | [lFVRg](https://unplugtools.gumroad.com/l/lFVRg) |
-| 375 | EDGY - Worn Edges Plugin for Cinema 4D & Blender | Cornelius Dämmrich | 15.00 | _page unavailable (HTTPError)_ | [fyhsz](https://corneliusdammrich.gumroad.com/l/fyhsz) |
-| 376 | Foliage Tint Master — One Click Tools | Alexandre Besson | 24.00 | _page unavailable (HTTPError)_ | [ylbgs](https://alexandrebesson.gumroad.com/l/ylbgs) |
-| 377 | Galeria Tool License Key | Adhemas Batista | 50.00 | _page unavailable (HTTPError)_ | [gdddk](https://adhemas.gumroad.com/l/gdddk) |
-| 378 | Garment Tool | bartoszstyperek | 40.00 | _page unavailable (HTTPError)_ | [MAnWP](https://bartoszstyperek.gumroad.com/l/MAnWP) |
-| 379 | Garment Tool 2.1 for MetaHuman — UE 5.8 / Fit, Layer & Refit | Unreal Engine Cinemati | 10.00 | _page unavailable (HTTPError)_ | [sqbht](https://6062949617079.gumroad.com/l/sqbht) |
-| 380 | Graphics Plugin Full v3.0.1 | Hanmen | 8.00 | _page unavailable (HTTPError)_ | [jdycp](https://hanmen.gumroad.com/l/jdycp) |
-| 381 | Grid Method Tool - Rounded Pixel to Vector SVG | DesignFamilyMarket | 5.00 | _page unavailable (HTTPError)_ | [xruudv](https://designfamilymarket.gumroad.com/l/xruudv) |
-| 382 | Grid Modeler (blender addon) | Kushiro | 20.00 | _page unavailable (HTTPError)_ | [VthLyO](https://kushiro.gumroad.com/l/VthLyO) |
-| 383 | GRM Groom Toolkit (Houdini FX) | Gerardo Castellanos | 100.00 | _page unavailable (HTTPError)_ | [vbvrwb](https://gerardocastellanos.gumroad.com/l/vbvrwb) |
-| 384 | GRM Groom Toolkit (Houdini INDIE) | Gerardo Castellanos | 30.00 | _page unavailable (HTTPError)_ | [swsmwj](https://gerardocastellanos.gumroad.com/l/swsmwj) |
-| 385 | GroomBear - grooming toolkit for Houdini | kwac | 59.00 | _page unavailable (HTTPError)_ | [yndnV](https://kwac.gumroad.com/l/yndnV) |
-| 386 | Hair Tool for Blender | bartoszstyperek | 52.00 | _page unavailable (HTTPError)_ | [Dbhj](https://bartoszstyperek.gumroad.com/l/Dbhj) |
-| 387 | Hairshop v2.98 - Hair card texture generator | KM Lee | 22.60 | _page unavailable (HTTPError)_ | [wyhba](https://kyoungmin.gumroad.com/l/wyhba) |
-| 388 | Houdini 19.5 FX Encanto Cracking Concrete | Pol Villà | 10.00 | _page unavailable (HTTPError)_ | [daztv](https://polvfx.gumroad.com/l/daztv) |
-| 389 | Houdini Solaris - USD & Environment Workflow (Subscription) | adrienlambert | 4.00 | _page unavailable (HTTPError)_ | [ztwuaj](https://adrienlambert.gumroad.com/l/ztwuaj) |
-| 390 | HP Art Toolset: Surface Wrap for Maya and Blender | HP Art Toolset by Hai  | free | _page unavailable (HTTPError)_ | [bwkfxb](https://hparttoolset.gumroad.com/l/bwkfxb) |
-| 391 | Kiosk Library - Asset Manager for 3D Artist | Fabian Strube | free | _page unavailable (HTTPError)_ | [xcsxpt](https://fabianstrube.gumroad.com/l/xcsxpt) |
-| 392 | Leons Modeling Toolkit 2.0 | _3Leon | 10.00 | _page unavailable (HTTPError)_ | [vwija](https://3leon.gumroad.com/l/vwija) |
-| 393 | Liminal Editor | Pawel | 12.50 | _page unavailable (HTTPError)_ | [spkbhy](https://venetian5gmailcom.gumroad.com/l/spkbhy) |
-| 394 | LIVEWIRED MPC Plugin Bundle – 13 Free Plugins for MPC | Livewired Sound Series | free | _page unavailable (HTTPError)_ | [urmntl](https://livewired808.gumroad.com/l/urmntl) |
-| 395 | Love2D Dev Tools Pro | abyo software | 12.00 | _page unavailable (HTTPError)_ | [aolecz](https://y1uda.gumroad.com/l/aolecz) |
-| 396 | Magic Decal | Nebula Animations | 15.00 | _page unavailable (HTTPError)_ | [bmouh](https://nebulaanimations.gumroad.com/l/bmouh) |
-| 397 | Malbers Biped Ragdoll | Malbers Animations | 24.99 | _page unavailable (HTTPError)_ | [awukjv](https://malberanimations.gumroad.com/l/awukjv) |
-| 398 | Mallet: Blender addon | Twist | 15.00 | _page unavailable (HTTPError)_ | [qxigq](https://dertwist.gumroad.com/l/qxigq) |
-| 399 | MEGA ADDON For Blender | CGStore | 15.00 | _page unavailable (HTTPError)_ | [ehqjh](https://cgcool.gumroad.com/l/ehqjh) |
-| 400 | Merge Master - Blender addon | miccoli3d | 60.00 | _page unavailable (HTTPError)_ | [zkckw](https://miccoli3d.gumroad.com/l/zkckw) |
-| 401 | MotionKit AE – All-in-One Ae ToolKit | Off.motionsfly | 10.00 | _page unavailable (HTTPError)_ | [bedrnd](https://officialmotionsfly.gumroad.com/l/bedrnd) |
-| 402 | Noesis Intelligent Harmony Generator & Assistant | Dystopian Waves | 10.79 | _page unavailable (HTTPError)_ | [nvfzqi](https://dystopianwaves.gumroad.com/l/nvfzqi) |
-| 403 | NTD Engine - Full Version | OwnLife Audio | 39.00 | _page unavailable (HTTPError)_ | [zlbwog](https://ownlifeaudio.gumroad.com/l/zlbwog) |
-| 404 | Omni-Matrix Holograph: Premium 3D WebGL Engine for Framer | Creative Apes | 6.00 | _page unavailable (HTTPError)_ | [umfgop](https://creativeapes.gumroad.com/l/umfgop) |
-| 405 | Outliyr Framework | outliyr | 199.99 | _page unavailable (HTTPError)_ | [etpeiq](https://outlier2.gumroad.com/l/etpeiq) |
-| 406 | Oven Bake / Blender Baking Addon | Boreo | 16.00 | _page unavailable (HTTPError)_ | [undhn](https://boreo.gumroad.com/l/undhn) |
-| 407 | Painterly V.3 Blender (5.1+)  Add-on | Doughy Animation Studi | 19.50 | _page unavailable (HTTPError)_ | [wvwta](https://doughyanimation.gumroad.com/l/wvwta) |
-| 408 | Palette Grid - Smart Palette Texture Workflow Blender Addon | Saved Pixel | 25.00 | _page unavailable (HTTPError)_ | [uqjpux](https://savedpixel.gumroad.com/l/uqjpux) |
-| 409 | Partice Editor PRO for Honey Select 2 | Hanmen | 9.00 | _page unavailable (HTTPError)_ | [iopwv](https://hanmen.gumroad.com/l/iopwv) |
-| 410 | Plugin Bundle Vol. 1 | Rex Roberts | 60.00 | _page unavailable (HTTPError)_ | [hxnqce](https://rexaffects.gumroad.com/l/hxnqce) |
-| 411 | Poly Modeling Toolbox - Everything You Need And More | Noggi | 39.00 | _page unavailable (HTTPError)_ | [mipncz](https://noggi3d.gumroad.com/l/mipncz) |
-| 412 | Polytool 2 | Markcreator | free | _page unavailable (HTTPError)_ | [hsseod](https://markcreator.gumroad.com/l/hsseod) |
-| 413 | RESOLUME Plugin FX^ASCII.GLYPH_TMBK | VJ Tembak | 18.00 | _page unavailable (HTTPError)_ | [kkfmbii](https://vjtembak.gumroad.com/l/kkfmbii) |
-| 414 | Retro Diffusion Extension for Aseprite | Cody Claus | 20.00 | _page unavailable (HTTPError)_ | [yqecpq](https://astropulse.gumroad.com/l/yqecpq) |
-| 415 | RH Character Tools for Cinema 4D & Mixamo | rhymage | 48.00 | _page unavailable (HTTPError)_ | [bbLu](https://rhymage.gumroad.com/l/bbLu) |
-| 416 | Ripplor Plugin for Cinema 4D | Spenser Clark | 25.00 | _page unavailable (HTTPError)_ | [wvohg](https://sdimaging.gumroad.com/l/wvohg) |
-| 417 | SAMPL Tool License Key | Antlii | 9.00 | _page unavailable (HTTPError)_ | [vfetba](https://antlii.gumroad.com/l/vfetba) |
-| 418 | ShapeKeyGen V3.50 Blender Addon | Wee learn from Mobile | 15.00 | _page unavailable (HTTPError)_ | [yrfsq](https://pymarket.gumroad.com/l/yrfsq) |
-| 419 | SHAPES - Shape Key Editor for Blender | brave rabbit | 20.00 | _page unavailable (HTTPError)_ | [dfuju](https://braverabbit.gumroad.com/l/dfuju) |
-| 420 | SHAPES 5.13 - Blend Shape Editor for Maya 2023-2027 | brave rabbit | 20.00 | _page unavailable (HTTPError)_ | [sovts](https://braverabbit.gumroad.com/l/sovts) |
-| 421 | Simple Tree Tools 3.0 for Houdini | nirfse3D | free | _page unavailable (HTTPError)_ | [hsgdax](https://nwestfelt.gumroad.com/l/hsgdax) |
-| 422 | Smart Layer v0.91.1 (Python Script for Maya) | Slava Baravik | 52.00 | _page unavailable (HTTPError)_ | [apvbbq](https://borovikmotion.gumroad.com/l/apvbbq) |
-| 423 | Stereo Bundle: Rotation + Deviation - Quadrature stereo proc | RawtonForge | 32.00 | _page unavailable (HTTPError)_ | [osgyf](https://rawton.gumroad.com/l/osgyf) |
-| 424 | Stylized Cloud Generator | Rei | 9.50 | _page unavailable (HTTPError)_ | [qcgrt](https://reipart.gumroad.com/l/qcgrt) |
-| 425 | Stylized Sky World Generator | Rei | 18.00 | _page unavailable (HTTPError)_ | [vaznyj](https://reipart.gumroad.com/l/vaznyj) |
-| 426 | Stylized Tree Asset Generator | Rei | 12.50 | _page unavailable (HTTPError)_ | [kluofh](https://reipart.gumroad.com/l/kluofh) |
-| 427 | Substance Node Pack / Dete Trim Toolkit | Dete Art Resources | 2.50 | _page unavailable (HTTPError)_ | [hjmavo](https://dete.gumroad.com/l/hjmavo) |
-| 428 | SuperLCD - Davinci Resolve Plugin | Akascape | 5.60 | _page unavailable (HTTPError)_ | [qiahk](https://akascape.gumroad.com/l/qiahk) |
-| 429 | TEXTR Tool License Key | Antlii | 9.00 | _page unavailable (HTTPError)_ | [lsucj](https://antlii.gumroad.com/l/lsucj) |
-| 430 | TFMSTYLE Addon Collection for Blender | TFMSTYLE | 8.99 | _page unavailable (HTTPError)_ | [faifq](https://tfmstyle.gumroad.com/l/faifq) |
-| 431 | The Nature Generator | Andreas Dürr | 85.00 | _page unavailable (HTTPError)_ | [gzyaj](https://cinematiccookie.gumroad.com/l/gzyaj) |
-| 432 | TrackToolsV2.1 - BETA | MeshHouse | free | _page unavailable (HTTPError)_ | [acmxzm](https://meshhouse.gumroad.com/l/acmxzm) |
-| 433 | Tradigitalist Toolbag - All Access | Alan Wyatt | 12.00 | _page unavailable (HTTPError)_ | [enxsr](https://tradigital.gumroad.com/l/enxsr) |
-| 434 | Tree Library Botaniq Trees+Plants | polygoniq | 2.00 | _page unavailable (HTTPError)_ | [MOZJY](https://polygoniq.gumroad.com/l/MOZJY) |
+| 341 | Item Tooltip | gfxcomet | 1.80 | A beautiful Tooltip UI to display your weapons and in-game items What&#39;s included: Tooltip design with gradient header Organized and clean list of stats... | [ihsii](https://gfxcomet.gumroad.com/l/ihsii) |
+| 342 | Love2D Dev Tools Pro | abyo software | 12.00 | Love2D Dev Tools Pro Unlock the full power of Love2D Dev Tools — the VS Code extension purpose-built for Love2D (LÖVE) game development. The free version... | [aolecz](https://y1uda.gumroad.com/l/aolecz) |
+| 343 | Lua Scripting Full Course | Rodel Catampongan | 10.00 | 🚀 Stop Searching for Scripts. Start Building Your Own. Tired of searching for working scripts only to find out they’ve been patched the very next day? You... | [kibiI](https://venuslock.gumroad.com/l/kibiI) |
+| 344 | Pie Menu Editor Fork 2.4.0 | Pluglug | 29.99 | _page unavailable (HTTPError)_ | [ghqdwox](https://pluglug.gumroad.com/l/ghqdwox) |
+| 345 | Quick Launcher | Live Workflow Tools | 14.00 | _page unavailable (HTTPError)_ | [grqraj](https://liveworkflowtools.gumroad.com/l/grqraj) |
+| 346 | QuickMat Bake Pro – Ultimate Texture Baking Tool for Blender | Studio156 | 15.00 | _page unavailable (HTTPError)_ | [vdfltt](https://studio156.gumroad.com/l/vdfltt) |
+| 347 | Stylized Tree Asset Generator | Rei | 12.50 | Easy-to-use and highly customizable Stylized Tree Asset Generator Making good-looking stylized trees in Blender can quickly embark you in a rabbit-hole of... | [kluofh](https://reipart.gumroad.com/l/kluofh) |
+
+## Uncategorised (91)
+
+| # | product | maker | price | the listing's own claim | source |
+|---|---|---|---|---|---|
+| 348 | 100+ CLAUDE REMOTION STYLES VAULT - Fully Automatic Editor | CHRONIXEL SHOP | free | _page unavailable (HTTPError)_ | [gexbt](https://chronixel.gumroad.com/l/gexbt) |
+| 349 | 40% OFF🧨IN DESCRIPTION / Antigen VRChat Furry Avatar | gum.neochroma.xyz | 35.00 | Also available on Jinxxy: https://jinxxy.com/Neochroma/antigen 🙏Special thanks to those who leave a tip and/or pay full price for my products. I do notice... | [hhtkv](https://neochroma.gumroad.com/l/hhtkv) |
+| 350 | 40% OFF🧨IN DESCRIPTION / Dergal VRChat Furry Model | gum.neochroma.xyz | 35.00 | 🙏Special thanks to those who tip and/or pay full price for my products🙏 I do notice and am very grateful for your generosity &lt;3 I&#39;m running a sale! 25% off 1... | [yxtvch](https://neochroma.gumroad.com/l/yxtvch) |
+| 351 | [Addon]DECALmachine | machin3 | 54.99 | _page unavailable (HTTPError)_ | [fjXBHu](https://machin3.gumroad.com/l/fjXBHu) |
+| 352 | [Addon]MACHIN3tools | machin3 | 2.00 | _page unavailable (HTTPError)_ | [IjsAf](https://machin3.gumroad.com/l/IjsAf) |
+| 353 | [VRChat/SDK3] GD's VRChat Avatar Making Masterclass | YerGodDamnRight (GD, Y | 80.00 | _page unavailable (HTTPError)_ | [xmzhz](https://yergoddamnright.gumroad.com/l/xmzhz) |
+| 354 | A3D TexSync - Substance Painter Plugin | A3D Labs | 15.00 | _page unavailable (HTTPError)_ | [fcxrss](https://a3dtools.gumroad.com/l/fcxrss) |
+| 355 | Ability Toolbar | gfxcomet | 1.80 | A simple, aesthetic ability toolbar based off Valorant Need a practical and visually appealing ability toolbar for your game project? This is perfect for any... | [wjxwf](https://gfxcomet.gumroad.com/l/wjxwf) |
+| 356 | Afterimages Installation Script (VRChat) | Zekk | free | _page unavailable (HTTPError)_ | [bghnkq](https://zekk.gumroad.com/l/bghnkq) |
+| 357 | Anymo | Anymotool | 240.00 | _page unavailable (HTTPError)_ | [kptqn](https://anymotool.gumroad.com/l/kptqn) |
+| 358 | Asad FX (After Effects, Premier Pro Plugin) | Asad Ali | 49.99 | _page unavailable (HTTPError)_ | [ozigow](https://editmaster12.gumroad.com/l/ozigow) |
+| 359 | Atlas Cutter | Sebastien Rousseau | 25.00 | _page unavailable (HTTPError)_ | [fpros](https://darktreetools.gumroad.com/l/fpros) |
+| 360 | Avatar Accessory Tools | Shatter | 2.99 | _page unavailable (HTTPError)_ | [rwani](https://shatteredfur.gumroad.com/l/rwani) |
+| 361 | BDFM tool - pixelated SVG | DesignFamilyMarket | free | _page unavailable (HTTPError)_ | [byown](https://designfamilymarket.gumroad.com/l/byown) |
+| 362 | Behemox Hair Generator for Blender | Behemox Studio | 19.50 | _page unavailable (HTTPError)_ | [ucnep](https://behemox.gumroad.com/l/ucnep) |
+| 363 | Blender vertex color I Octopus | maso_tools | 14.99 | 🐙 Octopus Vertex Color Professional Vertex Color Tools for Blender Paint, bake, randomize, debug, and manage vertex color workflows directly inside Blender... | [omprho](https://masotools.gumroad.com/l/omprho) |
+| 364 | Blueish Asset-A Free Node Library | blueish | 10.00 | _page unavailable (HTTPError)_ | [jkglzv](https://blueish0930.gumroad.com/l/jkglzv) |
+| 365 | BLUUR Tool License Key | Antlii | 9.00 | _page unavailable (HTTPError)_ | [pwobgm](https://antlii.gumroad.com/l/pwobgm) |
+| 366 | CAD Sketcher [ Blender Addon ] | Keep Making | free | _page unavailable (HTTPError)_ | [rfoow](https://keepmaking.gumroad.com/l/rfoow) |
+| 367 | CC4D Tools & CC4D Link | Benjamin Broschinski | 40.00 | _page unavailable (HTTPError)_ | [tovtvi](https://blkmsk.gumroad.com/l/tovtvi) |
+| 368 | Cinematic Compositor Addon | ALANWAYNE | 8.98 | _page unavailable (HTTPError)_ | [memaa](https://alanwayne.gumroad.com/l/memaa) |
+| 369 | Cloooner - Ae Cloner Tool That’s Actually Simple! | Phan Đức Trọng | 15.00 | _page unavailable (HTTPError)_ | [gojuoe](https://motionbytrong.gumroad.com/l/gojuoe) |
+| 370 | DanTools | Daniel TechArt | 29.00 | HOUDINI HDAs. Houdini version 21+ New updated DanTools version: 1.1 Added high-resolution LiDAR in Europe, from 0.5 centimeters to 10 meters per pixels... | [noreow](https://danieltechart.gumroad.com/l/noreow) |
+| 371 | Deep Paint -Blender GP Modeling & Painting tool Set | Gaku | 40.00 | Deep Paint v3.1.6 Your 2D style. Now in 3D. Last update Nov/03/2026 (Support for Blender 5.2) _____ Deep Paint is a user-friendly Blender add-on that enables... | [ffodac](https://gakutada.gumroad.com/l/ffodac) |
+| 372 | Delta Quad (blender addon) | Kushiro | 10.00 | _page unavailable (HTTPError)_ | [hoivtl](https://kushiro.gumroad.com/l/hoivtl) |
+| 373 | DITHR Tool License Key | Antlii | 9.00 | _page unavailable (HTTPError)_ | [bdfpne](https://antlii.gumroad.com/l/bdfpne) |
+| 374 | Draw Model Tool | Joey Carlino | 7.00 | _page unavailable (HTTPError)_ | [npepei](https://joeycarlino.gumroad.com/l/npepei) |
+| 375 | Droplet Generator 3 for Blender | ibotpl | 19.00 | _page unavailable (HTTPError)_ | [alvgr](https://ibotpl.gumroad.com/l/alvgr) |
+| 376 | Easy Chain — Blender Addon for FiveM Jewelry Conversion | DistrictXStudios | 10.00 | _page unavailable (HTTPError)_ | [xnvxa](https://districtxstudios.gumroad.com/l/xnvxa) |
+| 377 | Easy Custom Normals - Stylized Shading Workflows in Blender | Fondant | 10.00 | _page unavailable (HTTPError)_ | [oatmwu](https://fondanttools.gumroad.com/l/oatmwu) |
+| 378 | Easy Terrain Generator | kollapse3d | 4.99 | _page unavailable (HTTPError)_ | [qcmfh](https://kollapse3d.gumroad.com/l/qcmfh) |
+| 379 | Easy Treez V2.0 for Maya | UnPLUG Tools | 110.00 | _page unavailable (HTTPError)_ | [lFVRg](https://unplugtools.gumroad.com/l/lFVRg) |
+| 380 | Foliage Tint Master — One Click Tools | Alexandre Besson | 24.00 | _page unavailable (HTTPError)_ | [ylbgs](https://alexandrebesson.gumroad.com/l/ylbgs) |
+| 381 | Galeria Tool License Key | Adhemas Batista | 50.00 | _page unavailable (HTTPError)_ | [gdddk](https://adhemas.gumroad.com/l/gdddk) |
+| 382 | Garment Tool | bartoszstyperek | 40.00 | _page unavailable (HTTPError)_ | [MAnWP](https://bartoszstyperek.gumroad.com/l/MAnWP) |
+| 383 | Garment Tool 2.1 for MetaHuman — UE 5.8 / Fit, Layer & Refit | Unreal Engine Cinemati | 10.00 | _page unavailable (HTTPError)_ | [sqbht](https://6062949617079.gumroad.com/l/sqbht) |
+| 384 | Graphics Plugin Full v3.0.1 | Hanmen | 8.00 | CONTENT Contains the latest full version of the Graphics Plugin for Honey Select 2 + AI*Shoujo. This product is subscription-based. You will receive monthly... | [jdycp](https://hanmen.gumroad.com/l/jdycp) |
+| 385 | Grid Method Tool - Rounded Pixel to Vector SVG | DesignFamilyMarket | 5.00 | _page unavailable (HTTPError)_ | [xruudv](https://designfamilymarket.gumroad.com/l/xruudv) |
+| 386 | Grid Modeler (blender addon) | Kushiro | 20.00 | _page unavailable (HTTPError)_ | [VthLyO](https://kushiro.gumroad.com/l/VthLyO) |
+| 387 | GRM Groom Toolkit (Houdini FX) | Gerardo Castellanos | 100.00 | _page unavailable (HTTPError)_ | [vbvrwb](https://gerardocastellanos.gumroad.com/l/vbvrwb) |
+| 388 | GRM Groom Toolkit (Houdini INDIE) | Gerardo Castellanos | 30.00 | _page unavailable (HTTPError)_ | [swsmwj](https://gerardocastellanos.gumroad.com/l/swsmwj) |
+| 389 | GroomBear - grooming toolkit for Houdini | kwac | 59.00 | _page unavailable (HTTPError)_ | [yndnV](https://kwac.gumroad.com/l/yndnV) |
+| 390 | Hair Tool for Blender | bartoszstyperek | 52.00 | Hair Tool is Blender add-on that will help you: generate and model hair-card based hair, bake textures (with support for channel packing), do manual or... | [Dbhj](https://bartoszstyperek.gumroad.com/l/Dbhj) |
+| 391 | Hairshop v2.98 - Hair card texture generator | KM Lee | 22.60 | _page unavailable (HTTPError)_ | [wyhba](https://kyoungmin.gumroad.com/l/wyhba) |
+| 392 | Houdini 19.5 FX Encanto Cracking Concrete | Pol Villà | 10.00 | _page unavailable (HTTPError)_ | [daztv](https://polvfx.gumroad.com/l/daztv) |
+| 393 | Houdini Solaris - USD & Environment Workflow (Subscription) | adrienlambert | 4.00 | Access to my Houdini USD tutorial series (previously on youtube) &amp; More tutorials series DOES NOT INCLUDE PROJECT FILES // VIDEO READ ONLY (No offline /... | [ztwuaj](https://adrienlambert.gumroad.com/l/ztwuaj) |
+| 394 | HP Art Toolset: Surface Wrap for Maya and Blender | HP Art Toolset by Hai  | free | _page unavailable (HTTPError)_ | [bwkfxb](https://hparttoolset.gumroad.com/l/bwkfxb) |
+| 395 | Kiosk Library - Asset Manager for 3D Artist | Fabian Strube | free | _page unavailable (HTTPError)_ | [xcsxpt](https://fabianstrube.gumroad.com/l/xcsxpt) |
+| 396 | Leons Modeling Toolkit 2.0 | _3Leon | 10.00 | _page unavailable (HTTPError)_ | [vwija](https://3leon.gumroad.com/l/vwija) |
+| 397 | Liminal Editor | Pawel | 12.50 | _page unavailable (HTTPError)_ | [spkbhy](https://venetian5gmailcom.gumroad.com/l/spkbhy) |
+| 398 | LIVEWIRED MPC Plugin Bundle – 13 Free Plugins for MPC | Livewired Sound Series | free | _page unavailable (HTTPError)_ | [urmntl](https://livewired808.gumroad.com/l/urmntl) |
+| 399 | Magic Decal | Nebula Animations | 15.00 | _page unavailable (HTTPError)_ | [bmouh](https://nebulaanimations.gumroad.com/l/bmouh) |
+| 400 | Malbers Biped Ragdoll | Malbers Animations | 24.99 | _page unavailable (HTTPError)_ | [awukjv](https://malberanimations.gumroad.com/l/awukjv) |
+| 401 | Mallet: Blender addon | Twist | 15.00 | _page unavailable (HTTPError)_ | [qxigq](https://dertwist.gumroad.com/l/qxigq) |
+| 402 | MEGA ADDON For Blender | CGStore | 15.00 | _page unavailable (HTTPError)_ | [ehqjh](https://cgcool.gumroad.com/l/ehqjh) |
+| 403 | Merge Master - Blender addon | miccoli3d | 60.00 | _page unavailable (HTTPError)_ | [zkckw](https://miccoli3d.gumroad.com/l/zkckw) |
+| 404 | MotionKit AE – All-in-One Ae ToolKit | Off.motionsfly | 10.00 | _page unavailable (HTTPError)_ | [bedrnd](https://officialmotionsfly.gumroad.com/l/bedrnd) |
+| 405 | Noesis Intelligent Harmony Generator & Assistant | Dystopian Waves | 10.79 | _page unavailable (HTTPError)_ | [nvfzqi](https://dystopianwaves.gumroad.com/l/nvfzqi) |
+| 406 | NTD Engine - Full Version | OwnLife Audio | 39.00 | _page unavailable (HTTPError)_ | [zlbwog](https://ownlifeaudio.gumroad.com/l/zlbwog) |
+| 407 | Omni-Matrix Holograph: Premium 3D WebGL Engine for Framer | Creative Apes | 6.00 | _page unavailable (HTTPError)_ | [umfgop](https://creativeapes.gumroad.com/l/umfgop) |
+| 408 | Outliyr Framework | outliyr | 199.99 | _page unavailable (HTTPError)_ | [etpeiq](https://outlier2.gumroad.com/l/etpeiq) |
+| 409 | Oven Bake / Blender Baking Addon | Boreo | 16.00 | _page unavailable (HTTPError)_ | [undhn](https://boreo.gumroad.com/l/undhn) |
+| 410 | Painterly V.3 Blender (5.1+)  Add-on | Doughy Animation Studi | 19.50 | _page unavailable (HTTPError)_ | [wvwta](https://doughyanimation.gumroad.com/l/wvwta) |
+| 411 | Palette Grid - Smart Palette Texture Workflow Blender Addon | Saved Pixel | 25.00 | _page unavailable (HTTPError)_ | [uqjpux](https://savedpixel.gumroad.com/l/uqjpux) |
+| 412 | Partice Editor PRO for Honey Select 2 | Hanmen | 9.00 | _page unavailable (HTTPError)_ | [iopwv](https://hanmen.gumroad.com/l/iopwv) |
+| 413 | Plugin Bundle Vol. 1 | Rex Roberts | 60.00 | _page unavailable (HTTPError)_ | [hxnqce](https://rexaffects.gumroad.com/l/hxnqce) |
+| 414 | Poly Modeling Toolbox - Everything You Need And More | Noggi | 39.00 | _page unavailable (HTTPError)_ | [mipncz](https://noggi3d.gumroad.com/l/mipncz) |
+| 415 | Polytool 2 | Markcreator | free | _page unavailable (HTTPError)_ | [hsseod](https://markcreator.gumroad.com/l/hsseod) |
+| 416 | RESOLUME Plugin FX^ASCII.GLYPH_TMBK | VJ Tembak | 18.00 | _page unavailable (HTTPError)_ | [kkfmbii](https://vjtembak.gumroad.com/l/kkfmbii) |
+| 417 | Retro Diffusion Extension for Aseprite | Cody Claus | 20.00 | _page unavailable (HTTPError)_ | [yqecpq](https://astropulse.gumroad.com/l/yqecpq) |
+| 418 | RH Character Tools for Cinema 4D & Mixamo | rhymage | 48.00 | _page unavailable (HTTPError)_ | [bbLu](https://rhymage.gumroad.com/l/bbLu) |
+| 419 | Ripplor Plugin for Cinema 4D | Spenser Clark | 25.00 | _page unavailable (HTTPError)_ | [wvohg](https://sdimaging.gumroad.com/l/wvohg) |
+| 420 | SAMPL Tool License Key | Antlii | 9.00 | _page unavailable (HTTPError)_ | [vfetba](https://antlii.gumroad.com/l/vfetba) |
+| 421 | ShapeKeyGen V3.50 Blender Addon | Wee learn from Mobile | 15.00 | _page unavailable (HTTPError)_ | [yrfsq](https://pymarket.gumroad.com/l/yrfsq) |
+| 422 | SHAPES - Shape Key Editor for Blender | brave rabbit | 20.00 | _page unavailable (HTTPError)_ | [dfuju](https://braverabbit.gumroad.com/l/dfuju) |
+| 423 | SHAPES 5.13 - Blend Shape Editor for Maya 2023-2027 | brave rabbit | 20.00 | _page unavailable (HTTPError)_ | [sovts](https://braverabbit.gumroad.com/l/sovts) |
+| 424 | Simple Tree Tools 3.0 for Houdini | nirfse3D | free | _page unavailable (HTTPError)_ | [hsgdax](https://nwestfelt.gumroad.com/l/hsgdax) |
+| 425 | Smart Layer v0.91.1 (Python Script for Maya) | Slava Baravik | 52.00 | _page unavailable (HTTPError)_ | [apvbbq](https://borovikmotion.gumroad.com/l/apvbbq) |
+| 426 | Stereo Bundle: Rotation + Deviation - Quadrature stereo proc | RawtonForge | 32.00 | _page unavailable (HTTPError)_ | [osgyf](https://rawton.gumroad.com/l/osgyf) |
+| 427 | Stylized Cloud Generator | Rei | 9.50 | _page unavailable (HTTPError)_ | [qcgrt](https://reipart.gumroad.com/l/qcgrt) |
+| 428 | Substance Node Pack / Dete Trim Toolkit | Dete Art Resources | 2.50 | _page unavailable (HTTPError)_ | [hjmavo](https://dete.gumroad.com/l/hjmavo) |
+| 429 | SuperLCD - Davinci Resolve Plugin | Akascape | 5.60 | _page unavailable (HTTPError)_ | [qiahk](https://akascape.gumroad.com/l/qiahk) |
+| 430 | TEXTR Tool License Key | Antlii | 9.00 | _page unavailable (HTTPError)_ | [lsucj](https://antlii.gumroad.com/l/lsucj) |
+| 431 | TFMSTYLE Addon Collection for Blender | TFMSTYLE | 8.99 | _page unavailable (HTTPError)_ | [faifq](https://tfmstyle.gumroad.com/l/faifq) |
+| 432 | The Nature Generator | Andreas Dürr | 85.00 | _page unavailable (HTTPError)_ | [gzyaj](https://cinematiccookie.gumroad.com/l/gzyaj) |
+| 433 | TrackToolsV2.1 - BETA | MeshHouse | free | _page unavailable (HTTPError)_ | [acmxzm](https://meshhouse.gumroad.com/l/acmxzm) |
+| 434 | Tradigitalist Toolbag - All Access | Alan Wyatt | 12.00 | _page unavailable (HTTPError)_ | [enxsr](https://tradigital.gumroad.com/l/enxsr) |
 | 435 | TunaMetaPack - MetaHuman Convert / Custom Tools | Tuna | 150.00 | _page unavailable (HTTPError)_ | [wsbap](https://tunarig.gumroad.com/l/wsbap) |
 | 436 | Viral Styles Launchpad | The AI Tool Finds | 19.00 | _page unavailable (HTTPError)_ | [wbsqwp](https://theaitoolfinds.gumroad.com/l/wbsqwp) |
 | 437 | Vooolume - Relief Brush Tool | Krftoools | 15.00 | _page unavailable (HTTPError)_ | [yrgeg](https://krftoools.gumroad.com/l/yrgeg) |
 | 438 | WireTools / Node Connection Tools for Cinema 4D & Redshift | Maksym Vysokolov | 19.50 | _page unavailable (HTTPError)_ | [ozgreb](https://thodos998.gumroad.com/l/ozgreb) |
+
+## Reached by hopping (717 products)
+
+Straight search only finds what you already thought to ask for. These came from searching the *operation* instead of the domain, and from reading a maker's whole catalogue. Each group is one hop; the URL is the product the hop landed on.
+
+| hop | products | examples |
+|---|---|---|
+| seller:atouchofthegods | 39 | [avoidlycocoon](https://atouchofthegods.gumroad.com/l/avoidlycocoon), [infinityaura](https://atouchofthegods.gumroad.com/l/infinityaura), [befreeofjudgement](https://atouchofthegods.gumroad.com/l/befreeofjudgement) |
+| occlusion culling | 34 | [Blender 3.3-5.3 Higgsas Geometry Nodes](https://higgsas.gumroad.com/l/wrusot), [Suite Nile — Egyptian Luxury Penthouse](https://davysh.gumroad.com/l/kaasv), [CLUB NEON Deluxe](https://mina1.gumroad.com/l/crtcx) |
+| squash stretch rig | 32 | [Rigging in Maya / Quick Start Part Two](https://riggingpro.gumroad.com/l/isiri), [Yamal - Cartoony rig for Maya](https://loganrigs.gumroad.com/l/zqorl), [SHAPE Course - Face Rig Module](https://armenpamokdjian.gumroad.com/l/stnfm) |
+| seller:3dtudor | 30 | [blender](https://3dtudor.gumroad.com/l/blender), [blender4ultimateguide](https://3dtudor.gumroad.com/l/blender4ultimateguide), [blender4](https://3dtudor.gumroad.com/l/blender4) |
+| toon outline shader | 29 | ["Peppermint" Customisable Head for VTu](https://nelaire.gumroad.com/l/tndczy), [Toon Shaders v1.6](https://hanmen.gumroad.com/l/ilywp), [Kris Dreemurr Model (Blender Rig + VRC](https://denmarkus.gumroad.com/l/apkzwi) |
+| subsurface scattering shader | 28 | [Novabeast Muscle Textures - Normal map](https://mmmos.gumroad.com/l/lcvpk), [Nardoragon Muscle Textures - Normal ma](https://mmmos.gumroad.com/l/owmff), [PBR Color Reference List & Color Calib](https://gbaran.gumroad.com/l/rjthlk) |
+| hair groom | 27 | [Ageless Style](https://davidrennerfashion.gumroad.com/l/fdjqzc), [WEDDING OUTFIT PACK / FOXIPAWS CELESTE](https://meowmelon.gumroad.com/l/bfveha), [StrandKit / The Hair, Fur & Dynamics L](https://ninodefoq.gumroad.com/l/ifpqd) |
+| matcap shader | 27 | [FemRex (Female Rexouium) (PC/Quest)](https://justper.gumroad.com/l/hhuodv), [Ace of Spades from Destiny 2 [VRChat]](https://pointlesscreations.gumroad.com/l/qtqhe), [NovaMaid - Novabeast Maid dress [ VRCH](https://fukaoni.gumroad.com/l/tbili) |
+| foliage shader | 26 | [Painterly Tree & Flora Creator: ShapeS](https://tradigital.gumroad.com/l/mefur), [Light Wrangler: Best Blender Lighting ](https://leonidaltman.gumroad.com/l/ffstxw), [- White Ascent - (Quest & PC) (NIGHT)](https://imbeemo.gumroad.com/l/befze) |
+| soft body simulation | 26 | [Bliss](https://atouchofthegods.gumroad.com/l/xcftnj), [Aqua Therapy](https://atouchofthegods.gumroad.com/l/ilbyf), [Fascia Regeneration and Rejuvenation](https://atouchofthegods.gumroad.com/l/yjjesc) |
+| texture atlas | 25 | [Atlas VRFX - Studio Light [VRChat]](https://atlasvrfx.gumroad.com/l/zsqux), [Novabeast / Nova Tech Wear- MMXXV](https://dasteel.gumroad.com/l/qbwbex), [Horse Anatomy Kit Commercial License. ](https://farzinizadyar.gumroad.com/l/jqann) |
+| translucent shader | 25 | [Pencil and Markers Brush Pack // PROCR](https://ayeoops.gumroad.com/l/bdwys), [Introduction to Interior Visualization](https://mographplus.gumroad.com/l/ogzap), [Pencil and Markers Brush Pack BUNDLE P](https://ayeoops.gumroad.com/l/edlbgm) |
+| vfx particles | 23 | [HydroFX 1.5.5](https://stormvfx.gumroad.com/l/bxcdab), [Wraith](https://meechu.gumroad.com/l/qgfsh), [Ultimate VFX Pack — The Complete Video](https://enchantedmediauk.gumroad.com/l/nvbjwi) |
+| fur shader | 23 | [SkylarFox II Twink Fox Base II VRChat ](https://skylarfoxvr.gumroad.com/l/xakevn), [Procreate MEGAPACK XXL: 2000+ Premium ](https://georgvw.gumroad.com/l/ghzuF), [Mantled Beast V2.1.2](https://luxaeterna.gumroad.com/l/fiowh) |
+| cloth simulation | 20 | [Tenpix Cloth](https://alirezaakhbari.gumroad.com/l/lmiiu), [Garment Studio (Beta) - Draft, Sew and](https://georgezaky108.gumroad.com/l/jpadzx), [A3D Procedural Generation Toolkit for ](https://ashlee3dee.gumroad.com/l/izqnta) |
+| lod generator | 20 | [TACTYC Gaussian Splat v2.0 — Gaussian ](https://tactyc.gumroad.com/l/dgmnyj), [G-Ready - Game Ready Modeling Tools](https://faridmammadov.gumroad.com/l/uzwvxd), [Roadscape 4.13 (Blender Procedural Roa](https://bampt.gumroad.com/l/udncg) |
+| decal projection | 20 | [The Ultimate Introduction to Octane Fo](https://mographplus.gumroad.com/l/pbxmho), [PBR Painter 3 for Blender](https://bytebrushstudio.gumroad.com/l/WQfMY), [Decalify - Turn Any Mesh Into a Decal ](https://hodgson3d.gumroad.com/l/cbfnrv) |
+| motion matching | 20 | [SickMotionz ToolBox Pro For Premiere P](https://motionzzy.gumroad.com/l/iabesh), [Make Movement Feel Real - 3 Hours of A](https://quantumstage.gumroad.com/l/uqomm), [Music Visualizer by VisualizerWave - a](https://unformaudio.gumroad.com/l/wslqc) |
+| gpu instancing | 19 | [BeamLight Control System(VRChat)](https://noriben3.gumroad.com/l/qpidx), [Blob Fusion](https://bartoszstyperek.gumroad.com/l/nqcbb), [LaserLight Shader (VRChat)](https://noriben3.gumroad.com/l/xtkksq) |
+| retarget animation | 19 | [CascadeBridge – Blender to Cascadeur f](https://ibr4him2.gumroad.com/l/rafwrh), [Full motion capture cleanup course for](https://pavelbarnev.gumroad.com/l/jXWDVB), [RealMotion Pro Blender Addon For Anima](https://pymarket.gumroad.com/l/tvxre) |
+| vertex color painter | 19 | [40% OFF🧨IN DESCRIPTION / Moriarty Hybr](https://neochroma.gumroad.com/l/fbhbyf), [B_PAINTBRUSH  - PAINTING LAYERS:  BLEN](https://nano3dart.gumroad.com/l/okatr), [[P.0.E] - Orion Jumpsuit](https://darksideralex.gumroad.com/l/tesvb) |
+| water simulation | 18 | [Complete ESG Career Builder Pack](https://esgcareerbuilder.gumroad.com/l/qfwwub), [Divinius Supremium Injection - (Potent](https://submorphic.gumroad.com/l/haskbb), [Water Shots Bundle](https://dancortes.gumroad.com/l/vfdgt) |
+| retopology tool | 17 | [MSD PointCloudSnap Pro Indie 3 seats](https://ytsejam.gumroad.com/l/vuvcic), [Character & Creature Art Mentorship & ](https://korln.gumroad.com/l/qeaer), [Drones & Photogrammetry](https://maxdepth.gumroad.com/l/tSiOQ) |
+| particle system | 15 | [Layla / Female / PC + Quest / VRCFT & ](https://heartmarksman.gumroad.com/l/apdyl), [Rizzo / Female/Femboy / PC + Quest / V](https://heartmarksman.gumroad.com/l/vdweqy), [Gwen / Female / PC + Quest / VRCFT & V](https://heartmarksman.gumroad.com/l/himsno) |
+| procedural scatter | 15 | [MatterAE](https://ablebaker.gumroad.com/l/scqmn), [OTOMO - Pipe Generator Plugin for Cine](https://corneliusdammrich.gumroad.com/l/clnvwi), [Anime Garden // Painterly Asset Librar](https://omarfaruqtawsif.gumroad.com/l/lbajds) |
+| god rays volumetric light | 15 | [BlendFog - Depth Fade Fog Shader](https://jesperbylov.gumroad.com/l/ayhrrl), [Goo Asset Pack - Spring 2025](https://dillongoo.gumroad.com/l/gwsfft), [Blender 4 UE5 & Aseprite: Game Designe](https://3dtudor.gumroad.com/l/fighom) |
+| ragdoll physics | 14 | [Dave (VRC Avatar)](https://ramiwatanuki.gumroad.com/l/zykcs), [David (VRC Avatar)](https://ramiwatanuki.gumroad.com/l/ucmxe), [VRChat Ragdoll System](https://littlewhinging.gumroad.com/l/ybibai) |
+| normal map baker | 14 | [SoMuchMaterials](https://somuchmonsters.gumroad.com/l/Xyttv), [MeshSplatter - Substance Designer](https://1086785678474.gumroad.com/l/txfbki), [N-Gone Pro 2.0](https://takerefuge3d.gumroad.com/l/xwdkp) |
+| rim light shader | 13 | [🧊 Fast Voxel Shader for VRChat 🆕](https://valuef.gumroad.com/l/edklge), [Eye Glint Poiyomi Shader](https://foxipso.gumroad.com/l/wuzwx), [arcane style shader addon  v1.0 and v2](https://agrimart.gumroad.com/l/nodfz) |
+| seller:noriben3 | 10 | [transparentscreen](https://noriben3.gumroad.com/l/transparentscreen), [blackkite](https://noriben3.gumroad.com/l/blackkite), [mirrorballlight](https://noriben3.gumroad.com/l/mirrorballlight) |
+| cubemap reflection | 8 | [[VRC] Glass/Refraction Shader](https://jayievr.gumroad.com/l/eznby), [PANDA GIRL 3.0 / VF+[OPTIMIZED]+[FT]+[](https://vframeassets.gumroad.com/l/lzwgh), [Dynamic Fake Liquid in a Bottle - UE M](https://morepawa.gumroad.com/l/xsfua) |
+| uv packing tool | 7 | [HairCard Forge — Advanced Hair Card Te](https://1136505014009.gumroad.com/l/hebrpd), [Rizom Bridge for Maya](https://optagon.gumroad.com/l/gqKcz), [Assetify / The Ultimate Bake & Export ](https://ninodefoq.gumroad.com/l/zjcemn) |
+| seller:ragdollphysics | 7 | [firstfive](https://ragdollphysics.gumroad.com/l/firstfive), [ice](https://ragdollphysics.gumroad.com/l/ice), [bucket](https://ragdollphysics.gumroad.com/l/bucket) |
+| seller:fasttracktutorials | 7 | [chkqqw](https://fasttracktutorials.gumroad.com/l/chkqqw), [myxny](https://fasttracktutorials.gumroad.com/l/myxny), [exzsi](https://fasttracktutorials.gumroad.com/l/exzsi) |
+| seller:trevital | 7 | [f](https://trevital.gumroad.com/l/f), [v](https://trevital.gumroad.com/l/v), [i](https://trevital.gumroad.com/l/i) |
+| seller:heartmarksman | 6 | [lhijmg](https://heartmarksman.gumroad.com/l/lhijmg), [rdutl](https://heartmarksman.gumroad.com/l/rdutl), [mdlxr](https://heartmarksman.gumroad.com/l/mdlxr) |
+| seller:maroc777772 | 4 | [zfzpfi](https://maroc777772.gumroad.com/l/zfzpfi), [xpzhk](https://maroc777772.gumroad.com/l/xpzhk), [rrzsdn](https://maroc777772.gumroad.com/l/rrzsdn) |
+| seller:mographplus | 4 | [awmbwxc](https://mographplus.gumroad.com/l/awmbwxc), [hbcvw](https://mographplus.gumroad.com/l/hbcvw), [kbfems](https://mographplus.gumroad.com/l/kbfems) |
+| navmesh pathfinding | 3 | [VRChat Pet Follower System](https://unrealakira.gumroad.com/l/esorl), [Agents](https://globglob.gumroad.com/l/pjcnm), [Shooter Example Project – Lyra Demo fo](https://neostarstudios.gumroad.com/l/xntfbz) |
+| seller:mina1 | 2 | [clubneon](https://mina1.gumroad.com/l/clubneon), [cpztr](https://mina1.gumroad.com/l/cpztr) |
 
 ---
 
