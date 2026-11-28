@@ -113,11 +113,11 @@ keeping —
 | navmesh | filled | path 1.13x straight through a gap |
 | normal mapping | filled | detail 2.425 -> 3.211, 101 -> 129 values |
 | retargeting | filled | round trip 5.55e-17, bind ignored costs 0.0427 |
-| fur | partial | shells give volume, not strands |
-| navmesh bake | open | solver works on a grid; mesh -> grid is the remaining work |
+| fur | **filled** | alpha-tested strand cards: 400 cards, 2.0% of frame newly covered |
+| navmesh bake | **filled** | 93.0% free of 9216 cells, detour 1.17x when the goal is behind a wall |
 | SSS / translucency | filled | wrapped terminator + tinted transmission: mean +5.1, max +27.7 levels, 30.1% of head pixels |
-| EXR / ProRes | open | needs a data pass to put in the EXR |
-| LOD | open | no mesh budget in the renderer |
+| EXR / ProRes | **EXR filled** | `exr.c` writes uncompressed HALF scanline EXR, verified `gbrpf16le` in ffprobe |
+| LOD | **filled** | sub-pixel cull: 22->18 ms near (identical frame), 134->49 ms far (2.74x) |
 
 ## What is still missing, and what it would take
 
