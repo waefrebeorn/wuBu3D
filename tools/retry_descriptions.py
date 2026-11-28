@@ -5,6 +5,7 @@ for 371 of them. The fix is not a clever header, it is patience: spaced requests
 and a checkpoint so a long run can be resumed.
 """
 
+import html
 import json
 import random
 import re
@@ -30,8 +31,18 @@ def grab(url):
             page = urllib.request.urlopen(req, timeout=25).read().decode("utf-8", "replace")
             m = re.search(r'<meta[^>]+name="description"[^>]+content="([^"]{5,400})"', page, re.I) or \
                 re.search(r'<meta[^>]+property="og:description"[^>]+content="([^"]{5,400})"', page, re.I)
+            body = ""
+            bm = re.search(r'"description":"([^"]{60,900})"', page, re.S)
+            if bm:
+                body = html.unescape(re.sub(r"<\/?[a-z][^>]*>", " ", bm.group(1)))
+                body = re.sub(r"\s+", " ", body).strip()
             if m:
-                return re.sub(r"\s+", " ", m.group(1)).strip().replace("|", "\\|")
+                meta = re.sub(r"\s+", " ", html.unescape(m.group(1))).strip()
+                # meta is cut at ~160 chars with an ellipsis; the body sentence is the real claim
+                out = body if (len(body) > len(meta) + 30) else meta
+                return out.replace("|", "\\|")
+            if body:
+                return body.replace("|", "\\|")
             return "_no description in metadata_"
         except Exception as e:
             if attempt == 2:

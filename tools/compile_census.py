@@ -63,6 +63,8 @@ BUILT = [
      "rbxmesh.py, rbxm.py", "506-triangle UGC item parsed end to end"),
     ("specular (Blinn-Phong half-vector, per-pixel) + depth of field from the z-buffer",
      "src/shade.c, render_shaded.py", "highlights 0 -> 3180 px over 200; bg variance 57 -> 42"),
+    ("per-pixel texture sampling with perspective-correct UVs",
+     "src/shade.c wubu_tex", "unique colours 85 -> 279, local detail 0.82 -> 4.30 on a checkerboard"),
 ]
 
 

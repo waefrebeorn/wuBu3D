@@ -23,6 +23,12 @@ static float g_spec = 0.0f;
 static float g_shin = 32.0f;
 void wubu_spec(float k, float shin) { g_spec = k; g_shin = shin > 0.5f ? shin : 0.5f; }
 
+/* texture sampling: one bound RGBA image, sampled per pixel through interpolated uv.
+   This is the gap every surface in this renderer has had since the first frame. */
+static const uint8_t *g_tex = 0;
+static int g_tw = 0, g_th = 0;
+void wubu_tex(const void *rgba, int w, int h) { g_tex = (const uint8_t *)rgba; g_tw = w; g_th = h; }
+
 
 typedef struct {
     float sx, sy, sz;      /* screen x, y and view depth */
@@ -89,12 +95,22 @@ int shade_tri(uint8_t *rgb, float *zb, int W, int H,
             float wx_ = pw * a->wx + qw * b->wx + rw * c->wx;
             float wy_ = pw * a->wy + qw * b->wy + rw * c->wy;
             float wz_ = pw * a->wz + qw * b->wz + rw * c->wz;
+            float tu = pw * a->u + qw * b->u + rw * c->u;
+            float tv = pw * a->v + qw * b->v + rw * c->v;
             float nx = pw * a->nx + qw * b->nx + rw * c->nx;
             float ny = pw * a->ny + qw * b->ny + rw * c->ny;
             float nz = pw * a->nz + qw * b->nz + rw * c->nz;
             float nl = sqrtf(nx * nx + ny * ny + nz * nz);
             if (nl > 1e-6f) { nx /= nl; ny /= nl; nz /= nl; }
 
+            float br = base[0], bg2 = base[1], bb = base[2];
+            if (g_tex && g_tw > 0 && g_th > 0) {
+                int ux = (int)(tu * (float)g_tw), uy = (int)(tv * (float)g_th);
+                ux = ((ux % g_tw) + g_tw) % g_tw;
+                uy = ((uy % g_th) + g_th) % g_th;
+                const uint8_t *t = g_tex + 4 * (uy * g_tw + ux);
+                br *= t[0] / 255.0f; bg2 *= t[1] / 255.0f; bb *= t[2] / 255.0f;
+            }
             float s = ambient;
             float spec = 0.0f;
             float ex0 = eye[0] - wx_, ey0 = eye[1] - wy_, ez0 = eye[2] - wz_;
@@ -133,9 +149,9 @@ int shade_tri(uint8_t *rgb, float *zb, int W, int H,
             }
 
             float sc = spec * 255.0f;
-            float r = base[0] * s + 255.0f * rim + sc;
-            float g = base[1] * s + 255.0f * rim + sc;
-            float bl = base[2] * s + 255.0f * rim + sc;
+            float r = br * s + 255.0f * rim + sc;
+            float g = bg2 * s + 255.0f * rim + sc;
+            float bl = bb * s + 255.0f * rim + sc;
             int o = (py * W + px) * 3;
             rgb[o + 0] = (uint8_t)clampf(r, 0.0f, 255.0f);
             rgb[o + 1] = (uint8_t)clampf(g, 0.0f, 255.0f);
