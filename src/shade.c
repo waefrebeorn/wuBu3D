@@ -42,6 +42,17 @@ void wubu_nmap(const void *rgba, int w, int h, float strength)
 }
 void wubu_nmap_off(void) { g_nmap = 0; }
 
+/* subsurface / translucency: wrap the lambert term so light bleeds past the terminator, plus a
+   back-light transmission term. Skin and wax read as skin and wax because of this and nothing else —
+   a wrapped terminator is the difference between a face and a painted box. */
+static float g_sss = 0.0f, g_sss_tint[3] = {1.0f, 0.62f, 0.52f};
+void wubu_sss(float k, float r, float g, float b)
+{
+    g_sss = k > 0.0f ? (k > 0.95f ? 0.95f : k) : 0.0f;
+    g_sss_tint[0] = r; g_sss_tint[1] = g; g_sss_tint[2] = b;
+}
+float wubu_sss_get(void) { return g_sss; }
+
 
 typedef struct {
     float sx, sy, sz;      /* screen x, y and view depth */
@@ -165,6 +176,7 @@ int shade_tri(uint8_t *rgb, float *zb, int W, int H,
 
             float s = ambient;
             float spec = 0.0f;
+            float spec_tint[3] = {0.0f, 0.0f, 0.0f};
             float ex0 = eye[0] - wx_, ey0 = eye[1] - wy_, ez0 = eye[2] - wz_;
             float el0 = sqrtf(ex0*ex0 + ey0*ey0 + ez0*ez0) + 1e-6f;
             ex0 /= el0; ey0 /= el0; ez0 /= el0;
@@ -174,6 +186,20 @@ int shade_tri(uint8_t *rgb, float *zb, int W, int H,
                 float d2 = dx * dx + dy * dy + dz * dz;
                 float d = sqrtf(d2) + 1e-5f;
                 float nd = (nx * dx + ny * dy + nz * dz) / d;
+                /* wrapped diffuse: (N.L + w) / (1 + w), so the terminator moves past 90 degrees */
+                if (g_sss > 0.0f) {
+                    float w = g_sss;
+                    float wrap = (nd + w) / (1.0f + w);
+                    if (wrap > 0.0f) {
+                        float fall = 1.0f / (1.0f + (0.55f / (L[3] * L[3])) * d2);
+                        float trans = -nd;              /* light coming through from behind */
+                        float t = trans > 0.0f ? trans * trans * w * 1.6f : 0.0f;
+                        s += gain * (wrap + t) * fall;
+                        spec_tint[0] += t * fall * g_sss_tint[0];
+                        spec_tint[1] += t * fall * g_sss_tint[1];
+                        spec_tint[2] += t * fall * g_sss_tint[2];
+                    }
+                }
                 if (nd > 0.0f) {
                     float fall = 1.0f / (1.0f + (0.55f / (L[3] * L[3])) * d2);
                     s += gain * nd * fall;
@@ -201,9 +227,11 @@ int shade_tri(uint8_t *rgb, float *zb, int W, int H,
             }
 
             float sc = spec * 255.0f;
-            float r = br * s + 255.0f * rim + sc;
-            float g = bg2 * s + 255.0f * rim + sc;
-            float bl = bb * s + 255.0f * rim + sc;
+            /* transmission is tinted by the material, not by the light: that is what makes it read as
+               light that travelled through something rather than light that bounced off it */
+            float r = br * s + 255.0f * rim + sc + 255.0f * spec_tint[0];
+            float g = bg2 * s + 255.0f * rim + sc + 255.0f * spec_tint[1];
+            float bl = bb * s + 255.0f * rim + sc + 255.0f * spec_tint[2];
             int o = (py * W + px) * 3;
             rgb[o + 0] = (uint8_t)clampf(r, 0.0f, 255.0f);
             rgb[o + 1] = (uint8_t)clampf(g, 0.0f, 255.0f);

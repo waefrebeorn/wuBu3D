@@ -114,7 +114,8 @@ keeping —
 | normal mapping | filled | detail 2.425 -> 3.211, 101 -> 129 values |
 | retargeting | filled | round trip 5.55e-17, bind ignored costs 0.0427 |
 | fur | partial | shells give volume, not strands |
-| SSS / translucency | open | needs a thickness pass and a material system |
+| navmesh bake | open | solver works on a grid; mesh -> grid is the remaining work |
+| SSS / translucency | filled | wrapped terminator + tinted transmission: mean +5.1, max +27.7 levels, 30.1% of head pixels |
 | EXR / ProRes | open | needs a data pass to put in the EXR |
 | LOD | open | no mesh budget in the renderer |
 
