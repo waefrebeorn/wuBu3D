@@ -48,13 +48,48 @@ out of the rasteriser, so every value above white was clamped flat. The stack is
 The point is not that the frame got brighter; it is that the 0.366 % of pixels that were hard white
 now carry a gradient, because the shoulder is a curve instead of a clamp.
 
+## Round two: cloth, navmesh, fur shells, retargeting
+
+    cloth:    384 particles, 728 constraints, mean stretch 4.483% of rest, 120 steps at 1/60
+    navmesh:  116 -> 48 points after string-pull, path 131.5 vs straight 116.0 (ratio 1.13),
+              2367 of 7560 free cells expanded
+    fur:      49 head faces -> 49 / 196 / 392 faces at 1, 4 and 8 shells
+    retarget: 5 joints mapped, round trip 5.55e-17 body units; ignoring the foreign bind costs 0.0427
+
+**`cloth.c`** — verlet with distance constraints, 6 iterations, damping 0.994, wind jitter. Stretch is
+the metric because it is the one thing a position-based solver can get visibly wrong: a cape at 40 %
+stretch is a net. 4.5 % holds its shape through a fall and a floor collision.
+
+**`navmesh.c`** — A\* on a cost field (not a bitmap: 0 blocked, 255 free, in between = expensive
+ground), 8-connected with corner-cut rejection, inflated by an agent radius, then string-pulled.
+**The smoother was wrong first**: it kept the waypoint that *failed* the line test, which invented
+shortcuts through walls, and the tell was a path shorter than the straight line — 89.4 against 116.0,
+a physical impossibility. Keeping the farthest *reachable* point instead gives 1.13, which is what a
+route through a gap should cost.
+
+**fur shells** — offset copies of the head along the face normal, tapered. The first attempt offset
+each vertex by the sign of its own coordinate, which just inflates the box; the panels looked
+identical at 4 and 8 shells. With normals and a 10 % taper the rim steps. Honest limit: without
+alpha-tested strand cards a shell stack reads as layered hair volume, not fur. That needs a stipple
+pass, not more shells.
+
+**`retarget.py`** — the name map is the easy half. The other half is the bind: a rotation is relative
+to a rest pose, so a rig bound 7/-11/4 degrees off ours imports bent by exactly that. Two bugs came
+out of testing it:
+
+- **Euler order.** `r15` composes `MX @ MY @ MZ`; the retarget module composed `Rz @ Ry @ Rx`. Every
+  angle it handed back was a different rotation than the one it decomposed — 0.074 body units.
+- **Both directions conjugated the same way.** `to_foreign` and `retarget_pose` applied identical
+  transforms, so they compounded the bind instead of cancelling it. The round trip has to be
+  conjugation by `M` in one direction and `M^T` in the other.
+
 ## What is still missing, and what it would take
 
 | gap | why it is still open |
 |---|---|
-| hair / fur | shells or cards need per-strand geometry; 31 products sell groom tools |
-| cloth / soft body | a verlet solver with distance and bend constraints — a weekend, not a paragraph |
+| strand fur | shells give volume, not strands; needs alpha-tested cards and a stipple pass |
 | normal mapping | needs a tangent basis per face in `shade.c`; the sampler exists |
-| retargeting | the joint names are ours only; a rest-pose offset table would close it |
+| SSS / translucency | a wrapped-lambert term and a thickness pass; no material system to hang it on |
 | EXR / ProRes | ffmpeg can do both; the missing piece is a data pass (depth, normal) to put in the EXR |
-| navmesh | A\* on a grid is easy; the mesh bake is the work |
+| LOD | decimation and a per-shot LOD bias; the renderer has no mesh budget |
+| navmesh bake | the solver works on a grid; turning a mesh into that grid is the remaining work |
