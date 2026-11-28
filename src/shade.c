@@ -119,6 +119,17 @@ static inline float _shadow_at(float wx, float wy, float wz)
     return taps ? (float)lit / (float)taps : 1.0f;
 }
 
+/* height fog: density falls off with altitude, so a floor fogs before a tower does. Applied per pixel
+   in view depth, which is what makes distance separate instead of everything washing out equally. */
+static float g_fogd = 0.0f, g_fogh = 0.0f;
+static float g_fogc[3] = {0.55f, 0.58f, 0.64f};
+void wubu_fog(float density, float height_falloff, const float color[3])
+{
+    g_fogd = density > 0.0f ? density : 0.0f;
+    g_fogh = height_falloff;
+    if (color) { g_fogc[0] = color[0]; g_fogc[1] = color[1]; g_fogc[2] = color[2]; }
+}
+
 /* one triangle: 3 verts, base colour, and the light set */
 int shade_tri(uint8_t *rgb, float *zb, int W, int H,
               const float *v, const float *base,
@@ -240,6 +251,7 @@ int shade_tri(uint8_t *rgb, float *zb, int W, int H,
             }
 
             float s = ambient;
+            float fog_add = 0.0f;
             float spec = 0.0f;
             float spec_tint[3] = {0.0f, 0.0f, 0.0f};
             float ex0 = eye[0] - wx_, ey0 = eye[1] - wy_, ez0 = eye[2] - wz_;
@@ -286,6 +298,16 @@ int shade_tri(uint8_t *rgb, float *zb, int W, int H,
             float sh = _shadow_at(wx_, wy_, wz_);
             s *= 0.30f + 0.70f * sh;
 
+            /* fog mixes toward the fog colour AFTER lighting: fog is air in front of the surface,
+               not a property of the surface, so it must not be multiplied by the surface shade */
+            if (g_fogd > 0.0f) {
+                float hz = expf(-g_fogh * fmaxf(0.0f, wy_));
+                float t = 1.0f - expf(-g_fogd * z * hz);
+                if (t > 1.0f) t = 1.0f;
+                s = s * (1.0f - t);
+                fog_add = t;
+            }
+
             float rim = 0.0f;
             if (rimk > 0.0f) {
                 float ex = eye[0] - wx_, ey = eye[1] - wy_, ez = eye[2] - wz_;
@@ -301,6 +323,11 @@ int shade_tri(uint8_t *rgb, float *zb, int W, int H,
             float r = br * s + 255.0f * rim + sc + 255.0f * spec_tint[0];
             float g = bg2 * s + 255.0f * rim + sc + 255.0f * spec_tint[1];
             float bl = bb * s + 255.0f * rim + sc + 255.0f * spec_tint[2];
+            if (fog_add > 0.0f) {                       /* mix toward the air, after the surface */
+                r = r * (1.0f - fog_add) + 255.0f * g_fogc[0] * fog_add;
+                g = g * (1.0f - fog_add) + 255.0f * g_fogc[1] * fog_add;
+                bl = bl * (1.0f - fog_add) + 255.0f * g_fogc[2] * fog_add;
+            }
             int o = (py * W + px) * 3;
             rgb[o + 0] = (uint8_t)clampf(r, 0.0f, 255.0f);
             rgb[o + 1] = (uint8_t)clampf(g, 0.0f, 255.0f);
