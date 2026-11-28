@@ -36,6 +36,20 @@ Sources live in `src/`. Around them:
 | `assets/` | OBJ test geometry; `props.meshes[]` imports any OBJ on both render paths |
 | `docs/` | measured notes: OIT, occlusion culling, the 10-step pipeline, SLERM provenance, security audit |
 
+## The SLERM battlefield
+
+`docs/SLERM_BATTLEFIELD.md` is a scraped census of the Roblox tool market: 168 listings from Gumroad
+search across 16 queries, 68 kept as Roblox-related, each row carrying its seller, price, the listing's
+own claim, and its source URL. A paid tool's description is a specification — it names the operation
+and the promise — which is enough to reimplement the operation in C11 and measure whether it holds.
+
+Capabilities already standing on that floor, with the number each one is judged by: per-pixel lighting
+(`src/shade.c`), adaptive auto-skinning and IK (`src/rig.c`), grip and surface placement
+(`src/grab.c`).
+
+> "to slerm is to raise the floor standards, do not feel bad you are on here, understand that time
+> marches forward, do not become a boomer"
+
 ## Run it
 
 ```bash
