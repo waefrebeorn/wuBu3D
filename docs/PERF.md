@@ -48,6 +48,21 @@ The batch path is not a different renderer. On the character test:
 
 The remaining 0.13 is antialiasing ties on shared edges.
 
+## End to end, and instancing
+
+A full short — 160 unique frames on twos at 720x1280, `footprints.mp4` — now renders in **118 s**
+wall clock, including the encode.
+
+The scatter field was the other Python-shaped cost. 847 instances is 5,082 quads, and building them
+through `CB.box` is 847 Python calls:
+
+    build: object layer 256.1 ms -> arrays 2.0 ms   126x
+    draw : object layer  53.9 ms -> arrays 56.4 ms  unchanged
+
+Draw time does not move, and should not: the object path already went through the batch. What
+instancing removes is the geometry construction, which was five times the draw cost itself.
+Verified against `CB.box` on unrotated instances: mean 0.01 levels, 0 pixels over 10.
+
 ## What is still slow
 
 - **Per-pixel shading with N point lights.** The inner loop does a sqrt and a pow per light; a
