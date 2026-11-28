@@ -179,3 +179,28 @@ int wubu_exr_passes(const char *path, const float *rgb, const float *z, const fl
     if (z) c[6] = (_ch){"Z", z, 0, 1};
     return _write(path, c, z ? 7 : 6, w, h);
 }
+
+
+/* the full comp set: beauty + depth + normals + motion, alphabetical B,G,NX,NY,NZ,R,VX,VY,Z.
+   Motion vectors are what let a comp do directional blur and retime without a re-render. */
+int wubu_exr_comp(const char *path, const float *rgb, const float *z, const float *nrm,
+                  const float *mv, int w, int h)
+{
+    if (!mv) return wubu_exr_passes(path, rgb, z, nrm, w, h);
+    /* build the list conditionally: a missing pass must be OMITTED, not filled with another pass's
+       data, or a comp reads depth out of NX and cannot tell */
+    _ch c[9];
+    int n = 0;
+    c[n++] = (_ch){"B", rgb, 2, 3};
+    c[n++] = (_ch){"G", rgb, 1, 3};
+    if (nrm) {
+        c[n++] = (_ch){"NX", nrm, 0, 3};
+        c[n++] = (_ch){"NY", nrm, 1, 3};
+        c[n++] = (_ch){"NZ", nrm, 2, 3};
+    }
+    c[n++] = (_ch){"R", rgb, 0, 3};
+    c[n++] = (_ch){"VX", mv, 0, 2};
+    c[n++] = (_ch){"VY", mv, 1, 2};
+    if (z) c[n++] = (_ch){"Z", z, 0, 1};
+    return _write(path, c, n, w, h);
+}
