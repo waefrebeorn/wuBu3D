@@ -1,0 +1,2384 @@
+{
+ "queries": [
+  "roblox plugin",
+  "roblox rig",
+  "roblox animation",
+  "roblox vfx",
+  "roblox ui kit",
+  "roblox studio tool",
+  "roblox npc",
+  "roblox combat",
+  "roblox inventory",
+  "roblox obby",
+  "roblox tycoon",
+  "roblox gun",
+  "roblox face",
+  "roblox texture",
+  "roblox map",
+  "roblox r15"
+ ],
+ "products": [
+  {
+   "name": "WEPPY Roblox Plugin Pro",
+   "seller": "Weppy",
+   "url": "https://weppy.gumroad.com/l/faccjs",
+   "price": "9.99",
+   "currency": "usd",
+   "query": "roblox plugin",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Studio Color - (Plugin)",
+   "seller": "MrQuaxkers",
+   "url": "https://mrquaxkers.gumroad.com/l/wbfovn",
+   "price": "6.99",
+   "currency": "usd",
+   "query": "roblox plugin",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Nisky's Ultimate R6IK Pose Pack for Blender",
+   "seller": "Nisky",
+   "url": "https://nisky.gumroad.com/l/vhibt",
+   "price": "5.00",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Starter Rigs (Blender 3.4+)",
+   "seller": "Softy",
+   "url": "https://softgb.gumroad.com/l/ytmdjz",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Rigs Suite",
+   "seller": "ComixProd.",
+   "url": "https://comixproductions.gumroad.com/l/xpqyw",
+   "price": "",
+   "currency": "gbp",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Worm Host Animation",
+   "seller": "Satch Nomad",
+   "url": "https://n5studios.gumroad.com/l/racij",
+   "price": "20.00",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Football Rig V1 (Blender 4.2+)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/ifhke",
+   "price": "10.00",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Rig Vault (Blender 4.0+)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/htzgj",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Blocky Finger Rig (Blender 4.0+)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/fpbjgc",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Cubic Face (Roblox Face Rig)",
+   "seller": "ComixProd.",
+   "url": "https://comixproductions.gumroad.com/l/crzat",
+   "price": "",
+   "currency": "gbp",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Multipurpose Cloth Rig (4.5+)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/hwthor",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Woman Blocky Legs Rig (Blender 4.0+)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/oqjvxf",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Glock R6 Roblox Rig for Moon Animator",
+   "seller": "Nisky",
+   "url": "https://nisky.gumroad.com/l/yaavw",
+   "price": "",
+   "currency": "czk",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "R15 Roblox Starter Rigs (TEMPORARY)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/jjhtt",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "R15 Roblox ANIMATION Rig (Blender -> Roblox Studio)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/zmyfl",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Fat Rig (4.0+)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/jiojiw",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "\u26bd Roblox Football/Soccer Rigs (Kit, Shoes, Trophies, ...)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/ovwtcn",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Starter Rigs 1.0 MODDED",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/xbrdsa",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Spider-Man Roblox Rig (4.4+)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/ogunp",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Blocky Rig | C4D R20+",
+   "seller": "Chastling",
+   "url": "https://chastling.gumroad.com/l/ahkbz",
+   "price": "1.50",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Profine's Roblox Toy Rig EDIT (Blender 4.0+)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/udkwsf",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "\ud83c\udfae Legendary Sky Champion Rig (Roblox: The Games)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/yowflf",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Starter Rigs (Blender 3.4+)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/pblgq",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "\ud83e\udd16 AEPBR Roblox Rig (BETA)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/wvyryw",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "\ud83e\udddf Roblox Zombie Rig (Blender 4.0+)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/quhwki",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Ultimate Roblox Rig",
+   "seller": "MattRBX",
+   "url": "https://mattrbx.gumroad.com/l/lnldn",
+   "price": "5.00",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "SuperRoblox (Roblox Rig)",
+   "seller": "ComixProd.",
+   "url": "https://comixproductions.gumroad.com/l/jFnRyz",
+   "price": "",
+   "currency": "gbp",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "R6 ROBLOX REALISTIC MOVEMENT/CAMERA SYSTEM",
+   "seller": "JUNIS",
+   "url": "https://clownjunis.gumroad.com/l/aorzrj",
+   "price": "9.99",
+   "currency": "usd",
+   "query": "roblox animation",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "25 Brainroit Pets for Fortnite UEFN/Roblox \ud83e\udde0",
+   "seller": "Eve3D_UEFN",
+   "url": "https://eve3duefn.gumroad.com/l/hvrti",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox animation",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Studio: Movement system (8 directions)",
+   "seller": "LionDev",
+   "url": "https://liondev.gumroad.com/l/cddbt",
+   "price": "12.00",
+   "currency": "usd",
+   "query": "roblox animation",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Rant Editing Resources",
+   "seller": "Hexa Visual",
+   "url": "https://hexavisual.gumroad.com/l/awhdb",
+   "price": "5.00",
+   "currency": "usd",
+   "query": "roblox animation",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "\ud83c\udfc3 Roblox Animation Starter Pack",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/knclku",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox animation",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Minimap For Roblox Studio",
+   "seller": "Nytrix Prime",
+   "url": "https://nytrixprime4.gumroad.com/l/zpipkh",
+   "price": "7.99",
+   "currency": "cad",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "INFINITE WORLDS:   How Gaming, Virtual Reality, AI Worldbuilding, and the Avatar Economy Are Creating the Most Important Economic Frontier Since the Internet",
+   "seller": "Fahri Karaka\u015f",
+   "url": "https://karakasfahri.gumroad.com/l/cvxvng",
+   "price": "4.99",
+   "currency": "usd",
+   "query": "roblox npc",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "[\u203c\ufe0fON SALE\u203c\ufe0f] Advanced Roblox NPC System",
+   "seller": "_mosES()",
+   "url": "https://mose5.gumroad.com/l/ggtge",
+   "price": "0.99",
+   "currency": "usd",
+   "query": "roblox npc",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Sword Combat & NPC System [ROBLOX]",
+   "seller": "Pierce",
+   "url": "https://piercedevelop.gumroad.com/l/swhwn",
+   "price": "5.00",
+   "currency": "usd",
+   "query": "roblox npc",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "[Roblox Studio]Advanced  (Suspicious)  NPC System",
+   "seller": "TheTomato",
+   "url": "https://thetomato.gumroad.com/l/hfmpt",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox npc",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Jojo Bizarre Incremental Script | Auto Combat, Auto Stats, + More",
+   "seller": "Rixtreat",
+   "url": "https://rixtreat.gumroad.com/l/nprkf",
+   "price": "0.99",
+   "currency": "usd",
+   "query": "roblox combat",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox FPS System",
+   "seller": "Jeynkins",
+   "url": "https://jeynkinsrbxlstudios.gumroad.com/l/gfmdgs",
+   "price": "12.00",
+   "currency": "usd",
+   "query": "roblox combat",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Design Academy - Learn Roblox Design",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/fiqpf",
+   "price": "23.40",
+   "currency": "usd",
+   "query": "roblox inventory",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Advanced Player Data System (Attributes + DataStore)",
+   "seller": "AB price",
+   "url": "https://abprice.gumroad.com/l/lprem",
+   "price": "50.00",
+   "currency": "usd",
+   "query": "roblox inventory",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "How To Design a Shop UI in Roblox Studio (Tutorial)",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/uhfiea",
+   "price": "6.00",
+   "currency": "usd",
+   "query": "roblox inventory",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Halloween Obby Game",
+   "seller": "Megalodons Studios",
+   "url": "https://megalodonsstudios1.gumroad.com/l/lzmkp",
+   "price": "7.19",
+   "currency": "usd",
+   "query": "roblox obby",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Obby Game",
+   "seller": "Megalodons Studios",
+   "url": "https://megalodonsstudios1.gumroad.com/l/hsaqy",
+   "price": "4.49",
+   "currency": "usd",
+   "query": "roblox obby",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox FPS Deathmatch Game",
+   "seller": "Megalodons Studios",
+   "url": "https://megalodonsstudios1.gumroad.com/l/xjkdc",
+   "price": "4.49",
+   "currency": "usd",
+   "query": "roblox gun",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Zombie Wave Game",
+   "seller": "Megalodons Studios",
+   "url": "https://megalodonsstudios1.gumroad.com/l/thlaa",
+   "price": "4.49",
+   "currency": "usd",
+   "query": "roblox gun",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Jeano's Gun Framework",
+   "seller": "Jeano",
+   "url": "https://scofieldstudios.gumroad.com/l/xvpxc",
+   "price": "1.00",
+   "currency": "usd",
+   "query": "roblox gun",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Murder Mystery Game",
+   "seller": "Megalodons Studios",
+   "url": "https://megalodonsstudios1.gumroad.com/l/fdwkuk",
+   "price": "4.49",
+   "currency": "usd",
+   "query": "roblox gun",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox First Person Shooter Game",
+   "seller": "Megalodons Studios",
+   "url": "https://megalodonsstudios1.gumroad.com/l/sstsz",
+   "price": "4.49",
+   "currency": "usd",
+   "query": "roblox gun",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Makeup Thumbnail Mannequin Template",
+   "seller": "Instance Enterprises",
+   "url": "https://instanceenterprises.gumroad.com/l/idggih",
+   "price": "10.00",
+   "currency": "usd",
+   "query": "roblox face",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Pepper's Roblox Face Assets: Ver 1.0",
+   "seller": "mors",
+   "url": "https://rblxmors.gumroad.com/l/yAZuE",
+   "price": "1.00",
+   "currency": "usd",
+   "query": "roblox face",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "40 Brainroit Pets V2 for Fortnite UEFN/Roblox \ud83e\udde0",
+   "seller": "Eve3D_UEFN",
+   "url": "https://eve3duefn.gumroad.com/l/umfhc",
+   "price": "55.30",
+   "currency": "usd",
+   "query": "roblox face",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Essential 20 Pets for Fortnite UEFN/Roblox \ud83d\udc07\ud83d\udc31",
+   "seller": "Eve3D_UEFN",
+   "url": "https://eve3duefn.gumroad.com/l/nvnec",
+   "price": "42.00",
+   "currency": "usd",
+   "query": "roblox face",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Cartoony Roblox Shader (Blender 3D)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/vouyo",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox face",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Stud Material",
+   "seller": "rKaype",
+   "url": "https://rkaype.gumroad.com/l/yhhjs",
+   "price": "15.00",
+   "currency": "usd",
+   "query": "roblox texture",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Kylie De'Amore | Procreate Art/Roblox Designing Brushes",
+   "seller": "kylie deamore",
+   "url": "https://kyliedeamore.gumroad.com/l/mudxs",
+   "price": "4.99",
+   "currency": "usd",
+   "query": "roblox texture",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "FIXED Kylie De'Amore | Procreate Roblox Pattern+Stamps Brushes",
+   "seller": "kylie deamore",
+   "url": "https://kyliedeamore.gumroad.com/l/jvzmq",
+   "price": "4.99",
+   "currency": "aud",
+   "query": "roblox texture",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Currency & Collectables Asset Pack #1 - UEFN / UE5 / ROBLOX",
+   "seller": "EAY Visuals",
+   "url": "https://eayvisuals.gumroad.com/l/vimbo",
+   "price": "20.00",
+   "currency": "gbp",
+   "query": "roblox texture",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "How to Design An Anime Units UI in Roblox Studio",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/vjvcdvq",
+   "price": "6.00",
+   "currency": "usd",
+   "query": "roblox texture",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Material Fixer+ Backface Culling Node (Blender)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/tztba",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox texture",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Ocean System",
+   "seller": "Tekleed",
+   "url": "https://tekleed.gumroad.com/l/qgvvc",
+   "price": "200.00",
+   "currency": "usd",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "DAV's Roblox Studio Prison Map",
+   "seller": "DAV",
+   "url": "https://mystique427.gumroad.com/l/zoccgh",
+   "price": "60.00",
+   "currency": "usd",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Stylized Environment | Oak Forest | Small 3D Asset Pack",
+   "seller": "Jeeno",
+   "url": "https://jeenodev.gumroad.com/l/qjgzmi",
+   "price": "15.99",
+   "currency": "usd",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Stylized Oak Forest | Full 3D Asset Pack",
+   "seller": "Jeeno",
+   "url": "https://jeenodev.gumroad.com/l/fqzaua",
+   "price": "24.99",
+   "currency": "usd",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "GP5 Soviet Gas Mask [VRChat | Roblox]",
+   "seller": "Mori Unofficial",
+   "url": "https://moriunofficial.gumroad.com/l/rpphn",
+   "price": "5.00",
+   "currency": "usd",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Boid System",
+   "seller": "Tekleed",
+   "url": "https://tekleed.gumroad.com/l/vxmjq",
+   "price": "15.00",
+   "currency": "usd",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Outlast Pack | Updated!",
+   "seller": "Jeynkins",
+   "url": "https://jeynkinsrbxlstudios.gumroad.com/l/ifkvke",
+   "price": "24.00",
+   "currency": "usd",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Escape A Tsunami (Cars Edition) | Roblox Studio",
+   "seller": "Nytrix Prime",
+   "url": "https://nytrixprime4.gumroad.com/l/dqsxd",
+   "price": "9.99",
+   "currency": "cad",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  }
+ ],
+ "all": [
+  {
+   "name": "SimpleAnime - Fast Anime / Retro Texturing",
+   "seller": "Nhance School",
+   "url": "https://nhanceschool.gumroad.com/l/dptffu",
+   "price": "19.00",
+   "currency": "usd",
+   "query": "roblox plugin",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Bloxporter",
+   "seller": "pure_bacn",
+   "url": "https://purebacn.gumroad.com/l/vrlfso",
+   "price": "9.99",
+   "currency": "usd",
+   "query": "roblox plugin",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "WEPPY Roblox Plugin Pro",
+   "seller": "Weppy",
+   "url": "https://weppy.gumroad.com/l/faccjs",
+   "price": "9.99",
+   "currency": "usd",
+   "query": "roblox plugin",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Phobos Utility Plus",
+   "seller": "PunIsIntendeds",
+   "url": "https://punisintendeds.gumroad.com/l/qlsmi",
+   "price": "9.99",
+   "currency": "usd",
+   "query": "roblox plugin",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Skybox - (Plugin)",
+   "seller": "MrQuaxkers",
+   "url": "https://mrquaxkers.gumroad.com/l/pjedcf",
+   "price": "9.99",
+   "currency": "usd",
+   "query": "roblox plugin",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Texture - (Plugin)",
+   "seller": "MrQuaxkers",
+   "url": "https://mrquaxkers.gumroad.com/l/aebhqo",
+   "price": "14.99",
+   "currency": "usd",
+   "query": "roblox plugin",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Qwinkle's PartIcles 2",
+   "seller": "QwinkleTee",
+   "url": "https://qwinkletee.gumroad.com/l/qazsec",
+   "price": "20.00",
+   "currency": "usd",
+   "query": "roblox plugin",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "UIZoom",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/avelx",
+   "price": "1.80",
+   "currency": "usd",
+   "query": "roblox plugin",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Weight Scatter - (Plugin)",
+   "seller": "MrQuaxkers",
+   "url": "https://mrquaxkers.gumroad.com/l/vhxkmj",
+   "price": "4.99",
+   "currency": "usd",
+   "query": "roblox plugin",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Studio Color - (Plugin)",
+   "seller": "MrQuaxkers",
+   "url": "https://mrquaxkers.gumroad.com/l/wbfovn",
+   "price": "6.99",
+   "currency": "usd",
+   "query": "roblox plugin",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Cinematic Camera",
+   "seller": "Flurk's Assets",
+   "url": "https://flurky.gumroad.com/l/bnnjz",
+   "price": "4.95",
+   "currency": "gbp",
+   "query": "roblox plugin",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Moon Animator 2 Plugin",
+   "seller": "kai",
+   "url": "https://realestkai.gumroad.com/l/bbsmm",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox plugin",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Nisky's Ultimate R6IK Pose Pack for Blender",
+   "seller": "Nisky",
+   "url": "https://nisky.gumroad.com/l/vhibt",
+   "price": "5.00",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Sketch2Pose \u2014 Draw Stickman, Generate 3D Pose",
+   "seller": "pRO Nano",
+   "url": "https://pronano.gumroad.com/l/tkmjzt",
+   "price": "15.00",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Starter Rigs (Blender 3.4+)",
+   "seller": "Softy",
+   "url": "https://softgb.gumroad.com/l/ytmdjz",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Rigs Suite",
+   "seller": "ComixProd.",
+   "url": "https://comixproductions.gumroad.com/l/xpqyw",
+   "price": "",
+   "currency": "gbp",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Voxel Weight Transfer",
+   "seller": "Jessy Leite",
+   "url": "https://jessyleite.gumroad.com/l/naphm",
+   "price": "25.00",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Worm Host Animation",
+   "seller": "Satch Nomad",
+   "url": "https://n5studios.gumroad.com/l/racij",
+   "price": "20.00",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Hazem Rig",
+   "seller": "ComixProd.",
+   "url": "https://comixproductions.gumroad.com/l/ppwik",
+   "price": "3.00",
+   "currency": "gbp",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Fluid Rig",
+   "seller": "ComixProd.",
+   "url": "https://comixproductions.gumroad.com/l/iinfw",
+   "price": "",
+   "currency": "gbp",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Football Rig V1 (Blender 4.2+)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/ifhke",
+   "price": "10.00",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Rig Vault (Blender 4.0+)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/htzgj",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Blocky Finger Rig (Blender 4.0+)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/fpbjgc",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Cloud Face",
+   "seller": "ComixProd.",
+   "url": "https://comixproductions.gumroad.com/l/fihye",
+   "price": "",
+   "currency": "gbp",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Cubic Face (Roblox Face Rig)",
+   "seller": "ComixProd.",
+   "url": "https://comixproductions.gumroad.com/l/crzat",
+   "price": "",
+   "currency": "gbp",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Multipurpose Cloth Rig (4.5+)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/hwthor",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Woman Blocky Legs Rig (Blender 4.0+)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/oqjvxf",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Glock R6 Roblox Rig for Moon Animator",
+   "seller": "Nisky",
+   "url": "https://nisky.gumroad.com/l/yaavw",
+   "price": "",
+   "currency": "czk",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "R15 Roblox Starter Rigs (TEMPORARY)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/jjhtt",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "R15 Roblox ANIMATION Rig (Blender -> Roblox Studio)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/zmyfl",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Fat Rig (4.0+)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/jiojiw",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "\u26bd Roblox Football/Soccer Rigs (Kit, Shoes, Trophies, ...)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/ovwtcn",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Starter Rigs 1.0 MODDED",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/xbrdsa",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Spider-Man Roblox Rig (4.4+)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/ogunp",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Blocky Rig | C4D R20+",
+   "seller": "Chastling",
+   "url": "https://chastling.gumroad.com/l/ahkbz",
+   "price": "1.50",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Profine's Roblox Toy Rig EDIT (Blender 4.0+)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/udkwsf",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "\ud83c\udfae Legendary Sky Champion Rig (Roblox: The Games)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/yowflf",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Starter Rigs (Blender 3.4+)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/pblgq",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "ViRig",
+   "seller": "ComixProd.",
+   "url": "https://comixproductions.gumroad.com/l/lbwgc",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "\ud83e\udd16 AEPBR Roblox Rig (BETA)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/wvyryw",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "\ud83e\udddf Roblox Zombie Rig (Blender 4.0+)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/quhwki",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Ultimate Roblox Rig",
+   "seller": "MattRBX",
+   "url": "https://mattrbx.gumroad.com/l/lnldn",
+   "price": "5.00",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Magma Rig (Blender 3.4+)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/embpw",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Rich Rig (Blender 3.4+)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/xsgzm",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "i5K Rig",
+   "seller": "ComixProd.",
+   "url": "https://comixproductions.gumroad.com/l/obfij",
+   "price": "",
+   "currency": "gbp",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Bookasaur Rig",
+   "seller": "ComixProd.",
+   "url": "https://comixproductions.gumroad.com/l/YMeCo",
+   "price": "",
+   "currency": "gbp",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "RBClickz",
+   "seller": "ComixProd.",
+   "url": "https://comixproductions.gumroad.com/l/JFGpo",
+   "price": "",
+   "currency": "gbp",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "SuperRoblox (Roblox Rig)",
+   "seller": "ComixProd.",
+   "url": "https://comixproductions.gumroad.com/l/jFnRyz",
+   "price": "",
+   "currency": "gbp",
+   "query": "roblox rig",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "FUGA - Imagined by Starkim1999 [VFX/VRChat]",
+   "seller": "Starkim1999",
+   "url": "https://starkim1999.gumroad.com/l/gwsrd",
+   "price": "25.00",
+   "currency": "eur",
+   "query": "roblox animation",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "In This Town\" Style Reels Director",
+   "seller": "Showrov.ai",
+   "url": "https://showrovai.gumroad.com/l/qwznno",
+   "price": "12.00",
+   "currency": "usd",
+   "query": "roblox animation",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "R6 ROBLOX REALISTIC MOVEMENT/CAMERA SYSTEM",
+   "seller": "JUNIS",
+   "url": "https://clownjunis.gumroad.com/l/aorzrj",
+   "price": "9.99",
+   "currency": "usd",
+   "query": "roblox animation",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Samurai Weapon Wheel",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/qrjucl",
+   "price": "11.40",
+   "currency": "usd",
+   "query": "roblox animation",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "25 Brainroit Pets for Fortnite UEFN/Roblox \ud83e\udde0",
+   "seller": "Eve3D_UEFN",
+   "url": "https://eve3duefn.gumroad.com/l/hvrti",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox animation",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Studio: Movement system (8 directions)",
+   "seller": "LionDev",
+   "url": "https://liondev.gumroad.com/l/cddbt",
+   "price": "12.00",
+   "currency": "usd",
+   "query": "roblox animation",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Old (Kinda broken) - Boom-Box (VRChat-SDK3)",
+   "seller": "Doloro",
+   "url": "https://doloro.gumroad.com/l/txufu",
+   "price": "3.50",
+   "currency": "gbp",
+   "query": "roblox animation",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Rant Editing Resources",
+   "seller": "Hexa Visual",
+   "url": "https://hexavisual.gumroad.com/l/awhdb",
+   "price": "5.00",
+   "currency": "usd",
+   "query": "roblox animation",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Weapon Profile UI",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/kaeps",
+   "price": "11.40",
+   "currency": "usd",
+   "query": "roblox animation",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "\ud83c\udfc3 Roblox Animation Starter Pack",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/knclku",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox animation",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Happy Birthday Grimace! (Animation File + Animation Timelapse)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/nbbxnn",
+   "price": "10.00",
+   "currency": "usd",
+   "query": "roblox animation",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Mega editing pack",
+   "seller": "Erikcopys",
+   "url": "https://erikcopys.gumroad.com/l/wyaxu",
+   "price": "1.99",
+   "currency": "usd",
+   "query": "roblox vfx",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Anime Simulator 2 UI Kit",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/hchgy",
+   "price": "11.40",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Murder Mystery 2 UI Kit",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/ysktp",
+   "price": "11.40",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Anime Units",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/hwxbz",
+   "price": "6.00",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Item Tooltip",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/ihsii",
+   "price": "1.80",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Anime Quests",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/stqzza",
+   "price": "3.00",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Blade Ball UI Kit",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/vnrev",
+   "price": "11.40",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Anime Settings",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/ydgqz",
+   "price": "3.00",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Futuristic Menu",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/gcpkd",
+   "price": "1.80",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Fantasy Menu",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/fnkkvp",
+   "price": "1.80",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Ability Toolbar",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/wjxwf",
+   "price": "1.80",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Admin Panel",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/agqaxz",
+   "price": "3.00",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Item Upgrade",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/vswms",
+   "price": "3.00",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Minimap For Roblox Studio",
+   "seller": "Nytrix Prime",
+   "url": "https://nytrixprime4.gumroad.com/l/zpipkh",
+   "price": "7.99",
+   "currency": "cad",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Rivals HUD",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/yztvhz",
+   "price": "1.80",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Anime Health 3",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/batgd",
+   "price": "1.80",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Xmas Collection - 64 Game Icons",
+   "seller": "Nindo Games UEFN",
+   "url": "https://nindogames.gumroad.com/l/irzcwk",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Anime Egg Shop",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/hkqiur",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Cartoon Health",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/metps",
+   "price": "1.80",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Anime Codes",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/skjcnx",
+   "price": "1.80",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Leaderboard",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/mlyha",
+   "price": "1.80",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Gifts Icon Pack - Halloween",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/gwzvtl",
+   "price": "3.00",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Simulator Gamepass Template 2",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/bacne",
+   "price": "1.80",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Scoreboard",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/zsaeq",
+   "price": "1.80",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Marketplace",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/rrbixg",
+   "price": "3.00",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Game Menu",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/laltvq",
+   "price": "4.80",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Animated Toggle",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/txoms",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Minimal Store",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/dhgwtk",
+   "price": "3.00",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Simulator Popup",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/ptdtjo",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Anime Inventory 2",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/hmmdv",
+   "price": "4.80",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Blade Ball Stats",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/clyrrx",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Player Profile",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/ywrvhe",
+   "price": "3.00",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Anime Simulator Kit V2",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/jibid",
+   "price": "11.97",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Cartoon Simulator UI Kit",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/affua",
+   "price": "11.40",
+   "currency": "usd",
+   "query": "roblox ui kit",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Web2Blox",
+   "seller": "VSHNRY",
+   "url": "https://vshnry.gumroad.com/l/vjocu",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox studio tool",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "How to Design a Vendor Shop UI in Figma",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/eabclr",
+   "price": "6.00",
+   "currency": "usd",
+   "query": "roblox studio tool",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Join & Leave Logger",
+   "seller": "Kaisen",
+   "url": "https://claritykaisen.gumroad.com/l/dmyns",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox studio tool",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Action Lightrooms",
+   "seller": "ComixProd.",
+   "url": "https://comixproductions.gumroad.com/l/rakhg",
+   "price": "",
+   "currency": "gbp",
+   "query": "roblox studio tool",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "INFINITE WORLDS:   How Gaming, Virtual Reality, AI Worldbuilding, and the Avatar Economy Are Creating the Most Important Economic Frontier Since the Internet",
+   "seller": "Fahri Karaka\u015f",
+   "url": "https://karakasfahri.gumroad.com/l/cvxvng",
+   "price": "4.99",
+   "currency": "usd",
+   "query": "roblox npc",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "[\u203c\ufe0fON SALE\u203c\ufe0f] Advanced Roblox NPC System",
+   "seller": "_mosES()",
+   "url": "https://mose5.gumroad.com/l/ggtge",
+   "price": "0.99",
+   "currency": "usd",
+   "query": "roblox npc",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Sword Combat & NPC System [ROBLOX]",
+   "seller": "Pierce",
+   "url": "https://piercedevelop.gumroad.com/l/swhwn",
+   "price": "5.00",
+   "currency": "usd",
+   "query": "roblox npc",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "[Roblox Studio]Advanced  (Suspicious)  NPC System",
+   "seller": "TheTomato",
+   "url": "https://thetomato.gumroad.com/l/hfmpt",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox npc",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Lua Scripting Full Course",
+   "seller": "Rodel Catampongan",
+   "url": "https://venuslock.gumroad.com/l/kibiI",
+   "price": "10.00",
+   "currency": "usd",
+   "query": "roblox combat",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Jojo Bizarre Incremental Script | Auto Combat, Auto Stats, + More",
+   "seller": "Rixtreat",
+   "url": "https://rixtreat.gumroad.com/l/nprkf",
+   "price": "0.99",
+   "currency": "usd",
+   "query": "roblox combat",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox FPS System",
+   "seller": "Jeynkins",
+   "url": "https://jeynkinsrbxlstudios.gumroad.com/l/gfmdgs",
+   "price": "12.00",
+   "currency": "usd",
+   "query": "roblox combat",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Design Academy - Learn Roblox Design",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/fiqpf",
+   "price": "23.40",
+   "currency": "usd",
+   "query": "roblox inventory",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Advanced Player Data System (Attributes + DataStore)",
+   "seller": "AB price",
+   "url": "https://abprice.gumroad.com/l/lprem",
+   "price": "50.00",
+   "currency": "usd",
+   "query": "roblox inventory",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Murder Mystery 2 Inventory",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/wgpdu",
+   "price": "6.00",
+   "currency": "usd",
+   "query": "roblox inventory",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "How To Design a Shop UI in Roblox Studio (Tutorial)",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/uhfiea",
+   "price": "6.00",
+   "currency": "usd",
+   "query": "roblox inventory",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Studs UI Button & Frame +15 Frame",
+   "seller": "ROKITS",
+   "url": "https://rokits.gumroad.com/l/gdrsvp",
+   "price": "5.00",
+   "currency": "usd",
+   "query": "roblox inventory",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "How To Design an Anime Inventory UI (Tutorial)",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/tceqo",
+   "price": "6.00",
+   "currency": "usd",
+   "query": "roblox inventory",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Halloween Obby Game",
+   "seller": "Megalodons Studios",
+   "url": "https://megalodonsstudios1.gumroad.com/l/lzmkp",
+   "price": "7.19",
+   "currency": "usd",
+   "query": "roblox obby",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Obby Game",
+   "seller": "Megalodons Studios",
+   "url": "https://megalodonsstudios1.gumroad.com/l/hsaqy",
+   "price": "4.49",
+   "currency": "usd",
+   "query": "roblox obby",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "25 Stylized Kicks for Fortnite UEFN \ud83d\udc5f",
+   "seller": "Eve3D_UEFN",
+   "url": "https://eve3duefn.gumroad.com/l/ahrqtz",
+   "price": "49.00",
+   "currency": "usd",
+   "query": "roblox tycoon",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "3 Stylized chest!! \ud83e\udd91 for UEFN",
+   "seller": "Eve3D_UEFN",
+   "url": "https://eve3duefn.gumroad.com/l/yvtfs",
+   "price": "6.30",
+   "currency": "usd",
+   "query": "roblox tycoon",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Tropical Royale Official Assets",
+   "seller": "Skittles",
+   "url": "https://sirskittles.gumroad.com/l/otlpj",
+   "price": "225.00",
+   "currency": "usd",
+   "query": "roblox gun",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox FPS Deathmatch Game",
+   "seller": "Megalodons Studios",
+   "url": "https://megalodonsstudios1.gumroad.com/l/xjkdc",
+   "price": "4.49",
+   "currency": "usd",
+   "query": "roblox gun",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Zombie Wave Game",
+   "seller": "Megalodons Studios",
+   "url": "https://megalodonsstudios1.gumroad.com/l/thlaa",
+   "price": "4.49",
+   "currency": "usd",
+   "query": "roblox gun",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Jeano's Gun Framework",
+   "seller": "Jeano",
+   "url": "https://scofieldstudios.gumroad.com/l/xvpxc",
+   "price": "1.00",
+   "currency": "usd",
+   "query": "roblox gun",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Murder Mystery Game",
+   "seller": "Megalodons Studios",
+   "url": "https://megalodonsstudios1.gumroad.com/l/fdwkuk",
+   "price": "4.49",
+   "currency": "usd",
+   "query": "roblox gun",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox First Person Shooter Game",
+   "seller": "Megalodons Studios",
+   "url": "https://megalodonsstudios1.gumroad.com/l/sstsz",
+   "price": "4.49",
+   "currency": "usd",
+   "query": "roblox gun",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Makeup Thumbnail Mannequin Template",
+   "seller": "Instance Enterprises",
+   "url": "https://instanceenterprises.gumroad.com/l/idggih",
+   "price": "10.00",
+   "currency": "usd",
+   "query": "roblox face",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "[BETA] Sebastian Solace",
+   "seller": "Bark'N'Byte!",
+   "url": "https://barknbyte.gumroad.com/l/htkeb",
+   "price": "30.00",
+   "currency": "usd",
+   "query": "roblox face",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Pepper's Roblox Face Assets: Ver 1.0",
+   "seller": "mors",
+   "url": "https://rblxmors.gumroad.com/l/yAZuE",
+   "price": "1.00",
+   "currency": "usd",
+   "query": "roblox face",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "40 Brainroit Pets V2 for Fortnite UEFN/Roblox \ud83e\udde0",
+   "seller": "Eve3D_UEFN",
+   "url": "https://eve3duefn.gumroad.com/l/umfhc",
+   "price": "55.30",
+   "currency": "usd",
+   "query": "roblox face",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "The Legend of Zelda icons for smartphone apps",
+   "seller": "Thibault Le\u00a0H\u00e9garat",
+   "url": "https://thibaultlh.gumroad.com/l/equxh",
+   "price": "4.00",
+   "currency": "eur",
+   "query": "roblox face",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "YOU, ONLY SYNTHETIC:  The $500 Billion Industry Selling Fake Humans, Digital Souls, and the Manufactured You",
+   "seller": "Fahri Karaka\u015f",
+   "url": "https://karakasfahri.gumroad.com/l/bgpwpb",
+   "price": "5.99",
+   "currency": "usd",
+   "query": "roblox face",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Essential 20 Pets for Fortnite UEFN/Roblox \ud83d\udc07\ud83d\udc31",
+   "seller": "Eve3D_UEFN",
+   "url": "https://eve3duefn.gumroad.com/l/nvnec",
+   "price": "42.00",
+   "currency": "usd",
+   "query": "roblox face",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Deep Sleep SFW PC&Quest",
+   "seller": "The Toxic Pit",
+   "url": "https://thetoxicpit.gumroad.com/l/dohzc",
+   "price": "15.00",
+   "currency": "usd",
+   "query": "roblox face",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Cartoony Roblox Shader (Blender 3D)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/vouyo",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox face",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Stud Material",
+   "seller": "rKaype",
+   "url": "https://rkaype.gumroad.com/l/yhhjs",
+   "price": "15.00",
+   "currency": "usd",
+   "query": "roblox texture",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Friendly Forest Pack: COMPLETE PACK",
+   "seller": "Mewn!",
+   "url": "https://mewn.gumroad.com/l/sgelq",
+   "price": "30.00",
+   "currency": "usd",
+   "query": "roblox texture",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "My Little Edge Brush - Vol.1 - Procreate Brushset",
+   "seller": "AVILABS by Ebonix",
+   "url": "https://avilabs.gumroad.com/l/hizpig",
+   "price": "5.00",
+   "currency": "usd",
+   "query": "roblox texture",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Kylie De'Amore | Procreate Art/Roblox Designing Brushes",
+   "seller": "kylie deamore",
+   "url": "https://kyliedeamore.gumroad.com/l/mudxs",
+   "price": "4.99",
+   "currency": "usd",
+   "query": "roblox texture",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "FIXED Kylie De'Amore | Procreate Roblox Pattern+Stamps Brushes",
+   "seller": "kylie deamore",
+   "url": "https://kyliedeamore.gumroad.com/l/jvzmq",
+   "price": "4.99",
+   "currency": "aud",
+   "query": "roblox texture",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Minecraft GOLDBITE 16X PVP TEXTURE PACK",
+   "seller": "Minecraft Kingdom",
+   "url": "https://minecraftkingdom.gumroad.com/l/zdvzf",
+   "price": "2.00",
+   "currency": "usd",
+   "query": "roblox texture",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "!Raiden!'s Umamusume Battleground Effects",
+   "seller": "!Raiden!",
+   "url": "https://aaraidenmk.gumroad.com/l/vkavs",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox texture",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Currency & Collectables Asset Pack #1 - UEFN / UE5 / ROBLOX",
+   "seller": "EAY Visuals",
+   "url": "https://eayvisuals.gumroad.com/l/vimbo",
+   "price": "20.00",
+   "currency": "gbp",
+   "query": "roblox texture",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "How to Design An Anime Units UI in Roblox Studio",
+   "seller": "gfxcomet",
+   "url": "https://gfxcomet.gumroad.com/l/vjvcdvq",
+   "price": "6.00",
+   "currency": "usd",
+   "query": "roblox texture",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "FREE: Wishing Well Model",
+   "seller": "Mewn!",
+   "url": "https://mewn.gumroad.com/l/jxhut",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox texture",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Material Fixer+ Backface Culling Node (Blender)",
+   "seller": "Paribes",
+   "url": "https://paribes.gumroad.com/l/tztba",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox texture",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "VRC Rainbow Charm, Earrings, Asset (Free)",
+   "seller": "OshenVR",
+   "url": "https://oshenvr.gumroad.com/l/fcsfi",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox texture",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Ocean System",
+   "seller": "Tekleed",
+   "url": "https://tekleed.gumroad.com/l/qgvvc",
+   "price": "200.00",
+   "currency": "usd",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "DAV's Roblox Studio Prison Map",
+   "seller": "DAV",
+   "url": "https://mystique427.gumroad.com/l/zoccgh",
+   "price": "60.00",
+   "currency": "usd",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Stylized Environment | Oak Forest | Small 3D Asset Pack",
+   "seller": "Jeeno",
+   "url": "https://jeenodev.gumroad.com/l/qjgzmi",
+   "price": "15.99",
+   "currency": "usd",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Stylized Oak Forest | Full 3D Asset Pack",
+   "seller": "Jeeno",
+   "url": "https://jeenodev.gumroad.com/l/fqzaua",
+   "price": "24.99",
+   "currency": "usd",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "GP5 Soviet Gas Mask [VRChat | Roblox]",
+   "seller": "Mori Unofficial",
+   "url": "https://moriunofficial.gumroad.com/l/rpphn",
+   "price": "5.00",
+   "currency": "usd",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "2800 Skeuomorphic Retro Mechanical Keyboard iPhone Icons Pack by Phikfyn",
+   "seller": "phikfyn",
+   "url": "https://phikfyn.gumroad.com/l/ptrog",
+   "price": "6.00",
+   "currency": "gbp",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Boid System",
+   "seller": "Tekleed",
+   "url": "https://tekleed.gumroad.com/l/vxmjq",
+   "price": "15.00",
+   "currency": "usd",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "1400 Black & White Minimalist iPhone App Icon Pack by Phikfyn\u2122",
+   "seller": "phikfyn",
+   "url": "https://phikfyn.gumroad.com/l/bJqlQq",
+   "price": "5.00",
+   "currency": "gbp",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "SIMON HARBOR - 30 Days Access",
+   "seller": "SIMON SHOP",
+   "url": "https://simonshop.gumroad.com/l/gstduf",
+   "price": "22.00",
+   "currency": "usd",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "700 Black Minimalist iPhone App Icon Pack by Phikfyn",
+   "seller": "phikfyn",
+   "url": "https://phikfyn.gumroad.com/l/NisvE",
+   "price": "4.00",
+   "currency": "gbp",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Fortnite Creative Revenue Blueprint",
+   "seller": "GeneralistProgrammer",
+   "url": "https://generalistprogrammer.gumroad.com/l/hbcgxg",
+   "price": "29.00",
+   "currency": "usd",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Roblox Outlast Pack | Updated!",
+   "seller": "Jeynkins",
+   "url": "https://jeynkinsrbxlstudios.gumroad.com/l/ifkvke",
+   "price": "24.00",
+   "currency": "usd",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "OZ Futura | 3D Model",
+   "seller": "undrglw",
+   "url": "https://undrglw.gumroad.com/l/ndbvv",
+   "price": "5.00",
+   "currency": "eur",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "GTA 6 Money Map",
+   "seller": "Mindset League",
+   "url": "https://mindsetleague.gumroad.com/l/lkxkzl",
+   "price": "",
+   "currency": "usd",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Govad Forged G46 Watts Duoblock | 3D Model",
+   "seller": "undrglw",
+   "url": "https://undrglw.gumroad.com/l/ovbqyj",
+   "price": "5.00",
+   "currency": "eur",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Brixton Forged TR05 Aerotech | 3D Model",
+   "seller": "undrglw",
+   "url": "https://undrglw.gumroad.com/l/nitfq",
+   "price": "6.00",
+   "currency": "eur",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Brixton Forged HS1 Circuit+ 3 piece | 3D Model",
+   "seller": "undrglw",
+   "url": "https://undrglw.gumroad.com/l/lewff",
+   "price": "5.00",
+   "currency": "eur",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "SSR Professor SP4 | 3D Model",
+   "seller": "undrglw",
+   "url": "https://undrglw.gumroad.com/l/bwezcb",
+   "price": "5.00",
+   "currency": "eur",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Escape A Tsunami (Cars Edition) | Roblox Studio",
+   "seller": "Nytrix Prime",
+   "url": "https://nytrixprime4.gumroad.com/l/dqsxd",
+   "price": "9.99",
+   "currency": "cad",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "ANRKY JDX-300 | 3D Model",
+   "seller": "undrglw",
+   "url": "https://undrglw.gumroad.com/l/xptpca",
+   "price": "5.00",
+   "currency": "eur",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "SSR GTX03 | 3D Model",
+   "seller": "undrglw",
+   "url": "https://undrglw.gumroad.com/l/rxmnz",
+   "price": "6.00",
+   "currency": "eur",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "WedsSport TC-005 | 3D Model",
+   "seller": "undrglw",
+   "url": "https://undrglw.gumroad.com/l/hvacl",
+   "price": "6.00",
+   "currency": "eur",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Buddyclub P1 Racing G1 | 3D Model",
+   "seller": "undrglw",
+   "url": "https://undrglw.gumroad.com/l/bgama",
+   "price": "5.00",
+   "currency": "eur",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "700 iOS Dark iPhone App Icon Pack by Phikfyn",
+   "seller": "phikfyn",
+   "url": "https://phikfyn.gumroad.com/l/qodsav",
+   "price": "4.00",
+   "currency": "gbp",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "Work T5R | 3D Model",
+   "seller": "undrglw",
+   "url": "https://undrglw.gumroad.com/l/yqrpdy",
+   "price": "5.00",
+   "currency": "eur",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "MV Forged MV10 | 3D Model",
+   "seller": "undrglw",
+   "url": "https://undrglw.gumroad.com/l/kbdycs",
+   "price": "5.00",
+   "currency": "eur",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  },
+  {
+   "name": "DRForged RC01 | 3D Model",
+   "seller": "undrglw",
+   "url": "https://undrglw.gumroad.com/l/hhtzwr",
+   "price": "5.00",
+   "currency": "eur",
+   "query": "roblox map",
+   "ratings": null,
+   "sales": null
+  }
+ ]
+}
