@@ -1,18 +1,16 @@
-/* exr.c — write a frame as OpenEXR, because a video pipeline that only emits 8-bit PNG has already
- * thrown away everything the tonemap did.
+/* exr.c — OpenEXR output with the passes that make it compositing data instead of a picture.
 
-Gap inventory said "EXR / ProRes — the missing piece is a data pass to put in the EXR". The pass is
-the easy half; the container is this file. Uncompressed scanline EXR, HALF channels, which every
-compositor reads (Nuke, Fusion, Blender, ffmpeg, OpenImageIO).
+The gap list said "EXR / ProRes — the missing piece is a data pass to put in the EXR"; FILM_GAPS.md
+ranked normal and depth passes above almost every feature, because a renderer that emits only a
+picture forces a re-render for every grade change. This writes:
 
-Layout, in the order it goes on disk:
-    magic (0x76 0x2F 0x31 0x01) + version (2)
-    header: attributes, each name\0 type\0 int32 size, payload; ends with a single \0
-    offset table: int64 per scanline, absolute file offsets
-    scanlines: int32 y, int32 size, then the channel planes for that scanline
+    wubu_exr         B, G, R
+    wubu_exr_z       B, G, R, Z
+    wubu_exr_passes  B, G, NX, NY, NZ, R, Z
 
-Channel order in the file must be alphabetical (B, G, R) — EXR sort order is by name, and a file with
-R,G,B is legal but readers that assume sorted chlist get confused.
+Uncompressed scanline, HALF channels, which every compositor reads. Channels must be written in
+alphabetical order — a chlist out of order is legal but readers that assume sorted get confused, and
+the same mistake with the wrong entry size produces a file ffprobe calls EXR with width 0.
 
     gcc -O2 -march=native -shared -fPIC -o libexr.so exr.c -lm
 */
@@ -34,10 +32,8 @@ static void _put(_buf *b, const void *src, size_t n)
     memcpy(b->p + b->n, src, n);
     b->n += n;
 }
-
 static void _put_str(_buf *b, const char *s) { _put(b, s, strlen(s) + 1); }
 static void _put_i32(_buf *b, int32_t v) { _put(b, &v, 4); }
-static void _put_i64(_buf *b, int64_t v) { _put(b, &v, 8); }
 
 /* float -> IEEE half, round to nearest even */
 static uint16_t _half(float f)
@@ -62,12 +58,12 @@ static uint16_t _half(float f)
     return (uint16_t)(sign | ((uint32_t)exp << 10) | (mant >> 13));
 }
 
-/* when set, a Z plane is written alongside beauty: the pass that turns a picture into comp data */
-static const float *g_z = 0;
+/* one output channel: where its value comes from, one sample per pixel */
+typedef struct { const char *name; const float *base; int off; int stride; } _ch;
 
-static int _exr(const char *path, const float *rgb, int w, int h, int nch)
+static int _write(const char *path, const _ch *ch, int nch, int w, int h)
 {
-    if (!path || !rgb || w < 1 || h < 1) return -1;
+    if (!path || !ch || nch < 1 || w < 1 || h < 1) return -1;
     _buf hd = {0, 0, 0};
 
     _put_str(&hd, "channels");
@@ -75,75 +71,62 @@ static int _exr(const char *path, const float *rgb, int w, int h, int nch)
     int32_t chsize_pos = (int32_t)hd.n;
     _put_i32(&hd, 0);
     size_t ch_start = hd.n;
-    const char *names[4] = {"B", "G", "R", "Z"};  /* alphabetical, as EXR requires */
-    int order[3] = {2, 1, 0};
     for (int c = 0; c < nch; ++c) {
-        _put_str(&hd, names[c]);
+        _put_str(&hd, ch[c].name);
         _put_i32(&hd, 1);                          /* pixelType = HALF */
-        /* pLinear is ONE byte plus THREE reserved bytes, not an int32. With 4 extra bytes here the
-           chlist is 15 bytes too long, ffprobe parses it as EXR with width 0, and ffmpeg reports
-           "Not yet implemented" — which is about the malformed header, not about half floats. */
+        /* pLinear is ONE byte then THREE reserved bytes, not an int32. Four extra bytes here makes
+           the chlist too long and ffprobe reports EXR with width 0. */
         _put(&hd, "\0\0\0\0", 4);
-        _put_i32(&hd, 1);                          /* xSampling */
-        _put_i32(&hd, 1);                          /* ySampling */
+        _put_i32(&hd, 1);
+        _put_i32(&hd, 1);
     }
-    _put(&hd, "\0", 1);                            /* end of chlist */
+    _put(&hd, "\0", 1);
     int32_t chsize = (int32_t)(hd.n - ch_start);
     memcpy(hd.p + chsize_pos, &chsize, 4);
 
     _put_str(&hd, "compression"); _put_str(&hd, "compression"); _put_i32(&hd, 1);
     _put(&hd, "\0", 1);                            /* NO_COMPRESSION */
 
+    int32_t zero = 0, xm = w - 1, ym = h - 1;
     _put_str(&hd, "dataWindow"); _put_str(&hd, "box2i"); _put_i32(&hd, 16);
-    int32_t z = 0, x0 = 0, y0 = 0, xm = w - 1, ym = h - 1;
-    _put(&hd, &z, 4); _put(&hd, &z, 4); _put(&hd, &xm, 4); _put(&hd, &ym, 4);
-
+    _put(&hd, &zero, 4); _put(&hd, &zero, 4); _put(&hd, &xm, 4); _put(&hd, &ym, 4);
     _put_str(&hd, "displayWindow"); _put_str(&hd, "box2i"); _put_i32(&hd, 16);
-    _put(&hd, &z, 4); _put(&hd, &z, 4); _put(&hd, &xm, 4); _put(&hd, &ym, 4);
-
+    _put(&hd, &zero, 4); _put(&hd, &zero, 4); _put(&hd, &xm, 4); _put(&hd, &ym, 4);
     _put_str(&hd, "lineOrder"); _put_str(&hd, "lineOrder"); _put_i32(&hd, 1);
-    _put(&hd, "\0", 1);                            /* INCREASING_Y */
-
+    _put(&hd, "\0", 1);
     _put_str(&hd, "pixelAspectRatio"); _put_str(&hd, "float"); _put_i32(&hd, 4);
     float par = 1.0f; _put(&hd, &par, 4);
-
     _put_str(&hd, "screenWindowCenter"); _put_str(&hd, "v2f"); _put_i32(&hd, 8);
     float swc[2] = {0.0f, 0.0f}; _put(&hd, swc, 8);
-
     _put_str(&hd, "screenWindowWidth"); _put_str(&hd, "float"); _put_i32(&hd, 4);
     float sww = 1.0f; _put(&hd, &sww, 4);
+    _put(&hd, "\0", 1);
 
-    _put(&hd, "\0", 1);                            /* end of header */
-
-    size_t header_end = 8 + hd.n;                  /* magic + version come first */
-    size_t line_bytes = 4 + 4 + (size_t)w * nch * 2;  /* y, size, planes */
-    size_t off_table = header_end;
-    size_t first = off_table + (size_t)h * 8;
+    size_t header_end = 8 + hd.n;
+    size_t line_bytes = 4 + 4 + (size_t)w * nch * 2;
+    size_t first = header_end + (size_t)h * 8;
 
     FILE *f = fopen(path, "wb");
     if (!f) { free(hd.p); return -2; }
     uint8_t magic[8] = {0x76, 0x2F, 0x31, 0x01, 0x02, 0x00, 0x00, 0x00};
     fwrite(magic, 1, 8, f);
     fwrite(hd.p, 1, hd.n, f);
-
     for (int y = 0; y < h; ++y) {
         int64_t off = (int64_t)(first + (size_t)y * line_bytes);
         fwrite(&off, 8, 1, f);
     }
 
     uint8_t *row = malloc((size_t)w * nch * 2);
+    if (!row) { fclose(f); free(hd.p); return -3; }
     for (int y = 0; y < h; ++y) {
         int32_t yy = y, sz = w * nch * 2;
         fwrite(&yy, 4, 1, f);
         fwrite(&sz, 4, 1, f);
         for (int c = 0; c < nch; ++c) {
-            /* order[] has three entries: indexing it with c==3 is undefined behaviour, which lets an
-               optimising compiler assume c<3 and delete the Z branch entirely. The plane was written
-               as a copy of R for exactly this reason. */
-            int src = (c < 3) ? order[c] : 0;
+            const float *base = ch[c].base;
+            int off = ch[c].off, stride = ch[c].stride;
             for (int x = 0; x < w; ++x) {
-                uint16_t hv = _half(c == 3 ? g_z[(size_t)y * w + x]
-                                           : rgb[((size_t)y * w + x) * 3 + src]);
+                uint16_t hv = _half(base[((size_t)y * w + x) * stride + off]);
                 row[((size_t)c * w + x) * 2 + 0] = (uint8_t)(hv & 0xFF);
                 row[((size_t)c * w + x) * 2 + 1] = (uint8_t)(hv >> 8);
             }
@@ -156,18 +139,43 @@ static int _exr(const char *path, const float *rgb, int w, int h, int nch)
     return 0;
 }
 
+static void _rgb_ch(_ch *dst, const float *rgb)
+{
+    dst[0] = (_ch){"B", rgb, 2, 3};
+    dst[1] = (_ch){"G", rgb, 1, 3};
+    dst[2] = (_ch){"R", rgb, 0, 3};
+}
 
 int wubu_exr(const char *path, const float *rgb, int w, int h)
 {
-    g_z = 0;
-    return _exr(path, rgb, w, h, 3);
+    _ch c[3];
+    _rgb_ch(c, rgb);
+    return _write(path, c, 3, w, h);
 }
 
-/* beauty + depth. A comp can defocus, fog or grade by this plane without a re-render, which is the
-   whole difference between an EXR and a PNG. */
+/* beauty + depth: a comp can defocus, fog or grade by this plane without a re-render */
 int wubu_exr_z(const char *path, const float *rgb, const float *z, int w, int h)
 {
     if (!z) return wubu_exr(path, rgb, w, h);
-    g_z = z;
-    return _exr(path, rgb, w, h, 4);
+    _ch c[4];
+    _rgb_ch(c, rgb);
+    c[3] = (_ch){"Z", z, 0, 1};
+    return _write(path, c, 4, w, h);
+}
+
+/* beauty + depth + normals, in alphabetical channel order: B, G, NX, NY, NZ, R, Z.
+   The normal pass is what lets a compositor relight the shot instead of re-rendering it. */
+int wubu_exr_passes(const char *path, const float *rgb, const float *z, const float *nrm,
+                    int w, int h)
+{
+    if (!nrm) return wubu_exr_z(path, rgb, z, w, h);
+    _ch c[7];
+    c[0] = (_ch){"B", rgb, 2, 3};
+    c[1] = (_ch){"G", rgb, 1, 3};
+    c[2] = (_ch){"NX", nrm, 0, 3};
+    c[3] = (_ch){"NY", nrm, 1, 3};
+    c[4] = (_ch){"NZ", nrm, 2, 3};
+    c[5] = (_ch){"R", rgb, 0, 3};
+    if (z) c[6] = (_ch){"Z", z, 0, 1};
+    return _write(path, c, z ? 7 : 6, w, h);
 }

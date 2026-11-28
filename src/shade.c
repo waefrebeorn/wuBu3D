@@ -76,6 +76,12 @@ static inline float clampf(float v, float lo, float hi) { return v < lo ? lo : (
 static int g_cull = 0;
 void wubu_cull(int on) { g_cull = on ? 1 : 0; }
 
+/* optional normal G-buffer: when bound, every shaded pixel also writes its world normal. This is the
+   pass a compositor needs to relight a shot without re-rendering it — the thing FILM_GAPS.md ranked
+   first, and the data the shader already has in hand. */
+static float *g_nbuf = 0;
+void wubu_gbuf(float *nbuf) { g_nbuf = nbuf; }
+
 /* one triangle: 3 verts, base colour, and the light set */
 int shade_tri(uint8_t *rgb, float *zb, int W, int H,
               const float *v, const float *base,
@@ -259,6 +265,10 @@ int shade_tri(uint8_t *rgb, float *zb, int W, int H,
             rgb[o + 1] = (uint8_t)clampf(g, 0.0f, 255.0f);
             rgb[o + 2] = (uint8_t)clampf(bl, 0.0f, 255.0f);
             zb[py * W + px] = z;
+            if (g_nbuf) {
+                int q = (py * W + px) * 3;
+                g_nbuf[q] = nx; g_nbuf[q + 1] = ny; g_nbuf[q + 2] = nz;
+            }
             drawn++;
         }
     }

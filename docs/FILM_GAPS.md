@@ -14,17 +14,22 @@ That is what lets a compositor put fog in front of a character and behind it wit
 We have a single z-buffer per pixel. **Status: not started.** Deep is a different data structure
 (per-pixel sample lists), not a channel.
 
-One channel of it, though, is cheap and I did it: `wubu_exr_z` writes beauty plus a **Z plane**, and
-the file is verified by walking its own chlist and decoding the plane — B, G, R, Z, with depth
-1.85–2.15 on the character rows, matching the render's 1.83–2.18. ffmpeg reads the beauty and ignores
-Z, which is exactly why the verification reads the bytes rather than asking ffprobe.
+Two channels of it, though, are cheap and I did them. `wubu_exr_z` writes beauty plus **Z**, and
+`wubu_exr_passes` writes **beauty + Z + normals** as `B, G, NX, NY, NZ, R, Z`. The shader already had
+the normal in hand, so the G-buffer is one store per pixel.
+
+Verified by walking the file's own chlist and decoding planes, not by asking ffprobe (which reads the
+beauty and ignores the rest): channels `['B', 'G', 'NX', 'NY', 'NZ', 'R', 'Z']`, a row through the
+subject carrying **2 distinct normal directions** (front and side faces), depth **1.93–2.09**, and a
+whole-box test giving exactly **6** distinct normals — a cube has six faces, so that is an exact
+check rather than a smoke test.
 
 ## What a comp pipeline has that we do not
 
 | capability | reference | wubu3d |
 |---|---|---|
 | deep images | Nuke, per-sample RGBA+depth | none — single z-buffer |
-| multi-channel passes | beauty, Z, normal, motion, AO, crypto | **Z done**, rest missing |
+| multi-channel passes | beauty, Z, normal, motion, AO, crypto | **Z + NX/NY/NZ done** (`wubu_gbuf`, `wubu_exr_passes`); motion, AO, crypto missing |
 | node graph | Fusion: "a node based workflow with hundreds of 2D and 3D tools" ([BMD](https://www.blackmagicdesign.com/products/davinciresolve/fusion)) | shot list in Python; no graph |
 | grade nodes | lift/gamma/gain, curves, LUTs, power windows | LAB statistics match + ACES; **no LUT** |
 | 2.5D cards | camera-projected cards with per-card depth | `plate.py` is 2D only |
