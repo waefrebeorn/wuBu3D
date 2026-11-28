@@ -32,18 +32,18 @@
   "cubemap reflection"
  ],
  "sellers": [
-  "3dtudor",
-  "mina1",
-  "mmmos",
-  "wolfsden3d",
-  "heartmarksman",
-  "maroc777772",
-  "mographplus",
-  "ragdollphysics",
-  "fasttracktutorials",
-  "noriben3",
-  "trevital",
-  "atouchofthegods"
+  "monochromecbn",
+  "aitorecheveste",
+  "fotoref",
+  "dustywhite",
+  "cawrigs",
+  "carlodiamanti",
+  "dragonskyrunner",
+  "promptblueprint",
+  "vfxgrace",
+  "2dcharacter",
+  "chule61",
+  "daoudyai"
  ],
  "hops": [
   {
@@ -5781,6 +5781,2702 @@
    "price": "",
    "query": "lilypad:atouchofthegods",
    "sub": "atouchofthegods"
+  },
+  {
+   "name": "** BLACK FRIDAY DISCOUNT!** The One Week Short in Moho \u2013 16+ Hours Video Tutorial Series",
+   "seller": "Joel Mayer",
+   "url": "https://joelmayer.gumroad.com/l/zrlpbt",
+   "price": "",
+   "sub": "joelmayer",
+   "query": "gap:2d rig"
+  },
+  {
+   "name": "LIZ&ROB",
+   "seller": "Animworkshop",
+   "url": "https://animworkshop.gumroad.com/l/apxrdw",
+   "price": "",
+   "sub": "animworkshop",
+   "query": "gap:2d rig"
+  },
+  {
+   "name": "Soap Dragons (VRChat Dragon Avatar Base)",
+   "seller": "ironicsoap",
+   "url": "https://ironicsoap.gumroad.com/l/syvap",
+   "price": "",
+   "sub": "ironicsoap",
+   "query": "gap:2d rig"
+  },
+  {
+   "name": "Push That Pose! Dynamic Posing Blueprint",
+   "seller": "Stefan Iverson",
+   "url": "https://gameanimation.gumroad.com/l/cismp",
+   "price": "",
+   "sub": "gameanimation",
+   "query": "gap:2d rig"
+  },
+  {
+   "name": "RESOLUME Plugin FX^EXTRUDE_TMBK",
+   "seller": "VJ Tembak",
+   "url": "https://vjtembak.gumroad.com/l/zpfbm",
+   "price": "",
+   "sub": "vjtembak",
+   "query": "gap:2d rig"
+  },
+  {
+   "name": "Your Professional 2D RIG | Moho",
+   "seller": "Lucas Fran\u00e7a",
+   "url": "https://lucasfranca.gumroad.com/l/mivrd",
+   "price": "",
+   "sub": "lucasfranca",
+   "query": "gap:2d rig"
+  },
+  {
+   "name": "Sonnie Toon Boom Harmony Character Rig",
+   "seller": "Sean \ud83c\udf44 Youtuber, Animator, Illustrator, Streamer",
+   "url": "https://drawnsean.gumroad.com/l/demex",
+   "price": "",
+   "sub": "drawnsean",
+   "query": "gap:2d rig"
+  },
+  {
+   "name": "Jane Doe: Zenless Zone Zero (Blender/SFM)",
+   "seller": "MayoSplash",
+   "url": "https://mayosplash34.gumroad.com/l/rglbuz",
+   "price": "",
+   "sub": "mayosplash34",
+   "query": "gap:2d rig"
+  },
+  {
+   "name": "PROTOVALI [Protogen + avali]",
+   "seller": "ItsFloofy",
+   "url": "https://jinxyuwu.gumroad.com/l/yjqfss",
+   "price": "",
+   "sub": "jinxyuwu",
+   "query": "gap:2d rig"
+  },
+  {
+   "name": "Voseus  (ChilloutVR / VRChat PC & Android Avatar)",
+   "seller": "DragonSkyRunner",
+   "url": "https://dragonskyrunner.gumroad.com/l/jsost",
+   "price": "",
+   "sub": "dragonskyrunner",
+   "query": "gap:2d rig"
+  },
+  {
+   "name": "PACKFOLD",
+   "seller": "zakariah04",
+   "url": "https://zakariah04.gumroad.com/l/gteqs",
+   "price": "",
+   "sub": "zakariah04",
+   "query": "gap:2d rig"
+  },
+  {
+   "name": "Batman",
+   "seller": "Tobi-Face",
+   "url": "https://tobifacetube.gumroad.com/l/wlxxxmn",
+   "price": "",
+   "sub": "tobifacetube",
+   "query": "gap:2d rig"
+  },
+  {
+   "name": "Level Up Your Vtuber Model Art & Rigging! - Live2D Advanced Body Movements Walkthrough (Vtuber Base Included)",
+   "seller": "Bep\u00efn~chan",
+   "url": "https://bepin.gumroad.com/l/ullip",
+   "price": "",
+   "sub": "bepin",
+   "query": "gap:2d rig"
+  },
+  {
+   "name": "Osman 360\u00b0 Character Rig in Moho pro \u2013 Full Body, Face & Hand Rotation",
+   "seller": "Rigging factory",
+   "url": "https://riggingfactory.gumroad.com/l/aefivi",
+   "price": "",
+   "sub": "riggingfactory",
+   "query": "gap:2d rig"
+  },
+  {
+   "name": "LightPlot Pro",
+   "seller": "Heinz Marc Schneider",
+   "url": "https://marctec.gumroad.com/l/yfpozw",
+   "price": "",
+   "sub": "marctec",
+   "query": "gap:2d rig"
+  },
+  {
+   "name": "Grease Pencil Texture Brushes Pack | Paint in Blender | 200 BRUSHES!",
+   "seller": "Dantti",
+   "url": "https://dantti.gumroad.com/l/QnUBO",
+   "price": "",
+   "sub": "dantti",
+   "query": "gap:2d rig"
+  },
+  {
+   "name": "Anatomy of a 30sec Short, vol.3: Toon Boom Harmony 2D Character Rigging",
+   "seller": "TonyTeach Store",
+   "url": "https://tonyteach.gumroad.com/l/DUzze",
+   "price": "",
+   "sub": "tonyteach",
+   "query": "gap:2d rig"
+  },
+  {
+   "name": "Maximus Draconis (ChilloutVR / VRChat Avatar Base)",
+   "seller": "DragonSkyRunner",
+   "url": "https://dragonskyrunner.gumroad.com/l/unijkn",
+   "price": "",
+   "sub": "dragonskyrunner",
+   "query": "gap:2d rig"
+  },
+  {
+   "name": "200 Characters For 2d Animation With Free Background Images and Video Tutorials",
+   "seller": "Emstories",
+   "url": "https://emstories.gumroad.com/l/dllsoh",
+   "price": "",
+   "sub": "emstories",
+   "query": "gap:2d rig"
+  },
+  {
+   "name": "No Rigging Required Animate Professional Fight Scenes in Minutes \u2014 The Ultimate Stick Figure Character Rig for Moho Studio",
+   "seller": "Explode Your 2d Animation Game",
+   "url": "https://anim8me.gumroad.com/l/muijs",
+   "price": "",
+   "sub": "anim8me",
+   "query": "gap:2d rig"
+  },
+  {
+   "name": "All-in-one - 2D Fx Tutorial Bundle",
+   "seller": "DucVu FX",
+   "url": "https://ducvu.gumroad.com/l/rmypsx",
+   "price": "",
+   "sub": "ducvu",
+   "query": "gap:spine animation"
+  },
+  {
+   "name": "Universal AFK Beast Animations Pack [VRChat] (Novabeast, Rexouium, Nardoragon, Foxi and more)",
+   "seller": "HiMasters",
+   "url": "https://himasters.gumroad.com/l/orqmqh",
+   "price": "",
+   "sub": "himasters",
+   "query": "gap:spine animation"
+  },
+  {
+   "name": "Cycler",
+   "seller": "Dmitrii Kolpakov",
+   "url": "https://dkolpakov.gumroad.com/l/fhehk",
+   "price": "",
+   "sub": "dkolpakov",
+   "query": "gap:spine animation"
+  },
+  {
+   "name": "100 AI Animation Prompt Pack | 20 Master Prompts + Prompt Engineering Guide",
+   "seller": "Prompt AI Blueprint",
+   "url": "https://promptblueprint.gumroad.com/l/dzekcw",
+   "price": "",
+   "sub": "promptblueprint",
+   "query": "gap:spine animation"
+  },
+  {
+   "name": "Male Lion Animated | 3D Blender Models",
+   "seller": "VFX Grace",
+   "url": "https://vfxgrace.gumroad.com/l/mydbl",
+   "price": "",
+   "sub": "vfxgrace",
+   "query": "gap:spine animation"
+  },
+  {
+   "name": "I Will Animate your 2D Game Character in Spine Pro.",
+   "seller": "MoroDesign",
+   "url": "https://morodesign.gumroad.com/l/qnwzik",
+   "price": "",
+   "sub": "morodesign",
+   "query": "gap:spine animation"
+  },
+  {
+   "name": "Wilson - White Tiger Rig",
+   "seller": "Creature Animation Workshop",
+   "url": "https://cawrigs.gumroad.com/l/ecluj",
+   "price": "",
+   "sub": "cawrigs",
+   "query": "gap:spine animation"
+  },
+  {
+   "name": "Throughline App \u2014 Story Development & Writing",
+   "seller": "Albert Bozesan",
+   "url": "https://albertbozesan.gumroad.com/l/xgjnca",
+   "price": "",
+   "sub": "albertbozesan",
+   "query": "gap:spine animation"
+  },
+  {
+   "name": "ANISHTER \u3010Original 3D Model \u3011",
+   "seller": "BAKENOGAWA \u00d7 MAOPAIBOX",
+   "url": "https://bakenogawa.gumroad.com/l/inxwq",
+   "price": "",
+   "sub": "bakenogawa",
+   "query": "gap:spine animation"
+  },
+  {
+   "name": "214 Chibi Spine 2D Character Animation Pack",
+   "seller": "2dcharacter",
+   "url": "https://2dcharacter.gumroad.com/l/lavukq",
+   "price": "",
+   "sub": "2dcharacter",
+   "query": "gap:spine animation"
+  },
+  {
+   "name": "Rajah - Bengal Tiger Rig",
+   "seller": "Creature Animation Workshop",
+   "url": "https://cawrigs.gumroad.com/l/teclwa",
+   "price": "",
+   "sub": "cawrigs",
+   "query": "gap:spine animation"
+  },
+  {
+   "name": "Savannah Pro version - Lioness rig",
+   "seller": "Creature Animation Workshop",
+   "url": "https://cawrigs.gumroad.com/l/psfvqr",
+   "price": "",
+   "sub": "cawrigs",
+   "query": "gap:spine animation"
+  },
+  {
+   "name": "VRC Kunay Deluxe Hair \ud83c\udf38",
+   "seller": "AIDENFUR",
+   "url": "https://aidenart.gumroad.com/l/cAeKc",
+   "price": "",
+   "sub": "aidenart",
+   "query": "gap:spine animation"
+  },
+  {
+   "name": "Packages 400+ Spine 2D Animation Project files in anime style",
+   "seller": "2dcharacter",
+   "url": "https://2dcharacter.gumroad.com/l/rqiex",
+   "price": "",
+   "sub": "2dcharacter",
+   "query": "gap:spine animation"
+  },
+  {
+   "name": "Blender Advanced Rigging Case Study - 3D Character Eurasian Wolf",
+   "seller": "VFX Grace",
+   "url": "https://vfxgrace.gumroad.com/l/tmhmj",
+   "price": "",
+   "sub": "vfxgrace",
+   "query": "gap:spine animation"
+  },
+  {
+   "name": "Super Spline v 1.0 for LightWave 2025+",
+   "seller": "Small Animations",
+   "url": "https://smallanimations.gumroad.com/l/ynyfgd",
+   "price": "",
+   "sub": "smallanimations",
+   "query": "gap:spine animation"
+  },
+  {
+   "name": "VFenix Particle System PRO for Spine 2D",
+   "seller": "Mihajlo Nikolic",
+   "url": "https://mixa273.gumroad.com/l/lunliv",
+   "price": "",
+   "sub": "mixa273",
+   "query": "gap:spine animation"
+  },
+  {
+   "name": "Minecraft \u2014 Books Pack",
+   "seller": "Amyzinq",
+   "url": "https://amyzinq.gumroad.com/l/fxtspu",
+   "price": "",
+   "sub": "amyzinq",
+   "query": "gap:spine animation"
+  },
+  {
+   "name": "The 3D Reel Playbook",
+   "seller": "So That's How",
+   "url": "https://sothatshow.gumroad.com/l/bogmif",
+   "price": "",
+   "sub": "sothatshow",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "F\u00e1brica de Porqu\u00e9s",
+   "seller": "Un minuto de porqu\u00e9s",
+   "url": "https://rubenito08.gumroad.com/l/ijdpp",
+   "price": "",
+   "sub": "rubenito08",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "Custom Explainer Video (Script + Design + Animation + Voiceover)",
+   "seller": "DesignLab Studio",
+   "url": "https://designlabstudio.gumroad.com/l/fxxng",
+   "price": "",
+   "sub": "designlabstudio",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "Skill kit for Claude/ChatGPT download",
+   "seller": "Jesus Barranquero",
+   "url": "https://chule61.gumroad.com/l/tdotoi",
+   "price": "",
+   "sub": "chule61",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "Top Five Teardowns: Product Videos Broken Down From Script to Screen",
+   "seller": "Rayna van Beuzekom",
+   "url": "https://cruxrayna.gumroad.com/l/xggbev",
+   "price": "",
+   "sub": "cruxrayna",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "The Personal Brand Hub (Full Operating System + Implementation Course)",
+   "seller": "notus",
+   "url": "https://notus.gumroad.com/l/zvvkit",
+   "price": "",
+   "sub": "notus",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "Minimal MicroMotion Sound Bundle",
+   "seller": "Penrose Audio",
+   "url": "https://penroseaudio.gumroad.com/l/szalcr",
+   "price": "",
+   "sub": "penroseaudio",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "AI App Explainer Storyboard Kit \u2014 EUR",
+   "seller": "Daoud AI Workflows",
+   "url": "https://daoudyai.gumroad.com/l/gropyh",
+   "price": "",
+   "sub": "daoudyai",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "Essential Motion 3.1 - World-class Premiere Pro Motion Presets",
+   "seller": "Piotr Toczynski",
+   "url": "https://cuttothepoint.gumroad.com/l/gundi",
+   "price": "",
+   "sub": "cuttothepoint",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "REPOSPRITES Mentor Reels: \ud83c\udde9\ud83c\uddea Erkl\u00e4r-Reels aus einem Prompt / \ud83c\uddec\ud83c\udde7 Explainer reels from one prompt",
+   "seller": "REPOSPRITES",
+   "url": "https://reposprite.gumroad.com/l/dqyitw",
+   "price": "",
+   "sub": "reposprite",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "CoLab: Notion Team Template",
+   "seller": "Productive Setups",
+   "url": "https://productivesetups.gumroad.com/l/akfham",
+   "price": "",
+   "sub": "productivesetups",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "AI Motion Graphics Skill",
+   "seller": "Virex Explains",
+   "url": "https://virex6.gumroad.com/l/wqgohp",
+   "price": "",
+   "sub": "virex6",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "Skill file (scribble edition)",
+   "seller": "Jesus Barranquero",
+   "url": "https://chule61.gumroad.com/l/lnmftt",
+   "price": "",
+   "sub": "chule61",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "AI App Explainer Storyboard Kit \u2014 GBP",
+   "seller": "Daoud AI Workflows",
+   "url": "https://daoudyai.gumroad.com/l/wdxlp",
+   "price": "",
+   "sub": "daoudyai",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "15 Claude Cowork Skills I Can\u2019t Live Without (steal them)",
+   "seller": "Brock Mesarich",
+   "url": "https://brockster6202.gumroad.com/l/nikids",
+   "price": "",
+   "sub": "brockster6202",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "Background Painting For Animation",
+   "seller": "Daniel Clarke",
+   "url": "https://danielclarkeart.gumroad.com/l/ocaxl",
+   "price": "",
+   "sub": "danielclarkeart",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "The Stickman Channel Kit: 100 Topics, 5 Commands & 10 Characters for AI Stickman Videos",
+   "seller": "Prompt AI Blueprint",
+   "url": "https://promptblueprint.gumroad.com/l/ohvvlz",
+   "price": "",
+   "sub": "promptblueprint",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "The Gemini Content OS",
+   "seller": "AI Creator Coach",
+   "url": "https://aicreatorcoach.gumroad.com/l/ienobw",
+   "price": "",
+   "sub": "aicreatorcoach",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "Unfiltered: The Startup Employer Brand Playbook",
+   "seller": "Open Org",
+   "url": "https://openorg.gumroad.com/l/ebxayx",
+   "price": "",
+   "sub": "openorg",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "Dynamic Grid Pro | SaaS-Style Grid Animations for After Effects",
+   "seller": "normie.fx",
+   "url": "https://normiefx.gumroad.com/l/qqcxf",
+   "price": "",
+   "sub": "normiefx",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "The Ultimate Relationship Toolkit Bundle for Therapists and Coaches",
+   "seller": "Lara Hammock Therapy and Couples Counseling",
+   "url": "https://laratherapy.gumroad.com/l/aiklbm",
+   "price": "",
+   "sub": "laratherapy",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "The IMPACT Animator",
+   "seller": "ToonWright",
+   "url": "https://toonwright.gumroad.com/l/keywwm",
+   "price": "",
+   "sub": "toonwright",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "The Complete Collection: All 4 Prompt Books + 6 Guides (506 AI Prompts)",
+   "seller": "Nova Autonomous",
+   "url": "https://novaautonomous.gumroad.com/l/ygaaz",
+   "price": "",
+   "sub": "novaautonomous",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "Pomotopia",
+   "seller": "Zakir Jaafar",
+   "url": "https://zakirjaafar.gumroad.com/l/PbgDy",
+   "price": "",
+   "sub": "zakirjaafar",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "Mr Space Explainer Video Production Blueprint",
+   "seller": "Zanzy Studio",
+   "url": "https://zanzystudio.gumroad.com/l/rdmixj",
+   "price": "",
+   "sub": "zanzystudio",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "Motion Explainer Animation Glow (Project Files)",
+   "seller": "Doni Irawan",
+   "url": "https://callirwn.gumroad.com/l/sdxmh",
+   "price": "",
+   "sub": "callirwn",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "The Ultimate AI Image Generation Toolkit",
+   "seller": "Aleiah",
+   "url": "https://aleiah76.gumroad.com/l/zsrjx",
+   "price": "",
+   "sub": "aleiah76",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "Plaits - Max For Live",
+   "seller": "Deacon DeVries",
+   "url": "https://deacondevries.gumroad.com/l/mxvwar",
+   "price": "",
+   "sub": "deacondevries",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "AI Narrative Video System v1.1 \u2014 Turn One Script Into a Full AI Video",
+   "seller": "Monetize with Ai",
+   "url": "https://monetizewithai23.gumroad.com/l/sgjdrd",
+   "price": "",
+   "sub": "monetizewithai23",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "IZI BENTO GRID - Ae Bento creator script",
+   "seller": "Cyril LYSZYK",
+   "url": "https://lizik.gumroad.com/l/nercj",
+   "price": "",
+   "sub": "lizik",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "Creador de videos faceless 3D con IA \u2014 KIT COMPLETO",
+   "seller": "Pablinsky",
+   "url": "https://pablinsky.gumroad.com/l/mvrgc",
+   "price": "",
+   "sub": "pablinsky",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "Naseem for macOS",
+   "seller": "Ayman Hamed",
+   "url": "https://aymanhamed.gumroad.com/l/icwmy",
+   "price": "",
+   "sub": "aymanhamed",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "The $12k Bootcamp Killer: 25 Years of Insider Knowledge for 1% of the Cost",
+   "seller": "John Isaac",
+   "url": "https://thejohnisaac.gumroad.com/l/shbrph",
+   "price": "",
+   "sub": "thejohnisaac",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "The Apology Letter Formula",
+   "seller": "Lee Baucom - Save The Marriage",
+   "url": "https://savethemarriagetools.gumroad.com/l/ntyvgf",
+   "price": "",
+   "sub": "savethemarriagetools",
+   "query": "gap:explainer video"
+  },
+  {
+   "name": "SYNAPS8 \u2013 Blob Tacking plugin (After Effects/Premiere, DaVinci Resolve, Final Cut)",
+   "seller": "idsley",
+   "url": "https://idsley.gumroad.com/l/zhbsbh",
+   "price": "",
+   "sub": "idsley",
+   "query": "gap:motion graphics"
+  },
+  {
+   "name": "C4D Gaussian Splat Studio",
+   "seller": "Alpha Pixel",
+   "url": "https://alphapixel3d.gumroad.com/l/ywjene",
+   "price": "",
+   "sub": "alphapixel3d",
+   "query": "gap:motion graphics"
+  },
+  {
+   "name": "All Four Prompt Kits",
+   "seller": "attunedjosh",
+   "url": "https://attunedjosh.gumroad.com/l/ekxbl",
+   "price": "",
+   "sub": "attunedjosh",
+   "query": "gap:motion graphics"
+  },
+  {
+   "name": "Astrologicals FPV \u2014 Ultimate Guide & Lifetime Core App",
+   "seller": "Daniel Kilian",
+   "url": "https://kilians.gumroad.com/l/egtfec",
+   "price": "",
+   "sub": "kilians",
+   "query": "gap:motion graphics"
+  },
+  {
+   "name": "Motion Graphics with Claude Code",
+   "seller": "Damiano Caudullo",
+   "url": "https://damianodesu.gumroad.com/l/mdfkjp",
+   "price": "",
+   "sub": "damianodesu",
+   "query": "gap:motion graphics"
+  },
+  {
+   "name": "Ultimate 4K VJ Loop Collection (200+ Loops and All Future Drops)",
+   "seller": "Unending Visuals",
+   "url": "https://unendingvisuals630.gumroad.com/l/lpeijv",
+   "price": "",
+   "sub": "unendingvisuals630",
+   "query": "gap:motion graphics"
+  },
+  {
+   "name": "Toko Graphics Pack for Davinci Resolve",
+   "seller": "bentomotion",
+   "url": "https://bentomotion.gumroad.com/l/obczbx",
+   "price": "",
+   "sub": "bentomotion",
+   "query": "gap:motion graphics"
+  },
+  {
+   "name": "EL CURSO DEFINITIVO - TODOS LOS CURSOS DE ANIMACI\u00d3N 3D CON 30% DE DESCUENTO",
+   "seller": "T\u00cdO RAF",
+   "url": "https://grafvfx.gumroad.com/l/stzens",
+   "price": "",
+   "sub": "grafvfx",
+   "query": "gap:motion graphics"
+  },
+  {
+   "name": "CURSO MULTIPLE DIGITAL DEL T\u00cdO RAF - TODO ANIMACI\u00d3N 3D + EFECTOS VISUALES CON 50% DE DESCUENTO",
+   "seller": "T\u00cdO RAF",
+   "url": "https://grafvfx.gumroad.com/l/qxjvuh",
+   "price": "",
+   "sub": "grafvfx",
+   "query": "gap:motion graphics"
+  },
+  {
+   "name": "SaaSor Extension \ud83d\udca0",
+   "seller": "mgulifes",
+   "url": "https://mgulifes.gumroad.com/l/jsptxd",
+   "price": "",
+   "sub": "mgulifes",
+   "query": "gap:motion graphics"
+  },
+  {
+   "name": "AI Video Editing Studio: Creator Kit",
+   "seller": "Matt Paige",
+   "url": "https://mattpaigeai.gumroad.com/l/uhylh",
+   "price": "",
+   "sub": "mattpaigeai",
+   "query": "gap:motion graphics"
+  },
+  {
+   "name": "3D Duplicator V2 for Cavalry",
+   "seller": "Antonin.work",
+   "url": "https://antoninwork.gumroad.com/l/fxlbd",
+   "price": "",
+   "sub": "antoninwork",
+   "query": "gap:motion graphics"
+  },
+  {
+   "name": "Motion Video Director \u2014 Claude Code Skill for Motion Graphics Videos",
+   "seller": "Miftahul Islam",
+   "url": "https://miftahul48.gumroad.com/l/jitcg",
+   "price": "",
+   "sub": "miftahul48",
+   "query": "gap:motion graphics"
+  },
+  {
+   "name": "Splitz - Instant Split Screen Plugin for Premiere Pro",
+   "seller": "External Studio",
+   "url": "https://externalstudio.gumroad.com/l/xrgwjb",
+   "price": "",
+   "sub": "externalstudio",
+   "query": "gap:motion graphics"
+  },
+  {
+   "name": "Telephage [video emulator: VHS, film, TV, phones, webcams, etc]",
+   "seller": "cat soup",
+   "url": "https://catsoup.gumroad.com/l/zuliam",
+   "price": "",
+   "sub": "catsoup",
+   "query": "gap:motion graphics"
+  },
+  {
+   "name": "\ud835\udc02\ud835\udc1a\ud835\udc29\ud835\udc02\ud835\udc2e\ud835\udc2d \ud835\udc0f\ud835\udc2b\ud835\udc1e\ud835\udc26\ud835\udc22\ud835\udc2e\ud835\udc26 \ud835\udc13\ud835\udc1e\ud835\udc31\ud835\udc2d \ud835\udc00\ud835\udc27\ud835\udc22\ud835\udc26\ud835\udc1a\ud835\udc2d\ud835\udc22\ud835\udc28\ud835\udc27 \ud835\udc0f\ud835\udc2b\ud835\udc1e\ud835\udc2c\ud835\udc1e\ud835\udc2d\ud835\udc2c",
+   "seller": "Harvey Roa",
+   "url": "https://rocreativity.gumroad.com/l/ccormq",
+   "price": "",
+   "sub": "rocreativity",
+   "query": "gap:motion graphics"
+  },
+  {
+   "name": "Physics Box - DaVinci Resolve",
+   "seller": "Tangenten",
+   "url": "https://tangenten.gumroad.com/l/tzxsy",
+   "price": "",
+   "sub": "tangenten",
+   "query": "gap:motion graphics"
+  },
+  {
+   "name": "DLSS Render for Blender - Up to 10x Faster Cycles Renders (Free + Pro)",
+   "seller": "Armin5D",
+   "url": "https://armin5d.gumroad.com/l/fcjhc",
+   "price": "",
+   "sub": "armin5d",
+   "query": "gap:motion graphics"
+  },
+  {
+   "name": "TYPESSENTIALS \u2014 100+ Customizable Text Presets for DaVinci Resolve",
+   "seller": "Adam Blue",
+   "url": "https://adamedits.gumroad.com/l/anloru",
+   "price": "",
+   "sub": "adamedits",
+   "query": "gap:motion graphics"
+  },
+  {
+   "name": "Mindthecolor v3",
+   "seller": "MindTheColor",
+   "url": "https://carlodiamanti.gumroad.com/l/icedku",
+   "price": "",
+   "sub": "carlodiamanti",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "MindTheColor PowerSet",
+   "seller": "MindTheColor",
+   "url": "https://carlodiamanti.gumroad.com/l/cbqnm",
+   "price": "",
+   "sub": "carlodiamanti",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "The Everyday LUT",
+   "seller": "ToldbyNick",
+   "url": "https://toldbynick.gumroad.com/l/cvhce",
+   "price": "",
+   "sub": "toldbynick",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "CINE LUTS V2",
+   "seller": "DopeitsDamo",
+   "url": "https://damosfilm.gumroad.com/l/pneabn",
+   "price": "",
+   "sub": "damosfilm",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "iPhone Apple Log \u2014 Film Conversion LUT & Power Grade",
+   "seller": "Kirk Mihelakos",
+   "url": "https://designedbykirk.gumroad.com/l/dtywgx",
+   "price": "",
+   "sub": "designedbykirk",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "SpectraLab \u2014 Build Distinctive Color in DaVinci Resolve",
+   "seller": "Kasia Jarco",
+   "url": "https://colorgradinginsights.gumroad.com/l/hkxmj",
+   "price": "",
+   "sub": "colorgradinginsights",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "The first seed PowerGrade",
+   "seller": "The dormant seed",
+   "url": "https://thedormantseed.gumroad.com/l/fnbzq",
+   "price": "",
+   "sub": "thedormantseed",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "HN Signature Cinematic LUTs",
+   "seller": "Harrison Niap",
+   "url": "https://harrisonniap.gumroad.com/l/qcaci",
+   "price": "",
+   "sub": "harrisonniap",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "CHROMATIC FILM 2.0.0 Film-inspired DCTL + 22-node PowerGrades + Palette for DaVinci Resolve Studio",
+   "seller": "Alejandro \u201cAlex\u201d Lay",
+   "url": "https://alexlay.gumroad.com/l/ksugjp",
+   "price": "",
+   "sub": "alexlay",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "S7ON CINEMATIC LUTs V1",
+   "seller": "Shevon Salmon",
+   "url": "https://shevonsalmon.gumroad.com/l/ahnek",
+   "price": "",
+   "sub": "shevonsalmon",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "\ud83c\udfa5 Apple LOG \"Filmic Looks\" LUTs",
+   "seller": "Logflow Tools",
+   "url": "https://logflowtools.gumroad.com/l/dosctj",
+   "price": "",
+   "sub": "logflowtools",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "everyday moments: the lut pack",
+   "seller": "createdbyjaymard",
+   "url": "https://createdbyjaymard.gumroad.com/l/rsnsl",
+   "price": "",
+   "sub": "createdbyjaymard",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "Apple Log LUTs + Film Titles Bundle",
+   "seller": "Kirk Mihelakos",
+   "url": "https://designedbykirk.gumroad.com/l/ywnsa",
+   "price": "",
+   "sub": "designedbykirk",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "\ud83c\udf81 Apple Log Bundle",
+   "seller": "Logflow Tools",
+   "url": "https://logflowtools.gumroad.com/l/ujplc",
+   "price": "",
+   "sub": "logflowtools",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "Gamma | The Complete Color Grading Course for DaVinci Resolve",
+   "seller": "Loris Marie",
+   "url": "https://lorismarie.gumroad.com/l/wjeqxa",
+   "price": "",
+   "sub": "lorismarie",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "MTC ChromaWarp",
+   "seller": "MindTheColor",
+   "url": "https://carlodiamanti.gumroad.com/l/ipqbo",
+   "price": "",
+   "sub": "carlodiamanti",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "Cinematic LUTs",
+   "seller": "ProEdit",
+   "url": "https://proedit.gumroad.com/l/tmgfet",
+   "price": "",
+   "sub": "proedit",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "Ultimate PowerGrade V.4 | Cinematic Color Grading for DaVinci Resolve",
+   "seller": "Loris Marie",
+   "url": "https://lorismarie.gumroad.com/l/ybuglo",
+   "price": "",
+   "sub": "lorismarie",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "Complete Color Grading Kit - for DaVinci Resolve",
+   "seller": "Emre Ekin Akduman",
+   "url": "https://eeavisuals.gumroad.com/l/hoeok",
+   "price": "",
+   "sub": "eeavisuals",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "coolgrades: davinci resolve powergrades + cinematic color workflow",
+   "seller": "coolgrades",
+   "url": "https://coolgrades.gumroad.com/l/lnpert",
+   "price": "",
+   "sub": "coolgrades",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "ROOT Powergrade - DaVinci Resolve",
+   "seller": "ROOT Visuals",
+   "url": "https://rootvisuals.gumroad.com/l/hkzeoa",
+   "price": "",
+   "sub": "rootvisuals",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "Color Pipeline for Davinci Resolve",
+   "seller": "NODEX Plugins",
+   "url": "https://nodexplugins.gumroad.com/l/lflez",
+   "price": "",
+   "sub": "nodexplugins",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "DB x DJI Mavic 4 PRO - Cinematic Luts",
+   "seller": "Denis Barbas",
+   "url": "https://denisbarbas.gumroad.com/l/jylda",
+   "price": "",
+   "sub": "denisbarbas",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "ALMA - LUT PACK (6 different looks)",
+   "seller": "Jurre Alma",
+   "url": "https://jurrealma.gumroad.com/l/gegjk",
+   "price": "",
+   "sub": "jurrealma",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "Cine LUTs",
+   "seller": "cnauj prod",
+   "url": "https://naujprod.gumroad.com/l/sxlgj",
+   "price": "",
+   "sub": "naujprod",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "JohVisual",
+   "seller": "Joh Jirayu",
+   "url": "https://johjirayu.gumroad.com/l/aemoj",
+   "price": "",
+   "sub": "johjirayu",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "THICTOR Coffee LUTs for SLog3 and Apple Log",
+   "seller": "Victor Nguyen",
+   "url": "https://thictor.gumroad.com/l/eqeic",
+   "price": "",
+   "sub": "thictor",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "DB - Sony Cinematic LUTs",
+   "seller": "Denis Barbas",
+   "url": "https://denisbarbas.gumroad.com/l/btjkx",
+   "price": "",
+   "sub": "denisbarbas",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "CineRaw 2.0 - Davinci Resolve Powergrade by amryraw",
+   "seller": "amryraw",
+   "url": "https://amryraw.gumroad.com/l/rnomm",
+   "price": "",
+   "sub": "amryraw",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "Roma Chromatic Davinci Resolve PowerGrade",
+   "seller": "Roma Fedorov",
+   "url": "https://romafedorov.gumroad.com/l/igbnd",
+   "price": "",
+   "sub": "romafedorov",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "Sony Cinema LUT Collection by ALXXPAUL",
+   "seller": "Alxx Paul",
+   "url": "https://alxxpaul.gumroad.com/l/cscdq",
+   "price": "",
+   "sub": "alxxpaul",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "IWLTBAP LUTs Previewer",
+   "seller": "IWLTBAP Color Grading",
+   "url": "https://iwltbap.gumroad.com/l/faxkc",
+   "price": "",
+   "sub": "iwltbap",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "TSEILY FILM LOOK LUT",
+   "seller": "Tseily Harel",
+   "url": "https://4863435648337.gumroad.com/l/ciiux",
+   "price": "",
+   "sub": "4863435648337",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "\ud83c\udfac CINECHROME PowerGrade",
+   "seller": "Nicholas Klepper",
+   "url": "https://nicholasklepper.gumroad.com/l/fldxvw",
+   "price": "",
+   "sub": "nicholasklepper",
+   "query": "gap:lut color grading"
+  },
+  {
+   "name": "Camera Realism Course \u2014 why technically perfect CG still feels fake",
+   "seller": "Aitor Echeveste",
+   "url": "https://aitorecheveste.gumroad.com/l/jowcy",
+   "price": "",
+   "sub": "aitorecheveste",
+   "query": "gap:compositing"
+  },
+  {
+   "name": "StoryboardSim",
+   "seller": "\u53f8\u5cf6\u7a4d\u96f2",
+   "url": "https://sekiun.gumroad.com/l/dubvdy",
+   "price": "",
+   "sub": "sekiun",
+   "query": "gap:compositing"
+  },
+  {
+   "name": "Environment creation in Houdini Part1 and Part2 Bundle",
+   "seller": "Mizuki Yamada",
+   "url": "https://mizukiyamada8.gumroad.com/l/bamwqe",
+   "price": "",
+   "sub": "mizukiyamada8",
+   "query": "gap:compositing"
+  },
+  {
+   "name": "Professional Compositing Techniques 01 + 02 (EN) + Camera Realism",
+   "seller": "Aitor Echeveste",
+   "url": "https://aitorecheveste.gumroad.com/l/nekbro",
+   "price": "",
+   "sub": "aitorecheveste",
+   "query": "gap:compositing"
+  },
+  {
+   "name": "EEVEE Realistic Lighting And Rendering",
+   "seller": "Creative Shrimp",
+   "url": "https://creativeshrimp.gumroad.com/l/wkahzt",
+   "price": "",
+   "sub": "creativeshrimp",
+   "query": "gap:compositing"
+  },
+  {
+   "name": "Revitalize Paintings in 3d",
+   "seller": "craftreaper",
+   "url": "https://omarfaruqtawsif.gumroad.com/l/hvurf",
+   "price": "",
+   "sub": "omarfaruqtawsif",
+   "query": "gap:compositing"
+  },
+  {
+   "name": "VHS Pro - FFGL Plugin for Resolume",
+   "seller": "Glitchp0t",
+   "url": "https://glitchp0t.gumroad.com/l/cqeiaw",
+   "price": "",
+   "sub": "glitchp0t",
+   "query": "gap:compositing"
+  },
+  {
+   "name": "Supa Painter",
+   "seller": "Quentin Pointillart",
+   "url": "https://quentinpointillart.gumroad.com/l/sxotzg",
+   "price": "",
+   "sub": "quentinpointillart",
+   "query": "gap:compositing"
+  },
+  {
+   "name": "Bundle 01 + 02 Professional compositing techniques + EXTRAS (EN)",
+   "seller": "Aitor Echeveste",
+   "url": "https://aitorecheveste.gumroad.com/l/icdkss",
+   "price": "",
+   "sub": "aitorecheveste",
+   "query": "gap:compositing"
+  },
+  {
+   "name": "DIIS",
+   "seller": "Damm it!",
+   "url": "https://dammittv.gumroad.com/l/wpclc",
+   "price": "",
+   "sub": "dammittv",
+   "query": "gap:compositing"
+  },
+  {
+   "name": "Photorealistic Interior Creation (Blender Course)",
+   "seller": "Ryan King Art",
+   "url": "https://ryankingart.gumroad.com/l/trwujd",
+   "price": "",
+   "sub": "ryankingart",
+   "query": "gap:compositing"
+  },
+  {
+   "name": "Camera Match: AutoSetup 3d script for Photomontages- 3ds Max, Cinema 4D, Blender, Sketchup, etc: SMALL STUDIO (up to 5 users) License",
+   "seller": "jamie cardoso",
+   "url": "https://jamiecardoso.gumroad.com/l/glhxpj",
+   "price": "",
+   "sub": "jamiecardoso",
+   "query": "gap:compositing"
+  },
+  {
+   "name": "Camera Match: AutoSetup 3d script for Photomontages- 3ds Max and Blender: INDIVIDUAL FREELANCER/HOBBYIST LICENSE",
+   "seller": "jamie cardoso",
+   "url": "https://jamiecardoso.gumroad.com/l/boqjtv",
+   "price": "",
+   "sub": "jamiecardoso",
+   "query": "gap:compositing"
+  },
+  {
+   "name": "DGruwier Surface Imperfections - Volume 1",
+   "seller": "David Gruwier",
+   "url": "https://dgruwier.gumroad.com/l/CxGaa",
+   "price": "",
+   "sub": "dgruwier",
+   "query": "gap:compositing"
+  },
+  {
+   "name": "Replica - Professional Photogrammetry for macOS",
+   "seller": "Ambiens",
+   "url": "https://ambiensvr.gumroad.com/l/efxaz",
+   "price": "",
+   "sub": "ambiensvr",
+   "query": "gap:compositing"
+  },
+  {
+   "name": "RevShape",
+   "seller": "reveace",
+   "url": "https://reveace.gumroad.com/l/ieipg",
+   "price": "",
+   "sub": "reveace",
+   "query": "gap:compositing"
+  },
+  {
+   "name": "Original Blade Runner Textures",
+   "seller": "Ankaris - Wayne Haag",
+   "url": "https://ankaris.gumroad.com/l/EpePN",
+   "price": "",
+   "sub": "ankaris",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "ZTexturator",
+   "seller": "Tsvetomir Georgiev",
+   "url": "https://ceco.gumroad.com/l/gxgnd",
+   "price": "",
+   "sub": "ceco",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "\u2726 My Photoshop Brushpack +500 brushes organized and categorized",
+   "seller": "BrianFlores",
+   "url": "https://xbrianfloresx.gumroad.com/l/jhwdi",
+   "price": "",
+   "sub": "xbrianfloresx",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "CGMA Matte Painting Master Class",
+   "seller": "Anthony Eftekhari",
+   "url": "https://anthonye.gumroad.com/l/xiygR",
+   "price": "",
+   "sub": "anthonye",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "Chunky Painting All-In-One Bundle | Procreate",
+   "seller": "COFE",
+   "url": "https://ghkim0045.gumroad.com/l/csmgcm",
+   "price": "",
+   "sub": "ghkim0045",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "TBM FREE BRUSH PACK",
+   "seller": "The Brush Master",
+   "url": "https://thebrushmaster.gumroad.com/l/hvumvh",
+   "price": "",
+   "sub": "thebrushmaster",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "Classical Still-Life Painting in Oil (Video Course)",
+   "seller": "Brianna Lee Hardie",
+   "url": "https://briannaleefineart.gumroad.com/l/kQBoN",
+   "price": "",
+   "sub": "briannaleefineart",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "Kyle's Photoshop Action Set for Artists",
+   "seller": "Kyle T Webster",
+   "url": "https://kyletwebster.gumroad.com/l/khofny",
+   "price": "",
+   "sub": "kyletwebster",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "01 Professional compositing techniques (EN)",
+   "seller": "Aitor Echeveste",
+   "url": "https://aitorecheveste.gumroad.com/l/qpmmwl",
+   "price": "",
+   "sub": "aitorecheveste",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "Stormy Skies Vol 3",
+   "seller": "Ankaris - Wayne Haag",
+   "url": "https://ankaris.gumroad.com/l/PhMoS",
+   "price": "",
+   "sub": "ankaris",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "Monument Valley Generator (hip file)",
+   "seller": "HoudiniCat",
+   "url": "https://sugiggy.gumroad.com/l/vecvq",
+   "price": "",
+   "sub": "sugiggy",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "Matte Painting para arquitectura",
+   "seller": "Carles Marsal - Cursos y colecciones",
+   "url": "https://carlesmarsal.gumroad.com/l/brqmsx",
+   "price": "",
+   "sub": "carlesmarsal",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "HIMALAYAS Pack 2 - Mountains",
+   "seller": "Emilis Baltrusaitis",
+   "url": "https://emilis.gumroad.com/l/KANHV",
+   "price": "",
+   "sub": "emilis",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "Pencil Brush Set for Photoshop",
+   "seller": "Matt Heath",
+   "url": "https://mattheath.gumroad.com/l/jFuJX",
+   "price": "",
+   "sub": "mattheath",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "Real Terrain 2.0 \u2014 Terrain & Landscape Generator for Blender",
+   "seller": "Blender addons",
+   "url": "https://maroc777772.gumroad.com/l/iznvi",
+   "price": "",
+   "sub": "maroc777772",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "Storm Cloud Brush Set",
+   "seller": "Zsolt Kosa",
+   "url": "https://zsoltkosa.gumroad.com/l/irabl",
+   "price": "",
+   "sub": "zsoltkosa",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "\u2726 My Photoshop Brushpack +500 brushes organized and categorized",
+   "seller": "BrianFlores",
+   "url": "https://xbrianfloresx.gumroad.com/l/bgcsy",
+   "price": "",
+   "sub": "xbrianfloresx",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "310 Castles and Fortresses - Reference Pictures",
+   "seller": "Grafit Studio",
+   "url": "https://grafitschool.gumroad.com/l/ptxhb",
+   "price": "",
+   "sub": "grafitschool",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "Creating Epic Matte Painting Shot Using Advanced Techniques",
+   "seller": "Igor Staritsin",
+   "url": "https://igorstaritsin.gumroad.com/l/ruqsli",
+   "price": "",
+   "sub": "igorstaritsin",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "CarlinAcademy.com Workshop - Fundamentals of Painting Fabric",
+   "seller": "Carlin Academy of Fine Art",
+   "url": "https://carlinacademy.gumroad.com/l/pmoxx",
+   "price": "",
+   "sub": "carlinacademy",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "Northern Portugal 1130+ Photo Pack",
+   "seller": "Gavin O'Donnell",
+   "url": "https://gavinodonnell.gumroad.com/l/ddphxg",
+   "price": "",
+   "sub": "gavinodonnell",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "MEGA PACK : DECIDUOUS TREE CUTOUT & PLANT BRUSH - Traditional painting pack - 150+ Brushes / 150+ Cutout & Custom Shapes + 1 bonus PSD",
+   "seller": "PIXELREF - Digital Art Resources\u00a0",
+   "url": "https://pixelref.gumroad.com/l/zmREn",
+   "price": "",
+   "sub": "pixelref",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "Curso Online: Paisajes Digitales y Dise\u00f1o Escenarios de Fantas\u00eda - Complete Edition",
+   "seller": "Mariano Jofre",
+   "url": "https://jofremariano.gumroad.com/l/dzDFAa",
+   "price": "",
+   "sub": "jofremariano",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "Greek Islands 970+ Photo Pack",
+   "seller": "Gavin O'Donnell",
+   "url": "https://gavinodonnell.gumroad.com/l/tbzsn",
+   "price": "",
+   "sub": "gavinodonnell",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "Castle Ruins - Matte Painting PSD",
+   "seller": "Arqui9 Learn",
+   "url": "https://arqui9.gumroad.com/l/JPBxq",
+   "price": "",
+   "sub": "arqui9",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "Concept Art for Production",
+   "seller": "Anthony Eftekhari",
+   "url": "https://anthonye.gumroad.com/l/zFtP",
+   "price": "",
+   "sub": "anthonye",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "Photo Reference Megapack",
+   "seller": "Photo Reference",
+   "url": "https://photoref.gumroad.com/l/lhVKV",
+   "price": "",
+   "sub": "photoref",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "Versatile Gouache Procreate brush set",
+   "seller": "Olga Rom",
+   "url": "https://olga-rom.gumroad.com/l/ejgcr",
+   "price": "",
+   "sub": "olga-rom",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "515 photos of Round Concrete Fortifications",
+   "seller": "Fotoref.com",
+   "url": "https://fotoref.gumroad.com/l/PzbRG",
+   "price": "",
+   "sub": "fotoref",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "356 photos of Asian Back Alley",
+   "seller": "Fotoref.com",
+   "url": "https://fotoref.gumroad.com/l/wANUL",
+   "price": "",
+   "sub": "fotoref",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "751 photos of San Francisco Streets and Cityscape",
+   "seller": "Fotoref.com",
+   "url": "https://fotoref.gumroad.com/l/GDjll",
+   "price": "",
+   "sub": "fotoref",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "470 photos of Abandoned Soviet Health Resort",
+   "seller": "Fotoref.com",
+   "url": "https://fotoref.gumroad.com/l/cXQjL",
+   "price": "",
+   "sub": "fotoref",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "1000+ Rocky Terrain Reference Pictures",
+   "seller": "Grafit Studio",
+   "url": "https://grafitschool.gumroad.com/l/ImGQa",
+   "price": "",
+   "sub": "grafitschool",
+   "query": "gap:matte painting"
+  },
+  {
+   "name": "The SHTF Home Defense Manual",
+   "seller": "Rhett Callahan",
+   "url": "https://rhettcallahan.gumroad.com/l/fedece",
+   "price": "",
+   "sub": "rhettcallahan",
+   "query": "gap:depth pass"
+  },
+  {
+   "name": "PaintBridge Krita",
+   "seller": "MadCanvas",
+   "url": "https://madcanvas.gumroad.com/l/syhbrs",
+   "price": "",
+   "sub": "madcanvas",
+   "query": "gap:depth pass"
+  },
+  {
+   "name": "The Dark Knight",
+   "seller": "A Touch of the Gods",
+   "url": "https://atouchofthegods.gumroad.com/l/zspzjz",
+   "price": "",
+   "sub": "atouchofthegods",
+   "query": "gap:depth pass"
+  },
+  {
+   "name": "Baba Yaga",
+   "seller": "A Touch of the Gods",
+   "url": "https://atouchofthegods.gumroad.com/l/vapcnf",
+   "price": "",
+   "sub": "atouchofthegods",
+   "query": "gap:depth pass"
+  },
+  {
+   "name": "Spatial EQ",
+   "seller": "RiverFlux Audio",
+   "url": "https://riverfluxaudio.gumroad.com/l/gzupoa",
+   "price": "",
+   "sub": "riverfluxaudio",
+   "query": "gap:depth pass"
+  },
+  {
+   "name": "Morphoice EightyTen - A Roland JX / MKS-70 / JX-8p Emulation",
+   "seller": "Morphoice",
+   "url": "https://morphoice.gumroad.com/l/tkhlm",
+   "price": "",
+   "sub": "morphoice",
+   "query": "gap:depth pass"
+  },
+  {
+   "name": "FRCA Primary Toolkit",
+   "seller": "Anaestheasier",
+   "url": "https://anaestheasier.gumroad.com/l/VLbKG",
+   "price": "",
+   "sub": "anaestheasier",
+   "query": "gap:depth pass"
+  },
+  {
+   "name": "TugPhonon 1.3.0 New features and Linux (Ubuntu 24.04 LTS /Noble) support",
+   "seller": "tugrulakyuz",
+   "url": "https://tugrulakyuz.gumroad.com/l/xtwcn",
+   "price": "",
+   "sub": "tugrulakyuz",
+   "query": "gap:depth pass"
+  },
+  {
+   "name": "How To WIN HUGE Online Tournaments!",
+   "seller": "Alex Fitzgerald",
+   "url": "https://assassinato.gumroad.com/l/esmph",
+   "price": "",
+   "sub": "assassinato",
+   "query": "gap:depth pass"
+  },
+  {
+   "name": "AoD: Tarot School Membership (secret special!)",
+   "seller": "Dusty White",
+   "url": "https://dustywhite.gumroad.com/l/jfgsna",
+   "price": "",
+   "sub": "dustywhite",
+   "query": "gap:depth pass"
+  },
+  {
+   "name": "KHAEON \u2014 Dual-Engine Generative Synthesizer for Max for Live",
+   "seller": "\ud83c\udf9b\ufe0f ANOTHER MACHINES \ud83c\udf9b\ufe0f",
+   "url": "https://anothermachines.gumroad.com/l/fglds",
+   "price": "",
+   "sub": "anothermachines",
+   "query": "gap:depth pass"
+  },
+  {
+   "name": "CGSS - The Complete Sanctions Compliance & Investigations Playbook",
+   "seller": "Anand Rajpurohit | Career, Remote Jobs & AML/KYC Expert | Ex-Citi & JPMorgan",
+   "url": "https://anandpurohit0.gumroad.com/l/tnbaw",
+   "price": "",
+   "sub": "anandpurohit0",
+   "query": "gap:depth pass"
+  },
+  {
+   "name": "AoD: Tarot School Membership (SECRET SPECIAL PRICE): $5 + 2/week for the moderators",
+   "seller": "Dusty White",
+   "url": "https://dustywhite.gumroad.com/l/naqhix",
+   "price": "",
+   "sub": "dustywhite",
+   "query": "gap:depth pass"
+  },
+  {
+   "name": "Tinyspace (Max4Live)",
+   "seller": "Undulae Music",
+   "url": "https://undulaemusic.gumroad.com/l/laude",
+   "price": "",
+   "sub": "undulaemusic",
+   "query": "gap:depth pass"
+  },
+  {
+   "name": "LC English 2027 Pass",
+   "seller": "LCEnglish",
+   "url": "https://lcenglish.gumroad.com/l/gwehdf",
+   "price": "",
+   "sub": "lcenglish",
+   "query": "gap:depth pass"
+  },
+  {
+   "name": "Micro Keys",
+   "seller": "Meat Beats",
+   "url": "https://meatbeats.gumroad.com/l/jpklj",
+   "price": "",
+   "sub": "meatbeats",
+   "query": "gap:depth pass"
+  },
+  {
+   "name": "The Architect\u2019s Notebook \u2013 Substack Premium Lifetime Tier",
+   "seller": "Amit Raghuvanshi",
+   "url": "https://amitraghuvanshi.gumroad.com/l/gilhrk",
+   "price": "",
+   "sub": "amitraghuvanshi",
+   "query": "gap:depth pass"
+  },
+  {
+   "name": "TugImgSynth 2.0.0  (MAC /Windows / Linux)",
+   "seller": "tugrulakyuz",
+   "url": "https://tugrulakyuz.gumroad.com/l/rakfr",
+   "price": "",
+   "sub": "tugrulakyuz",
+   "query": "gap:depth pass"
+  },
+  {
+   "name": "AoD: Tarot School ANNUAL (secret special!) (copy)",
+   "seller": "Dusty White",
+   "url": "https://dustywhite.gumroad.com/l/sftvs",
+   "price": "",
+   "sub": "dustywhite",
+   "query": "gap:depth pass"
+  },
+  {
+   "name": "Academy Membership @ $8+$2/week (*full* community access)",
+   "seller": "Dusty White",
+   "url": "https://dustywhite.gumroad.com/l/huvzxn",
+   "price": "",
+   "sub": "dustywhite",
+   "query": "gap:depth pass"
+  },
+  {
+   "name": "Cover girl outfit (Multi-Model)  (Novabeast, Nardoragon, Rexouium (+Disko+Magpie), and Mayu)    [VRCHAT]",
+   "seller": "Vanadium Studios",
+   "url": "https://vanadstudio.gumroad.com/l/vyapnt",
+   "price": "",
+   "sub": "vanadstudio",
+   "query": "gap:toon shading"
+  },
+  {
+   "name": "normalMagic for Blender",
+   "seller": "SpaghetMeNot",
+   "url": "https://spaghetmenot.gumroad.com/l/oemsm",
+   "price": "",
+   "sub": "spaghetmenot",
+   "query": "gap:toon shading"
+  },
+  {
+   "name": "YMA Toon Studio for Redshift [C4D or Houdini]",
+   "seller": "You And Me Academy",
+   "url": "https://youmeacademy.gumroad.com/l/jbamei",
+   "price": "",
+   "sub": "youmeacademy",
+   "query": "gap:toon shading"
+  },
+  {
+   "name": "Matcaps Mega Pack",
+   "seller": "Kirby9890",
+   "url": "https://kirbymakesvrstuff.gumroad.com/l/sbfxlx",
+   "price": "",
+   "sub": "kirbymakesvrstuff",
+   "query": "gap:toon shading"
+  },
+  {
+   "name": "Ghostt Doll (Pomni-inspired VRChat Avatar)",
+   "seller": "ArtGhostt",
+   "url": "https://artghostt.gumroad.com/l/kpadm",
+   "price": "",
+   "sub": "artghostt",
+   "query": "gap:toon shading"
+  },
+  {
+   "name": "Advanced Toon Shader v1.2 (allows coloured lights) - Blender EEVEE 4.1+",
+   "seller": "Vertex Arcade",
+   "url": "https://vertexarcade.gumroad.com/l/qFDfS",
+   "price": "",
+   "sub": "vertexarcade",
+   "query": "gap:toon shading"
+  },
+  {
+   "name": "Ninjin Normals | ver 2.0 | Vertex normal edit tool for Maya",
+   "seller": "Ninjin",
+   "url": "https://ninjinstudios.gumroad.com/l/bvubi",
+   "price": "",
+   "sub": "ninjinstudios",
+   "query": "gap:toon shading"
+  },
+  {
+   "name": "UR-14H BattleBot I VRChat Avatar",
+   "seller": "SpaceTato",
+   "url": "https://spacetato.gumroad.com/l/olegy",
+   "price": "",
+   "sub": "spacetato",
+   "query": "gap:toon shading"
+  },
+  {
+   "name": "Stardust Clothes for Novabeast",
+   "seller": "Lamiho",
+   "url": "https://lamiho.gumroad.com/l/barzv",
+   "price": "",
+   "sub": "lamiho",
+   "query": "gap:toon shading"
+  },
+  {
+   "name": "Star Wars: Clone Wars 2003 Clone Trooper",
+   "seller": "somestupidguy",
+   "url": "https://zerochurros.gumroad.com/l/hpxus",
+   "price": "",
+   "sub": "zerochurros",
+   "query": "gap:cel shader"
+  },
+  {
+   "name": "Noggi's 3D Anime Starter Kit",
+   "seller": "Noggi",
+   "url": "https://noggi3d.gumroad.com/l/ofqblj",
+   "price": "",
+   "sub": "noggi3d",
+   "query": "gap:cel shader"
+  },
+  {
+   "name": "[Blender] Breath of the Wild and Tears of the Kingdom Shaders",
+   "seller": "thejudsub",
+   "url": "https://thejudsub.gumroad.com/l/fojcg",
+   "price": "",
+   "sub": "thejudsub",
+   "query": "gap:cel shader"
+  },
+  {
+   "name": "Saiyans Bundle - Project 4 star",
+   "seller": "Flamelex",
+   "url": "https://flamelex.gumroad.com/l/kwgau",
+   "price": "",
+   "sub": "flamelex",
+   "query": "gap:cel shader"
+  },
+  {
+   "name": "Non-Distorting Pixel Shader [VrChat]",
+   "seller": "Toman800",
+   "url": "https://toman800.gumroad.com/l/kecdnb",
+   "price": "",
+   "sub": "toman800",
+   "query": "gap:cel shader"
+  },
+  {
+   "name": "Minos Prime // ULTRAKILL // Cel Shaded // Blend File",
+   "seller": "PhilipIONO",
+   "url": "https://philipiono.gumroad.com/l/dvklj",
+   "price": "",
+   "sub": "philipiono",
+   "query": "gap:cel shader"
+  },
+  {
+   "name": "Wanderer!",
+   "seller": "MarinoDev",
+   "url": "https://marinodev.gumroad.com/l/asfps",
+   "price": "",
+   "sub": "marinodev",
+   "query": "gap:cel shader"
+  },
+  {
+   "name": "Hyenid TShirt / Tank Top",
+   "seller": "Sophie's Closet",
+   "url": "https://sophieblue.gumroad.com/l/zukwx",
+   "price": "",
+   "sub": "sophieblue",
+   "query": "gap:cel shader"
+  },
+  {
+   "name": "Tasque Manager (VRChat 3D Model + Blender Rig)",
+   "seller": "LoneEevee",
+   "url": "https://loneeevee.gumroad.com/l/nxxbe",
+   "price": "",
+   "sub": "loneeevee",
+   "query": "gap:cel shader"
+  },
+  {
+   "name": "Punk Michael + Heather",
+   "seller": "MarinoDev",
+   "url": "https://marinodev.gumroad.com/l/hqpuep",
+   "price": "",
+   "sub": "marinodev",
+   "query": "gap:cel shader"
+  },
+  {
+   "name": "Stolen Government Infrastructure",
+   "seller": "Solaris",
+   "url": "https://solaris134.gumroad.com/l/bvqcj",
+   "price": "",
+   "sub": "solaris134",
+   "query": "gap:cel shader"
+  },
+  {
+   "name": "Drakoob - Vrchat Avatar",
+   "seller": "Kuby",
+   "url": "https://kuby.gumroad.com/l/qVJeA",
+   "price": "",
+   "sub": "kuby",
+   "query": "gap:cel shader"
+  },
+  {
+   "name": "Cel Shader",
+   "seller": "Elias Wick",
+   "url": "https://eliaswick.gumroad.com/l/cQMDe",
+   "price": "",
+   "sub": "eliaswick",
+   "query": "gap:cel shader"
+  },
+  {
+   "name": "Toon Shaders Pro for Unity URP",
+   "seller": "Daniel Ilett",
+   "url": "https://danielilett.gumroad.com/l/bmswx",
+   "price": "",
+   "sub": "danielilett",
+   "query": "gap:cel shader"
+  },
+  {
+   "name": "Fionna Campbell (Adventure Time: Fionna and Cake) - VRChat Avatar (OLD)",
+   "seller": "Bunny Co",
+   "url": "https://bunco.gumroad.com/l/eyfsg",
+   "price": "",
+   "sub": "bunco",
+   "query": "gap:cel shader"
+  },
+  {
+   "name": "UE5.6 Advanced Character Shading System (Wuthering Waves Style)",
+   "seller": "Max Mao",
+   "url": "https://maxmmh.gumroad.com/l/fulclz",
+   "price": "",
+   "sub": "maxmmh",
+   "query": "gap:cel shader"
+  },
+  {
+   "name": "Anime Character - Cel Shader With Outline (Setting Only, no character model)",
+   "seller": "trungduyng",
+   "url": "https://trungduyng.gumroad.com/l/suagq",
+   "price": "",
+   "sub": "trungduyng",
+   "query": "gap:cel shader"
+  },
+  {
+   "name": "SpiderVerse C4D Shader Project Files",
+   "seller": "E.J. Hassenfratz",
+   "url": "https://eyedesyn.gumroad.com/l/EYxG",
+   "price": "",
+   "sub": "eyedesyn",
+   "query": "gap:cel shader"
+  },
+  {
+   "name": "- Anime Rock Shader  FREE Wave Motion",
+   "seller": "Agrimart",
+   "url": "https://agrimart.gumroad.com/l/qalkbm",
+   "price": "",
+   "sub": "agrimart",
+   "query": "gap:cel shader"
+  },
+  {
+   "name": "Zbrush Toon Shader EX PLUS V3",
+   "seller": "Dave Hansan",
+   "url": "https://3760888593353.gumroad.com/l/Ayhti",
+   "price": "",
+   "sub": "3760888593353",
+   "query": "gap:cel shader"
+  },
+  {
+   "name": "The Stickman",
+   "seller": "BP Systems",
+   "url": "https://bpsystems.gumroad.com/l/cqash",
+   "price": "",
+   "sub": "bpsystems",
+   "query": "gap:cel shader"
+  },
+  {
+   "name": "Blue Morpho Lepyphon Avatar",
+   "seller": "Arts by Kei",
+   "url": "https://shifterkei.gumroad.com/l/KhEOW",
+   "price": "",
+   "sub": "shifterkei",
+   "query": "gap:cel shader"
+  },
+  {
+   "name": "Easy Toon - Toon, Painted and Drawn Looks for Blender",
+   "seller": "Armin5D",
+   "url": "https://armin5d.gumroad.com/l/tyblfp",
+   "price": "",
+   "sub": "armin5d",
+   "query": "gap:cel shader"
+  },
+  {
+   "name": "VixForge Toon Shader",
+   "seller": "VixForge Interactive",
+   "url": "https://vixenlicous.gumroad.com/l/pcmmqt",
+   "price": "",
+   "sub": "vixenlicous",
+   "query": "gap:cel shader"
+  },
+  {
+   "name": "Brushflares Addon - Stylised Lens Flare Tool for Blender 5.1 + Handcrafted Texture Library",
+   "seller": "Merlin Perry",
+   "url": "https://merlin3d.gumroad.com/l/djsewr",
+   "price": "",
+   "sub": "merlin3d",
+   "query": "gap:cel shader"
+  },
+  {
+   "name": "FlexToon - OSL Toon Manager v2.0 - Maya/Arnold Toon Shader System",
+   "seller": "Christophe Saillard",
+   "url": "https://chrissaillard.gumroad.com/l/nqlfj",
+   "price": "",
+   "sub": "chrissaillard",
+   "query": "gap:cel shader"
+  },
+  {
+   "name": "Blahaj - FREE [VRCHAT] PC/QUEST",
+   "seller": "Jari Juvonen",
+   "url": "https://maybejari.gumroad.com/l/uvrqdf",
+   "price": "",
+   "sub": "maybejari",
+   "query": "gap:cel shader"
+  },
+  {
+   "name": "The Forgotten Frontier Journal",
+   "seller": "Silas Mercer",
+   "url": "https://silasmercer.gumroad.com/l/rcdkm",
+   "price": "",
+   "sub": "silasmercer",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "Practice Book \"Sketching Winter with Pen and Ink\": Improve your drawing skills with practice cards || Instant Download",
+   "seller": "Daria Bogdanova @daribodrawing",
+   "url": "https://daribodrawing.gumroad.com/l/wmykhc",
+   "price": "",
+   "sub": "daribodrawing",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "ATOMOON  brush",
+   "seller": "ATOMOON",
+   "url": "https://atomoon.gumroad.com/l/vrdzg",
+   "price": "",
+   "sub": "atomoon",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "MANGA BRUSH MEGAPACK \u2726 3000+ Anime-Style Brushes \u2726 Full Set for Photoshop, Clip Studio Paint & Procreate!",
+   "seller": "MANGA BRUSH",
+   "url": "https://mangabrush.gumroad.com/l/rXMn",
+   "price": "",
+   "sub": "mangabrush",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "Procreate Pack VOL.7 \u273f Textures & Screentones",
+   "seller": "Olguioo",
+   "url": "https://olguioo.gumroad.com/l/ksmtb",
+   "price": "",
+   "sub": "olguioo",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "Shiyoon's Photoshop Ink Brush Set",
+   "seller": "Shiyoon Kim",
+   "url": "https://shiyoonk.gumroad.com/l/irDP",
+   "price": "",
+   "sub": "shiyoonk",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "[YeonHee] Korean Traditional Painting Procreate Bundle: 7 Brushes, 3 Palettes & 3 Outline Guides",
+   "seller": "yeonhee_studio",
+   "url": "https://yeonheeart.gumroad.com/l/jwdahv",
+   "price": "",
+   "sub": "yeonheeart",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "STREETWEAR TOOLKIT",
+   "seller": "alexandrovsodope",
+   "url": "https://alexandrovsodope.gumroad.com/l/omsbq",
+   "price": "",
+   "sub": "alexandrovsodope",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "101 Monochrome Christmas Mysteries: Color by Number Printable & Vector PDF (Kindle Scribe, iPad & Print)",
+   "seller": "Monochrome Color By Number",
+   "url": "https://monochromecbn.gumroad.com/l/csscim",
+   "price": "",
+   "sub": "monochromecbn",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "ULTIMATE 6-in-1 Monochrome Mysteries Bundle | 600+ Color by Number Printable & Vector PDFs | Kindle Scribe, iPad & Print | One Color Coloring Books",
+   "seller": "Monochrome Color By Number",
+   "url": "https://monochromecbn.gumroad.com/l/hobkv",
+   "price": "",
+   "sub": "monochromecbn",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "Flatte \u2014 Flatting Plugin for Photoshop",
+   "seller": "PixelRec",
+   "url": "https://pixelrec.gumroad.com/l/jfiykv",
+   "price": "",
+   "sub": "pixelrec",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "From Istighfar to Salawat A 51-Day Journey of Forgiveness into Love (Premium Edition)",
+   "seller": "Miracles of Dhikr",
+   "url": "https://elixify47.gumroad.com/l/dtrvwz",
+   "price": "",
+   "sub": "elixify47",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "INK\u00dc - Free +20 INK-Bleed Effects Kit",
+   "seller": "z\u00fcli",
+   "url": "https://zuli.gumroad.com/l/cweub",
+   "price": "",
+   "sub": "zuli",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "LILITH THE QUEEN OF THE NIGHT. THE TEMPTRESS. THE REBEL. THE MOTHER OF DEMONS.",
+   "seller": "EREBUS RITUALS",
+   "url": "https://erebusrituals.gumroad.com/l/utonx",
+   "price": "",
+   "sub": "erebusrituals",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "Cartooning Brush Set for Procreate by BeeJayDeL",
+   "seller": "BeeJayDeL",
+   "url": "https://beejaydel.gumroad.com/l/qWKwMv",
+   "price": "",
+   "sub": "beejaydel",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "The 21-Day Manifestation Journal: 21 Days to Call In the Life You Want",
+   "seller": "Subconsciousthinkers",
+   "url": "https://subconsciousthinkers.gumroad.com/l/oxjhmi",
+   "price": "",
+   "sub": "subconsciousthinkers",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "Illustration Station Pro: Real-Time NPR Renderer for Blender",
+   "seller": "chippwalters",
+   "url": "https://chippwalters.gumroad.com/l/ykznoo",
+   "price": "",
+   "sub": "chippwalters",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "CRISP Pencil Pack by COFE | Procreate",
+   "seller": "COFE",
+   "url": "https://ghkim0045.gumroad.com/l/pjazx",
+   "price": "",
+   "sub": "ghkim0045",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "Jitter FX - Plugin for Adobe After Effects",
+   "seller": "Animafx",
+   "url": "https://animafx.gumroad.com/l/ilborw",
+   "price": "",
+   "sub": "animafx",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "Procreate Lettering Brush Pack (41 Brushes) + 4 Practice Canvases & Tutorial PDF | by DDWOONG",
+   "seller": "DDWOONG",
+   "url": "https://incrediblecode.gumroad.com/l/uulzl",
+   "price": "",
+   "sub": "incrediblecode",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "BrushSet Amanda Hess",
+   "seller": "Amanda Hess Tattoo Artist",
+   "url": "https://amandahessink.gumroad.com/l/fkqnx",
+   "price": "",
+   "sub": "amandahessink",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "Blurline Utility Typeface",
+   "seller": "DesignFamilyMarket",
+   "url": "https://designfamilymarket.gumroad.com/l/pqhjzx",
+   "price": "",
+   "sub": "designfamilymarket",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "HAEYOON pencil brush set (19) +  Paper texture (14) + guidebook pdf for Procreate",
+   "seller": "haeyoon",
+   "url": "https://oceanofyoon.gumroad.com/l/phlwap",
+   "price": "",
+   "sub": "oceanofyoon",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "Theo of Golden BOOK CLUB KIT",
+   "seller": "Readers with Wrinkles",
+   "url": "https://readerswithwrinkles.gumroad.com/l/mbeud",
+   "price": "",
+   "sub": "readerswithwrinkles",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "101 Animal & Nature Mysteries Monochrome Color by Number Printable & Vector PDF | Kindle Scribe, iPad & Print | One Color Coloring Book for Adults",
+   "seller": "Monochrome Color By Number",
+   "url": "https://monochromecbn.gumroad.com/l/iwysa",
+   "price": "",
+   "sub": "monochromecbn",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "101 Fantasy Mysteries Monochrome Color by Number Printable & Vector PDF | Kindle Scribe, iPad & Print | One Color Dragon Coloring Book",
+   "seller": "Monochrome Color By Number",
+   "url": "https://monochromecbn.gumroad.com/l/ezngtx",
+   "price": "",
+   "sub": "monochromecbn",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "Polar-Grid",
+   "seller": "Nicolas",
+   "url": "https://koliamishka.gumroad.com/l/yfsttne",
+   "price": "",
+   "sub": "koliamishka",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "COMIC LINER - Retro Brush and Texture for Procreate",
+   "seller": "Dotstruction Studio",
+   "url": "https://dotstruction.gumroad.com/l/emczmr",
+   "price": "",
+   "sub": "dotstruction",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "granalume: endless desktop wallpapers for every monitor",
+   "seller": "granalume",
+   "url": "https://granalume.gumroad.com/l/iasfdo",
+   "price": "",
+   "sub": "granalume",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "101 Spooky Mysteries Monochrome Color by Number Printable & Vector PDF | Kindle Scribe, iPad & Print | One Color Halloween & Cute Horror Coloring Book for Adults",
+   "seller": "Monochrome Color By Number",
+   "url": "https://monochromecbn.gumroad.com/l/ayrucz",
+   "price": "",
+   "sub": "monochromecbn",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "FMG_LineFilter V2",
+   "seller": "FerMg10728",
+   "url": "https://5288292159739.gumroad.com/l/gslodd",
+   "price": "",
+   "sub": "5288292159739",
+   "query": "gap:ink lines"
+  },
+  {
+   "name": "DemiRaito Brushes: Momentum Collection [Procreate / Photoshop / CSP]",
+   "seller": "DemiRaito",
+   "url": "https://demiraito.gumroad.com/l/xsewmf",
+   "price": "",
+   "sub": "demiraito",
+   "query": "gap:stylized render"
+  },
+  {
+   "name": "Complete Concept Art Course",
+   "seller": "Trent Kaniuga",
+   "url": "https://trentk.gumroad.com/l/xkgntc",
+   "price": "",
+   "sub": "trentk",
+   "query": "gap:stylized render"
+  },
+  {
+   "name": "Rairei Avatar [VRChat]",
+   "seller": "rocrocot\uff08\u30ed\u30af\u30ed\uff09",
+   "url": "https://rocrocot.gumroad.com/l/iibypq",
+   "price": "",
+   "sub": "rocrocot",
+   "query": "gap:stylized render"
+  },
+  {
+   "name": "Vfx Toolkit - The Ultimate Blender Vfx Library",
+   "seller": "Casey Sheep",
+   "url": "https://caseysheep.gumroad.com/l/owymdn",
+   "price": "",
+   "sub": "caseysheep",
+   "query": "gap:stylized render"
+  },
+  {
+   "name": "Vulk - character rig for Maya",
+   "seller": "Benaissa Abdeldjalil",
+   "url": "https://loganrigs.gumroad.com/l/ylsbs",
+   "price": "",
+   "sub": "loganrigs",
+   "query": "gap:stylized render"
+  },
+  {
+   "name": "How to Sculpt a Stylized Head in Blender",
+   "seller": "Danny Mac 3D",
+   "url": "https://dannymac.gumroad.com/l/assue",
+   "price": "",
+   "sub": "dannymac",
+   "query": "gap:stylized render"
+  },
+  {
+   "name": "Stylized Ravenous Hunters [VRChat Avatar]",
+   "seller": "nonary \ud83e\udd88",
+   "url": "https://nonarycubed.gumroad.com/l/gjaock",
+   "price": "",
+   "sub": "nonarycubed",
+   "query": "gap:stylized render"
+  },
+  {
+   "name": "TwinSword-Stylized character creation in Blender course",
+   "seller": "Speedchar",
+   "url": "https://speedchar.gumroad.com/l/ufvve",
+   "price": "",
+   "sub": "speedchar",
+   "query": "gap:stylized render"
+  },
+  {
+   "name": "Low Poly Asset Pack: 1,200+ Models",
+   "seller": "Ryan King Art",
+   "url": "https://ryankingart.gumroad.com/l/nxlzwa",
+   "price": "",
+   "sub": "ryankingart",
+   "query": "gap:stylized render"
+  },
+  {
+   "name": "Brush Stroke Shader - Maya Arnold Painterly 2D-3D Effect",
+   "seller": "Marceau",
+   "url": "https://tonolimarceau.gumroad.com/l/pevsh",
+   "price": "",
+   "sub": "tonolimarceau",
+   "query": "gap:stylized render"
+  },
+  {
+   "name": "Forma - After Effects Plugin",
+   "seller": "Pina Labs",
+   "url": "https://pinalabs.gumroad.com/l/vrlchx",
+   "price": "",
+   "sub": "pinalabs",
+   "query": "gap:stylized render"
+  },
+  {
+   "name": "Stylized Sybil [VRChat Avatar]",
+   "seller": "nonary \ud83e\udd88",
+   "url": "https://nonarycubed.gumroad.com/l/evuhi",
+   "price": "",
+   "sub": "nonarycubed",
+   "query": "gap:stylized render"
+  },
+  {
+   "name": "Stylized Brick Wall - Substance 3D Designer",
+   "seller": "3dex",
+   "url": "https://3dex.gumroad.com/l/jdpus",
+   "price": "",
+   "sub": "3dex",
+   "query": "gap:stylized render"
+  },
+  {
+   "name": "Lightning FXs v1.1 | Procedural Lightning Effects Generator",
+   "seller": "MOTION DREAMS",
+   "url": "https://mdreamslk.gumroad.com/l/imccz",
+   "price": "",
+   "sub": "mdreamslk",
+   "query": "gap:stylized render"
+  },
+  {
+   "name": "keiuh",
+   "seller": "monochromecbn",
+   "url": "https://monochromecbn.gumroad.com/l/keiuh",
+   "price": "",
+   "query": "lilypad:monochromecbn",
+   "sub": "monochromecbn"
+  },
+  {
+   "name": "vimxvc",
+   "seller": "monochromecbn",
+   "url": "https://monochromecbn.gumroad.com/l/vimxvc",
+   "price": "",
+   "query": "lilypad:monochromecbn",
+   "sub": "monochromecbn"
+  },
+  {
+   "name": "soktun",
+   "seller": "monochromecbn",
+   "url": "https://monochromecbn.gumroad.com/l/soktun",
+   "price": "",
+   "query": "lilypad:monochromecbn",
+   "sub": "monochromecbn"
+  },
+  {
+   "name": "fqjmpj",
+   "seller": "monochromecbn",
+   "url": "https://monochromecbn.gumroad.com/l/fqjmpj",
+   "price": "",
+   "query": "lilypad:monochromecbn",
+   "sub": "monochromecbn"
+  },
+  {
+   "name": "oijuyh",
+   "seller": "monochromecbn",
+   "url": "https://monochromecbn.gumroad.com/l/oijuyh",
+   "price": "",
+   "query": "lilypad:monochromecbn",
+   "sub": "monochromecbn"
+  },
+  {
+   "name": "cjjyi",
+   "seller": "monochromecbn",
+   "url": "https://monochromecbn.gumroad.com/l/cjjyi",
+   "price": "",
+   "query": "lilypad:monochromecbn",
+   "sub": "monochromecbn"
+  },
+  {
+   "name": "tpc01",
+   "seller": "aitorecheveste",
+   "url": "https://aitorecheveste.gumroad.com/l/tpc01",
+   "price": "",
+   "query": "lilypad:aitorecheveste",
+   "sub": "aitorecheveste"
+  },
+  {
+   "name": "pct01",
+   "seller": "aitorecheveste",
+   "url": "https://aitorecheveste.gumroad.com/l/pct01",
+   "price": "",
+   "query": "lilypad:aitorecheveste",
+   "sub": "aitorecheveste"
+  },
+  {
+   "name": "sgmbk",
+   "seller": "aitorecheveste",
+   "url": "https://aitorecheveste.gumroad.com/l/sgmbk",
+   "price": "",
+   "query": "lilypad:aitorecheveste",
+   "sub": "aitorecheveste"
+  },
+  {
+   "name": "txjpiw",
+   "seller": "aitorecheveste",
+   "url": "https://aitorecheveste.gumroad.com/l/txjpiw",
+   "price": "",
+   "query": "lilypad:aitorecheveste",
+   "sub": "aitorecheveste"
+  },
+  {
+   "name": "bsrygu",
+   "seller": "aitorecheveste",
+   "url": "https://aitorecheveste.gumroad.com/l/bsrygu",
+   "price": "",
+   "query": "lilypad:aitorecheveste",
+   "sub": "aitorecheveste"
+  },
+  {
+   "name": "flbeqr",
+   "seller": "aitorecheveste",
+   "url": "https://aitorecheveste.gumroad.com/l/flbeqr",
+   "price": "",
+   "query": "lilypad:aitorecheveste",
+   "sub": "aitorecheveste"
+  },
+  {
+   "name": "pxpwg",
+   "seller": "aitorecheveste",
+   "url": "https://aitorecheveste.gumroad.com/l/pxpwg",
+   "price": "",
+   "query": "lilypad:aitorecheveste",
+   "sub": "aitorecheveste"
+  },
+  {
+   "name": "hnfekax",
+   "seller": "fotoref",
+   "url": "https://fotoref.gumroad.com/l/hnfekax",
+   "price": "",
+   "query": "lilypad:fotoref",
+   "sub": "fotoref"
+  },
+  {
+   "name": "sfske",
+   "seller": "fotoref",
+   "url": "https://fotoref.gumroad.com/l/sfske",
+   "price": "",
+   "query": "lilypad:fotoref",
+   "sub": "fotoref"
+  },
+  {
+   "name": "murgc",
+   "seller": "fotoref",
+   "url": "https://fotoref.gumroad.com/l/murgc",
+   "price": "",
+   "query": "lilypad:fotoref",
+   "sub": "fotoref"
+  },
+  {
+   "name": "laarbr",
+   "seller": "fotoref",
+   "url": "https://fotoref.gumroad.com/l/laarbr",
+   "price": "",
+   "query": "lilypad:fotoref",
+   "sub": "fotoref"
+  },
+  {
+   "name": "kshvaq",
+   "seller": "fotoref",
+   "url": "https://fotoref.gumroad.com/l/kshvaq",
+   "price": "",
+   "query": "lilypad:fotoref",
+   "sub": "fotoref"
+  },
+  {
+   "name": "uydsby",
+   "seller": "fotoref",
+   "url": "https://fotoref.gumroad.com/l/uydsby",
+   "price": "",
+   "query": "lilypad:fotoref",
+   "sub": "fotoref"
+  },
+  {
+   "name": "nihsgn",
+   "seller": "fotoref",
+   "url": "https://fotoref.gumroad.com/l/nihsgn",
+   "price": "",
+   "query": "lilypad:fotoref",
+   "sub": "fotoref"
+  },
+  {
+   "name": "hotgzw",
+   "seller": "fotoref",
+   "url": "https://fotoref.gumroad.com/l/hotgzw",
+   "price": "",
+   "query": "lilypad:fotoref",
+   "sub": "fotoref"
+  },
+  {
+   "name": "xwzdq",
+   "seller": "fotoref",
+   "url": "https://fotoref.gumroad.com/l/xwzdq",
+   "price": "",
+   "query": "lilypad:fotoref",
+   "sub": "fotoref"
+  },
+  {
+   "name": "tarot",
+   "seller": "dustywhite",
+   "url": "https://dustywhite.gumroad.com/l/tarot",
+   "price": "",
+   "query": "lilypad:dustywhite",
+   "sub": "dustywhite"
+  },
+  {
+   "name": "standard",
+   "seller": "cawrigs",
+   "url": "https://cawrigs.gumroad.com/l/standard",
+   "price": "",
+   "query": "lilypad:cawrigs",
+   "sub": "cawrigs"
+  },
+  {
+   "name": "nxoaz",
+   "seller": "cawrigs",
+   "url": "https://cawrigs.gumroad.com/l/nxoaz",
+   "price": "",
+   "query": "lilypad:cawrigs",
+   "sub": "cawrigs"
+  },
+  {
+   "name": "ldkomm",
+   "seller": "cawrigs",
+   "url": "https://cawrigs.gumroad.com/l/ldkomm",
+   "price": "",
+   "query": "lilypad:cawrigs",
+   "sub": "cawrigs"
+  },
+  {
+   "name": "tvzez",
+   "seller": "cawrigs",
+   "url": "https://cawrigs.gumroad.com/l/tvzez",
+   "price": "",
+   "query": "lilypad:cawrigs",
+   "sub": "cawrigs"
+  },
+  {
+   "name": "yrrpr",
+   "seller": "carlodiamanti",
+   "url": "https://carlodiamanti.gumroad.com/l/yrrpr",
+   "price": "",
+   "query": "lilypad:carlodiamanti",
+   "sub": "carlodiamanti"
+  },
+  {
+   "name": "mtc",
+   "seller": "carlodiamanti",
+   "url": "https://carlodiamanti.gumroad.com/l/mtc",
+   "price": "",
+   "query": "lilypad:carlodiamanti",
+   "sub": "carlodiamanti"
+  },
+  {
+   "name": "zivfg",
+   "seller": "carlodiamanti",
+   "url": "https://carlodiamanti.gumroad.com/l/zivfg",
+   "price": "",
+   "query": "lilypad:carlodiamanti",
+   "sub": "carlodiamanti"
+  },
+  {
+   "name": "bdnkdb",
+   "seller": "promptblueprint",
+   "url": "https://promptblueprint.gumroad.com/l/bdnkdb",
+   "price": "",
+   "query": "lilypad:promptblueprint",
+   "sub": "promptblueprint"
+  },
+  {
+   "name": "fdwchc",
+   "seller": "promptblueprint",
+   "url": "https://promptblueprint.gumroad.com/l/fdwchc",
+   "price": "",
+   "query": "lilypad:promptblueprint",
+   "sub": "promptblueprint"
+  },
+  {
+   "name": "ozshe",
+   "seller": "promptblueprint",
+   "url": "https://promptblueprint.gumroad.com/l/ozshe",
+   "price": "",
+   "query": "lilypad:promptblueprint",
+   "sub": "promptblueprint"
+  },
+  {
+   "name": "qefhaf",
+   "seller": "promptblueprint",
+   "url": "https://promptblueprint.gumroad.com/l/qefhaf",
+   "price": "",
+   "query": "lilypad:promptblueprint",
+   "sub": "promptblueprint"
+  },
+  {
+   "name": "tahwwj",
+   "seller": "promptblueprint",
+   "url": "https://promptblueprint.gumroad.com/l/tahwwj",
+   "price": "",
+   "query": "lilypad:promptblueprint",
+   "sub": "promptblueprint"
+  },
+  {
+   "name": "qpgve",
+   "seller": "promptblueprint",
+   "url": "https://promptblueprint.gumroad.com/l/qpgve",
+   "price": "",
+   "query": "lilypad:promptblueprint",
+   "sub": "promptblueprint"
+  },
+  {
+   "name": "rtyayi",
+   "seller": "promptblueprint",
+   "url": "https://promptblueprint.gumroad.com/l/rtyayi",
+   "price": "",
+   "query": "lilypad:promptblueprint",
+   "sub": "promptblueprint"
+  },
+  {
+   "name": "beczvc",
+   "seller": "promptblueprint",
+   "url": "https://promptblueprint.gumroad.com/l/beczvc",
+   "price": "",
+   "query": "lilypad:promptblueprint",
+   "sub": "promptblueprint"
+  },
+  {
+   "name": "gsobka",
+   "seller": "vfxgrace",
+   "url": "https://vfxgrace.gumroad.com/l/gsobka",
+   "price": "",
+   "query": "lilypad:vfxgrace",
+   "sub": "vfxgrace"
+  },
+  {
+   "name": "wnrly",
+   "seller": "vfxgrace",
+   "url": "https://vfxgrace.gumroad.com/l/wnrly",
+   "price": "",
+   "query": "lilypad:vfxgrace",
+   "sub": "vfxgrace"
+  },
+  {
+   "name": "vftct",
+   "seller": "vfxgrace",
+   "url": "https://vfxgrace.gumroad.com/l/vftct",
+   "price": "",
+   "query": "lilypad:vfxgrace",
+   "sub": "vfxgrace"
+  },
+  {
+   "name": "qewsh",
+   "seller": "vfxgrace",
+   "url": "https://vfxgrace.gumroad.com/l/qewsh",
+   "price": "",
+   "query": "lilypad:vfxgrace",
+   "sub": "vfxgrace"
+  },
+  {
+   "name": "anbfi",
+   "seller": "vfxgrace",
+   "url": "https://vfxgrace.gumroad.com/l/anbfi",
+   "price": "",
+   "query": "lilypad:vfxgrace",
+   "sub": "vfxgrace"
+  },
+  {
+   "name": "osgby",
+   "seller": "2dcharacter",
+   "url": "https://2dcharacter.gumroad.com/l/osgby",
+   "price": "",
+   "query": "lilypad:2dcharacter",
+   "sub": "2dcharacter"
+  },
+  {
+   "name": "haoui",
+   "seller": "2dcharacter",
+   "url": "https://2dcharacter.gumroad.com/l/haoui",
+   "price": "",
+   "query": "lilypad:2dcharacter",
+   "sub": "2dcharacter"
+  },
+  {
+   "name": "hczltq",
+   "seller": "2dcharacter",
+   "url": "https://2dcharacter.gumroad.com/l/hczltq",
+   "price": "",
+   "query": "lilypad:2dcharacter",
+   "sub": "2dcharacter"
+  },
+  {
+   "name": "qqwzso",
+   "seller": "2dcharacter",
+   "url": "https://2dcharacter.gumroad.com/l/qqwzso",
+   "price": "",
+   "query": "lilypad:2dcharacter",
+   "sub": "2dcharacter"
+  },
+  {
+   "name": "opvmlh",
+   "seller": "2dcharacter",
+   "url": "https://2dcharacter.gumroad.com/l/opvmlh",
+   "price": "",
+   "query": "lilypad:2dcharacter",
+   "sub": "2dcharacter"
+  },
+  {
+   "name": "hhqrc",
+   "seller": "2dcharacter",
+   "url": "https://2dcharacter.gumroad.com/l/hhqrc",
+   "price": "",
+   "query": "lilypad:2dcharacter",
+   "sub": "2dcharacter"
+  },
+  {
+   "name": "bvtkjc",
+   "seller": "2dcharacter",
+   "url": "https://2dcharacter.gumroad.com/l/bvtkjc",
+   "price": "",
+   "query": "lilypad:2dcharacter",
+   "sub": "2dcharacter"
+  },
+  {
+   "name": "ouiqoh",
+   "seller": "2dcharacter",
+   "url": "https://2dcharacter.gumroad.com/l/ouiqoh",
+   "price": "",
+   "query": "lilypad:2dcharacter",
+   "sub": "2dcharacter"
+  },
+  {
+   "name": "xuymr",
+   "seller": "daoudyai",
+   "url": "https://daoudyai.gumroad.com/l/xuymr",
+   "price": "",
+   "query": "lilypad:daoudyai",
+   "sub": "daoudyai"
+  },
+  {
+   "name": "itajdw",
+   "seller": "daoudyai",
+   "url": "https://daoudyai.gumroad.com/l/itajdw",
+   "price": "",
+   "query": "lilypad:daoudyai",
+   "sub": "daoudyai"
+  },
+  {
+   "name": "xbbghk",
+   "seller": "daoudyai",
+   "url": "https://daoudyai.gumroad.com/l/xbbghk",
+   "price": "",
+   "query": "lilypad:daoudyai",
+   "sub": "daoudyai"
+  },
+  {
+   "name": "lsfrxr",
+   "seller": "daoudyai",
+   "url": "https://daoudyai.gumroad.com/l/lsfrxr",
+   "price": "",
+   "query": "lilypad:daoudyai",
+   "sub": "daoudyai"
+  },
+  {
+   "name": "mdcxkx",
+   "seller": "daoudyai",
+   "url": "https://daoudyai.gumroad.com/l/mdcxkx",
+   "price": "",
+   "query": "lilypad:daoudyai",
+   "sub": "daoudyai"
+  },
+  {
+   "name": "zudpem",
+   "seller": "daoudyai",
+   "url": "https://daoudyai.gumroad.com/l/zudpem",
+   "price": "",
+   "query": "lilypad:daoudyai",
+   "sub": "daoudyai"
+  },
+  {
+   "name": "eaykvs",
+   "seller": "daoudyai",
+   "url": "https://daoudyai.gumroad.com/l/eaykvs",
+   "price": "",
+   "query": "lilypad:daoudyai",
+   "sub": "daoudyai"
+  },
+  {
+   "name": "zvherv",
+   "seller": "daoudyai",
+   "url": "https://daoudyai.gumroad.com/l/zvherv",
+   "price": "",
+   "query": "lilypad:daoudyai",
+   "sub": "daoudyai"
+  },
+  {
+   "name": "tdfkvd",
+   "seller": "daoudyai",
+   "url": "https://daoudyai.gumroad.com/l/tdfkvd",
+   "price": "",
+   "query": "lilypad:daoudyai",
+   "sub": "daoudyai"
+  },
+  {
+   "name": "qorxwe",
+   "seller": "daoudyai",
+   "url": "https://daoudyai.gumroad.com/l/qorxwe",
+   "price": "",
+   "query": "lilypad:daoudyai",
+   "sub": "daoudyai"
+  },
+  {
+   "name": "lyqqel",
+   "seller": "daoudyai",
+   "url": "https://daoudyai.gumroad.com/l/lyqqel",
+   "price": "",
+   "query": "lilypad:daoudyai",
+   "sub": "daoudyai"
   }
  ],
  "generated": "2026-11-28"

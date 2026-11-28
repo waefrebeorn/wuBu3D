@@ -86,6 +86,11 @@ def products_at(page):
 
 
 def main():
+    import sys
+    extra = []
+    for i, a in enumerate(sys.argv):
+        if a == "--queries" and i + 1 < len(sys.argv):
+            extra = [q.strip() for q in sys.argv[i + 1].split("|") if q.strip()]
     census = json.load(open(CENSUS))
     known = {p["url"] for p in census["all"]}
     hops = []
@@ -97,7 +102,7 @@ def main():
     seen = {h["url"] for h in hops}
 
     sellers = {}
-    for q in GAP_QUERIES:
+    for q in (extra or GAP_QUERIES):
         page = fetch("https://gumroad.com/discover?query=" + urllib.parse.quote(q))
         got = products_at(page)
         new = 0
