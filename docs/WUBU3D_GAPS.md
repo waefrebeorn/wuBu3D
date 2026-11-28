@@ -8,7 +8,7 @@ Each row counts how many products advertise the operation, what we have, and thr
 |---|---|---|---|---|
 | skin & subsurface scattering | 3 | none | our characters are opaque lambert+specular | [Next-Gen Shaders V5.10 for Honey S](https://hanmen.gumroad.com/l/cdxely), [Aura SSS Collection for C4D and Re](https://effectatron.gumroad.com/l/lztbid), [Single Map PBR Skin Shader for Ble](https://victoriadyer.gumroad.com/l/ZRnyU) |
 | translucency / transmission | 2 | none | no transmission path at all | [Glass Shader & Props for Honey Sel](https://hanmen.gumroad.com/l/avfvbe), [[VRC] Glass/Refraction Shader](https://jayievr.gumroad.com/l/eznby) |
-| texture sampling | 58 | done | src/shade.c wubu_tex, perspective-correct UV, nearest sample: detail 0.82 -> 4.30 | [Texture - (Plugin)](https://mrquaxkers.gumroad.com/l/aebhqo), [Worm Host Animation](https://n5studios.gumroad.com/l/racij), [Roblox Blocky Finger Rig (Blender ](https://paribes.gumroad.com/l/fpbjgc) |
+| texture sampling | 64 | done | src/shade.c wubu_tex, perspective-correct UV, nearest sample: detail 0.82 -> 4.30 | [Texture - (Plugin)](https://mrquaxkers.gumroad.com/l/aebhqo), [Worm Host Animation](https://n5studios.gumroad.com/l/racij), [Roblox Blocky Finger Rig (Blender ](https://paribes.gumroad.com/l/fpbjgc) |
 | normal mapping | 14 | none | no tangent space in the mesh path | [Novabeast Muscle Textures - Normal](https://mmmos.gumroad.com/l/lcvpk), [Nardoragon Muscle Textures - Norma](https://mmmos.gumroad.com/l/owmff), [Druffle Muscle Textures - Normal m](https://mmmos.gumroad.com/l/aksin) |
 | cast shadows | 1 | none | a contact ellipse stands in for a real shadow | [CascadeBridge – Blender to Cascade](https://ibr4him2.gumroad.com/l/rafwrh) |
 | ambient occlusion | 15 | partial | ground-contact darkening only, not occlusion between parts | [Blender Batch AO Baker Addon](https://vdskinworks.gumroad.com/l/embsc), [Novabeast Muscle Textures - Normal](https://mmmos.gumroad.com/l/lcvpk), [Nardoragon Muscle Textures - Norma](https://mmmos.gumroad.com/l/owmff) |
@@ -29,20 +29,20 @@ Each row counts how many products advertise the operation, what we have, and thr
 | LOD generation | 3 | none | one resolution, always | [SimplyFive-PRO (LOD Generator for ](https://zloy-pingvin.gumroad.com/l/fdlhr), [SimplyFive-Light (LOD Generator fo](https://zloy-pingvin.gumroad.com/l/tkmyvg), [Resolution LOD Generator (Blender ](https://cdmcrash.gumroad.com/l/yxznv) |
 | occlusion culling | 1 | none | depth test only | [Sword Combat & NPC System [ROBLOX]](https://piercedevelop.gumroad.com/l/swhwn) |
 | instancing / batching | 0 | none | every face is pushed individually | -- |
-| procedural placement | 53 | none | props are placed by hand in the shot list | [Weight Scatter - (Plugin)](https://mrquaxkers.gumroad.com/l/vhxkmj), [Stylized Sky World Generator](https://reipart.gumroad.com/l/vaznyj), [Ultimate Blender Procedural Materi](https://ryankingart.gumroad.com/l/gdkltz) |
+| procedural placement | 54 | done | src/scatter.c Bridson Poisson-disk: min pair == radius, exclusions honoured | [Weight Scatter - (Plugin)](https://mrquaxkers.gumroad.com/l/vhxkmj), [Stylized Sky World Generator](https://reipart.gumroad.com/l/vaznyj), [Ultimate Blender Procedural Materi](https://ryankingart.gumroad.com/l/gdkltz) |
 | tileable material authoring | 15 | none | no material system | [⚽ Roblox Football/Soccer Rigs (Kit](https://paribes.gumroad.com/l/ovwtcn), [Roblox Starter Rigs 1.0 MODDED](https://paribes.gumroad.com/l/xbrdsa), [Substance Node Pack / Dete Trim To](https://dete.gumroad.com/l/hjmavo) |
-| decal projection | 14 | partial | world-space flat decals for footprints | [[Addon]DECALmachine](https://machin3.gumroad.com/l/fjXBHu), [MatricX bake: Blender Material & D](https://eidosedge.gumroad.com/l/gjpmlv), [Magic Decal](https://nebulaanimations.gumroad.com/l/bmouh) |
-| node graph / shader authoring | 0 | none | shaders are hand-written C | -- |
+| decal projection | 15 | partial | world-space flat decals for footprints | [Omni-Matrix Holograph: Premium 3D ](https://creativeapes.gumroad.com/l/umfgop), [[Addon]DECALmachine](https://machin3.gumroad.com/l/fjXBHu), [MatricX bake: Blender Material & D](https://eidosedge.gumroad.com/l/gjpmlv) |
+| node graph / shader authoring | 1 | none | shaders are hand-written C | [Holofoil Shader](https://1hp.gumroad.com/l/fogdg) |
 | particle / VFX | 47 | none | no particles | [FUGA - Imagined by Starkim1999 [VF](https://starkim1999.gumroad.com/l/gwsrd), [Standing Fire [Medium Scale] VFX A](https://benharkervfx.gumroad.com/l/bnizsn), [WebGL Magnetic Field: Interactive ](https://creativeapes.gumroad.com/l/dqgfpw) |
 | navmesh / pathfinding | 13 | none | no agents | [WEPPY Roblox Plugin Pro](https://weppy.gumroad.com/l/faccjs), [SmartMonster AI - Dynamic Enemy Pa](https://scriptrblx.gumroad.com/l/zwotiv), [NodeArchitect - AI Agent and MCP S](https://bishopvfx.gumroad.com/l/thptkt) |
 | motion capture cleanup | 4 | none | no mocap path | [Make Movement Feel Real - 3 Hours ](https://quantumstage.gumroad.com/l/uqomm), [Full motion capture cleanup course](https://pavelbarnev.gumroad.com/l/jXWDVB), [Mocap Blender](https://emblematic3.gumroad.com/l/ujhub) |
 
-**22 operations missing, 3 partial, 5 done.**
+**21 operations missing, 3 partial, 6 done.**
 
 Ordered by how many products sell it, the top five missing are:
 
-- **procedural placement** — 53 products
 - **particle / VFX** — 47 products
 - **hair / fur grooming** — 31 products
 - **tileable material authoring** — 15 products
 - **normal mapping** — 14 products
+- **navmesh / pathfinding** — 13 products

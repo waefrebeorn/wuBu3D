@@ -65,6 +65,8 @@ BUILT = [
      "src/shade.c, render_shaded.py", "highlights 0 -> 3180 px over 200; bg variance 57 -> 42"),
     ("per-pixel texture sampling with perspective-correct UVs",
      "src/shade.c wubu_tex", "unique colours 85 -> 279, local detail 0.82 -> 4.30 on a checkerboard"),
+    ("procedural placement: Bridson Poisson-disk, exclusion circles, per-instance scale/rotation",
+     "src/scatter.c", "min pair 0.1600 against a 0.160 radius (uniform random: 0.0023); 0 in clearings"),
 ]
 
 
