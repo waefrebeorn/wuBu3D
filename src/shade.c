@@ -18,6 +18,12 @@ Build:  gcc -O2 -march=native -shared -fPIC -o libshade.so shade.c
 #include <stdint.h>
 #include <string.h>
 
+/* specular controls, set per render so the shade_tri signature stays intact */
+static float g_spec = 0.0f;
+static float g_shin = 32.0f;
+void wubu_spec(float k, float shin) { g_spec = k; g_shin = shin > 0.5f ? shin : 0.5f; }
+
+
 typedef struct {
     float sx, sy, sz;      /* screen x, y and view depth */
     float wx, wy, wz;      /* world position               */
@@ -90,6 +96,10 @@ int shade_tri(uint8_t *rgb, float *zb, int W, int H,
             if (nl > 1e-6f) { nx /= nl; ny /= nl; nz /= nl; }
 
             float s = ambient;
+            float spec = 0.0f;
+            float ex0 = eye[0] - wx_, ey0 = eye[1] - wy_, ez0 = eye[2] - wz_;
+            float el0 = sqrtf(ex0*ex0 + ey0*ey0 + ez0*ez0) + 1e-6f;
+            ex0 /= el0; ey0 /= el0; ez0 /= el0;
             for (int i = 0; i < nlights; ++i) {
                 const float *L = lights + i * 4;
                 float dx = L[0] - wx_, dy = L[1] - wy_, dz = L[2] - wz_;
@@ -99,6 +109,12 @@ int shade_tri(uint8_t *rgb, float *zb, int W, int H,
                 if (nd > 0.0f) {
                     float fall = 1.0f / (1.0f + (0.55f / (L[3] * L[3])) * d2);
                     s += gain * nd * fall;
+                    if (g_spec > 0.0f) {
+                        float hx = dx / d + ex0, hy = dy / d + ey0, hz = dz / d + ez0;
+                        float hl = sqrtf(hx*hx + hy*hy + hz*hz) + 1e-6f;
+                        float nh = (nx*hx + ny*hy + nz*hz) / hl;
+                        if (nh > 0.0f) spec += g_spec * powf(nh, g_shin) * fall;
+                    }
                 }
             }
 
@@ -116,9 +132,10 @@ int shade_tri(uint8_t *rgb, float *zb, int W, int H,
                 rim = rimk * f;
             }
 
-            float r = base[0] * s + 255.0f * rim;
-            float g = base[1] * s + 255.0f * rim;
-            float bl = base[2] * s + 255.0f * rim;
+            float sc = spec * 255.0f;
+            float r = base[0] * s + 255.0f * rim + sc;
+            float g = base[1] * s + 255.0f * rim + sc;
+            float bl = base[2] * s + 255.0f * rim + sc;
             int o = (py * W + px) * 3;
             rgb[o + 0] = (uint8_t)clampf(r, 0.0f, 255.0f);
             rgb[o + 1] = (uint8_t)clampf(g, 0.0f, 255.0f);
