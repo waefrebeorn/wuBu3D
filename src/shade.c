@@ -42,6 +42,12 @@ void wubu_nmap(const void *rgba, int w, int h, float strength)
 }
 void wubu_nmap_off(void) { g_nmap = 0; }
 
+/* alpha test. A hair card, a leaf, a chain-link fence and a smoke sprite are all "a texture with
+   holes"; without a discard the quad renders solid and every one of them becomes a sheet of paper.
+   Uses the bound albedo texture's alpha channel, so it needs no second binding. */
+static float g_alpha_cut = 0.0f;
+void wubu_alpha_cut(float t) { g_alpha_cut = t > 0.0f ? t : 0.0f; }
+
 /* subsurface / translucency: wrap the lambert term so light bleeds past the terminator, plus a
    back-light transmission term. Skin and wax read as skin and wax because of this and nothing else —
    a wrapped terminator is the difference between a face and a painted box. */
@@ -64,6 +70,11 @@ typedef struct {
 #define VSTRIDE 11
 
 static inline float clampf(float v, float lo, float hi) { return v < lo ? lo : (v > hi ? hi : v); }
+
+/* backface culling: on a closed box half the triangles face away and are pure waste. Opt-in, because
+   a single-sided plane (a wall, a sky card) must still draw when seen from behind. */
+static int g_cull = 0;
+void wubu_cull(int on) { g_cull = on ? 1 : 0; }
 
 /* one triangle: 3 verts, base colour, and the light set */
 int shade_tri(uint8_t *rgb, float *zb, int W, int H,
@@ -91,6 +102,16 @@ int shade_tri(uint8_t *rgb, float *zb, int W, int H,
     float area = (b->sx - a->sx) * (c->sy - a->sy) - (c->sx - a->sx) * (b->sy - a->sy);
     if (fabsf(area) < 1e-9f) return 0;
     float inv_area = 1.0f / area;
+
+    if (g_cull) {
+        float cxw = (a->wx + b->wx + c->wx) / 3.0f;
+        float cyw = (a->wy + b->wy + c->wy) / 3.0f;
+        float czw = (a->wz + b->wz + c->wz) / 3.0f;
+        float vx = eye[0] - cxw, vy = eye[1] - cyw, vz = eye[2] - czw;
+        float d = (a->nx + b->nx + c->nx) * vx + (a->ny + b->ny + c->ny) * vy +
+                  (a->nz + b->nz + c->nz) * vz;
+        if (d <= 0.0f) return 0;
+    }
 
     /* tangent basis from the uv gradient, once per triangle: without it a normal map has no frame to
        live in, and sampling it in world space tilts the bumps with the camera. */
@@ -157,6 +178,7 @@ int shade_tri(uint8_t *rgb, float *zb, int W, int H,
                 ux = ((ux % g_tw) + g_tw) % g_tw;
                 uy = ((uy % g_th) + g_th) % g_th;
                 const uint8_t *t = g_tex + 4 * (uy * g_tw + ux);
+                if (g_alpha_cut > 0.0f && t[3] / 255.0f < g_alpha_cut) continue;
                 br *= t[0] / 255.0f; bg2 *= t[1] / 255.0f; bb *= t[2] / 255.0f;
             }
             if (g_nmap && g_nw > 0 && g_nh > 0 && g_nstr > 0.0f) {
@@ -247,4 +269,25 @@ int shade_tri(uint8_t *rgb, float *zb, int W, int H,
 int fill_quad(uint8_t *rgb, float *zb, int W, int H, const float *v, const float *col)
 {
     return shade_tri(rgb, zb, W, H, v, col, 0, 0, 1.0f, 0.0f, 0.0f, (const float[3]){0, 0, 0});
+}
+
+
+/* batch entry: the whole scene in one call.
+
+Measured reason this exists: a 4800-triangle frame took 229 ms, and a bare shade_tri call on a
+200x200 pixel triangle costs 8.9 us. At 47.8 us per triangle in the real scene, ~82% of the frame
+was Python making ctypes calls and rebuiling a 3x11 block per triangle, not rasterising. Moving the
+loop into C does not make the shader faster; it removes the interpreter from the inner loop.
+*/
+int wubu_shade_batch(uint8_t *rgb, float *zb, int W, int H,
+                     const float *verts, int ntri, const float *cols,
+                     const float *lights, int nlights,
+                     float ambient, float gain, float rim, const float *eye)
+{
+    int drawn = 0;
+    for (int t = 0; t < ntri; ++t) {
+        drawn += shade_tri(rgb, zb, W, H, verts + (size_t)t * 3 * VSTRIDE,
+                           cols + (size_t)t * 3, lights, nlights, ambient, gain, rim, eye);
+    }
+    return drawn;
 }
