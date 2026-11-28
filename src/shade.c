@@ -29,6 +29,19 @@ static const uint8_t *g_tex = 0;
 static int g_tw = 0, g_th = 0;
 void wubu_tex(const void *rgba, int w, int h) { g_tex = (const uint8_t *)rgba; g_tw = w; g_th = h; }
 
+/* normal map: a second RGBA image whose rgb is a tangent-space normal, sampled through the same uv.
+   14 Gumroad products sell normal mapping and every engine has had it for twenty years; until now a
+   surface could only be as detailed as its triangles. */
+static const uint8_t *g_nmap = 0;
+static int g_nw = 0, g_nh = 0;
+static float g_nstr = 1.0f;
+void wubu_nmap(const void *rgba, int w, int h, float strength)
+{
+    g_nmap = (const uint8_t *)rgba; g_nw = w; g_nh = h;
+    g_nstr = strength > 0.0f ? strength : 0.0f;
+}
+void wubu_nmap_off(void) { g_nmap = 0; }
+
 
 typedef struct {
     float sx, sy, sz;      /* screen x, y and view depth */
@@ -67,6 +80,30 @@ int shade_tri(uint8_t *rgb, float *zb, int W, int H,
     float area = (b->sx - a->sx) * (c->sy - a->sy) - (c->sx - a->sx) * (b->sy - a->sy);
     if (fabsf(area) < 1e-9f) return 0;
     float inv_area = 1.0f / area;
+
+    /* tangent basis from the uv gradient, once per triangle: without it a normal map has no frame to
+       live in, and sampling it in world space tilts the bumps with the camera. */
+    float tx = 1.0f, ty = 0.0f, tz = 0.0f, bx = 0.0f, by = 1.0f, bz = 0.0f;
+    if (g_nmap) {
+        float du1 = b->u - a->u, dv1 = b->v - a->v;
+        float du2 = c->u - a->u, dv2 = c->v - a->v;
+        float det = du1 * dv2 - du2 * dv1;
+        if (fabsf(det) > 1e-9f) {
+            float id = 1.0f / det;
+            float e1x = b->wx - a->wx, e1y = b->wy - a->wy, e1z = b->wz - a->wz;
+            float e2x = c->wx - a->wx, e2y = c->wy - a->wy, e2z = c->wz - a->wz;
+            tx = (e1x * dv2 - e2x * dv1) * id;
+            ty = (e1y * dv2 - e2y * dv1) * id;
+            tz = (e1z * dv2 - e2z * dv1) * id;
+            bx = (e2x * du1 - e1x * du2) * id;
+            by = (e2y * du1 - e1y * du2) * id;
+            bz = (e2z * du1 - e1z * du2) * id;
+            float tl = sqrtf(tx * tx + ty * ty + tz * tz);
+            if (tl > 1e-9f) { tx /= tl; ty /= tl; tz /= tl; }
+            float bl = sqrtf(bx * bx + by * by + bz * bz);
+            if (bl > 1e-9f) { bx /= bl; by /= bl; bz /= bl; }
+        }
+    }
 
     /* reciprocal depth for perspective-correct interpolation */
     float iza = 1.0f / fmaxf(a->sz, 1e-4f);
@@ -111,6 +148,21 @@ int shade_tri(uint8_t *rgb, float *zb, int W, int H,
                 const uint8_t *t = g_tex + 4 * (uy * g_tw + ux);
                 br *= t[0] / 255.0f; bg2 *= t[1] / 255.0f; bb *= t[2] / 255.0f;
             }
+            if (g_nmap && g_nw > 0 && g_nh > 0 && g_nstr > 0.0f) {
+                int mx = (int)(tu * (float)g_nw), my = (int)(tv * (float)g_nh);
+                mx = ((mx % g_nw) + g_nw) % g_nw;
+                my = ((my % g_nh) + g_nh) % g_nh;
+                const uint8_t *m = g_nmap + 4 * (my * g_nw + mx);
+                float mxv = (m[0] / 127.5f - 1.0f) * g_nstr;
+                float myv = (m[1] / 127.5f - 1.0f) * g_nstr;
+                float mzv = m[2] / 127.5f;
+                float px = nx + tx * mxv + bx * myv;
+                float py = ny + ty * mxv + by * myv;
+                float pz = nz + tz * mxv + bz * myv;
+                float pl = sqrtf(px * px + py * py + pz * pz);
+                if (pl > 1e-6f) { nx = px / pl; ny = py / pl; nz = pz / pl; }
+            }
+
             float s = ambient;
             float spec = 0.0f;
             float ex0 = eye[0] - wx_, ey0 = eye[1] - wy_, ez0 = eye[2] - wz_;

@@ -83,6 +83,41 @@ out of testing it:
   transforms, so they compounded the bind instead of cancelling it. The round trip has to be
   conjugation by `M` in one direction and `M^T` in the other.
 
+## `shade.c` — normal mapping
+
+14 products sell it and every engine has had it for twenty years; until now a surface could be only
+as detailed as its triangles. The change is a tangent basis per triangle from the uv gradient, then a
+tangent-space normal sampled through the same uv as the albedo:
+
+    flat        detail energy 2.425, distinct 101
+    normal map  detail energy 3.211, distinct 129   (1.3x on 50 triangles)
+
+The picture is the argument: 28 rivets and 5 panel lines appear on a 5x5 quad wall. Two notes worth
+keeping —
+
+- **A frontal key makes normal maps invisible.** The perturbed normal only shows up through N.L, so
+  the lights have to graze the surface. Half the "it does nothing" reports in the world are this.
+- **Gradient percentiles are the wrong instrument.** p90 stayed at 1.0/255 while the rivets were
+  plainly visible, because smooth-shaded bumps have small per-pixel gradients. Detail energy
+  (|image - blur|) and distinct-value count measure the thing being added.
+
+## Ledger
+
+| gap | status | number |
+|---|---|---|
+| colour management | filled | clipped 0.366% -> 0.000%, ACES shoulder |
+| particles | filled | 675 alive, 93,772 blended px |
+| cast shadows | filled | 6.5% of floor occluded, factor 0.94 |
+| motion blur | filled | 3 subframes accumulated |
+| cloth | filled | 4.483% mean stretch, 384 particles |
+| navmesh | filled | path 1.13x straight through a gap |
+| normal mapping | filled | detail 2.425 -> 3.211, 101 -> 129 values |
+| retargeting | filled | round trip 5.55e-17, bind ignored costs 0.0427 |
+| fur | partial | shells give volume, not strands |
+| SSS / translucency | open | needs a thickness pass and a material system |
+| EXR / ProRes | open | needs a data pass to put in the EXR |
+| LOD | open | no mesh budget in the renderer |
+
 ## What is still missing, and what it would take
 
 | gap | why it is still open |
