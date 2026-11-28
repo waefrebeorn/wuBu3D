@@ -32,6 +32,12 @@ static void look_at(const float eye[3], const float target[3], float m[12])
     m[11] = -(fx * eye[0] + fy * eye[1] + fz * eye[2]);
 }
 
+/* the same matrix the map was built with, so the shader cannot disagree with the pass */
+void wubu_shadow_lookat(const float eye[3], const float target[3], float m[12])
+{
+    look_at(eye, target, m);
+}
+
 /* Render depth from the light. `tris` is n*9 (three world-space vertices per triangle). */
 int wubu_shadowmap(const float *tris, int ntris, const float eye[3], const float target[3],
                    int size, float fov_deg, float *depth_out)

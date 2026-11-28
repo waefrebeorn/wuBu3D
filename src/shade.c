@@ -82,6 +82,43 @@ void wubu_cull(int on) { g_cull = on ? 1 : 0; }
 static float *g_nbuf = 0;
 void wubu_gbuf(float *nbuf) { g_nbuf = nbuf; }
 
+/* per-pixel shadow: the map built by shadow.c, bound here with the SAME light matrix. Without this,
+   shadows could only be painted on a flat floor — a wall never shaded anything, and light passed
+   through geometry, which is the single most obvious tell that a renderer has no shadows at all. */
+static const float *g_smap = 0;
+static int g_ssize = 0;
+static float g_smat[12];
+static float g_stan = 1.0f, g_sbias = 0.02f;
+void wubu_shadow_bind(const float *depth, int size, const float mat[12], float tan_half, float bias)
+{
+    g_smap = depth; g_ssize = size;
+    for (int i = 0; i < 12; ++i) g_smat[i] = mat[i];
+    g_stan = tan_half > 0.01f ? tan_half : 0.01f;
+    g_sbias = bias > 0.0f ? bias : 0.0f;
+}
+void wubu_shadow_unbind(void) { g_smap = 0; g_ssize = 0; }
+
+static inline float _shadow_at(float wx, float wy, float wz)
+{
+    if (!g_smap || g_ssize < 8) return 1.0f;
+    float x = g_smat[0] * wx + g_smat[1] * wy + g_smat[2] * wz + g_smat[3];
+    float y = g_smat[4] * wx + g_smat[5] * wy + g_smat[6] * wz + g_smat[7];
+    float z = g_smat[8] * wx + g_smat[9] * wy + g_smat[10] * wz + g_smat[11];
+    if (z <= 0.05f) return 1.0f;
+    float u = (x / (z * g_stan) * 0.5f + 0.5f) * (float)g_ssize;
+    float v = (0.5f - y / (z * g_stan) * 0.5f) * (float)g_ssize;
+    int lit = 0, taps = 0;
+    for (int dy = 0; dy < 2; ++dy) {
+        for (int dx = 0; dx < 2; ++dx) {
+            int ix = (int)(u + dx - 0.5f), iy = (int)(v + dy - 0.5f);
+            taps++;
+            if (ix < 0 || iy < 0 || ix >= g_ssize || iy >= g_ssize) { lit++; continue; }
+            if (g_smap[iy * g_ssize + ix] + g_sbias > z) lit++;
+        }
+    }
+    return taps ? (float)lit / (float)taps : 1.0f;
+}
+
 /* one triangle: 3 verts, base colour, and the light set */
 int shade_tri(uint8_t *rgb, float *zb, int W, int H,
               const float *v, const float *base,
@@ -244,6 +281,10 @@ int shade_tri(uint8_t *rgb, float *zb, int W, int H,
                which is the cheapest stand-in for ambient occlusion and the thing that makes parts
                look assembled instead of stacked */
             s *= 0.78f + 0.22f * clampf(wy_ / 0.55f, 0.0f, 1.0f);
+
+            /* shadowed light still gets a little ambient bounce, or shadowed areas go pure black */
+            float sh = _shadow_at(wx_, wy_, wz_);
+            s *= 0.30f + 0.70f * sh;
 
             float rim = 0.0f;
             if (rimk > 0.0f) {
